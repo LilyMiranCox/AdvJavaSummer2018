@@ -27,5 +27,60 @@ public class PhoneCallTest {
     PhoneCall call = new PhoneCall();
     assertThat(call.getStartTime(), is(nullValue()));
   }
-  
+
+  @Test
+  public void timeFormatCorrect () {
+    PhoneCall call = new PhoneCall();
+    call.verifyTimeFormat("1/15/2018 19:39");
+    call.verifyTimeFormat("01/2/2018 1:03");
+  }
+
+ /* @Test
+  public void timeFormatMonthIncorrect () {
+    PhoneCall call = new PhoneCall();
+    call.verifyTimeFormat("001/15/2018 19:39");
+  }
+
+  @Test
+  public void timeFormatDayIncorrect () {
+    PhoneCall call = new PhoneCall();
+    call.verifyTimeFormat("01/015/2018 19:39");
+  }
+
+  @Test
+  public void timeFormatYearIncorrect () {
+    PhoneCall call = new PhoneCall();
+    call.verifyTimeFormat("01/15/218 19:39");
+  }
+
+  @Test
+  public void timeFormatHourIncorrect () {
+    PhoneCall call = new PhoneCall();
+    call.verifyTimeFormat("01/15/2018 109:39");
+  }
+
+  @Test
+  public void timeFormatMinuteIncorrect () {
+    PhoneCall call = new PhoneCall();
+    call.verifyTimeFormat("01/15/2018 19:3");
+  }
+
+  @Test
+  public void timeFormatLetterIncluded () {
+    PhoneCall call = new PhoneCall();
+    call.verifyTimeFormat("0b/15/2018 19:3");
+  }*/
+ @Test
+  public void phoneFormatCorrect () {
+   PhoneCall call = new PhoneCall();
+   call.verifyPhoneNumberFormat("503-684-9232");
+ }
+
+  @Test
+  public void phoneFormatIncorrect () {
+    PhoneCall call = new PhoneCall();
+    //call.verifyPhoneNumberFormat("503-684-9p32");
+    //call.verifyPhoneNumberFormat("503684-9232");
+    //call.verifyPhoneNumberFormat("503-684-92-32");
+  }
 }

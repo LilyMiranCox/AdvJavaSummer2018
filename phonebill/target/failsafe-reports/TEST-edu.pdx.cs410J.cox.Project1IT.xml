@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" name="edu.pdx.cs410J.cox.Project1IT" time="0.17" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" name="edu.pdx.cs410J.cox.Project1IT" time="0.144" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-10.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\LilyMC\AppData\Local\Temp\surefire5233511996398602143\surefirebooter14983075580846407706.jar C:\Users\LilyMC\AppData\Local\Temp\surefire5233511996398602143 2018-06-28T18-29-46_317-jvmRun1 surefire12137582570255642301tmp surefire_04874251046966252719tmp"/>
+    <property name="sun.java.command" value="C:\Users\LilyMC\AppData\Local\Temp\surefire17900399685914832991\surefirebooter6861430543953437646.jar C:\Users\LilyMC\AppData\Local\Temp\surefire17900399685914832991 2018-07-11T04-07-24_386-jvmRun1 surefire6420010842099805685tmp surefire_09153876036151093114tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="http.port" value=""/>
     <property name="surefire.test.class.path" value="C:\Users\LilyMC\AdvJavaSummer2018\phonebill\target\it-classes;C:\Users\LilyMC\AdvJavaSummer2018\phonebill\target\phonebill-1.0-SNAPSHOT.jar;C:\Users\LilyMC\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\LilyMC\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\projects\Summer2018\projects-Summer2018.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\projects\Summer2018\projects-Summer2018-tests.jar;C:\Users\LilyMC\AdvJavaSummer2018\phonebill\target/test-classes;"/>
@@ -35,7 +35,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\LilyMC\AppData\Local\Temp\surefire5233511996398602143\surefirebooter14983075580846407706.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\LilyMC\AppData\Local\Temp\surefire17900399685914832991\surefirebooter6861430543953437646.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="10.0.1+10"/>
@@ -62,5 +62,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="54.0"/>
   </properties>
-  <testcase name="testNoCommandLineArguments" classname="edu.pdx.cs410J.cox.Project1IT" time="0.053"/>
+  <testcase name="testNoCommandLineArguments" classname="edu.pdx.cs410J.cox.Project1IT" time="0.048"/>
 </testsuite>

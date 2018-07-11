@@ -3,24 +3,165 @@
 import edu.pdx.cs410J.AbstractPhoneCall;
 
 <span class="fc" id="L5">public class PhoneCall extends AbstractPhoneCall {</span>
+<span class="fc" id="L6">  private String caller = &quot;&quot;;</span>
+<span class="fc" id="L7">  private String callee = &quot;not implemented&quot;;</span>
+<span class="fc" id="L8">  private String startTime = &quot;&quot;;</span>
+<span class="fc" id="L9">  private String endTime = &quot;&quot;;</span>
+
   @Override
   public String getCaller() {
-<span class="nc" id="L8">    throw new UnsupportedOperationException(&quot;This method is not implemented yet&quot;);</span>
+    //throw new UnsupportedOperationException(&quot;This method is not implemented yet&quot;);
+<span class="nc" id="L14">    return caller;</span>
   }
 
   @Override
   public String getCallee() {
-<span class="nc" id="L13">    return &quot;This method is not implemented yet&quot;;</span>
+  //  return &quot;This method is not implemented yet&quot;;
+<span class="nc" id="L20">    return callee;</span>
   }
 
   @Override
   public String getStartTimeString() {
-<span class="nc" id="L18">    throw new UnsupportedOperationException(&quot;This method is not implemented yet&quot;);</span>
+<span class="nc" id="L25">    throw new UnsupportedOperationException(&quot;This method is not implemented yet&quot;);</span>
   }
 
   @Override
   public String getEndTimeString() {
-<span class="nc" id="L23">    throw new UnsupportedOperationException(&quot;This method is not implemented yet&quot;);</span>
+<span class="nc" id="L30">    throw new UnsupportedOperationException(&quot;This method is not implemented yet&quot;);</span>
+  }
+
+  public void setCaller(String name) {
+<span class="nc" id="L34">    this.caller = name;</span>
+<span class="nc" id="L35">  }</span>
+
+  public void setCallee(String name) {
+<span class="nc" id="L38">    this.callee = name;</span>
+<span class="nc" id="L39">  }</span>
+
+  public void setStartTimeString(String initial) {
+<span class="nc" id="L42">    this.startTime = initial;</span>
+<span class="nc" id="L43">  }</span>
+
+  public void setEndTimeStirng(String ending) {
+<span class="nc" id="L46">    this.endTime = ending;</span>
+<span class="nc" id="L47">  }</span>
+
+  public void verifyTimeFormat(String time) {
+<span class="nc" id="L50">    time = time.trim(); // Remove excess spaces before and after the date/time</span>
+
+<span class="nc" id="L52">    String trimmedDate = time;</span>
+<span class="nc" id="L53">    int startIndex = 0;</span>
+<span class="nc" id="L54">    int endIndex = 0;</span>
+
+<span class="nc" id="L56">    endIndex = time.indexOf(&quot;/&quot;);</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L58">      throw new UnsupportedOperationException(&quot;Missing at least one '/'.&quot;);</span>
+    }
+<span class="nc" id="L60">    trimmedDate = time.substring(startIndex, endIndex);</span>
+
+    // One or two characters (0-9) allowed for month
+<span class="nc bnc" id="L63" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
+<span class="nc" id="L64">      throw new UnsupportedOperationException(&quot;Month must contain 1 or 2 digits.&quot;);</span>
+    }
+
+<span class="nc" id="L67">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L68">    endIndex = time.indexOf(&quot;/&quot;, startIndex);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L70">      throw new UnsupportedOperationException(&quot;Missing at least one '/'.&quot;);</span>
+    }
+<span class="nc" id="L72">    trimmedDate = time.substring(startIndex, endIndex);</span>
+
+    // One or two characters (0-9) allowed for day
+<span class="nc bnc" id="L75" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
+<span class="nc" id="L76">      throw new UnsupportedOperationException(&quot;Day must contain 1 or 2 digits.&quot;);</span>
+    }
+
+<span class="nc" id="L79">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L80">    endIndex = time.indexOf(&quot; &quot;, startIndex);</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L82">      throw new UnsupportedOperationException(&quot;Missing a space between the date and time.&quot;);</span>
+    }
+<span class="nc" id="L84">    trimmedDate = time.substring(startIndex, endIndex);</span>
+
+    // Four characters (0-9) required for year
+<span class="nc bnc" id="L87" title="All 2 branches missed.">    if(verifyAllDigits(trimmedDate) != 4) {</span>
+<span class="nc" id="L88">      throw new UnsupportedOperationException(&quot;Year must contain 4 digits.&quot;);</span>
+    }
+    // Space (allow for more?)
+<span class="nc" id="L91">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L92">    endIndex = time.indexOf(&quot;:&quot;, startIndex);</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L94">      throw new UnsupportedOperationException(&quot;Missing ':' between hours and minutes.&quot;);</span>
+    }
+<span class="nc" id="L96">    trimmedDate = time.substring(startIndex, endIndex);</span>
+
+    // One or two characters (0-9) allowed for hour
+<span class="nc bnc" id="L99" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
+<span class="nc" id="L100">      throw new UnsupportedOperationException(&quot;Hour must contain 1 or 2 digits.&quot;);</span>
+    }
+    // One semicolon
+<span class="nc" id="L103">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L104">    endIndex = time.length();</span>
+<span class="nc" id="L105">    trimmedDate = time.substring(startIndex, endIndex);</span>
+
+    // Two characters (0-9) required for minutes
+<span class="nc bnc" id="L108" title="All 2 branches missed.">    if(verifyAllDigits(trimmedDate) != 2) {</span>
+<span class="nc" id="L109">      throw new UnsupportedOperationException(&quot;Minutes must contain 1 or 2 digits.&quot;);</span>
+    }
+<span class="nc" id="L111">  }</span>
+
+  public void verifyPhoneNumberFormat (String phone) {
+<span class="nc" id="L114">    phone = phone.trim(); // Remove excess spaces before and after the date/time</span>
+
+<span class="nc" id="L116">    String trimmedPhone = phone;</span>
+<span class="nc" id="L117">    int startIndex = 0;</span>
+<span class="nc" id="L118">    int endIndex = 0;</span>
+
+<span class="nc" id="L120">    endIndex = phone.indexOf(&quot;-&quot;);</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L122">      throw new UnsupportedOperationException(&quot;Missing at least one '-'.&quot;);</span>
+    }
+<span class="nc" id="L124">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
+
+    // Three characters (0-9)
+<span class="nc bnc" id="L127" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 3) {</span>
+<span class="nc" id="L128">      throw new UnsupportedOperationException(&quot;Phone number is not formatted like ###-###-####.&quot;);</span>
+    }
+
+<span class="nc" id="L131">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L132">    endIndex = phone.indexOf(&quot;-&quot;, startIndex);</span>
+<span class="nc bnc" id="L133" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L134">      throw new UnsupportedOperationException(&quot;Missing at least one '-'.&quot;);</span>
+    }
+<span class="nc" id="L136">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
+
+    // Three characters (0-9)
+<span class="nc bnc" id="L139" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 3) {</span>
+<span class="nc" id="L140">      throw new UnsupportedOperationException(&quot;Phone number is not formatted like ###-###-####.&quot;);</span>
+    }
+
+<span class="nc" id="L143">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L144">    endIndex = phone.length();</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L146">      throw new UnsupportedOperationException(&quot;Missing at least one '-'.&quot;);</span>
+    }
+<span class="nc" id="L148">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
+
+    // Four characters (0-9)
+<span class="nc bnc" id="L151" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 4) {</span>
+<span class="nc" id="L152">      throw new UnsupportedOperationException(&quot;Phone number is not formatted like ###-###-####.&quot;);</span>
+    }
+<span class="nc" id="L154">  }</span>
+
+  public int verifyAllDigits (String test) {
+<span class="nc" id="L157">    int numDigits = 0;</span>
+<span class="nc bnc" id="L158" title="All 2 branches missed.">    for(int i = 0; i &lt; test.length(); ++i) {</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">      if(!Character.isDigit(test.charAt(i))) {</span>
+<span class="nc" id="L160">        return 0;</span>
+      }
+<span class="nc" id="L162">      ++numDigits;</span>
+    }
+<span class="nc" id="L164">    return numDigits;</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>
