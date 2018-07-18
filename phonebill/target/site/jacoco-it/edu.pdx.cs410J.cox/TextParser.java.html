@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TextParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CS410J Phone Bill Project</a> &gt; <a href="index.source.html" class="el_package">edu.pdx.cs410J.cox</a> &gt; <span class="el_source">TextParser.java</span></div><h1>TextParser.java</h1><pre class="source lang-java linenums">package edu.pdx.cs410J.cox;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+<span class="nc" id="L7">public class TextParser {</span>
+<span class="nc" id="L8">    private Boolean formattedCorrectly = false;</span>
+    public PhoneBill getFromFile(String toRead) {
+<span class="nc" id="L10">        File billAccess = new File(toRead);</span>
+<span class="nc" id="L11">        Scanner billFile = null;</span>
+        try {
+<span class="nc" id="L13">            billFile = new Scanner(billAccess);</span>
+<span class="nc" id="L14">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L15">            e.printStackTrace();</span>
+<span class="nc" id="L16">        }</span>
+
+<span class="nc" id="L18">        PhoneBill bill = new PhoneBill();</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        if(billFile.hasNextLine() == false) return new PhoneBill();</span>
+<span class="nc" id="L20">        String custName = billFile.nextLine();</span>
+<span class="nc bnc" id="L21" title="All 10 branches missed.">        if(custName.length()&lt;5 || custName.charAt(0) != '!' || custName.charAt(1) != '!' || custName.charAt(custName.length()-1) != '!' || custName.charAt(custName.length()-2) != '!') {</span>
+<span class="nc" id="L22">            System.err.println(&quot;Included text file is not formatted correctly&quot;);</span>
+<span class="nc" id="L23">            System.exit(1);</span>
+        }
+<span class="nc" id="L25">        custName = custName.replace(&quot;!&quot;,&quot;&quot;);</span>
+<span class="nc" id="L26">        bill.setCustomer(custName);</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        while(billFile.hasNextLine() == true) {</span>
+<span class="nc" id="L28">            setCall(bill, billFile.nextLine());</span>
+        }
+
+<span class="nc" id="L31">        return bill;</span>
+    }
+
+    public PhoneBill setCall (PhoneBill bill, String callInfo) {
+<span class="nc" id="L35">        PhoneCall call = new PhoneCall();</span>
+<span class="nc" id="L36">        String currentInfo = &quot;&quot;;</span>
+
+<span class="nc" id="L38">        int startIndex = 0;</span>
+<span class="nc" id="L39">        int endIndex = callInfo.indexOf(&quot; &quot;);</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if(endIndex &lt; 0) {</span>
+<span class="nc" id="L41">            System.err.println(&quot;Included text file is not formatted correctly.&quot;);</span>
+<span class="nc" id="L42">            System.exit(1);</span>
+        }
+<span class="nc" id="L44">        currentInfo = callInfo.substring(startIndex, endIndex);</span>
+
+<span class="nc" id="L46">        Boolean caller = call.setCaller(currentInfo); // Test formatting of the phone # and set it</span>
+
+<span class="nc" id="L48">        startIndex = endIndex + 1;</span>
+<span class="nc" id="L49">        endIndex = callInfo.indexOf(&quot; &quot;, startIndex);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        if(endIndex &lt; 0) {</span>
+<span class="nc" id="L51">            System.err.println(&quot;Included text file is not formatted correctly.&quot;);</span>
+<span class="nc" id="L52">            System.exit(1);</span>
+        }
+<span class="nc" id="L54">        currentInfo = callInfo.substring(startIndex, endIndex);</span>
+<span class="nc" id="L55">        Boolean callee = call.setCallee(currentInfo); // Test formatting of the phone # and set it</span>
+
+<span class="nc" id="L57">        startIndex = endIndex + 1;</span>
+<span class="nc" id="L58">        endIndex = callInfo.indexOf(&quot; &quot;, startIndex);</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        if(endIndex &lt; 0) {</span>
+<span class="nc" id="L60">            System.err.println(&quot;Included text file is not formatted correctly.&quot;);</span>
+<span class="nc" id="L61">            System.exit(1);</span>
+        }
+<span class="nc" id="L63">        currentInfo = callInfo.substring(startIndex, endIndex);</span>
+
+<span class="nc" id="L65">        startIndex = endIndex + 1;</span>
+<span class="nc" id="L66">        endIndex = callInfo.indexOf(&quot; &quot;, startIndex);</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        if(endIndex &lt; 0) {</span>
+<span class="nc" id="L68">            System.err.println(&quot;Included text file is not formatted correctly.&quot;);</span>
+<span class="nc" id="L69">            System.exit(1);</span>
+        }
+<span class="nc" id="L71">        String time = callInfo.substring(startIndex, endIndex);</span>
+<span class="nc" id="L72">        Boolean start = call.setStartTimeString(currentInfo, time); // Test formatting of the date and time and set it</span>
+
+<span class="nc" id="L74">        startIndex = endIndex + 1;</span>
+<span class="nc" id="L75">        endIndex = callInfo.indexOf(&quot; &quot;, startIndex);</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        if(endIndex &lt; 0) {</span>
+<span class="nc" id="L77">            System.err.println(&quot;Included text file is not formatted correctly.&quot;);</span>
+<span class="nc" id="L78">            System.exit(1);</span>
+        }
+<span class="nc" id="L80">        currentInfo = callInfo.substring(startIndex, endIndex);</span>
+
+<span class="nc" id="L82">        startIndex = endIndex + 1;</span>
+<span class="nc" id="L83">        endIndex = callInfo.length();</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if(endIndex &lt; 0) {</span>
+<span class="nc" id="L85">            System.err.println(&quot;Included text file is not formatted correctly.&quot;);</span>
+<span class="nc" id="L86">            System.exit(1);</span>
+        }
+<span class="nc" id="L88">        time = callInfo.substring(startIndex, endIndex);</span>
+
+<span class="nc" id="L90">        Boolean end = call.setEndTimeString(currentInfo, time); // Test formatting of the date and time and set it</span>
+<span class="nc" id="L91">        bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill</span>
+<span class="nc bnc" id="L92" title="All 8 branches missed.">        if(!caller || !callee || !start || !end) { // If the formatting for all are correct</span>
+<span class="nc" id="L93">            System.err.println(&quot;Included text file i s not formatted correctly.&quot;);</span>
+<span class="nc" id="L94">            System.exit(1);</span>
+        }
+
+<span class="nc" id="L97">        this.formattedCorrectly = true;</span>
+<span class="nc" id="L98">        return bill;</span>
+    }
+
+    public Boolean passedFormatting () {
+<span class="nc" id="L102">        return this.formattedCorrectly;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

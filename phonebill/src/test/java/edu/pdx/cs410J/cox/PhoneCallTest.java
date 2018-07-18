@@ -10,11 +10,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class PhoneCallTest {
 
-  @Test(expected = UnsupportedOperationException.class)
+ /* @Test(expected = UnsupportedOperationException.class)
   public void getStartTimeStringNeedsToBeImplemented() {
     PhoneCall call = new PhoneCall();
     call.getStartTimeString();
-  }
+  }*/
 
   @Test
   public void initiallyAllPhoneCallsHaveTheSameCallee() {
@@ -31,8 +31,15 @@ public class PhoneCallTest {
   @Test
   public void timeFormatCorrect () {
     PhoneCall call = new PhoneCall();
-    call.verifyTimeFormat("1/15/2018 19:39");
-    call.verifyTimeFormat("01/2/2018 1:03");
+    call.verifyTimeFormat("19:30");
+    call.verifyTimeFormat("1:03");
+  }
+
+  @Test
+  public void dateFormatCorrect () {
+    PhoneCall call = new PhoneCall();
+    call.verifyDateFormat("1/15/2018");
+    call.verifyDateFormat("01/2/2018");
   }
 
  /* @Test

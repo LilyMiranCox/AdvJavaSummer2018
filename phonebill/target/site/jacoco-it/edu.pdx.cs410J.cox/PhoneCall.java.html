@@ -2,166 +2,281 @@
 
 import edu.pdx.cs410J.AbstractPhoneCall;
 
-<span class="fc" id="L5">public class PhoneCall extends AbstractPhoneCall {</span>
-<span class="fc" id="L6">  private String caller = &quot;&quot;;</span>
-<span class="fc" id="L7">  private String callee = &quot;not implemented&quot;;</span>
-<span class="fc" id="L8">  private String startTime = &quot;&quot;;</span>
-<span class="fc" id="L9">  private String endTime = &quot;&quot;;</span>
+/**
+ * This class represents a phone call. It is descended from the AbstractPhoneCall class.
+ * It implements AbstractPhoneCall's abstract base classes:
+ *    getCaller, getCallee, getStartTimeString, and getEndTimeString.
+ * The following methods are specific to PhoneCall:
+ *    setCaller, setCallee, setStartTimeString, setEndTimeString, verifyDateFormat, verifyTimeFormat, verifyPhoneNumberFormat,
+ *    verifyAllDigits.
+ * Variables:
+ *      caller: A string containing the phone number of the person who initiated the call.
+ *      callee: A string containing the phone number of the person who received the call.
+ *      startTime: A string containing the date and time the call was received, separated by a space.
+ *      endTime: A string containing the date and time the call was terminated, separated by a space.
+ */
+
+<span class="fc" id="L19">public class PhoneCall extends AbstractPhoneCall {</span>
+<span class="fc" id="L20">  private String caller = &quot;&quot;;</span>
+<span class="fc" id="L21">  private String callee = &quot;not implemented&quot;;</span>
+<span class="fc" id="L22">  private String startTime = &quot;&quot;;</span>
+<span class="fc" id="L23">  private String endTime = &quot;&quot;;</span>
 
   @Override
   public String getCaller() {
-    //throw new UnsupportedOperationException(&quot;This method is not implemented yet&quot;);
-<span class="nc" id="L14">    return caller;</span>
+    /**
+     * This method returns the phone number of the person who initiated the call.
+     * @return A string containing a phone number
+     * */
+<span class="nc" id="L31">    return caller;</span>
   }
 
   @Override
   public String getCallee() {
-  //  return &quot;This method is not implemented yet&quot;;
-<span class="nc" id="L20">    return callee;</span>
+    /**
+     * This method returns the phone number of the person who received the call.
+     * @return A string containing a phone number
+     */
+<span class="nc" id="L40">    return callee;</span>
   }
 
   @Override
   public String getStartTimeString() {
-<span class="nc" id="L25">    throw new UnsupportedOperationException(&quot;This method is not implemented yet&quot;);</span>
+    /**
+     * This method returns the start date/time of the call.
+     * @return A string containing a date and time separated by a space
+     * */
+<span class="nc" id="L49">    return this.startTime;</span>
   }
 
   @Override
   public String getEndTimeString() {
-<span class="nc" id="L30">    throw new UnsupportedOperationException(&quot;This method is not implemented yet&quot;);</span>
+    /**
+     * This method returns the end date/time of the call.
+     * @return A string containing a date and time separated by a space.
+     */
+<span class="nc" id="L58">    return this.endTime;</span>
   }
 
-  public void setCaller(String name) {
-<span class="nc" id="L34">    this.caller = name;</span>
-<span class="nc" id="L35">  }</span>
-
-  public void setCallee(String name) {
-<span class="nc" id="L38">    this.callee = name;</span>
-<span class="nc" id="L39">  }</span>
-
-  public void setStartTimeString(String initial) {
-<span class="nc" id="L42">    this.startTime = initial;</span>
-<span class="nc" id="L43">  }</span>
-
-  public void setEndTimeStirng(String ending) {
-<span class="nc" id="L46">    this.endTime = ending;</span>
-<span class="nc" id="L47">  }</span>
-
-  public void verifyTimeFormat(String time) {
-<span class="nc" id="L50">    time = time.trim(); // Remove excess spaces before and after the date/time</span>
-
-<span class="nc" id="L52">    String trimmedDate = time;</span>
-<span class="nc" id="L53">    int startIndex = 0;</span>
-<span class="nc" id="L54">    int endIndex = 0;</span>
-
-<span class="nc" id="L56">    endIndex = time.indexOf(&quot;/&quot;);</span>
-<span class="nc bnc" id="L57" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
-<span class="nc" id="L58">      throw new UnsupportedOperationException(&quot;Missing at least one '/'.&quot;);</span>
+  public Boolean setCaller(String phoneNum) {
+    /**
+     * This method receives a String containing a phone number, calls verifyPhoneNumberFormat to check
+     * that it is formatted correctly, then returns true if it is formatted correctly, or false otherwise.
+     * @param A string containing a phone number
+     * @return A boolean value representing whether or not the phone number was formatted correctly, and whether caller was set.
+     */
+<span class="nc" id="L68">    boolean phoneNumberCorrect = verifyPhoneNumberFormat(phoneNum);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">    if(phoneNumberCorrect == true) {</span>
+<span class="nc" id="L70">      this.caller = phoneNum;</span>
     }
-<span class="nc" id="L60">    trimmedDate = time.substring(startIndex, endIndex);</span>
+<span class="nc" id="L72">    return phoneNumberCorrect;</span>
+  }
+
+  public Boolean setCallee(String phoneNum) {
+    /**
+     * This method receives a String containing a phone number, calls verifyPhoneNumberFormat to check
+     * that it is formatted correctly, then returns true if it is formatted correctly, or false otherwise.
+     * @param A string containing a phone number
+     * @return A boolean value representing whether or not the phone number was formatted correctly, and whether caller was set.
+     */
+<span class="nc" id="L82">    boolean phoneNumberCorrect = verifyPhoneNumberFormat(phoneNum);</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">    if(phoneNumberCorrect == true) {</span>
+<span class="nc" id="L84">      this.callee = phoneNum;</span>
+    }
+<span class="nc" id="L86">    return phoneNumberCorrect;</span>
+  }
+
+  public Boolean setStartTimeString(String date, String time) {
+    /**
+     * This method receives a string containing a date, and a string containing a time. It verifies that both are formatteed
+     * correctly, then sets startTime to be the date followed by a space and the time.
+     * @param A string containing a date, and a string containing a time
+     * @return A boolean representing whether or not the date and time were formatted correctly, and starTime was set.
+     * */
+<span class="nc" id="L96">    boolean dateCorrect = verifyDateFormat(date);</span>
+<span class="nc" id="L97">    boolean timeCorrect = verifyTimeFormat(time);</span>
+<span class="nc bnc" id="L98" title="All 4 branches missed.">    if(dateCorrect == true &amp;&amp; timeCorrect == true) {</span>
+<span class="nc" id="L99">      this.startTime = date + &quot; &quot; + time;</span>
+<span class="nc" id="L100">      return true;</span>
+    }
+<span class="nc" id="L102">    return false;</span>
+  }
+
+  public Boolean setEndTimeString(String date, String time) {
+    /**
+     * This method receives a string containing a date, and a string containing a time. It verifies that both are formatteed
+     * correctly, then sets endTime to be the date followed by a space and the time.
+      * @param A string containing a date, and a string containing a time
+      * @return A boolean representing whether or not the date and time were formatted correctly, and endTime was set.
+      * */
+<span class="nc" id="L112">    boolean dateCorrect = verifyDateFormat(date);</span>
+<span class="nc" id="L113">    boolean timeCorrect = verifyTimeFormat(time);</span>
+<span class="nc bnc" id="L114" title="All 4 branches missed.">    if(dateCorrect == true &amp;&amp; timeCorrect == true) {</span>
+<span class="nc" id="L115">      this.endTime = date + &quot; &quot; + time;</span>
+<span class="nc" id="L116">      return true;</span>
+    }
+<span class="nc" id="L118">    return false;</span>
+  }
+
+  public boolean verifyDateFormat(String date) {
+    /**
+     * This method verifies that the received date adheres to the formatting rules. If it doesn't have one or two digits
+     * in the month, separated by '/', one or two digits in the day, separated by '/', and 4 digits in the year, it does
+     * not pass the formatting, and will return false. Otherwise, it is formatted correctly and will return true.
+     * @param A string containing a date
+     * @return True if the date is formatted correctly, false if it is not.
+     * */
+<span class="nc" id="L129">    String trimmedDate = date;</span>
+<span class="nc" id="L130">    int startIndex = 0;</span>
+<span class="nc" id="L131">    int endIndex = 0;</span>
+
+<span class="nc" id="L133">    endIndex = date.indexOf(&quot;/&quot;);</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L135">      System.err.println(&quot;Missing at least one '/'.&quot;);</span>
+<span class="nc" id="L136">      return false;</span>
+    }
+<span class="nc" id="L138">    trimmedDate = date.substring(startIndex, endIndex);</span>
 
     // One or two characters (0-9) allowed for month
-<span class="nc bnc" id="L63" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
-<span class="nc" id="L64">      throw new UnsupportedOperationException(&quot;Month must contain 1 or 2 digits.&quot;);</span>
+<span class="nc bnc" id="L141" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
+<span class="nc" id="L142">      System.err.println(&quot;Month must contain 1 or 2 digits.&quot;);</span>
+<span class="nc" id="L143">      return false;</span>
     }
 
-<span class="nc" id="L67">    startIndex = endIndex + 1;</span>
-<span class="nc" id="L68">    endIndex = time.indexOf(&quot;/&quot;, startIndex);</span>
-<span class="nc bnc" id="L69" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
-<span class="nc" id="L70">      throw new UnsupportedOperationException(&quot;Missing at least one '/'.&quot;);</span>
+<span class="nc" id="L146">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L147">    endIndex = date.indexOf(&quot;/&quot;, startIndex);</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L149">      System.err.println(&quot;Missing at least one '/'.&quot;);</span>
+<span class="nc" id="L150">      return false;</span>
     }
-<span class="nc" id="L72">    trimmedDate = time.substring(startIndex, endIndex);</span>
+<span class="nc" id="L152">    trimmedDate = date.substring(startIndex, endIndex);</span>
 
     // One or two characters (0-9) allowed for day
-<span class="nc bnc" id="L75" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
-<span class="nc" id="L76">      throw new UnsupportedOperationException(&quot;Day must contain 1 or 2 digits.&quot;);</span>
+<span class="nc bnc" id="L155" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
+<span class="nc" id="L156">      System.err.println(&quot;Day must contain 1 or 2 digits.&quot;);</span>
+<span class="nc" id="L157">      return false;</span>
     }
 
-<span class="nc" id="L79">    startIndex = endIndex + 1;</span>
-<span class="nc" id="L80">    endIndex = time.indexOf(&quot; &quot;, startIndex);</span>
-<span class="nc bnc" id="L81" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
-<span class="nc" id="L82">      throw new UnsupportedOperationException(&quot;Missing a space between the date and time.&quot;);</span>
+<span class="nc" id="L160">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L161">    endIndex = date.length();</span>
+<span class="nc bnc" id="L162" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L163">      System.err.println(&quot;Missing a space between the date and time.&quot;);</span>
+<span class="nc" id="L164">      return false;</span>
     }
-<span class="nc" id="L84">    trimmedDate = time.substring(startIndex, endIndex);</span>
+<span class="nc" id="L166">    trimmedDate = date.substring(startIndex, endIndex);</span>
 
     // Four characters (0-9) required for year
-<span class="nc bnc" id="L87" title="All 2 branches missed.">    if(verifyAllDigits(trimmedDate) != 4) {</span>
-<span class="nc" id="L88">      throw new UnsupportedOperationException(&quot;Year must contain 4 digits.&quot;);</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">    if(verifyAllDigits(trimmedDate) != 4) {</span>
+<span class="nc" id="L170">      System.err.println(&quot;Year must contain 4 digits.&quot;);</span>
+<span class="nc" id="L171">      return false;</span>
     }
-    // Space (allow for more?)
-<span class="nc" id="L91">    startIndex = endIndex + 1;</span>
-<span class="nc" id="L92">    endIndex = time.indexOf(&quot;:&quot;, startIndex);</span>
-<span class="nc bnc" id="L93" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
-<span class="nc" id="L94">      throw new UnsupportedOperationException(&quot;Missing ':' between hours and minutes.&quot;);</span>
+<span class="nc" id="L173">    return true;</span>
+  }
+
+  public boolean verifyTimeFormat(String time) {
+    /**
+     * This method verifies that the received time adheres to the correct formatting.It must have one or two digits, followed
+     * by ':&quot;, followed by two digits. If it not pass the formatting, and will return false. Otherwise, it is formatted correctly and will return true.
+     * @param A string containing a time
+     * @return True if the time is formatted correctly, false if it is not.
+     * */
+<span class="nc" id="L183">    String trimmedDate = time;</span>
+<span class="nc" id="L184">    int startIndex = 0;</span>
+<span class="nc" id="L185">    int endIndex = 0;</span>
+
+<span class="nc" id="L187">    endIndex = time.indexOf(&quot;:&quot;);</span>
+<span class="nc bnc" id="L188" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L189">      System.err.println(&quot;Missing ':' between hours and minutes.&quot;);</span>
+<span class="nc" id="L190">      return false;</span>
     }
-<span class="nc" id="L96">    trimmedDate = time.substring(startIndex, endIndex);</span>
+<span class="nc" id="L192">    trimmedDate = time.substring(startIndex, endIndex);</span>
 
     // One or two characters (0-9) allowed for hour
-<span class="nc bnc" id="L99" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
-<span class="nc" id="L100">      throw new UnsupportedOperationException(&quot;Hour must contain 1 or 2 digits.&quot;);</span>
+<span class="nc bnc" id="L195" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
+<span class="nc" id="L196">      System.err.println(&quot;Hour must contain 1 or 2 digits.&quot;);</span>
+<span class="nc" id="L197">      return false;</span>
     }
     // One semicolon
-<span class="nc" id="L103">    startIndex = endIndex + 1;</span>
-<span class="nc" id="L104">    endIndex = time.length();</span>
-<span class="nc" id="L105">    trimmedDate = time.substring(startIndex, endIndex);</span>
+<span class="nc" id="L200">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L201">    endIndex = time.length();</span>
+<span class="nc" id="L202">    trimmedDate = time.substring(startIndex, endIndex);</span>
 
     // Two characters (0-9) required for minutes
-<span class="nc bnc" id="L108" title="All 2 branches missed.">    if(verifyAllDigits(trimmedDate) != 2) {</span>
-<span class="nc" id="L109">      throw new UnsupportedOperationException(&quot;Minutes must contain 1 or 2 digits.&quot;);</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">    if(verifyAllDigits(trimmedDate) != 2) {</span>
+<span class="nc" id="L206">      System.err.println(&quot;Minutes must contain 1 or 2 digits.&quot;);</span>
+<span class="nc" id="L207">      return false;</span>
     }
-<span class="nc" id="L111">  }</span>
+<span class="nc" id="L209">    return true;</span>
+  }
 
-  public void verifyPhoneNumberFormat (String phone) {
-<span class="nc" id="L114">    phone = phone.trim(); // Remove excess spaces before and after the date/time</span>
+  public boolean verifyPhoneNumberFormat (String phone) {
+    /**
+     * This method verifies that the received phone number adheres to the correct formatting.It must have three digits, followed
+     * by '-&quot;, followed by three digits, followed by '-', followed by 4 digits. If it not pass the formatting, and will return false. Otherwise, it is formatted correctly and will return true.
+     * @param A string containing a phone number
+     * @return True if the phone number is formatted correctly, false if it is not.
+     * */
+<span class="nc" id="L219">    String trimmedPhone = phone;</span>
+<span class="nc" id="L220">    int startIndex = 0;</span>
+<span class="nc" id="L221">    int endIndex = 0;</span>
 
-<span class="nc" id="L116">    String trimmedPhone = phone;</span>
-<span class="nc" id="L117">    int startIndex = 0;</span>
-<span class="nc" id="L118">    int endIndex = 0;</span>
-
-<span class="nc" id="L120">    endIndex = phone.indexOf(&quot;-&quot;);</span>
-<span class="nc bnc" id="L121" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
-<span class="nc" id="L122">      throw new UnsupportedOperationException(&quot;Missing at least one '-'.&quot;);</span>
+<span class="nc" id="L223">    endIndex = phone.indexOf(&quot;-&quot;);</span>
+<span class="nc bnc" id="L224" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L225">      System.err.println(&quot;Missing at least one '-'.&quot;);</span>
+<span class="nc" id="L226">      return false;</span>
     }
-<span class="nc" id="L124">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
+<span class="nc" id="L228">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
 
     // Three characters (0-9)
-<span class="nc bnc" id="L127" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 3) {</span>
-<span class="nc" id="L128">      throw new UnsupportedOperationException(&quot;Phone number is not formatted like ###-###-####.&quot;);</span>
+<span class="nc bnc" id="L231" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 3) {</span>
+<span class="nc" id="L232">      System.err.println(&quot;Phone number is not formatted like ###-###-####.&quot;);</span>
+<span class="nc" id="L233">      return false;</span>
     }
 
-<span class="nc" id="L131">    startIndex = endIndex + 1;</span>
-<span class="nc" id="L132">    endIndex = phone.indexOf(&quot;-&quot;, startIndex);</span>
-<span class="nc bnc" id="L133" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
-<span class="nc" id="L134">      throw new UnsupportedOperationException(&quot;Missing at least one '-'.&quot;);</span>
+<span class="nc" id="L236">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L237">    endIndex = phone.indexOf(&quot;-&quot;, startIndex);</span>
+<span class="nc bnc" id="L238" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L239">      System.err.println(&quot;Missing at least one '-'.&quot;);</span>
+<span class="nc" id="L240">      return false;</span>
     }
-<span class="nc" id="L136">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
+<span class="nc" id="L242">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
 
     // Three characters (0-9)
-<span class="nc bnc" id="L139" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 3) {</span>
-<span class="nc" id="L140">      throw new UnsupportedOperationException(&quot;Phone number is not formatted like ###-###-####.&quot;);</span>
+<span class="nc bnc" id="L245" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 3) {</span>
+<span class="nc" id="L246">      System.err.println(&quot;Phone number is not formatted like ###-###-####.&quot;);</span>
+<span class="nc" id="L247">      return false;</span>
     }
 
-<span class="nc" id="L143">    startIndex = endIndex + 1;</span>
-<span class="nc" id="L144">    endIndex = phone.length();</span>
-<span class="nc bnc" id="L145" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
-<span class="nc" id="L146">      throw new UnsupportedOperationException(&quot;Missing at least one '-'.&quot;);</span>
+<span class="nc" id="L250">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L251">    endIndex = phone.length();</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+<span class="nc" id="L253">      System.err.println(&quot;Missing at least one '-'.&quot;);</span>
+<span class="nc" id="L254">      return false;</span>
     }
-<span class="nc" id="L148">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
+<span class="nc" id="L256">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
 
     // Four characters (0-9)
-<span class="nc bnc" id="L151" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 4) {</span>
-<span class="nc" id="L152">      throw new UnsupportedOperationException(&quot;Phone number is not formatted like ###-###-####.&quot;);</span>
+<span class="nc bnc" id="L259" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 4) {</span>
+<span class="nc" id="L260">      System.err.println(&quot;Phone number is not formatted like ###-###-####.&quot;);</span>
+<span class="nc" id="L261">      return false;</span>
     }
-<span class="nc" id="L154">  }</span>
+<span class="nc" id="L263">    return true;</span>
+  }
 
   public int verifyAllDigits (String test) {
-<span class="nc" id="L157">    int numDigits = 0;</span>
-<span class="nc bnc" id="L158" title="All 2 branches missed.">    for(int i = 0; i &lt; test.length(); ++i) {</span>
-<span class="nc bnc" id="L159" title="All 2 branches missed.">      if(!Character.isDigit(test.charAt(i))) {</span>
-<span class="nc" id="L160">        return 0;</span>
+    /**
+     * This method tests to make sure that all the characters in a string are digits (0-9)
+     * @param A string that will be tested
+     * @return The number of characters, or 0 if a non digit character is found.
+     */
+<span class="nc" id="L272">    int numDigits = 0;</span>
+<span class="nc bnc" id="L273" title="All 2 branches missed.">    for(int i = 0; i &lt; test.length(); ++i) {</span>
+<span class="nc bnc" id="L274" title="All 2 branches missed.">      if(!Character.isDigit(test.charAt(i))) {</span>
+<span class="nc" id="L275">        return 0;</span>
       }
-<span class="nc" id="L162">      ++numDigits;</span>
+<span class="nc" id="L277">      ++numDigits;</span>
     }
-<span class="nc" id="L164">    return numDigits;</span>
+<span class="nc" id="L279">    return numDigits;</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

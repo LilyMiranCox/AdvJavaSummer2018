@@ -8,38 +8,48 @@ import java.util.Arrays;
  */
 <span class="nc" id="L9">public class Project1 {</span>
 
-  static final String README = &quot;Wow, this is such a good README. So good.&quot;;
+
 
   public static void main(String[] args) {
 <span class="fc" id="L14">    PhoneCall call = new PhoneCall();  // Refer to one of Dave's classes so that we can be sure it is on the classpath</span>
+<span class="fc" id="L15">    PhoneBill bill = new PhoneBill();</span>
 
-<span class="pc bpc" id="L16" title="1 of 2 branches missed.">    if(args.length == 0) {</span>
-<span class="fc" id="L17">      System.err.println(&quot;Missing command line arguments&quot;);</span>
-<span class="nc" id="L18">      System.exit(1);</span>
+<span class="fc" id="L17">    final String README = &quot;\n\n -- README --\n&quot; +</span>
+            &quot;\nProject 1 implemented by Lily Cox \n&quot; +
+            &quot;\nThis program creates phone bills from phone call information.&quot; +
+            &quot;\nAll phone call information is entered from the command line in the form: customer callerNumber calleeNumber startTime endTime&quot; +
+            &quot;\nThis information may be preceded by the options: -print or -README&quot; +
+            &quot;\nEach piece of data is then checked to make sure it adheres to the expected formatting.&quot; +
+            &quot;\nIf any information is formatted incorrectly, the program will report the error.&quot; +
+            &quot;\nIf it passes, however, and the -README option is not used, the information will be added to the instance of the&quot; +
+            &quot;\nPhoneCall class, and that instance added to the specified customer's bill.\n&quot;;
+
+<span class="fc" id="L27">    int printOption = 0;</span>
+
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">    if(args.length == 0) { // Make sure that arguments have been provided</span>
+<span class="fc" id="L30">      System.err.println(&quot;Missing command line arguments&quot;);</span>
+<span class="nc" id="L31">      System.exit(1);</span>
     }
 
-<span class="nc bnc" id="L21" title="All 2 branches missed.">    if( containsOption(args, &quot;-README&quot;)) {</span>
-<span class="nc" id="L22">      printReadme();</span>
-<span class="nc" id="L23">      System.exit(0);</span>
+<span class="nc bnc" id="L34" title="All 4 branches missed.">    if(args[0].equals(&quot;-README&quot;) || args[1].equals(&quot;-README&quot;)) { // If the -README option is selected</span>
+<span class="nc" id="L35">      System.out.println(README);</span>
+<span class="nc" id="L36">      System.exit(0);</span>
     }
 
-<span class="nc bnc" id="L26" title="All 2 branches missed.">    if(containsOption(args, &quot;-print&quot;)) {</span>
-<span class="nc" id="L27">      System.out.println(call.toString());</span>
+<span class="nc bnc" id="L39" title="All 4 branches missed.">    if(args[0].equals(&quot;-print&quot;) || args[1].equals(&quot;-print&quot;)) { // If the -print option is selected</span>
+<span class="nc" id="L40">      printOption = 1;</span>
     }
 
-<span class="nc bnc" id="L30" title="All 2 branches missed.">    for (String arg : args) {</span>
-<span class="nc" id="L31">      System.out.println(arg);</span>
+<span class="nc" id="L43">    bill.setCustomer(args[printOption]); // Set the name of the customer in the bill</span>
+<span class="nc" id="L44">    Boolean caller = call.setCaller(args[printOption + 1]); // Test formatting of the phone # and set it</span>
+<span class="nc" id="L45">    Boolean callee = call.setCallee(args[printOption + 2]); // Test formatting of the phone # and set it</span>
+<span class="nc" id="L46">    Boolean start = call.setStartTimeString(args[printOption + 3], args[printOption + 4]); // Test formatting of the date and time and set it</span>
+<span class="nc" id="L47">    Boolean end = call.setEndTimeString(args[printOption + 5], args[printOption + 6]); // Test formatting of the date and time and set it</span>
+<span class="nc" id="L48">    bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill</span>
+
+<span class="nc bnc" id="L50" title="All 10 branches missed.">    if(caller &amp;&amp; callee &amp;&amp; start &amp;&amp; end &amp;&amp; printOption == 1) { // If it passes all formatting tests, and all variables are set, print the phone call information</span>
+<span class="nc" id="L51">      System.out.println(call.toString());</span>
     }
-
-<span class="nc" id="L34">  }</span>
-
-  private static void printReadme() {
-<span class="nc" id="L37">    System.out.println(README);</span>
-<span class="nc" id="L38">  }</span>
-
-  private static boolean containsOption(String[] args, String option) {
-<span class="nc" id="L41">    return Arrays.stream(args).anyMatch(s -&gt; s.equals(option));</span>
-  }
-
+<span class="nc" id="L53">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>
