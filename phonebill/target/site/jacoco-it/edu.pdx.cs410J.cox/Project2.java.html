@@ -5,97 +5,133 @@ import edu.pdx.cs410J.AbstractPhoneBill;
 import java.io.File;
 import java.util.Arrays;
 
-<span class="nc" id="L8">public class Project2 {</span>
+/**
+ * The main class for the CS410J Phone Bill Project 2
+ */
 
+<span class="nc" id="L12">public class Project2 {</span>
 
+    /**
+     * Facilitates the programs processes. Receives an array of command line arguments, searches for the -print, -README,
+     * and -textFile options, then sends the remaining arguments to check formatting in be set in the PhoneCall class.
+     * If the user uses -textFile and includes a file name, the initial PhoneBill will be loaded with it's contents (assiming
+     * the file is not blank or not formatted incorrectly). At the end of the program, the PhoneBill will be written to the
+     * named file, including any new PhoneCalls that have been added to it.
+     */
     public static void main(String[] args) {
-<span class="nc" id="L12">        PhoneCall call = new PhoneCall();  // Refer to one of Dave's classes so that we can be sure it is on the classpath</span>
-<span class="nc" id="L13">        PhoneBill bill = new PhoneBill();</span>
+<span class="nc" id="L22">        PhoneCall call = new PhoneCall();  // Refer to one of Dave's classes so that we can be sure it is on the classpath</span>
+<span class="nc" id="L23">        PhoneBill bill = new PhoneBill();</span>
 
-<span class="nc" id="L15">        final String README = &quot;\n\n -- README --\n&quot; +</span>
+<span class="nc" id="L25">        final String README = &quot;\n\n -- README --\n&quot; +</span>
                 &quot;\nProject 2 implemented by Lily Cox \n&quot; +
                 &quot;\nThis program creates phone bills from phone call information.&quot; +
-                &quot;\nAll phone call information is entered from the command line in the form: customer callerNumber calleeNumber startTime endTime&quot; +
-                &quot;\nThis information may be preceded by the options: -print or -README&quot; +
+                &quot;\nAll phone call information is entered in the form: customer callerNumber calleeNumber startTime endTime&quot; +
+                &quot;\nInformation can be brought in from a file included in the command line arguments and from the command line itself&quot; +
+                &quot;\nCall information in the command line may be preceded by the options: -print, -README, or -textFile followed by the name of the file.&quot; +
                 &quot;\nEach piece of data is then checked to make sure it adheres to the expected formatting.&quot; +
                 &quot;\nIf any information is formatted incorrectly, the program will report the error.&quot; +
                 &quot;\nIf it passes, however, and the -README option is not used, the information will be added to the instance of the&quot; +
-                &quot;\nPhoneCall class, and that instance added to the specified customer's bill.\n&quot;;
+                &quot;\nPhoneCall class, and that instance added to the specified customer's bill.&quot; +
+                &quot;\nIf a file is used but the names in the file and command line do not match, an error will be reported\n&quot;;
 
-<span class="nc" id="L25">        int numOptionArgs = 4; // The max number of argument positions that the available options could take up</span>
-<span class="nc" id="L26">        int numOptionsUsed = 0; // The number of argument positions actually used by user options</span>
-<span class="nc" id="L27">        Boolean useFile = false; // If the user includes the '-textFile' option with a valid file name</span>
-<span class="nc" id="L28">        String billFileName = &quot;&quot;; // File access for the user included file name</span>
-<span class="nc" id="L29">        Boolean printCall = false; // If the user includes the '-print' option</span>
-<span class="nc" id="L30">        TextParser readFile = new TextParser();</span>
+<span class="nc" id="L37">        int numOptionArgs = 4; // The max number of argument positions that the available options could take up</span>
+<span class="nc" id="L38">        int numOptionsUsed = 0; // The number of argument positions actually used by user options</span>
+<span class="nc" id="L39">        Boolean useFile = false; // If the user includes the '-textFile' option with a valid file name</span>
+<span class="nc" id="L40">        String billFileName = &quot;&quot;; // File access for the user included file name</span>
+<span class="nc" id="L41">        Boolean printCall = false; // If the user includes the '-print' option</span>
+<span class="nc" id="L42">        TextParser readFile = new TextParser();</span>
 
-<span class="nc bnc" id="L32" title="All 2 branches missed.">        if(args.length == 0) { // Make sure that arguments have been provided</span>
-<span class="nc" id="L33">            System.err.println(&quot;Missing command line arguments&quot;);</span>
-<span class="nc" id="L34">            System.exit(1);</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        if(args.length == 0) { // Checks that command line arguments have been provided</span>
+<span class="nc" id="L45">            System.err.println(&quot;Missing command line arguments&quot;);</span>
+<span class="nc" id="L46">            System.exit(1);</span>
         }
 
-<span class="nc bnc" id="L37" title="All 2 branches missed.">        for(int i = 0; i &lt; numOptionArgs; ++i) {</span>
-<span class="nc bnc" id="L38" title="All 2 branches missed.">            if(args[i].equals(&quot;-README&quot;)) { // If user wants readme, even if there are other options, only print readme and exit</span>
-<span class="nc" id="L39">                printReadme(README);</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        for(int i = 0; i &lt; numOptionArgs; ++i) { // Loop through to find how many options are used so we know how many positions to offset the phone call information</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            if(args[i].equals(&quot;-README&quot;)) { // If user wants readme, even if there are other options, only print readme and exit</span>
+<span class="nc" id="L51">                printReadme(README);</span>
             }
-<span class="nc bnc" id="L41" title="All 2 branches missed.">            else if(args[i].equals(&quot;-print&quot;)) { //</span>
-<span class="nc" id="L42">                printCall = true;</span>
-<span class="nc" id="L43">                ++numOptionsUsed;</span>
-            }
-<span class="nc bnc" id="L45" title="All 2 branches missed.">            else if(args[i].equals(&quot;-textFile&quot;)) {</span>
-<span class="nc" id="L46">                File billAccess = new File(args[i+1]); // Try to access the requested file</span>
-<span class="nc" id="L47">                billFileName = args[i+1];</span>
-<span class="nc bnc" id="L48" title="All 2 branches missed.">                if(billAccess.exists() == false) { // If the file doesn't actually exist, report error to user</span>
-<span class="nc" id="L49">                    System.err.println(&quot;Invalid file name.&quot;);</span>
-<span class="nc" id="L50">                    System.exit(1);</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">            else if(args[i].equals(&quot;-print&quot;)) { // If user wants to print the phonecalls in the bill, make the Boolean indicating this choice, true</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">                if(printCall == true) {</span>
+<span class="nc" id="L55">                    System.err.println(&quot;-print option used multiple times.&quot;);</span>
+<span class="nc" id="L56">                    System.exit(1);</span>
                 }
-<span class="nc" id="L52">                useFile = true;</span>
-<span class="nc" id="L53">                numOptionsUsed +=2;</span>
+<span class="nc" id="L58">                printCall = true;</span>
+<span class="nc" id="L59">                ++numOptionsUsed;</span>
+            }
+<span class="nc bnc" id="L61" title="All 2 branches missed.">            else if(args[i].equals(&quot;-textFile&quot;)) { // If user wants to read/write to an existing text file, check that the file exists, make the Boolean indicating this choice, true</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">                if(useFile == true) {</span>
+<span class="nc" id="L63">                    System.err.println(&quot;-textFile option used multiple times.&quot;);</span>
+<span class="nc" id="L64">                    System.exit(1);</span>
+                }
+<span class="nc" id="L66">                File billAccess = new File(args[i+1]); // Try to access the requested file</span>
+<span class="nc" id="L67">                billFileName = args[i+1];</span>
+<span class="nc" id="L68">                useFile = true;</span>
+<span class="nc" id="L69">                numOptionsUsed +=2; // It counts for two array positions since one is '-textFile' and the other is the name of the file</span>
             }
         }
 
-<span class="nc bnc" id="L57" title="All 2 branches missed.">        if(args.length != (numOptionsUsed + 7)) {</span>
-<span class="nc" id="L58">            System.err.println(&quot;Does not contain all required phone call data.&quot;);</span>
-<span class="nc" id="L59">            System.exit(1);</span>
-        }
-<span class="nc bnc" id="L61" title="All 2 branches missed.">        if(useFile == true) {</span>
-<span class="nc" id="L62">            bill = readFile.getFromFile(billFileName);</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        if(args.length &gt; (numOptionsUsed + 7)) { // If too many phone call arguments were included</span>
+<span class="nc" id="L74">            System.err.println(&quot;Too many phone call arguments.&quot;);</span>
+<span class="nc" id="L75">            System.exit(1);</span>
         }
 
-<span class="nc bnc" id="L65" title="All 2 branches missed.">        if(bill.getCustomer().equals(args[numOptionsUsed]) == false) {</span>
-<span class="nc" id="L66">            System.err.println(&quot;Received customer name does not match customer name in the text file.&quot;);</span>
-<span class="nc" id="L67">            System.exit(1);</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        if(args.length != (numOptionsUsed + 7)) { // Since there are seven total pieces of data expected for the PhoneCall, there must be that many arguments (if no options are used)</span>
+<span class="nc" id="L79">            System.err.println(&quot;Does not contain all required phone call arguments.&quot;);</span>
+<span class="nc" id="L80">            System.exit(1);</span>
         }
 
-<span class="nc" id="L70">        bill.setCustomer(args[numOptionsUsed]); // Set the name of the customer in the bill</span>
-<span class="nc" id="L71">        Boolean caller = call.setCaller(args[numOptionsUsed + 1]); // Test formatting of the phone # and set it</span>
-<span class="nc" id="L72">        Boolean callee = call.setCallee(args[numOptionsUsed + 2]); // Test formatting of the phone # and set it</span>
-<span class="nc" id="L73">        Boolean start = call.setStartTimeString(args[numOptionsUsed + 3], args[numOptionsUsed + 4]); // Test formatting of the date and time and set it</span>
-<span class="nc" id="L74">        Boolean end = call.setEndTimeString(args[numOptionsUsed + 5], args[numOptionsUsed + 6]); // Test formatting of the date and time and set it</span>
-<span class="nc" id="L75">        bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        if(useFile == true) { // If the user wants to read/write from a file, read the information, parse it, and insert it into an instance of PhoneBill, which is returned</span>
+<span class="nc" id="L84">            readFile.setFileName(billFileName);</span>
+<span class="nc" id="L85">            bill = readFile.parse();</span>
+        }
 
-<span class="nc bnc" id="L77" title="All 10 branches missed.">        if((caller &amp;&amp; callee &amp;&amp; start &amp;&amp; end) || readFile.passedFormatting() == true) { // If it passes all formatting tests, and all variables are set</span>
-<span class="nc bnc" id="L78" title="All 2 branches missed.">            if(printCall == true) {</span>
-<span class="nc" id="L79">                System.out.println(&quot;Bill for: &quot;+bill.getCustomer());</span>
-<span class="nc bnc" id="L80" title="All 2 branches missed.">                for(PhoneCall c: bill.getPhoneCalls()) {</span>
-<span class="nc" id="L81">                    printPhonecall(c);</span>
-<span class="nc" id="L82">                }</span>
+<span class="nc bnc" id="L88" title="All 6 branches missed.">        if(bill.getCustomer().equals(args[numOptionsUsed]) == false &amp;&amp; useFile == true &amp;&amp; bill.getCustomer().equals(&quot;notset&quot;) == false ) { // If the name in the file doesn't match the name of the name of the PhoneCall to add from the command line</span>
+<span class="nc" id="L89">            System.err.println(&quot;Received customer name does not match customer name in the text file.&quot;);</span>
+<span class="nc" id="L90">            System.exit(1);</span>
+        }
+
+        // Set the PhoneCall information, and add it to the PhoneBill
+<span class="nc" id="L94">        bill.setCustomer(args[numOptionsUsed]); // Set the name of the customer in the bill</span>
+<span class="nc" id="L95">        Boolean caller = call.setCaller(args[numOptionsUsed + 1]); // Test formatting of the phone # and set it</span>
+<span class="nc" id="L96">        Boolean callee = call.setCallee(args[numOptionsUsed + 2]); // Test formatting of the phone # and set it</span>
+<span class="nc" id="L97">        Boolean start = call.setStartTimeString(args[numOptionsUsed + 3], args[numOptionsUsed + 4]); // Test formatting of the date and time and set it</span>
+<span class="nc" id="L98">        Boolean end = call.setEndTimeString(args[numOptionsUsed + 5], args[numOptionsUsed + 6]); // Test formatting of the date and time and set it</span>
+<span class="nc" id="L99">        bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill</span>
+
+<span class="nc bnc" id="L101" title="All 8 branches missed.">        if((caller &amp;&amp; callee &amp;&amp; start &amp;&amp; end)) { // If it passes all formatting tests, and all variables are set</span>
+<span class="nc bnc" id="L102" title="All 6 branches missed.">            if((useFile == true &amp;&amp; readFile.passedFormatting() == true) || useFile == false) {</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">                if (printCall == true) {</span>
+<span class="nc" id="L104">                    System.out.println(&quot;Bill for: &quot; + bill.getCustomer());</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">                    for (PhoneCall c : bill.getPhoneCalls()) {</span>
+<span class="nc" id="L106">                        printPhonecall(c);</span>
+<span class="nc" id="L107">                    }</span>
+                }
+
+<span class="nc bnc" id="L110" title="All 2 branches missed.">                if (useFile == true) { // If the user wanted to read/write from a file, write all information in the PhoneBill to the file, including added PhoneCall</span>
+<span class="nc" id="L111">                    TextDumper saveFile = new TextDumper();</span>
+<span class="nc" id="L112">                    saveFile.setFileName(billFileName);</span>
+<span class="nc" id="L113">                    saveFile.dump(bill);</span>
+                }
             }
-<span class="nc bnc" id="L84" title="All 2 branches missed.">            if(useFile == true) {</span>
-<span class="nc" id="L85">                TextDumper saveFile = new TextDumper();</span>
-<span class="nc" id="L86">                saveFile.saveToFile(billFileName, bill);</span>
-            }
         }
+<span class="nc" id="L117">    }</span>
 
-<span class="nc" id="L90">    }</span>
-
+    /**
+     * This method accepts a String containing a README statement, prints the statement to the console, then exits.
+     * @param README A String containing a README statement
+     */
     public static void printReadme (String README) {
-<span class="nc" id="L93">        System.out.println(README);</span>
-<span class="nc" id="L94">        System.exit(0);</span>
-<span class="nc" id="L95">    }</span>
+<span class="nc" id="L124">        System.out.println(README);</span>
+<span class="nc" id="L125">        System.exit(0);</span>
+<span class="nc" id="L126">    }</span>
 
+    /**
+     * This method receives a PhoneCall, and prints out its contents to the console
+     * @param call An instance of PhoneCall that will have it's information printed to the console
+     */
     public static void printPhonecall (PhoneCall call) {
-<span class="nc" id="L98">        System.out.println(call.toString());</span>
-<span class="nc" id="L99">    }</span>
+
+<span class="nc" id="L134">        System.out.println(call.toString());</span>
+<span class="nc" id="L135">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

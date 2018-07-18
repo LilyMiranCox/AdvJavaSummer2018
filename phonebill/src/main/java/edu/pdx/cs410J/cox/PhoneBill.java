@@ -20,37 +20,39 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall>{
     private Collection<PhoneCall> calls = new ArrayList<>();
     private String customer = "notset";
 
+    /**
+     * This Method accepts a PhoneCall object, which it adds to the existing collection of PhoneCalls.
+     * @param call A PhoneCall object which will be added to the collection variable, calls.
+     */
     @Override
     public void addPhoneCall(PhoneCall call) {
-        /**
-         * This Method accepts a PhoneCall object, which it adds to the existing collection of PhoneCalls.
-         * @param A PhoneCall object which will be added to the collection variable, calls.
-         * */
         this.calls.add(call);
     }
 
+    /**
+     * This method returns string containing the name of the customer whose PhoneBill it is.
+     * @return A string which contains the name of the customer who pays the bill.
+     */
     @Override
     public String getCustomer() {
-        /**
-         * This method returns string containing the name of the customer whose PhoneBill it is.
-         * @return A string which contains the name of the customer who pays the bill.
-         */
         return this.customer;
     }
 
+    /**
+     * This method returns all of the calls that have taken place for this customer.
+     * @return A collection of PhoneCall instances which hold the information regarding the calls that have taken place.
+     */
     @Override
     public Collection<PhoneCall> getPhoneCalls() {
-        /**
-         * This method returns all of the calls that have taken place for this customer.
-         * @return A collection of PhoneCall instances which hold the information regarding the calls that have taken place.
-         */
         return this.calls;
     }
 
+    /**
+     * This method accepts a string containing the name of the customer whose PhoneBill it is.
+     * @param name A string containing the name of the customer who pays the bill.
+     */
     public void setCustomer(String name) {
-        /**
-         * This method accepts a string containing the name of the customer whose PhoneBill it is.
-         * @param A string containing the name of the customer who pays the bill.*/
+
         this.customer = name;
     }
 }

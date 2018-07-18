@@ -20,38 +20,40 @@ import java.util.Collection;
 <span class="fc" id="L20">    private Collection&lt;PhoneCall&gt; calls = new ArrayList&lt;&gt;();</span>
 <span class="fc" id="L21">    private String customer = &quot;notset&quot;;</span>
 
+    /**
+     * This Method accepts a PhoneCall object, which it adds to the existing collection of PhoneCalls.
+     * @param call A PhoneCall object which will be added to the collection variable, calls.
+     */
     @Override
     public void addPhoneCall(PhoneCall call) {
-        /**
-         * This Method accepts a PhoneCall object, which it adds to the existing collection of PhoneCalls.
-         * @param A PhoneCall object which will be added to the collection variable, calls.
-         * */
 <span class="nc" id="L29">        this.calls.add(call);</span>
 <span class="nc" id="L30">    }</span>
 
+    /**
+     * This method returns string containing the name of the customer whose PhoneBill it is.
+     * @return A string which contains the name of the customer who pays the bill.
+     */
     @Override
     public String getCustomer() {
-        /**
-         * This method returns string containing the name of the customer whose PhoneBill it is.
-         * @return A string which contains the name of the customer who pays the bill.
-         */
 <span class="nc" id="L38">        return this.customer;</span>
     }
 
+    /**
+     * This method returns all of the calls that have taken place for this customer.
+     * @return A collection of PhoneCall instances which hold the information regarding the calls that have taken place.
+     */
     @Override
     public Collection&lt;PhoneCall&gt; getPhoneCalls() {
-        /**
-         * This method returns all of the calls that have taken place for this customer.
-         * @return A collection of PhoneCall instances which hold the information regarding the calls that have taken place.
-         */
 <span class="nc" id="L47">        return this.calls;</span>
     }
 
+    /**
+     * This method accepts a string containing the name of the customer whose PhoneBill it is.
+     * @param name A string containing the name of the customer who pays the bill.
+     */
     public void setCustomer(String name) {
-        /**
-         * This method accepts a string containing the name of the customer whose PhoneBill it is.
-         * @param A string containing the name of the customer who pays the bill.*/
-<span class="nc" id="L54">        this.customer = name;</span>
-<span class="nc" id="L55">    }</span>
+
+<span class="nc" id="L56">        this.customer = name;</span>
+<span class="nc" id="L57">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>
