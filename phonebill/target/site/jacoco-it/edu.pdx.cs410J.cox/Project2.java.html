@@ -71,7 +71,7 @@ import java.util.Arrays;
         }
 
 <span class="nc bnc" id="L73" title="All 2 branches missed.">        if(args.length &gt; (numOptionsUsed + 7)) { // If too many phone call arguments were included</span>
-<span class="nc" id="L74">            System.err.println(&quot;Too many phone call arguments.&quot;);</span>
+<span class="nc" id="L74">            System.err.println(&quot;Too many phone call arguments: &quot;+ numOptionsUsed + &quot; + &quot; +7);</span>
 <span class="nc" id="L75">            System.exit(1);</span>
         }
 
@@ -111,19 +111,35 @@ import java.util.Arrays;
 <span class="nc" id="L111">                    TextDumper saveFile = new TextDumper();</span>
 <span class="nc" id="L112">                    saveFile.setFileName(billFileName);</span>
 <span class="nc" id="L113">                    saveFile.dump(bill);</span>
+<span class="nc" id="L114">                }</span>
+            }
+<span class="nc bnc" id="L116" title="All 4 branches missed.">            else if(useFile == true &amp;&amp; readFile.passedFormatting() == false) { // If the file was blank</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">                if (printCall == true) {</span>
+<span class="nc" id="L118">                    System.out.println(&quot;Bill for: &quot; + bill.getCustomer());</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">                    for (PhoneCall c : bill.getPhoneCalls()) {</span>
+<span class="nc" id="L120">                        printPhonecall(c);</span>
+<span class="nc" id="L121">                    }</span>
                 }
+<span class="nc" id="L123">                System.err.println(&quot;Selected file is empty (not formatted correctly), so nothing was written to it.&quot;);</span>
+<span class="nc" id="L124">                System.exit(1);</span>
             }
         }
-<span class="nc" id="L117">    }</span>
+        else {
+<span class="nc bnc" id="L128" title="All 6 branches missed.">            if(useFile == true &amp;&amp; readFile.passedFormatting() == true &amp;&amp; readFile.getNewlyCreated() == true) { // If the file was created, and input was bad.</span>
+<span class="nc" id="L129">                File file = new File(billFileName);</span>
+<span class="nc" id="L130">                file.delete();</span>
+            }
+        }
+<span class="nc" id="L133">    }</span>
 
     /**
      * This method accepts a String containing a README statement, prints the statement to the console, then exits.
      * @param README A String containing a README statement
      */
     public static void printReadme (String README) {
-<span class="nc" id="L124">        System.out.println(README);</span>
-<span class="nc" id="L125">        System.exit(0);</span>
-<span class="nc" id="L126">    }</span>
+<span class="nc" id="L140">        System.out.println(README);</span>
+<span class="nc" id="L141">        System.exit(0);</span>
+<span class="nc" id="L142">    }</span>
 
     /**
      * This method receives a PhoneCall, and prints out its contents to the console
@@ -131,7 +147,7 @@ import java.util.Arrays;
      */
     public static void printPhonecall (PhoneCall call) {
 
-<span class="nc" id="L134">        System.out.println(call.toString());</span>
-<span class="nc" id="L135">    }</span>
+<span class="nc" id="L150">        System.out.println(call.toString());</span>
+<span class="nc" id="L151">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

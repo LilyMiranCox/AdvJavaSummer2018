@@ -71,7 +71,7 @@ public class Project2 {
         }
 
         if(args.length > (numOptionsUsed + 7)) { // If too many phone call arguments were included
-            System.err.println("Too many phone call arguments.");
+            System.err.println("Too many phone call arguments: "+ numOptionsUsed + " + " +7);
             System.exit(1);
         }
 
@@ -112,6 +112,22 @@ public class Project2 {
                     saveFile.setFileName(billFileName);
                     saveFile.dump(bill);
                 }
+            }
+            else if(useFile == true && readFile.passedFormatting() == false) { // If the file was blank
+                if (printCall == true) {
+                    System.out.println("Bill for: " + bill.getCustomer());
+                    for (PhoneCall c : bill.getPhoneCalls()) {
+                        printPhonecall(c);
+                    }
+                }
+                System.err.println("Selected file is empty (not formatted correctly), so nothing was written to it.");
+                System.exit(1);
+            }
+        }
+        else {
+            if(useFile == true && readFile.passedFormatting() == true && readFile.getNewlyCreated() == true) { // If the file was created, and input was bad.
+                File file = new File(billFileName);
+                file.delete();
             }
         }
     }

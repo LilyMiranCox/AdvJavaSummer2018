@@ -169,7 +169,7 @@ public class PhoneCall extends AbstractPhoneCall {
 
     // Four characters (0-9) required for year
     if(verifyAllDigits(trimmedDate) != 4) {
-      System.err.println("Year must contain 4 digits.");
+      System.err.println("Year must contain only 4 digits.");
       return false;
     }
     return true;
@@ -195,7 +195,7 @@ public class PhoneCall extends AbstractPhoneCall {
 
     // One or two characters (0-9) allowed for hour
     if(verifyAllDigits(trimmedDate) != 1 && verifyAllDigits(trimmedDate) != 2) {
-      System.err.println("Hour must contain 1 or 2 digits.");
+      System.err.println("Hour must contain only 1 or 2 digits.");
       return false;
     }
     // One semicolon
@@ -205,7 +205,7 @@ public class PhoneCall extends AbstractPhoneCall {
 
     // Two characters (0-9) required for minutes
     if(verifyAllDigits(trimmedDate) != 2) {
-      System.err.println("Minutes must contain 1 or 2 digits.");
+      System.err.println("Minutes must contain only 1 or 2 digits.");
       return false;
     }
     return true;

@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class TextParser implements PhoneBillParser <PhoneBill> {
     private Boolean formattedCorrectly = false;
     public String fileName = "";
+    public Boolean newlyCreated = false;
 
     /**
      * This method accepts a String containing the name of an existing text file, checks that it exists, reads and
@@ -33,6 +34,9 @@ public class TextParser implements PhoneBillParser <PhoneBill> {
         if(billAccess.exists() == false) { // If the attempted file doesn't exist, try to create it
             try {
                 billAccess.createNewFile();
+                this.formattedCorrectly = true;
+                this.newlyCreated = true;
+                return new PhoneBill();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -159,5 +163,13 @@ public class TextParser implements PhoneBillParser <PhoneBill> {
     public void reportBadFormat () {
         System.err.println("Included text file is not formatted correctly");
         System.exit(1);
+    }
+
+    /**
+     * This method returns whether or not a new file has been created.
+     * @return A boolean indicating whether or not a file has been created.
+     */
+    public Boolean getNewlyCreated () {
+        return this.newlyCreated;
     }
 }

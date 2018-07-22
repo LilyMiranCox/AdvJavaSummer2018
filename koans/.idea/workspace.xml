@@ -2,16 +2,66 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cec0306e-39c9-4e55-9b17-6ce1e12c5547" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/beginner/AboutArithmeticOperators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutArithmeticOperators.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beginner/AboutAssertions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutAssertions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beginner/AboutConditionals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutConditionals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beginner/AboutEquality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutEquality.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beginner/AboutInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutInheritance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beginner/AboutKoans.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutKoans.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beginner/AboutLoops.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutLoops.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beginner/AboutObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutObjects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beginner/AboutPrimitives.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutPrimitives.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beginner/AboutStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutStrings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutArrays.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutBitwiseOperators.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutConstructors$A.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutConstructors$Aa.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutConstructors$B.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutConstructors$Bb.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutConstructors.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutEnums$Colors.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutEnums$OpticalMedia.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutEnums$SkatSuits.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutEnums.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutExceptions$ChildException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutExceptions$ParentException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutExceptions.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutMethodPreference$A.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutMethodPreference.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutVarArgs$ExampleClass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/beginner/AboutVarArgs.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/intermediate/AboutAutoboxing.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/intermediate/AboutCollections.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/intermediate/AboutComparison$Car.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/intermediate/AboutComparison$HorseAgeComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/intermediate/AboutComparison$HorseSpeedComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/intermediate/AboutComparison$RaceHorse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/intermediate/AboutComparison.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/bin/intermediate/AboutDates.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../temps.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../wowCool.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/beginner/AboutCasting.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/beginner/AboutCasting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/file_hashes.dat" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/file_hashes.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beginner/AboutArrays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutArrays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beginner/AboutBitwiseOperators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutBitwiseOperators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beginner/AboutCasting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutCasting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beginner/AboutConstructors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutConstructors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beginner/AboutEnums.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutEnums.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beginner/AboutExceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutExceptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beginner/AboutMethodPreference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutMethodPreference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/beginner/AboutVarArgs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beginner/AboutVarArgs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/intermediate/AboutAutoboxing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/intermediate/AboutAutoboxing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/intermediate/AboutCollections.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/intermediate/AboutCollections.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/intermediate/AboutComparison.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/intermediate/AboutComparison.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/intermediate/AboutDates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/intermediate/AboutDates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/intermediate/AboutEquality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/intermediate/AboutEquality.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/intermediate/AboutFileIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/intermediate/AboutFileIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/intermediate/AboutInnerClasses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/intermediate/AboutInnerClasses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/intermediate/AboutLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/intermediate/AboutLocale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/intermediate/AboutRegularExpressions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/intermediate/AboutRegularExpressions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/intermediate/AboutSerialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/intermediate/AboutSerialization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java7/AboutDiamondOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java7/AboutDiamondOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java7/AboutJava7LiteralsEnhancements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java7/AboutJava7LiteralsEnhancements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java7/AboutRequireNotNull.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java7/AboutRequireNotNull.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java7/AboutStringsInSwitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java7/AboutStringsInSwitch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java7/AboutTryWithResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java7/AboutTryWithResources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java8/AboutDefaultMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java8/AboutDefaultMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java8/AboutLambdas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java8/AboutLambdas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java8/AboutLocalTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java8/AboutLocalTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java8/AboutOptional.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java8/AboutOptional.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java8/AboutStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java8/AboutStreams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../phonebill/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../phonebill/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,17 +73,40 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="AboutInheritance.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/beginner/AboutInheritance.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="AboutMocks.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/advanced/AboutMocks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="86" column="48" selection-start-line="86" selection-start-column="48" selection-end-line="86" selection-end-column="48" />
+            <state relative-caret-position="612">
+              <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AboutStreams.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java8/AboutStreams.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2091">
+              <caret line="131" column="11" selection-start-line="131" selection-start-column="11" selection-end-line="131" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AboutBase64.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java8/AboutBase64.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>caps</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -51,6 +124,37 @@
         <option value="$PROJECT_DIR$/src/beginner/AboutPrimitives.java" />
         <option value="$PROJECT_DIR$/src/beginner/AboutObjects.java" />
         <option value="$PROJECT_DIR$/src/beginner/AboutInheritance.java" />
+        <option value="$PROJECT_DIR$/src/beginner/AboutCasting.java" />
+        <option value="$PROJECT_DIR$/src/beginner/AboutConstructors.java" />
+        <option value="$PROJECT_DIR$/src/beginner/AboutEnums.java" />
+        <option value="$PROJECT_DIR$/src/beginner/AboutExceptions.java" />
+        <option value="$PROJECT_DIR$/src/beginner/AboutMethodPreference.java" />
+        <option value="$PROJECT_DIR$/src/beginner/AboutBitwiseOperators.java" />
+        <option value="$PROJECT_DIR$/src/beginner/AboutArrays.java" />
+        <option value="$PROJECT_DIR$/src/beginner/AboutVarArgs.java" />
+        <option value="$PROJECT_DIR$/src/intermediate/AboutAutoboxing.java" />
+        <option value="$PROJECT_DIR$/src/intermediate/AboutCollections.java" />
+        <option value="$PROJECT_DIR$/src/intermediate/AboutComparison.java" />
+        <option value="$PROJECT_DIR$/src/intermediate/AboutDates.java" />
+        <option value="$PROJECT_DIR$/src/intermediate/AboutEquality.java" />
+        <option value="$PROJECT_DIR$/src/intermediate/AboutFileIO.java" />
+        <option value="$PROJECT_DIR$/src/intermediate/AboutInnerClasses.java" />
+        <option value="$PROJECT_DIR$/src/intermediate/AboutLocale.java" />
+        <option value="$PROJECT_DIR$/src/intermediate/AboutRegularExpressions.java" />
+        <option value="$PROJECT_DIR$/src/intermediate/AboutSerialization.java" />
+        <option value="$PROJECT_DIR$/src/java7/AboutRequireNotNull.java" />
+        <option value="$PROJECT_DIR$/src/java7/AboutJava7LiteralsEnhancements.java" />
+        <option value="$PROJECT_DIR$/src/java7/AboutStringsInSwitch.java" />
+        <option value="$PROJECT_DIR$/src/java7/AboutDiamondOperator.java" />
+        <option value="$PROJECT_DIR$/src/java7/AboutTryWithResources.java" />
+        <option value="$PROJECT_DIR$/src/java8/AboutDefaultMethods.java" />
+        <option value="$PROJECT_DIR$/src/java8/AboutOptional.java" />
+        <option value="$PROJECT_DIR$/src/java8/AboutLocalTime.java" />
+        <option value="$PROJECT_DIR$/src/java8/AboutLambdas.java" />
+        <option value="$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java" />
+        <option value="$PROJECT_DIR$/src/java8/AboutBase64.java" />
+        <option value="$PROJECT_DIR$/src/java8/AboutStreams.java" />
+        <option value="$PROJECT_DIR$/src/advanced/AboutMocks.java" />
       </list>
     </option>
   </component>
@@ -64,10 +168,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1220" />
-    <option name="y" value="714" />
-    <option name="width" value="2800" />
-    <option name="height" value="1960" />
+    <option name="x" value="1910" />
+    <option name="width" value="1942" />
+    <option name="height" value="2112" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -75,8 +178,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -93,19 +196,31 @@
               <item name="koans" type="b2602c69:ProjectViewProjectNode" />
               <item name="koans" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="beginner" type="462c0819:PsiDirectoryNode" />
+              <item name="advanced" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="koans" type="b2602c69:ProjectViewProjectNode" />
+              <item name="koans" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java7" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="koans" type="b2602c69:ProjectViewProjectNode" />
+              <item name="koans" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java8" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../phonebill" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -174,45 +289,49 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530237881301</updated>
-      <workItem from="1530237887683" duration="11155000" />
+      <workItem from="1530237887683" duration="18481000" />
+      <workItem from="1530302833946" duration="5493000" />
+      <workItem from="1531286863511" duration="33000" />
+      <workItem from="1532052156992" duration="11150000" />
+      <workItem from="1532071896468" duration="8381000" />
+      <workItem from="1532110866949" duration="17000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11155000" />
+    <option name="totallyTimeSpent" value="43555000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="695" y="0" width="1231" height="1056" extended-state="0" />
-    <editor active="true" />
+    <frame x="955" y="0" width="971" height="1056" extended-state="0" />
     <layout>
-      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" weight="0.32944915" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32944915" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17337716" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Gradle" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28213167" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="right" id="Theme Preview" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,39 +340,114 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/beginner/AboutKoans.java">
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutFileIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="68">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beginner/AboutAssertions.java">
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutInnerClasses.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="743">
-          <caret line="83" column="41" selection-start-line="83" selection-start-column="41" selection-end-line="83" selection-end-column="41" />
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutLocale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutRegularExpressions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutSerialization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutArrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutVarArgs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutBitwiseOperators.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beginner/AboutArithmeticOperators.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
+        <state relative-caret-position="749">
           <caret line="53" column="25" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutAssertions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="766">
+          <caret line="83" column="41" selection-start-line="83" selection-start-column="41" selection-end-line="83" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutCasting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="93" column="43" selection-start-line="93" selection-start-column="43" selection-end-line="93" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beginner/AboutConditionals.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
+        <state relative-caret-position="596">
           <caret line="185" column="40" selection-start-line="185" selection-start-column="40" selection-end-line="185" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beginner/AboutLoops.java">
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutConstructors.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="743">
-          <caret line="165" column="29" selection-start-line="165" selection-start-column="29" selection-end-line="165" selection-end-column="29" />
+        <state relative-caret-position="663">
+          <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutEnums.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="766">
+          <caret line="64" column="113" selection-start-line="64" selection-start-column="113" selection-end-line="64" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutExceptions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1820">
+          <caret line="160" column="26" selection-start-line="160" selection-start-column="26" selection-end-line="160" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -264,40 +458,240 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beginner/AboutStrings.java">
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutInheritance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="845">
-          <caret line="183" column="69" selection-start-line="183" selection-start-column="69" selection-end-line="183" selection-end-column="69" />
+        <state relative-caret-position="1083">
+          <caret line="86" column="48" selection-start-line="86" selection-start-column="48" selection-end-line="86" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beginner/AboutPrimitives.java">
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutKoans.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="179" column="9" selection-start-line="179" selection-start-column="9" selection-end-line="179" selection-end-column="9" />
-          <folding>
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#3051#3052#0" expanded="true" />
-            <element signature="e#3095#3096#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutLoops.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1786">
+          <caret line="165" column="29" selection-start-line="165" selection-start-column="29" selection-end-line="165" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beginner/AboutObjects.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
+        <state relative-caret-position="799">
           <caret line="61" column="48" lean-forward="true" selection-start-line="61" selection-start-column="48" selection-end-line="61" selection-end-column="48" />
-          <folding>
-            <element signature="e#1556#1566#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/beginner/AboutInheritance.java">
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutPrimitives.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="86" column="48" selection-start-line="86" selection-start-column="48" selection-end-line="86" selection-end-column="48" />
+        <state relative-caret-position="2550">
+          <caret line="179" column="9" selection-start-line="179" selection-start-column="9" selection-end-line="179" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutStrings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2975">
+          <caret line="183" column="69" selection-start-line="183" selection-start-column="69" selection-end-line="183" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutMethodPreference.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="60" column="72" selection-start-line="60" selection-start-column="72" selection-end-line="60" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutBitwiseOperators.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="743">
+          <caret line="62" column="41" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutArrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="743">
+          <caret line="72" column="41" selection-start-line="72" selection-start-column="41" selection-end-line="72" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beginner/AboutVarArgs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="47" column="151" selection-start-line="47" selection-start-column="151" selection-end-line="47" selection-end-column="151" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutAutoboxing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="40" column="44" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutCollections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="743">
+          <caret line="118" column="40" selection-start-line="118" selection-start-column="40" selection-end-line="118" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutComparison.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="743">
+          <caret line="80" column="37" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutDates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="733">
+          <caret line="69" column="44" selection-start-line="69" selection-start-column="44" selection-end-line="69" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutEquality.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="678">
+          <caret line="137" column="69" selection-start-line="137" selection-start-column="69" selection-end-line="137" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/file.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutFileIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="101" column="27" selection-start-line="101" selection-start-column="27" selection-end-line="101" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutInnerClasses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="146" column="52" selection-start-line="146" selection-start-column="52" selection-end-line="146" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutLocale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="47" column="51" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutRegularExpressions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="743">
+          <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutSerialization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="224" lean-forward="true" selection-start-line="224" selection-end-line="224" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java7/AboutJava7LiteralsEnhancements.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java7/AboutStringsInSwitch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java7/AboutTryWithResources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="641">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java7/AboutRequireNotNull.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutDefaultMethods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutOptional.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutLocalTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutLambdas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="668">
+          <caret line="85" column="47" selection-start-line="85" selection-start-column="47" selection-end-line="85" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java7/AboutDiamondOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutBase64.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutStreams.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2091">
+          <caret line="131" column="11" selection-start-line="131" selection-start-column="11" selection-end-line="131" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/advanced/AboutMocks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
         </state>
       </provider>
     </entry>

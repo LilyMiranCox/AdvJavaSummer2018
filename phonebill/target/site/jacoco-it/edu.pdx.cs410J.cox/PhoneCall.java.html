@@ -169,7 +169,7 @@ import edu.pdx.cs410J.AbstractPhoneCall;
 
     // Four characters (0-9) required for year
 <span class="nc bnc" id="L171" title="All 2 branches missed.">    if(verifyAllDigits(trimmedDate) != 4) {</span>
-<span class="nc" id="L172">      System.err.println(&quot;Year must contain 4 digits.&quot;);</span>
+<span class="nc" id="L172">      System.err.println(&quot;Year must contain only 4 digits.&quot;);</span>
 <span class="nc" id="L173">      return false;</span>
     }
 <span class="nc" id="L175">    return true;</span>
@@ -195,7 +195,7 @@ import edu.pdx.cs410J.AbstractPhoneCall;
 
     // One or two characters (0-9) allowed for hour
 <span class="nc bnc" id="L197" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
-<span class="nc" id="L198">      System.err.println(&quot;Hour must contain 1 or 2 digits.&quot;);</span>
+<span class="nc" id="L198">      System.err.println(&quot;Hour must contain only 1 or 2 digits.&quot;);</span>
 <span class="nc" id="L199">      return false;</span>
     }
     // One semicolon
@@ -205,7 +205,7 @@ import edu.pdx.cs410J.AbstractPhoneCall;
 
     // Two characters (0-9) required for minutes
 <span class="nc bnc" id="L207" title="All 2 branches missed.">    if(verifyAllDigits(trimmedDate) != 2) {</span>
-<span class="nc" id="L208">      System.err.println(&quot;Minutes must contain 1 or 2 digits.&quot;);</span>
+<span class="nc" id="L208">      System.err.println(&quot;Minutes must contain only 1 or 2 digits.&quot;);</span>
 <span class="nc" id="L209">      return false;</span>
     }
 <span class="nc" id="L211">    return true;</span>
