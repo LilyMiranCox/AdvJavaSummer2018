@@ -130,6 +130,6 @@ public class AboutStreams {
         List<Integer> range = IntStream.range(1, 4)
                 .boxed()
                 .collect(Collectors.toList());
-        assertEquals(range, __);
+        assertEquals(range, (List<Integer> temp =(new Integer [] {1,2,3})));
     }
 }

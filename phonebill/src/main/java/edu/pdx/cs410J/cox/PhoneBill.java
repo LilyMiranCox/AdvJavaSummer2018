@@ -2,8 +2,7 @@ package edu.pdx.cs410J.cox;
 
 import edu.pdx.cs410J.AbstractPhoneBill;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
 /**
  * This class represents a phone bill. It is descended from the AbstractPhoneBill class.
@@ -26,7 +25,26 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall>{
      */
     @Override
     public void addPhoneCall(PhoneCall call) {
-        this.calls.add(call);
+        if(this.calls.isEmpty() == true) { // If there are no calls in the PhoneBill yet
+            this.calls.add(call);
+            List callList = (List) this.calls;
+            Collections.sort(callList);
+            this.calls = callList;
+        }
+        else { // If there are already calls in the PhoneBill
+            for (PhoneCall c : this.calls) { // Compare the potential new call to see if it already exists in the collection
+                if (c.compareTo(call) == 0) { // If it already exists, don't add it
+                    System.err.println("Call at  "+ c.getStartTimeString() + "  by  "+ c.getCaller()+"  is a duplicate and will not be added.");
+                    return;
+                }
+            }
+            // New call doesn't already exist in the bill, so add it
+            this.calls.add(call);
+            List callList = (List) this.calls;
+            Collections.sort(callList);
+            this.calls = callList;
+            return;
+        }
     }
 
     /**

@@ -120,7 +120,16 @@ public class TextParser implements PhoneBillParser <PhoneBill> {
             this.reportBadFormat();
         }
         String time = callInfo.substring(startIndex, endIndex);
-        Boolean start = call.setStartTimeString(currentInfo, time); // Test formatting of the date and time and set it
+
+        // Get the start time period
+        startIndex = endIndex + 1;
+        endIndex = callInfo.indexOf(" ", startIndex);
+        if(endIndex < 0) {
+            this.reportBadFormat();
+        }
+        String period = callInfo.substring(startIndex, endIndex);
+
+        Boolean start = call.setStartTimeString(currentInfo, time, period); // Test formatting of the date and time and set it
 
         // Get the end date
         startIndex = endIndex + 1;
@@ -132,13 +141,22 @@ public class TextParser implements PhoneBillParser <PhoneBill> {
 
         // Get the end time
         startIndex = endIndex + 1;
-        endIndex = callInfo.length();
+        endIndex = callInfo.indexOf(" ", startIndex);
         if(endIndex < 0) {
             this.reportBadFormat();
         }
         time = callInfo.substring(startIndex, endIndex);
 
-        Boolean end = call.setEndTimeString(currentInfo, time); // Test formatting of the date and time and set it
+        // Get the end time period
+        startIndex = endIndex + 1;
+        endIndex = callInfo.length();
+        if(endIndex < 0) {
+            this.reportBadFormat();
+        }
+        period = callInfo.substring(startIndex, endIndex);
+
+        Boolean end = call.setEndTimeString(currentInfo, time, period); // Test formatting of the date and time and set it
+
         bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill
 
         if(!caller || !callee || !start || !end) { // If the formatting for all are correct
