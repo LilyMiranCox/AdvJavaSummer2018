@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" name="edu.pdx.cs410J.cox.PhoneBillRestClientIT" time="0" tests="4" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="10"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\LilyMC\AdvJavaSummer2018\phonebill\phonebill\target\it-classes;C:\Users\LilyMC\AdvJavaSummer2018\phonebill\phonebill\target\phonebill.jar;C:\Users\LilyMC\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\LilyMC\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\LilyMC\.m2\repository\org\hamcrest\hamcrest-library\1.3\hamcrest-library-1.3.jar;C:\Users\LilyMC\.m2\repository\org\mockito\mockito-core\2.18.3\mockito-core-2.18.3.jar;C:\Users\LilyMC\.m2\repository\net\bytebuddy\byte-buddy\1.8.5\byte-buddy-1.8.5.jar;C:\Users\LilyMC\.m2\repository\net\bytebuddy\byte-buddy-agent\1.8.5\byte-buddy-agent-1.8.5.jar;C:\Users\LilyMC\.m2\repository\org\objenesis\objenesis\2.6\objenesis-2.6.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\projects\Summer2018\projects-Summer2018.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\examples\Summer2018\examples-Summer2018.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\family\Summer2018\family-Summer2018.jar;C:\Users\LilyMC\.m2\repository\javax\mail\javax.mail-api\1.6.1\javax.mail-api-1.6.1.jar;C:\Users\LilyMC\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\LilyMC\.m2\repository\com\google\inject\guice\4.2.0\guice-4.2.0.jar;C:\Users\LilyMC\.m2\repository\javax\inject\javax.inject\1\javax.inject-1.jar;C:\Users\LilyMC\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\LilyMC\.m2\repository\com\google\guava\guava\23.6-android\guava-23.6-android.jar;C:\Users\LilyMC\.m2\repository\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar;C:\Users\LilyMC\.m2\repository\org\checkerframework\checker-compat-qual\2.0.0\checker-compat-qual-2.0.0.jar;C:\Users\LilyMC\.m2\repository\com\google\errorprone\error_prone_annotations\2.1.3\error_prone_annotations-2.1.3.jar;C:\Users\LilyMC\.m2\repository\com\google\j2objc\j2objc-annotations\1.1\j2objc-annotations-1.1.jar;C:\Users\LilyMC\.m2\repository\org\codehaus\mojo\animal-sniffer-annotations\1.14\animal-sniffer-annotations-1.14.jar;C:\Users\LilyMC\.m2\repository\org\codehaus\groovy\groovy-all\2.4.10\groovy-all-2.4.10.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\projects\Summer2018\projects-Summer2018-tests.jar;C:\Users\LilyMC\.m2\repository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;C:\Users\LilyMC\AdvJavaSummer2018\phonebill\phonebill\target/test-classes;"/>
+    <property name="java.vm.vendor" value="&quot;Oracle Corporation&quot;"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="10"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-10.0.1\bin"/>
+    <property name="sun.java.command" value="C:\Users\LilyMC\AppData\Local\Temp\surefire7608322310549764634\surefirebooter8256713827398560638.jar C:\Users\LilyMC\AppData\Local\Temp\surefire7608322310549764634 2018-07-30T22-37-03_396-jvmRun1 surefire15392092489963968515tmp surefire_09707946844638102065tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="http.port" value="8080"/>
+    <property name="surefire.test.class.path" value="C:\Users\LilyMC\AdvJavaSummer2018\phonebill\phonebill\target\it-classes;C:\Users\LilyMC\AdvJavaSummer2018\phonebill\phonebill\target\phonebill.jar;C:\Users\LilyMC\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\LilyMC\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\LilyMC\.m2\repository\org\hamcrest\hamcrest-library\1.3\hamcrest-library-1.3.jar;C:\Users\LilyMC\.m2\repository\org\mockito\mockito-core\2.18.3\mockito-core-2.18.3.jar;C:\Users\LilyMC\.m2\repository\net\bytebuddy\byte-buddy\1.8.5\byte-buddy-1.8.5.jar;C:\Users\LilyMC\.m2\repository\net\bytebuddy\byte-buddy-agent\1.8.5\byte-buddy-agent-1.8.5.jar;C:\Users\LilyMC\.m2\repository\org\objenesis\objenesis\2.6\objenesis-2.6.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\projects\Summer2018\projects-Summer2018.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\examples\Summer2018\examples-Summer2018.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\family\Summer2018\family-Summer2018.jar;C:\Users\LilyMC\.m2\repository\javax\mail\javax.mail-api\1.6.1\javax.mail-api-1.6.1.jar;C:\Users\LilyMC\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\LilyMC\.m2\repository\com\google\inject\guice\4.2.0\guice-4.2.0.jar;C:\Users\LilyMC\.m2\repository\javax\inject\javax.inject\1\javax.inject-1.jar;C:\Users\LilyMC\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\LilyMC\.m2\repository\com\google\guava\guava\23.6-android\guava-23.6-android.jar;C:\Users\LilyMC\.m2\repository\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar;C:\Users\LilyMC\.m2\repository\org\checkerframework\checker-compat-qual\2.0.0\checker-compat-qual-2.0.0.jar;C:\Users\LilyMC\.m2\repository\com\google\errorprone\error_prone_annotations\2.1.3\error_prone_annotations-2.1.3.jar;C:\Users\LilyMC\.m2\repository\com\google\j2objc\j2objc-annotations\1.1\j2objc-annotations-1.1.jar;C:\Users\LilyMC\.m2\repository\org\codehaus\mojo\animal-sniffer-annotations\1.14\animal-sniffer-annotations-1.14.jar;C:\Users\LilyMC\.m2\repository\org\codehaus\groovy\groovy-all\2.4.10\groovy-all-2.4.10.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\projects\Summer2018\projects-Summer2018-tests.jar;C:\Users\LilyMC\.m2\repository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;C:\Users\LilyMC\AdvJavaSummer2018\phonebill\phonebill\target/test-classes;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\LilyMC"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2018-04-17"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-10.0.1"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\LilyMC\AdvJavaSummer2018\phonebill\phonebill"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\LilyMC\AppData\Local\Temp\surefire7608322310549764634\surefirebooter8256713827398560638.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="10.0.1+10"/>
+    <property name="user.name" value="LilyMC"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="18.3"/>
+    <property name="localRepository" value="C:\Users\LilyMC\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\LilyMC\AppData\Local\Temp\"/>
+    <property name="java.version" value="10.0.1"/>
+    <property name="user.dir" value="C:\Users\LilyMC\AdvJavaSummer2018\phonebill\phonebill"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-10.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\LilyMC\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\LilyMC\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\dotnet;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Apache\maven\bin;C:\Program Files\Git\cmd;C:\Users\LilyMC\AppData\Local\Programs\Python\Python36\Scripts;C:\Users\LilyMC\AppData\Local\Programs\Python\Python36;C:\Users\LilyMC\AppData\Local\Microsoft\WindowsApps;C:\Users\LilyMC\AppData\Local\GitHubDesktop\bin;C:\Users\LilyMC\AppData\Local\Microsoft\WindowsApps;C:\Users\LilyMC\AppData\Local\atom\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;."/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vm.version" value="10.0.1+10"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="54.0"/>
+  </properties>
+  <testcase name="test0RemoveAllDictionaryEntries" classname="edu.pdx.cs410J.cox.PhoneBillRestClientIT" time="0"/>
+  <testcase name="test1EmptyServerContainsNoDictionaryEntries" classname="edu.pdx.cs410J.cox.PhoneBillRestClientIT" time="0"/>
+  <testcase name="test2DefineOneWord" classname="edu.pdx.cs410J.cox.PhoneBillRestClientIT" time="0"/>
+  <testcase name="test4MissingRequiredParameterReturnsPreconditionFailed" classname="edu.pdx.cs410J.cox.PhoneBillRestClientIT" time="0"/>
+</testsuite>

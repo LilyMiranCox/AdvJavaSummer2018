@@ -2,59 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4741bd14-da75-4d5b-9116-6cf313a340a8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PrettyPrinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Project3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../koans/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../koans/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../koans/app/bin/java8/AboutBase64.class" beforeDir="false" afterPath="$PROJECT_DIR$/../koans/app/bin/java8/AboutBase64.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../koans/app/bin/java8/AboutStreams.class" beforeDir="false" afterPath="$PROJECT_DIR$/../koans/app/bin/java8/AboutStreams.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../koans/src/java8/AboutBase64.java" beforeDir="false" afterPath="$PROJECT_DIR$/../koans/src/java8/AboutBase64.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../koans/src/java8/AboutStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/../koans/src/java8/AboutStreams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/emptoNew.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newNew.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newNew2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newNew3.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/java/edu/pdx/cs410J/cox/Project1IT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/java/edu/pdx/cs410J/cox/Project1IT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneBill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Project1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Project2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/TextParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/TextParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/pdx/cs410J/cox/PhoneCallTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/pdx/cs410J/cox/PhoneCallTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/cox/PhoneBill.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/cox/PhoneBill.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/cox/PhoneCall.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/cox/PhoneCall.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/cox/Project1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/cox/TextParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/pdx/cs410J/cox/TextParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/failsafe-reports/TEST-edu.pdx.cs410J.cox.Project1IT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/failsafe-reports/TEST-edu.pdx.cs410J.cox.Project1IT.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/failsafe-reports/edu.pdx.cs410J.cox.Project1IT.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/failsafe-reports/edu.pdx.cs410J.cox.Project1IT.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/it-classes/edu/pdx/cs410J/cox/Project1IT.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/it-classes/edu/pdx/cs410J/cox/Project1IT.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jacoco-it.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco-it.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-phonebill-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-phonebill-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/phonebill-1.0-SNAPSHOT-shaded.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/phonebill-1.0-SNAPSHOT-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/phonebill-1.0-SNAPSHOT-sources.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/phonebill-1.0-SNAPSHOT-test-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/phonebill-1.0-SNAPSHOT-test-sources.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/phonebill-1.0-SNAPSHOT-tests.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/phonebill-1.0-SNAPSHOT-tests.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/phonebill-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/phonebill-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneBill.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneBill.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneBill.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneBill.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneCall.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneCall.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneCall.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneCall.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/Project2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/TextParser.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/TextParser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/TextParser.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/TextParser.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/edu.pdx.cs410J.cox/index.source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/jacoco-sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/jacoco.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco-it/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco-it/jacoco.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.pdx.cs410J.cox.PhoneBillTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.pdx.cs410J.cox.PhoneBillTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.pdx.cs410J.cox.PhoneCallTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.pdx.cs410J.cox.PhoneCallTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/edu.pdx.cs410J.cox.PhoneBillTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/edu.pdx.cs410J.cox.PhoneBillTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/pdx/cs410J/cox/PhoneCallTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/pdx/cs410J/cox/PhoneCallTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tempBackup.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tempo.tx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tempo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tempo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wowCoolFile.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,101 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TextParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/TextParser.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#parse#0;class#TextParser#0" />
-                <element signature="method#setCall#0;class#TextParser#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Project3.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Project3.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PhoneCall.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneCall.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1972">
-              <caret line="163" column="58" selection-start-line="163" selection-start-column="58" selection-end-line="163" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#compareTo#0;class#PhoneCall#0" />
-                <element signature="e#2234#2235#0" expanded="true" />
-                <element signature="e#2260#2261#0" expanded="true" />
-                <element signature="e#2334#2335#0" expanded="true" />
-                <element signature="e#2358#2359#0" expanded="true" />
-                <element signature="e#2511#2512#0" expanded="true" />
-                <element signature="e#2534#2535#0" expanded="true" />
-                <element signature="e#2716#2717#0" expanded="true" />
-                <element signature="e#2739#2740#0" expanded="true" />
-                <element signature="method#getEndTimeString#0;class#PhoneCall#0" />
-                <element signature="method#getPrettyEndString#0;class#PhoneCall#0" />
-                <element signature="method#setCaller#0;class#PhoneCall#0" />
-                <element signature="method#setCallee#0;class#PhoneCall#0" />
-                <element signature="method#setStartTimeString#0;class#PhoneCall#0" />
-                <element signature="method#setEndTimeString#0;class#PhoneCall#0" />
-                <element signature="method#verifyDateFormat#0;class#PhoneCall#0" />
-                <element signature="method#verifyTimeFormat#0;class#PhoneCall#0" />
-                <element signature="method#verifyPhoneNumberFormat#0;class#PhoneCall#0" />
-                <element signature="method#verifyAllDigits#0;class#PhoneCall#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrettyPrinter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PrettyPrinter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="123" selection-start-line="11" selection-start-column="123" selection-end-line="11" selection-end-column="123" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4046#4047#0" expanded="true" />
-                <element signature="e#4082#4083#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TextDumper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/TextDumper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="32" lean-forward="true" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PhoneBill.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneBill.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="36" column="141" selection-start-line="36" selection-start-column="141" selection-end-line="36" selection-end-column="141" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1865#1866#0" expanded="true" />
-                <element signature="e#1901#1902#0" expanded="true" />
-                <element signature="e#2189#2190#0" expanded="true" />
-                <element signature="e#2222#2223#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -185,6 +49,7 @@
       <find>setStartTimeString</find>
       <find>7</find>
       <find>text</find>
+      <find>phonebill</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -196,7 +61,6 @@
         <option value="$PROJECT_DIR$/src/test/java/edu/pdx/cs410J/cox/PhoneBillTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Project1.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Project2.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/TextParser.java" />
         <option value="$PROJECT_DIR$/src/test/java/edu/pdx/cs410J/cox/PhoneCallTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/TextDumper.java" />
@@ -204,6 +68,7 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneCall.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PrettyPrinter.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneBill.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -216,7 +81,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="1910" />
     <option name="width" value="1942" />
     <option name="height" value="2112" />
@@ -226,12 +91,27 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="phonebill" type="b2602c69:ProjectViewProjectNode" />
+              <item name="phonebill" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../koans" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -353,14 +233,17 @@
       <workItem from="1532328769848" duration="1416000" />
       <workItem from="1532494923874" duration="18103000" />
       <workItem from="1532544860440" duration="12765000" />
+      <workItem from="1532565947502" duration="711000" />
+      <workItem from="1533013856262" duration="688000" />
+      <workItem from="1533014571894" duration="949000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112883000" />
+    <option name="totallyTimeSpent" value="115231000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1933" height="1063" extended-state="6" />
+    <frame x="955" y="0" width="971" height="1056" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -376,7 +259,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.3322884" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3322884" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -392,36 +275,6 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32944915" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" order="8" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3322884" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32944915" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -435,7 +288,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Project2.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneCall.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2669">
@@ -459,10 +311,6 @@
           <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1865#1866#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#2222#2223#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -473,7 +321,6 @@
           <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#parse#0;class#TextParser#0" />
             <element signature="method#setCall#0;class#TextParser#0" />
           </folding>
         </state>
@@ -502,10 +349,6 @@
           <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1865#1866#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#2222#2223#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -517,7 +360,6 @@
           <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#parse#0;class#TextParser#0" />
             <element signature="method#setCall#0;class#TextParser#0" />
           </folding>
         </state>
@@ -546,10 +388,6 @@
           <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1865#1866#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#2222#2223#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -561,7 +399,6 @@
           <caret line="129" column="18" selection-start-line="129" selection-start-column="18" selection-end-line="129" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#parse#0;class#TextParser#0" />
             <element signature="method#setCall#0;class#TextParser#0" />
           </folding>
         </state>
@@ -582,10 +419,6 @@
           <caret line="41" column="23" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1865#1866#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#2222#2223#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -606,7 +439,6 @@
           <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#parse#0;class#TextParser#0" />
             <element signature="method#setCall#0;class#TextParser#0" />
           </folding>
         </state>
@@ -618,10 +450,6 @@
           <caret line="52" column="83" selection-start-line="52" selection-start-column="83" selection-end-line="52" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1865#1866#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#2222#2223#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -664,10 +492,6 @@
           <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1865#1866#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#2222#2223#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -700,10 +524,6 @@
           <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1865#1866#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#2222#2223#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -740,13 +560,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/javadoc/package.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="74" column="52" selection-start-line="74" selection-start-column="52" selection-end-line="74" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Project2.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/edu/pdx/cs410J/cox/PhoneBillTest.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -764,7 +577,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Project3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
+        <state relative-caret-position="85">
           <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -772,34 +585,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/TextParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#parse#0;class#TextParser#0" />
-            <element signature="method#setCall#0;class#TextParser#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PrettyPrinter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="102">
           <caret line="11" column="123" selection-start-line="11" selection-start-column="123" selection-end-line="11" selection-end-column="123" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4046#4047#0" expanded="true" />
-            <element signature="e#4082#4083#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/TextDumper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneBill.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="32" lean-forward="true" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+        <state relative-caret-position="578">
+          <caret line="36" column="141" selection-start-line="36" selection-start-column="141" selection-end-line="36" selection-end-column="141" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -808,19 +607,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneCall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1972">
+        <state relative-caret-position="2074">
           <caret line="163" column="58" selection-start-line="163" selection-start-column="58" selection-end-line="163" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#compareTo#0;class#PhoneCall#0" />
             <element signature="e#2234#2235#0" expanded="true" />
             <element signature="e#2260#2261#0" expanded="true" />
-            <element signature="e#2334#2335#0" expanded="true" />
-            <element signature="e#2358#2359#0" expanded="true" />
-            <element signature="e#2511#2512#0" expanded="true" />
-            <element signature="e#2534#2535#0" expanded="true" />
-            <element signature="e#2716#2717#0" expanded="true" />
-            <element signature="e#2739#2740#0" expanded="true" />
             <element signature="method#getEndTimeString#0;class#PhoneCall#0" />
             <element signature="method#getPrettyEndString#0;class#PhoneCall#0" />
             <element signature="method#setCaller#0;class#PhoneCall#0" />
@@ -835,17 +628,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneBill.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/TextDumper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="141" selection-start-line="36" selection-start-column="141" selection-end-line="36" selection-end-column="141" />
+        <state relative-caret-position="425">
+          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1865#1866#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#2222#2223#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prettyCool.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/TextParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setCall#0;class#TextParser#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
         </state>
       </provider>
     </entry>

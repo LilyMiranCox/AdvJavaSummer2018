@@ -9,6 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.pdx.cs410J.cox</groupId>
   <artifactId>phonebill</artifactId>
+  <packaging>pom</packaging>
   <name>CS410J Phone Bill Project</name>
   <version>1.0-SNAPSHOT</version>
   <description>A Phone Bill application for CS410J at Portland State University</description>
@@ -96,6 +97,9 @@
       </build>
     </profile>
   </profiles>
+  <modules>
+    <module>phonebill</module>
+  </modules>
   <repositories>
     <repository>
       <id>CS410J</id>
