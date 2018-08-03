@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TextDumper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Phone Bill Web/REST Project</a> &gt; <a href="index.source.html" class="el_package">edu.pdx.cs410J.cox</a> &gt; <span class="el_source">TextDumper.java</span></div><h1>TextDumper.java</h1><pre class="source lang-java linenums">package edu.pdx.cs410J.cox;
+
+import edu.pdx.cs410J.PhoneBillDumper;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+
+/**
+ * This class deals with writing a completed PhoneBill to a text file
+ */
+
+<span class="nc" id="L13">public class TextDumper implements PhoneBillDumper &lt;PhoneBill&gt;{</span>
+<span class="nc" id="L14">    private String fileName = &quot;&quot;; // A string containing the name of the text file which will be accessed</span>
+
+    /**
+     * This method accepts a PhoneBill, and creates a string with all of its information formatted so that
+     * TextParser can read it in correctly.
+     * @param bill A completed PhoneBill that will have its customer name and PhoneCall information copied into
+     * a string, then written to the specified file
+     */
+    public void dump (PhoneBill bill) {
+<span class="nc" id="L23">        File temp = new File(this.fileName);</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        if(temp.exists() == false) {</span>
+<span class="nc" id="L25">            System.exit(1);</span>
+        }
+        try {
+<span class="nc" id="L28">            Writer billAccess = new FileWriter(temp, false);</span>
+<span class="nc" id="L29">            String toWrite = &quot;!!&quot; + bill.getCustomer() + &quot;!!&quot;;</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">            for(PhoneCall c: bill.getPhoneCalls()) {</span>
+<span class="nc" id="L31">                toWrite += System.getProperty(&quot;line.separator&quot;) + c.getCaller() + &quot; &quot; + c.getCallee() + &quot; &quot; + c.getStartTimeString() + &quot; &quot; + c.getEndTimeString();</span>
+<span class="nc" id="L32">            }</span>
+<span class="nc" id="L33">            billAccess.write(toWrite);</span>
+<span class="nc" id="L34">            billAccess.close();</span>
+<span class="nc" id="L35">        } catch (IOException e) {</span>
+<span class="nc" id="L36">            e.printStackTrace();</span>
+<span class="nc" id="L37">        }</span>
+<span class="nc" id="L38">    }</span>
+
+    /**
+     * This method accepts a String containing the name of a text file to be accessed.
+     * @param name A string which contains the name of a text file that will be accessed.
+     */
+    public void setFileName (String name) {
+<span class="nc" id="L45">        this.fileName = name;</span>
+<span class="nc" id="L46">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

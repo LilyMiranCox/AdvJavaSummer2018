@@ -87,4 +87,47 @@ public class Messages
         return map;
     }
 
+    public static Map.Entry<String, PhoneBill> parsePhoneBillEntry(String content) {
+        Pattern pattern = Pattern.compile("\\s*(.*) : (.*)");
+        Matcher matcher = pattern.matcher(content);
+
+        if (!matcher.find()) {
+            return null;
+        }
+
+        return new Map.Entry<>() {
+            @Override
+            public String getKey() {
+                return matcher.group(1);
+            }
+
+            @Override
+            public PhoneBill getValue() {
+                String value = matcher.group(2);
+                if ("null".equals(value)) {
+                    value = null;
+                }
+                return new PhoneBill();
+            }
+
+            @Override
+            public PhoneBill setValue(PhoneBill value) {
+                throw new UnsupportedOperationException("This method is not implemented yet");
+            }
+        };
+    }
+
+    public static Map<String, PhoneBill> parsePhoneBills (String content) {
+        Map<String, PhoneBill> map = new HashMap<>();
+
+        String[] lines = content.split("\n");
+        for(int i = 1; i < lines.length; i++) {
+            String line = lines[i];
+            Map.Entry<String, PhoneBill> entry = parsePhoneBillEntry(line);
+            map.put(entry.getKey(), entry.getValue());
+        }
+
+        return map;
+    }
+
 }

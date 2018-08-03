@@ -4,6 +4,7 @@ import com.google.common.annotations.VisibleForTesting;
 import edu.pdx.cs410J.web.HttpRequestHelper;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 import static java.net.HttpURLConnection.HTTP_OK;
@@ -17,6 +18,7 @@ public class PhoneBillRestClient extends HttpRequestHelper
 {
     private static final String WEB_APP = &quot;phonebill&quot;;
     private static final String SERVLET = &quot;calls&quot;;
+    private static final String CUSTOMER = &quot;customer&quot;;
 
     private final String url;
 
@@ -27,55 +29,72 @@ public class PhoneBillRestClient extends HttpRequestHelper
      * @param port The port
      */
     public PhoneBillRestClient( String hostName, int port )
-<span class="fc" id="L30">    {</span>
-<span class="fc" id="L31">        this.url = String.format( &quot;http://%s:%d/%s/%s&quot;, hostName, port, WEB_APP, SERVLET );</span>
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L32">    {</span>
+<span class="fc" id="L33">        this.url = String.format( &quot;http://%s:%d/%s/%s&quot;, hostName, port, WEB_APP, SERVLET);</span>
+<span class="fc" id="L34">    }</span>
+
+    public Map &lt;String, PhoneBill&gt; getAllPhoneCallEntries() throws IOException {
+<span class="nc" id="L37">        Response response = get(this.url);</span>
+<span class="nc" id="L38">        return Messages.parsePhoneBills(response.getContent());</span>
+    }
 
     /**
      * Returns all dictionary entries from the server
      */
     public Map&lt;String, String&gt; getAllDictionaryEntries() throws IOException {
-<span class="fc" id="L38">      Response response = get(this.url);</span>
-<span class="fc" id="L39">      return Messages.parseDictionary(response.getContent());</span>
+<span class="fc" id="L45">      Response response = get(this.url);</span>
+<span class="fc" id="L46">      return Messages.parseDictionary(response.getContent());</span>
     }
 
     /**
      * Returns the definition for the given word
      */
     public String getDefinition(String word) throws IOException {
-<span class="fc" id="L46">      Response response = get(this.url, &quot;word&quot;, word);</span>
-<span class="fc" id="L47">      throwExceptionIfNotOkayHttpStatus(response);</span>
-<span class="fc" id="L48">      String content = response.getContent();</span>
-<span class="fc" id="L49">      return Messages.parseDictionaryEntry(content).getValue();</span>
+<span class="fc" id="L53">      Response response = get(this.url, &quot;word&quot;, word);</span>
+<span class="fc" id="L54">      throwExceptionIfNotOkayHttpStatus(response);</span>
+<span class="fc" id="L55">      String content = response.getContent();</span>
+<span class="fc" id="L56">      return Messages.parseDictionaryEntry(content).getValue();</span>
     }
 
     public void addDictionaryEntry(String word, String definition) throws IOException {
-<span class="fc" id="L53">      Response response = postToMyURL(&quot;word&quot;, word, &quot;definition&quot;, definition);</span>
-<span class="fc" id="L54">      throwExceptionIfNotOkayHttpStatus(response);</span>
-<span class="fc" id="L55">    }</span>
+<span class="fc" id="L60">      Response response = postToMyURL(&quot;word&quot;, word, &quot;definition&quot;, definition);</span>
+<span class="fc" id="L61">      throwExceptionIfNotOkayHttpStatus(response);</span>
+<span class="fc" id="L62">    }</span>
+
+    public void addPhoneCall(String customer, PhoneCall call) throws IOException {
+<span class="nc" id="L65">        String[] postParameters = {</span>
+          &quot;customer&quot;, &quot;Coolname&quot;,
+<span class="nc" id="L67">          &quot;caller&quot;, call.getCaller(),</span>
+<span class="nc" id="L68">          &quot;callee&quot;, call.getCallee(),</span>
+<span class="nc" id="L69">          &quot;startTime&quot;, String.valueOf(call.getStartTime().getTime()),</span>
+<span class="nc" id="L70">          &quot;endTime&quot;, String.valueOf(call.getEndTime().getTime()),</span>
+        };
+<span class="nc" id="L72">        Response response = postToMyURL(postParameters);</span>
+<span class="nc" id="L73">        throwExceptionIfNotOkayHttpStatus(response);</span>
+<span class="nc" id="L74">    }</span>
 
     @VisibleForTesting
     Response postToMyURL(String... dictionaryEntries) throws IOException {
-<span class="fc" id="L59">      return post(this.url, dictionaryEntries);</span>
+<span class="fc" id="L78">      return post(this.url, dictionaryEntries);</span>
     }
 
     public void removeAllDictionaryEntries() throws IOException {
-<span class="fc" id="L63">      Response response = delete(this.url);</span>
-<span class="fc" id="L64">      throwExceptionIfNotOkayHttpStatus(response);</span>
-<span class="fc" id="L65">    }</span>
+<span class="fc" id="L82">      Response response = delete(this.url);</span>
+<span class="fc" id="L83">      throwExceptionIfNotOkayHttpStatus(response);</span>
+<span class="fc" id="L84">    }</span>
 
     private Response throwExceptionIfNotOkayHttpStatus(Response response) {
-<span class="fc" id="L68">      int code = response.getCode();</span>
-<span class="pc bpc" id="L69" title="1 of 2 branches missed.">      if (code != HTTP_OK) {</span>
-<span class="nc" id="L70">        throw new PhoneBillRestException(code);</span>
+<span class="fc" id="L87">      int code = response.getCode();</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">      if (code != HTTP_OK) {</span>
+<span class="nc" id="L89">        throw new PhoneBillRestException(code);</span>
       }
-<span class="fc" id="L72">      return response;</span>
+<span class="fc" id="L91">      return response;</span>
     }
 
     private class PhoneBillRestException extends RuntimeException {
-<span class="nc" id="L76">      public PhoneBillRestException(int httpStatusCode) {</span>
-<span class="nc" id="L77">        super(&quot;Got an HTTP Status Code of &quot; + httpStatusCode);</span>
-<span class="nc" id="L78">      }</span>
+<span class="nc" id="L95">      public PhoneBillRestException(int httpStatusCode) {</span>
+<span class="nc" id="L96">        super(&quot;Got an HTTP Status Code of &quot; + httpStatusCode);</span>
+<span class="nc" id="L97">      }</span>
     }
 
 }

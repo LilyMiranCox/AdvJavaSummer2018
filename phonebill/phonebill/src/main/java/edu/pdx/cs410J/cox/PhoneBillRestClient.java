@@ -4,6 +4,7 @@ import com.google.common.annotations.VisibleForTesting;
 import edu.pdx.cs410J.web.HttpRequestHelper;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 import static java.net.HttpURLConnection.HTTP_OK;
@@ -17,6 +18,7 @@ public class PhoneBillRestClient extends HttpRequestHelper
 {
     private static final String WEB_APP = "phonebill";
     private static final String SERVLET = "calls";
+    private static final String CUSTOMER = "customer";
 
     private final String url;
 
@@ -28,7 +30,12 @@ public class PhoneBillRestClient extends HttpRequestHelper
      */
     public PhoneBillRestClient( String hostName, int port )
     {
-        this.url = String.format( "http://%s:%d/%s/%s", hostName, port, WEB_APP, SERVLET );
+        this.url = String.format( "http://%s:%d/%s/%s", hostName, port, WEB_APP, SERVLET);
+    }
+
+    public Map <String, PhoneBill> getAllPhoneCallEntries() throws IOException {
+        Response response = get(this.url);
+        return Messages.parsePhoneBills(response.getContent());
     }
 
     /**
@@ -52,6 +59,18 @@ public class PhoneBillRestClient extends HttpRequestHelper
     public void addDictionaryEntry(String word, String definition) throws IOException {
       Response response = postToMyURL("word", word, "definition", definition);
       throwExceptionIfNotOkayHttpStatus(response);
+    }
+
+    public void addPhoneCall(String customer, PhoneCall call) throws IOException {
+        String[] postParameters = {
+          "customer", "Coolname",
+          "caller", call.getCaller(),
+          "callee", call.getCallee(),
+          "startTime", String.valueOf(call.getStartTime().getTime()),
+          "endTime", String.valueOf(call.getEndTime().getTime()),
+        };
+        Response response = postToMyURL(postParameters);
+        throwExceptionIfNotOkayHttpStatus(response);
     }
 
     @VisibleForTesting

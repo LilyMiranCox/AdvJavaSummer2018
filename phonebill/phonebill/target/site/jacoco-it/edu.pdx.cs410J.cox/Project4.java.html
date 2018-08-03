@@ -6,86 +6,187 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 /**
  * The main class that parses the command line and communicates with the
  * Phone Bill server using REST.
  */
-<span class="nc" id="L15">public class Project4 {</span>
+<span class="nc" id="L19">public class Project4 {</span>
 
     public static final String MISSING_ARGS = &quot;Missing command line arguments&quot;;
 
     public static void main(String... args) {
-<span class="fc" id="L20">        String hostName = null;</span>
-<span class="fc" id="L21">        String portString = null;</span>
-<span class="fc" id="L22">        String word = null;</span>
-<span class="fc" id="L23">        String definition = null;</span>
+<span class="nc" id="L24">        PhoneCall call = new PhoneCall();  // Refer to one of Dave's classes so that we can be sure it is on the classpath</span>
+<span class="nc" id="L25">        PhoneBill bill = new PhoneBill();</span>
 
-<span class="fc bfc" id="L25" title="All 2 branches covered.">        for (String arg : args) {</span>
-<span class="fc bfc" id="L26" title="All 2 branches covered.">            if (hostName == null) {</span>
-<span class="fc" id="L27">                hostName = arg;</span>
+<span class="nc" id="L27">        final String README = &quot;\n\n -- README --\n&quot; +</span>
+                &quot;\nProject 3 implemented by Lily Cox \n&quot; +
+                &quot;\nThis program creates phone bills from phone call information.&quot; +
+                &quot;\nAll phone call information is entered in the form: customer callerNumber calleeNumber startTime endTime&quot; +
+                &quot;\nInformation can be brought in from a file included in the command line arguments and from the command line itself&quot; +
+                &quot;\nCall information in the command line may be preceded by the options: -print, -README, or -textFile or -pretty followed by the name of the file.&quot; +
+                &quot;\nEach piece of data is then checked to make sure it adheres to the expected formatting.&quot; +
+                &quot;\nIf any information is formatted incorrectly, the program will report the error.&quot; +
+                &quot;\nIf it passes, however, and the -README option is not used, the information will be added to the instance of the&quot; +
+                &quot;\nPhoneCall class, and that instance added to the specified customer's bill.&quot; +
+                &quot;\nIf a file is used but the names in the file and command line do not match, an error will be reported.&quot; +
+                &quot;\nIf -pretty is used, and a text file is specified, an easy to read bill will be written to that file.&quot; +
+                &quot;\nIf '-' us used instead of a file, the easy to read bill will be written to the console instead.&quot;;
 
-<span class="fc bfc" id="L29" title="All 2 branches covered.">            } else if ( portString == null) {</span>
-<span class="fc" id="L30">                portString = arg;</span>
+<span class="nc" id="L41">        String hostName = null;</span>
+<span class="nc" id="L42">        String portString = null;</span>
+<span class="nc" id="L43">        String word = null;</span>
+<span class="nc" id="L44">        String definition = null;</span>
 
-<span class="fc bfc" id="L32" title="All 2 branches covered.">            } else if (word == null) {</span>
-<span class="fc" id="L33">                word = arg;</span>
+<span class="nc" id="L46">        int numOptionArgs = 14;</span>
+<span class="nc" id="L47">        int numOptionsUsed = 0;</span>
+<span class="nc" id="L48">        Boolean printCall = false;</span>
+<span class="nc" id="L49">        String searchName = null;</span>
+<span class="nc" id="L50">        Date searchStart = new Date();</span>
+<span class="nc" id="L51">        Date searchEnd = new Date();</span>
 
-<span class="pc bpc" id="L35" title="1 of 2 branches missed.">            } else if (definition == null) {</span>
-<span class="fc" id="L36">                definition = arg;</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(args.length == 0) { // Checks that command line arguments have been provided</span>
+<span class="nc" id="L54">            System.err.println(&quot;Missing command line arguments&quot;);</span>
+<span class="nc" id="L55">            System.exit(1);</span>
+        }
 
-            } else {
-<span class="nc" id="L39">                usage(&quot;Extraneous command line argument: &quot; + arg);</span>
+<span class="nc bnc" id="L58" title="All 4 branches missed.">        for(int i = 0; i &lt; numOptionArgs &amp;&amp; i &lt; args.length; ++i) {</span>
+<span class="nc" id="L59">            System.out.println(i+ &quot; = &quot;+args[i]);</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">            if (args[i].equals(&quot;-README&quot;)) {</span>
+<span class="nc" id="L61">                printReadme(README);</span>
+            }
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            else if (args[i].equals(&quot;-host&quot;)) {</span>
+<span class="nc" id="L64">                hostName = args[i+1];</span>
+<span class="nc" id="L65">                numOptionsUsed+=2;</span>
+            }
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            else if (args[i].equals(&quot;-port&quot;)) {</span>
+<span class="nc" id="L68">                portString = args[i+1];</span>
+<span class="nc" id="L69">                numOptionsUsed+=2;</span>
+            }
+<span class="nc bnc" id="L71" title="All 2 branches missed.">            else if (args[i].equals(&quot;-print&quot;)) {</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">                if(printCall == true) {</span>
+<span class="nc" id="L73">                    System.err.println(&quot;-print option used multiple times.&quot;);</span>
+<span class="nc" id="L74">                    System.exit(1);</span>
+                }
+<span class="nc" id="L76">                printCall = true;</span>
+<span class="nc" id="L77">                ++numOptionsUsed;</span>
+            }
+<span class="nc bnc" id="L79" title="All 2 branches missed.">            else if (args[i].equals(&quot;-search&quot;)) {</span>
+<span class="nc" id="L80">                searchName = args[i+1];</span>
+<span class="nc" id="L81">                searchStart = stringToDate(args[i+2], args[i+3], args[i+4]);</span>
+<span class="nc" id="L82">                searchEnd = stringToDate(args[i+5], args[i+6], args[i+7]);</span>
+<span class="nc" id="L83">                numOptionsUsed+=8;</span>
             }
         }
 
-<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (hostName == null) {</span>
-<span class="nc" id="L44">            usage( MISSING_ARGS );</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        if(args.length &gt; (numOptionsUsed + 9)) { // If too many phone call arguments were included</span>
+<span class="nc" id="L88">            System.err.println(&quot;Too many phone call arguments.&quot;);</span>
+<span class="nc" id="L89">            System.exit(1);</span>
+        }
 
-<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        } else if ( portString == null) {</span>
-<span class="nc" id="L47">            usage( &quot;Missing port&quot; );</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        if(args.length != (numOptionsUsed + 9)) { // Since there are seven total pieces of data expected for the PhoneCall, there must be that many arguments (if no options are used)</span>
+<span class="nc" id="L93">            System.err.println(&quot;Does not contain all required phone call arguments.&quot;);</span>
+<span class="nc" id="L94">            System.exit(1);</span>
+        }
+
+  //      if(bill.getCustomer().equals(args[numOptionsUsed]) == false &amp;&amp; useFile == true &amp;&amp; bill.getCustomer().equals(&quot;notset&quot;) == false ) { // If the name in the file doesn't match the name of the name of the PhoneCall to add from the command line
+    //        System.err.println(&quot;Received customer name does not match customer name in the text file.&quot;);
+      //      System.exit(1);
+        //}
+
+        // Set the PhoneCall information, and add it to the PhoneBill
+<span class="nc" id="L103">        bill.setCustomer(args[numOptionsUsed]); // Set the name of the customer in the bill</span>
+<span class="nc" id="L104">        Boolean caller = call.setCaller(args[numOptionsUsed + 1]); // Test formatting of the phone # and set it</span>
+<span class="nc" id="L105">        Boolean callee = call.setCallee(args[numOptionsUsed + 2]); // Test formatting of the phone # and set it</span>
+<span class="nc" id="L106">        Boolean start = call.setStartTimeString(args[numOptionsUsed + 3], args[numOptionsUsed + 4], args[numOptionsUsed + 5]); // Test formatting of the date and time and set it</span>
+<span class="nc" id="L107">        Boolean end = call.setEndTimeString(args[numOptionsUsed + 6], args[numOptionsUsed + 7], args[numOptionsUsed + 8]); // Test formatting of the date and time and set it</span>
+<span class="nc" id="L108">        bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill</span>
+
+     /*   for (String arg : args) {
+            if (hostName == null) {
+                hostName = arg;
+
+            } else if ( portString == null) {
+                portString = arg;
+
+            } else if (word == null) {
+                word = arg;
+
+            } else if (definition == null) {
+                definition = arg;
+
+            } else {
+                usage(&quot;Extraneous command line argument: &quot; + arg);
+            }
+        }*/
+
+<span class="nc bnc" id="L128" title="All 2 branches missed.">        if (hostName == null) {</span>
+<span class="nc" id="L129">            usage( MISSING_ARGS );</span>
+
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        } else if ( portString == null) {</span>
+<span class="nc" id="L132">            usage( &quot;Missing port&quot; );</span>
         }
 
         int port;
         try {
-<span class="fc" id="L52">            port = Integer.parseInt( portString );</span>
+<span class="nc" id="L137">            port = Integer.parseInt( portString );</span>
             
-<span class="nc" id="L54">        } catch (NumberFormatException ex) {</span>
-<span class="nc" id="L55">            usage(&quot;Port \&quot;&quot; + portString + &quot;\&quot; must be an integer&quot;);</span>
-<span class="nc" id="L56">            return;</span>
-<span class="fc" id="L57">        }</span>
+<span class="nc" id="L139">        } catch (NumberFormatException ex) {</span>
+<span class="nc" id="L140">            usage(&quot;Port \&quot;&quot; + portString + &quot;\&quot; must be an integer&quot;);</span>
+<span class="nc" id="L141">            return;</span>
+<span class="nc" id="L142">        }</span>
 
-<span class="fc" id="L59">        PhoneBillRestClient client = new PhoneBillRestClient(hostName, port);</span>
+<span class="nc" id="L144">        PhoneBillRestClient client = new PhoneBillRestClient(hostName, port);</span>
 
-        String message;
-        try {
-<span class="fc bfc" id="L63" title="All 2 branches covered.">            if (word == null) {</span>
+<span class="nc" id="L146">        String message = null;</span>
+  //      try {
+<span class="nc bnc" id="L148" title="All 8 branches missed.">            if((caller &amp;&amp; callee &amp;&amp; start &amp;&amp; end)) { // If it passes all formatting tests, and all variables are set</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">                if(searchName != null) {</span>
+<span class="nc" id="L150">                    PhoneBill searchedCalls = bill.searchCalls(searchName, searchStart, searchEnd);</span>
+
+<span class="nc" id="L152">                    PrettyPrinter newPrettyPrint = new PrettyPrinter();</span>
+<span class="nc" id="L153">                    newPrettyPrint.printOut(searchedCalls);</span>
+<span class="nc" id="L154">                }</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">                else if (printCall == true) {</span>
+<span class="nc" id="L156">                    System.out.println(&quot;Bill for: &quot; + bill.getCustomer());</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">                    for (PhoneCall c : bill.getPhoneCalls()) {</span>
+<span class="nc" id="L158">                        printPhonecall(c);</span>
+<span class="nc" id="L159">                    }</span>
+                }
+            }
+
+
+          /*  if (word == null) {
                 // Print all word/definition pairs
-<span class="fc" id="L65">                Map&lt;String, String&gt; dictionary = client.getAllDictionaryEntries();</span>
-<span class="fc" id="L66">                StringWriter sw = new StringWriter();</span>
-<span class="fc" id="L67">                Messages.formatDictionaryEntries(new PrintWriter(sw, true), dictionary);</span>
-<span class="fc" id="L68">                message = sw.toString();</span>
+                Map&lt;String, String&gt; dictionary = client.getAllDictionaryEntries();
+                StringWriter sw = new StringWriter();
+                Messages.formatDictionaryEntries(new PrintWriter(sw, true), dictionary);
+                message = sw.toString();
 
-<span class="fc bfc" id="L70" title="All 2 branches covered.">            } else if (definition == null) {</span>
+            } else if (definition == null) {
                 // Print all dictionary entries
-<span class="fc" id="L72">                message = Messages.formatDictionaryEntry(word, client.getDefinition(word));</span>
+                message = Messages.formatDictionaryEntry(word, client.getDefinition(word));
 
             } else {
                 // Post the word/definition pair
-<span class="fc" id="L76">                client.addDictionaryEntry(word, definition);</span>
-<span class="fc" id="L77">                message = Messages.definedWordAs(word, definition);</span>
-            }
+                client.addDictionaryEntry(word, definition);
+                message = Messages.definedWordAs(word, definition);
+            }*/
 
-<span class="nc" id="L80">        } catch ( IOException ex ) {</span>
-<span class="nc" id="L81">            error(&quot;While contacting server: &quot; + ex);</span>
-<span class="nc" id="L82">            return;</span>
-<span class="fc" id="L83">        }</span>
+ //       } catch ( IOException ex ) {
+   //         error(&quot;While contacting server: &quot; + ex);
+     //       return;
+       // }
 
-<span class="fc" id="L85">        System.out.println(message);</span>
+ //       System.out.println(message);
 
-<span class="nc" id="L87">        System.exit(0);</span>
-<span class="nc" id="L88">    }</span>
+<span class="nc" id="L188">        System.exit(0);</span>
+<span class="nc" id="L189">    }</span>
 
     /**
      * Makes sure that the give response has the expected HTTP status code
@@ -94,19 +195,19 @@ import java.util.Map;
      */
     private static void checkResponseCode( int code, HttpRequestHelper.Response response )
     {
-<span class="nc bnc" id="L97" title="All 2 branches missed.">        if (response.getCode() != code) {</span>
-<span class="nc" id="L98">            error(String.format(&quot;Expected HTTP code %d, got code %d.\n\n%s&quot;, code,</span>
-<span class="nc" id="L99">                                response.getCode(), response.getContent()));</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">        if (response.getCode() != code) {</span>
+<span class="nc" id="L199">            error(String.format(&quot;Expected HTTP code %d, got code %d.\n\n%s&quot;, code,</span>
+<span class="nc" id="L200">                                response.getCode(), response.getContent()));</span>
         }
-<span class="nc" id="L101">    }</span>
+<span class="nc" id="L202">    }</span>
 
     private static void error( String message )
     {
-<span class="nc" id="L105">        PrintStream err = System.err;</span>
-<span class="nc" id="L106">        err.println(&quot;** &quot; + message);</span>
+<span class="nc" id="L206">        PrintStream err = System.err;</span>
+<span class="nc" id="L207">        err.println(&quot;** &quot; + message);</span>
 
-<span class="nc" id="L108">        System.exit(1);</span>
-<span class="nc" id="L109">    }</span>
+<span class="nc" id="L209">        System.exit(1);</span>
+<span class="nc" id="L210">    }</span>
 
     /**
      * Prints usage information for this program and exits
@@ -114,23 +215,70 @@ import java.util.Map;
      */
     private static void usage( String message )
     {
-<span class="fc" id="L117">        PrintStream err = System.err;</span>
-<span class="fc" id="L118">        err.println(&quot;** &quot; + message);</span>
-<span class="fc" id="L119">        err.println();</span>
-<span class="fc" id="L120">        err.println(&quot;usage: java Project4 host port [word] [definition]&quot;);</span>
-<span class="fc" id="L121">        err.println(&quot;  host         Host of web server&quot;);</span>
-<span class="fc" id="L122">        err.println(&quot;  port         Port of web server&quot;);</span>
-<span class="fc" id="L123">        err.println(&quot;  word         Word in dictionary&quot;);</span>
-<span class="fc" id="L124">        err.println(&quot;  definition   Definition of word&quot;);</span>
-<span class="fc" id="L125">        err.println();</span>
-<span class="fc" id="L126">        err.println(&quot;This simple program posts words and their definitions&quot;);</span>
-<span class="fc" id="L127">        err.println(&quot;to the server.&quot;);</span>
-<span class="fc" id="L128">        err.println(&quot;If no definition is specified, then the word's definition&quot;);</span>
-<span class="fc" id="L129">        err.println(&quot;is printed.&quot;);</span>
-<span class="fc" id="L130">        err.println(&quot;If no word is specified, all dictionary entries are printed&quot;);</span>
-<span class="fc" id="L131">        err.println();</span>
+<span class="nc" id="L218">        PrintStream err = System.err;</span>
+<span class="nc" id="L219">        err.println(&quot;** &quot; + message);</span>
+<span class="nc" id="L220">        err.println();</span>
+<span class="nc" id="L221">        err.println(&quot;usage: java Project4 host port [word] [definition]&quot;);</span>
+<span class="nc" id="L222">        err.println(&quot;  host         Host of web server&quot;);</span>
+<span class="nc" id="L223">        err.println(&quot;  port         Port of web server&quot;);</span>
+<span class="nc" id="L224">        err.println(&quot;  word         Word in dictionary&quot;);</span>
+<span class="nc" id="L225">        err.println(&quot;  definition   Definition of word&quot;);</span>
+<span class="nc" id="L226">        err.println();</span>
+<span class="nc" id="L227">        err.println(&quot;This simple program posts words and their definitions&quot;);</span>
+<span class="nc" id="L228">        err.println(&quot;to the server.&quot;);</span>
+<span class="nc" id="L229">        err.println(&quot;If no definition is specified, then the word's definition&quot;);</span>
+<span class="nc" id="L230">        err.println(&quot;is printed.&quot;);</span>
+<span class="nc" id="L231">        err.println(&quot;If no word is specified, all dictionary entries are printed&quot;);</span>
+<span class="nc" id="L232">        err.println();</span>
 
-<span class="nc" id="L133">        System.exit(1);</span>
-<span class="nc" id="L134">    }</span>
+<span class="nc" id="L234">        System.exit(1);</span>
+<span class="nc" id="L235">    }</span>
+
+    /**
+     * This method accepts a String containing a README statement, prints the statement to the console, then exits.
+     * @param README A String containing a README statement
+     */
+    public static void printReadme (String README) {
+<span class="nc" id="L242">        System.out.println(README);</span>
+<span class="nc" id="L243">        System.exit(0);</span>
+<span class="nc" id="L244">    }</span>
+
+    /**
+     * This method receives a PhoneCall, and prints out its contents to the console
+     * @param call An instance of PhoneCall that will have it's information printed to the console
+     */
+    public static void printPhonecall (PhoneCall call) {
+
+<span class="nc" id="L252">        System.out.println(call.toString());</span>
+<span class="nc" id="L253">    }</span>
+
+    /**
+     * This method receives a string containing a date, and a string containing a time. It verifies that both are formatteed
+     * correctly, then sets startTime to be the date followed by a space and the time.
+     * @param date A string containing a date
+     * @param time A string containing a time
+     * @param period A string containing either 'am' or 'pm'
+     * @return A boolean representing whether or not the date and time were formatted correctly, and starTime was set.
+     * */
+    public static Date stringToDate (String date, String time, String period) {
+<span class="nc" id="L264">        PhoneCall tempCall = new PhoneCall();</span>
+<span class="nc" id="L265">        boolean dateCorrect = tempCall.verifyDateFormat(date);</span>
+<span class="nc" id="L266">        boolean timeCorrect = tempCall.verifyTimeFormat(time, period);</span>
+<span class="nc" id="L267">        Date newDate = new Date();</span>
+<span class="nc bnc" id="L268" title="All 4 branches missed.">        if(dateCorrect == true &amp;&amp; timeCorrect == true) {</span>
+<span class="nc" id="L269">            DateFormat newFormat = new SimpleDateFormat(&quot;M/d/yyyy h:mm aaa&quot;);</span>
+            try {
+<span class="nc" id="L271">                newDate = newFormat.parse(date + &quot; &quot; + time + &quot; &quot; + period);</span>
+<span class="nc" id="L272">                DateFormat.getDateInstance(DateFormat.SHORT).format(newDate);</span>
+<span class="nc" id="L273">                DateFormat.getTimeInstance(DateFormat.SHORT).format(newDate);</span>
+<span class="nc" id="L274">            } catch (ParseException e) {</span>
+<span class="nc" id="L275">                e.printStackTrace();</span>
+<span class="nc" id="L276">            }</span>
+<span class="nc" id="L277">            return newDate;</span>
+        }
+<span class="nc" id="L279">        System.err.println(&quot;The entered -search times are not formatted correctly.&quot;);</span>
+<span class="nc" id="L280">        System.exit(1);</span>
+<span class="nc" id="L281">        return newDate;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

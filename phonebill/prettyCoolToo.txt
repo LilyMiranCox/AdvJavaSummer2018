@@ -1,8 +1,0 @@
-         Bill for: Lily
-_________________________________
-
- Start time: 02/08/2018 02:00 AM
-   End time: 02/09/2018 04:00 AM
-   Duration: 1560 minutes
-       From: 234-456-7890
-         To: 456-789-1234
