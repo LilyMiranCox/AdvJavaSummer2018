@@ -379,5 +379,34 @@ import java.util.Date;
     }
 <span class="nc" id="L380">    return numDigits;</span>
   }
+
+  /**
+   * This method receives a string containing a date, and a string containing a time. It verifies that both are formatteed
+   * correctly, then sets startTime to be the date followed by a space and the time.
+   * @param date A string containing a date
+   * @param time A string containing a time
+   * @param period A string containing either 'am' or 'pm'
+   * @return A boolean representing whether or not the date and time were formatted correctly, and starTime was set.
+   * */
+  public static Date stringToDate (String date, String time, String period) {
+<span class="nc" id="L392">    PhoneCall tempCall = new PhoneCall();</span>
+<span class="nc" id="L393">    boolean dateCorrect = tempCall.verifyDateFormat(date);</span>
+<span class="nc" id="L394">    boolean timeCorrect = tempCall.verifyTimeFormat(time, period);</span>
+<span class="nc" id="L395">    Date newDate = new Date();</span>
+<span class="nc bnc" id="L396" title="All 4 branches missed.">    if(dateCorrect == true &amp;&amp; timeCorrect == true) {</span>
+<span class="nc" id="L397">      DateFormat newFormat = new SimpleDateFormat(&quot;M/d/yyyy h:mm aaa&quot;);</span>
+      try {
+<span class="nc" id="L399">        newDate = newFormat.parse(date + &quot; &quot; + time + &quot; &quot; + period);</span>
+<span class="nc" id="L400">        DateFormat.getDateInstance(DateFormat.SHORT).format(newDate);</span>
+<span class="nc" id="L401">        DateFormat.getTimeInstance(DateFormat.SHORT).format(newDate);</span>
+<span class="nc" id="L402">      } catch (ParseException e) {</span>
+<span class="nc" id="L403">        e.printStackTrace();</span>
+<span class="nc" id="L404">      }</span>
+<span class="nc" id="L405">      return newDate;</span>
+    }
+<span class="nc" id="L407">    System.err.println(&quot;The entered -search times are not formatted correctly.&quot;);</span>
+<span class="nc" id="L408">    System.exit(1);</span>
+<span class="nc" id="L409">    return newDate;</span>
+  }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

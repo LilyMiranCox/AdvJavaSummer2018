@@ -84,10 +84,6 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall>{
      */
     public PhoneBill searchCalls (String customer, Date start, Date end) {
         PhoneBill searchSubset = new PhoneBill();
-        if(customer.equals(this.customer) == false) {
-            System.err.println("The searched for customer does not match the bill's customer.");
-            System.exit(1);
-        }
 
         searchSubset.setCustomer(customer);
 

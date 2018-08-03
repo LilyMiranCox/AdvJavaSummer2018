@@ -67,11 +67,11 @@ public class Messages
     }
 
     public static void formatDictionaryEntries(PrintWriter pw, Map<String, String> dictionary) {
-        pw.println(Messages.formatWordCount(dictionary.size()));
+     /*   pw.println(Messages.formatWordCount(dictionary.size()));
 
         for (Map.Entry<String, String> entry : dictionary.entrySet()) {
             pw.println(Messages.formatDictionaryEntry(entry.getKey(), entry.getValue()));
-        }
+        }*/
     }
 
     public static Map<String, String> parseDictionary(String content) {

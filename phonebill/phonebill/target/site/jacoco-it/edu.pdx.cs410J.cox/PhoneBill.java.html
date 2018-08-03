@@ -84,20 +84,16 @@ import java.util.*;
      */
     public PhoneBill searchCalls (String customer, Date start, Date end) {
 <span class="nc" id="L86">        PhoneBill searchSubset = new PhoneBill();</span>
-<span class="nc bnc" id="L87" title="All 2 branches missed.">        if(customer.equals(this.customer) == false) {</span>
-<span class="nc" id="L88">            System.err.println(&quot;The searched for customer does not match the bill's customer.&quot;);</span>
-<span class="nc" id="L89">            System.exit(1);</span>
-        }
 
-<span class="nc" id="L92">        searchSubset.setCustomer(customer);</span>
+<span class="nc" id="L88">        searchSubset.setCustomer(customer);</span>
 
-<span class="nc bnc" id="L94" title="All 2 branches missed.">        for (PhoneCall c : this.calls) { // Compare the potential new call to see if it already exists in the collection</span>
-<span class="nc bnc" id="L95" title="All 8 branches missed.">            if((c.getStartTime().equals(start) || c.getStartTime().after(start)) &amp;&amp; (c.getEndTime().equals(end) || c.getEndTime().before(end))){</span>
-<span class="nc" id="L96">                searchSubset.addPhoneCall(c);</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        for (PhoneCall c : this.calls) { // Compare the potential new call to see if it already exists in the collection</span>
+<span class="nc bnc" id="L91" title="All 8 branches missed.">            if((c.getStartTime().equals(start) || c.getStartTime().after(start)) &amp;&amp; (c.getEndTime().equals(end) || c.getEndTime().before(end))){</span>
+<span class="nc" id="L92">                searchSubset.addPhoneCall(c);</span>
             }
-<span class="nc" id="L98">        }</span>
+<span class="nc" id="L94">        }</span>
 
-<span class="nc" id="L100">        return searchSubset;</span>
+<span class="nc" id="L96">        return searchSubset;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

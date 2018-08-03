@@ -2,18 +2,15 @@
 
 import edu.pdx.cs410J.PhoneBillDumper;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 
 /**
  * This class will accept the name of a file, then if it is valid, will print a human readable bill to the file. If a file
  * is '-' the pretty form will be written to the console, and if the file doesn't exist it will be created then written to.
  */
 
-<span class="nc" id="L15">public class PrettyPrinter implements PhoneBillDumper &lt;PhoneBill&gt; {</span>
-<span class="nc" id="L16">    private String fileName = &quot;&quot;; // A string containing the name of the text file which will be accessed</span>
+<span class="nc" id="L12">public class PrettyPrinter implements PhoneBillDumper &lt;PhoneBill&gt; {</span>
+<span class="nc" id="L13">    private String fileName = &quot;&quot;; // A string containing the name of the text file which will be accessed</span>
 
     /**
      * This method accepts a PhoneBill, and creates a string with all of its information formatted so that
@@ -22,68 +19,87 @@ import java.io.Writer;
      * a string, then written to the specified file, or written to the console if filename is '-'.
      */
     public void dump (PhoneBill bill) {
-<span class="nc bnc" id="L25" title="All 2 branches missed.">        if(this.fileName.equals(&quot;-&quot;) == true) { // If the user wants to write the pretty bill to the console</span>
-<span class="nc" id="L26">            this.printOut(bill);</span>
-<span class="nc" id="L27">            return;</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        if(this.fileName.equals(&quot;-&quot;) == true) { // If the user wants to write the pretty bill to the console</span>
+<span class="nc" id="L23">            this.printOut(bill, &quot;Bill for: &quot;+bill.getCustomer());</span>
+<span class="nc" id="L24">            return;</span>
         }
 
         // If the file is not a text file.
-<span class="nc bnc" id="L31" title="All 8 branches missed.">        if(this.fileName.charAt(this.fileName.length()-4) != '.' || this.fileName.charAt(this.fileName.length()-3) != 't' || this.fileName.charAt(this.fileName.length()-2) != 'x' || this.fileName.charAt(this.fileName.length()-1) != 't') {</span>
-<span class="nc" id="L32">            System.err.println(&quot;\nIncluded pretty file is not a text file.&quot;);</span>
-<span class="nc" id="L33">            System.exit(1);</span>
+<span class="nc bnc" id="L28" title="All 8 branches missed.">        if(this.fileName.charAt(this.fileName.length()-4) != '.' || this.fileName.charAt(this.fileName.length()-3) != 't' || this.fileName.charAt(this.fileName.length()-2) != 'x' || this.fileName.charAt(this.fileName.length()-1) != 't') {</span>
+<span class="nc" id="L29">            System.err.println(&quot;\nIncluded pretty file is not a text file.&quot;);</span>
+<span class="nc" id="L30">            System.exit(1);</span>
         }
-<span class="nc" id="L35">        File temp = new File(this.fileName);</span>
-<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(temp.exists() == false) { // If the text file does not exist, create it, and write the info to it</span>
+<span class="nc" id="L32">        File temp = new File(this.fileName);</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        if(temp.exists() == false) { // If the text file does not exist, create it, and write the info to it</span>
             try {
-<span class="nc" id="L38">                temp.createNewFile();</span>
+<span class="nc" id="L35">                temp.createNewFile();</span>
                 try {
-<span class="nc" id="L40">                    Writer billAccess = new FileWriter(temp, false);</span>
-<span class="nc" id="L41">                    String toWrite = &quot;         Bill for: &quot; + bill.getCustomer() + System.getProperty(&quot;line.separator&quot;) + &quot;_________________________________&quot;;</span>
-<span class="nc bnc" id="L42" title="All 2 branches missed.">                    for(PhoneCall c: bill.getPhoneCalls()) {</span>
-<span class="nc" id="L43">                        toWrite += System.getProperty(&quot;line.separator&quot;) + System.getProperty(&quot;line.separator&quot;) + &quot; Start time: &quot; + c.getPrettyStartString() + System.getProperty(&quot;line.separator&quot;) + &quot;   End time: &quot; + c.getPrettyEndString() + System.getProperty(&quot;line.separator&quot;) + &quot;   Duration: &quot; + (c.getEndTime().getTime() - c.getStartTime().getTime())/60000 + &quot; minutes&quot; + System.getProperty(&quot;line.separator&quot;)+ &quot;       From: &quot; + c.getCaller() + System.getProperty(&quot;line.separator&quot;) + &quot;         To: &quot; + c.getCallee();</span>
-<span class="nc" id="L44">                    }</span>
-<span class="nc" id="L45">                    billAccess.write(toWrite);</span>
-<span class="nc" id="L46">                    billAccess.close();</span>
-<span class="nc" id="L47">                } catch (IOException e) {</span>
-<span class="nc" id="L48">                    e.printStackTrace();</span>
-<span class="nc" id="L49">                }</span>
-<span class="nc" id="L50">            } catch (IOException e) {</span>
-<span class="nc" id="L51">                e.printStackTrace();</span>
-<span class="nc" id="L52">            }</span>
+<span class="nc" id="L37">                    Writer billAccess = new FileWriter(temp, false);</span>
+<span class="nc" id="L38">                    String toWrite = &quot;         Bill for: &quot; + bill.getCustomer() + System.getProperty(&quot;line.separator&quot;) + &quot;_________________________________&quot;;</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">                    for(PhoneCall c: bill.getPhoneCalls()) {</span>
+<span class="nc" id="L40">                        toWrite += System.getProperty(&quot;line.separator&quot;) + System.getProperty(&quot;line.separator&quot;) + &quot; Start time: &quot; + c.getPrettyStartString() + System.getProperty(&quot;line.separator&quot;) + &quot;   End time: &quot; + c.getPrettyEndString() + System.getProperty(&quot;line.separator&quot;) + &quot;   Duration: &quot; + (c.getEndTime().getTime() - c.getStartTime().getTime())/60000 + &quot; minutes&quot; + System.getProperty(&quot;line.separator&quot;)+ &quot;       From: &quot; + c.getCaller() + System.getProperty(&quot;line.separator&quot;) + &quot;         To: &quot; + c.getCallee();</span>
+<span class="nc" id="L41">                    }</span>
+<span class="nc" id="L42">                    billAccess.write(toWrite);</span>
+<span class="nc" id="L43">                    billAccess.close();</span>
+<span class="nc" id="L44">                } catch (IOException e) {</span>
+<span class="nc" id="L45">                    e.printStackTrace();</span>
+<span class="nc" id="L46">                }</span>
+<span class="nc" id="L47">            } catch (IOException e) {</span>
+<span class="nc" id="L48">                e.printStackTrace();</span>
+<span class="nc" id="L49">            }</span>
         }
         else {
             try {
                 // If the text file exists, write the pretty bill to it.
-<span class="nc" id="L57">                Writer billAccess = new FileWriter(temp, false);</span>
-<span class="nc" id="L58">                String toWrite = &quot;         Bill for: &quot; + bill.getCustomer() + System.getProperty(&quot;line.separator&quot;) + &quot;_________________________________&quot;;</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">                for(PhoneCall c: bill.getPhoneCalls()) {</span>
-<span class="nc" id="L60">                    toWrite += System.getProperty(&quot;line.separator&quot;) +  System.getProperty(&quot;line.separator&quot;) + &quot; Start time: &quot; + c.getPrettyStartString() + System.getProperty(&quot;line.separator&quot;) + &quot;   End time: &quot; + c.getPrettyEndString()  + System.getProperty(&quot;line.separator&quot;) + &quot;   Duration: &quot; + (c.getEndTime().getTime() - c.getStartTime().getTime())/60000 + &quot; minutes&quot; + System.getProperty(&quot;line.separator&quot;)+ &quot;       From: &quot; + c.getCaller() + System.getProperty(&quot;line.separator&quot;) + &quot;         To: &quot; + c.getCallee();</span>
-<span class="nc" id="L61">                }</span>
-<span class="nc" id="L62">                billAccess.write(toWrite);</span>
-<span class="nc" id="L63">                billAccess.close();</span>
-<span class="nc" id="L64">            } catch (IOException e) {</span>
-<span class="nc" id="L65">                e.printStackTrace();</span>
-<span class="nc" id="L66">            }</span>
+<span class="nc" id="L54">                Writer billAccess = new FileWriter(temp, false);</span>
+<span class="nc" id="L55">                String toWrite = &quot;         Bill for: &quot; + bill.getCustomer() + System.getProperty(&quot;line.separator&quot;) + &quot;_________________________________&quot;;</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">                for(PhoneCall c: bill.getPhoneCalls()) {</span>
+<span class="nc" id="L57">                    toWrite += System.getProperty(&quot;line.separator&quot;) +  System.getProperty(&quot;line.separator&quot;) + &quot; Start time: &quot; + c.getPrettyStartString() + System.getProperty(&quot;line.separator&quot;) + &quot;   End time: &quot; + c.getPrettyEndString()  + System.getProperty(&quot;line.separator&quot;) + &quot;   Duration: &quot; + (c.getEndTime().getTime() - c.getStartTime().getTime())/60000 + &quot; minutes&quot; + System.getProperty(&quot;line.separator&quot;)+ &quot;       From: &quot; + c.getCaller() + System.getProperty(&quot;line.separator&quot;) + &quot;         To: &quot; + c.getCallee();</span>
+<span class="nc" id="L58">                }</span>
+<span class="nc" id="L59">                billAccess.write(toWrite);</span>
+<span class="nc" id="L60">                billAccess.close();</span>
+<span class="nc" id="L61">            } catch (IOException e) {</span>
+<span class="nc" id="L62">                e.printStackTrace();</span>
+<span class="nc" id="L63">            }</span>
         }
-<span class="nc" id="L68">    }</span>
+<span class="nc" id="L65">    }</span>
 
     /**
      * This method accepts a String containing the name of a text file to be accessed.
      * @param name A string which contains the name of a text file that will be accessed.
      */
     public void setFileName (String name) {
-<span class="nc" id="L75">        this.fileName = name;</span>
-<span class="nc" id="L76">    }</span>
+<span class="nc" id="L72">        this.fileName = name;</span>
+<span class="nc" id="L73">    }</span>
 
     /**
      * This method prints out the pretty form of the bill to the console.
      * @param bill An instance of PhoneBill that is filled with a bill's information that will be written to the console.
      */
-    public void printOut (PhoneBill bill) {
-<span class="nc" id="L83">        System.out.println(&quot;         Search results: &quot; + bill.getCustomer() +  &quot;\n_________________________________&quot;);</span>
-<span class="nc bnc" id="L84" title="All 2 branches missed.">        for(PhoneCall c: bill.getPhoneCalls()) {</span>
-<span class="nc" id="L85">            System.out.println(&quot;\n\n Start time: &quot; + c.getPrettyStartString() + &quot;\n   End time: &quot; + c.getPrettyEndString() + &quot;\n   Duration: &quot; + (c.getEndTime().getTime() - c.getStartTime().getTime())/60000 + &quot; minutes&quot; + &quot;\n       From: &quot; + c.getCaller() + &quot;\n         To: &quot; + c.getCallee());</span>
-<span class="nc" id="L86">        }</span>
-<span class="nc" id="L87">    }</span>
+    public Boolean printOut (PhoneBill bill, String title) {
+<span class="nc" id="L80">        Boolean displayed = false;</span>
+<span class="nc" id="L81">        System.out.println(&quot;         &quot;+title + &quot;\n_________________________________&quot;);</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        for(PhoneCall c: bill.getPhoneCalls()) {</span>
+<span class="nc" id="L83">            System.out.println(&quot;\n\n Start time: &quot; + c.getPrettyStartString() + &quot;\n   End time: &quot; + c.getPrettyEndString() + &quot;\n   Duration: &quot; + (c.getEndTime().getTime() - c.getStartTime().getTime())/60000 + &quot; minutes&quot; + &quot;\n       From: &quot; + c.getCaller() + &quot;\n         To: &quot; + c.getCallee());</span>
+<span class="nc" id="L84">            displayed = true;</span>
+<span class="nc" id="L85">        }</span>
+<span class="nc" id="L86">        return displayed;</span>
+    }
+
+    public Boolean printOutToPrintWriter(PrintWriter pw, PhoneBill bill, String title) {
+<span class="nc" id="L90">        Boolean displayed = false;</span>
+<span class="nc" id="L91">        pw.println(&quot;         &quot;+ title);</span>
+<span class="nc" id="L92">        pw.println(&quot;_________________________________&quot;);</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        for(PhoneCall c: bill.getPhoneCalls()) {</span>
+<span class="nc" id="L94">            pw.println();</span>
+<span class="nc" id="L95">            pw.println(&quot; Start time: &quot; + c.getPrettyStartString());</span>
+<span class="nc" id="L96">            pw.println(&quot;   End time: &quot; + c.getPrettyEndString());</span>
+<span class="nc" id="L97">            pw.println(&quot;   Duration: &quot; + (c.getEndTime().getTime() - c.getStartTime().getTime())/60000 + &quot; minutes&quot;);</span>
+<span class="nc" id="L98">            pw.println(&quot;       From: &quot; + c.getCaller());</span>
+<span class="nc" id="L99">            pw.println(&quot;         To: &quot; + c.getCallee());</span>
+<span class="nc" id="L100">            displayed = true;</span>
+<span class="nc" id="L101">        }</span>
+<span class="nc" id="L102">        return displayed;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

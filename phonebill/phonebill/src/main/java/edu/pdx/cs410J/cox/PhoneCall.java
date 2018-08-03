@@ -379,4 +379,33 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable <PhoneCal
     }
     return numDigits;
   }
+
+  /**
+   * This method receives a string containing a date, and a string containing a time. It verifies that both are formatteed
+   * correctly, then sets startTime to be the date followed by a space and the time.
+   * @param date A string containing a date
+   * @param time A string containing a time
+   * @param period A string containing either 'am' or 'pm'
+   * @return A boolean representing whether or not the date and time were formatted correctly, and starTime was set.
+   * */
+  public static Date stringToDate (String date, String time, String period) {
+    PhoneCall tempCall = new PhoneCall();
+    boolean dateCorrect = tempCall.verifyDateFormat(date);
+    boolean timeCorrect = tempCall.verifyTimeFormat(time, period);
+    Date newDate = new Date();
+    if(dateCorrect == true && timeCorrect == true) {
+      DateFormat newFormat = new SimpleDateFormat("M/d/yyyy h:mm aaa");
+      try {
+        newDate = newFormat.parse(date + " " + time + " " + period);
+        DateFormat.getDateInstance(DateFormat.SHORT).format(newDate);
+        DateFormat.getTimeInstance(DateFormat.SHORT).format(newDate);
+      } catch (ParseException e) {
+        e.printStackTrace();
+      }
+      return newDate;
+    }
+    System.err.println("The entered -search times are not formatted correctly.");
+    System.exit(1);
+    return newDate;
+  }
 }

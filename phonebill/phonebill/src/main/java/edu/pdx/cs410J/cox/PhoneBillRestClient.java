@@ -18,7 +18,6 @@ public class PhoneBillRestClient extends HttpRequestHelper
 {
     private static final String WEB_APP = "phonebill";
     private static final String SERVLET = "calls";
-    private static final String CUSTOMER = "customer";
 
     private final String url;
 
@@ -33,10 +32,6 @@ public class PhoneBillRestClient extends HttpRequestHelper
         this.url = String.format( "http://%s:%d/%s/%s", hostName, port, WEB_APP, SERVLET);
     }
 
-    public Map <String, PhoneBill> getAllPhoneCallEntries() throws IOException {
-        Response response = get(this.url);
-        return Messages.parsePhoneBills(response.getContent());
-    }
 
     /**
      * Returns all dictionary entries from the server
@@ -61,21 +56,19 @@ public class PhoneBillRestClient extends HttpRequestHelper
       throwExceptionIfNotOkayHttpStatus(response);
     }
 
-    public void addPhoneCall(String customer, PhoneCall call) throws IOException {
-        String[] postParameters = {
-          "customer", "Coolname",
-          "caller", call.getCaller(),
-          "callee", call.getCallee(),
-          "startTime", String.valueOf(call.getStartTime().getTime()),
-          "endTime", String.valueOf(call.getEndTime().getTime()),
-        };
-        Response response = postToMyURL(postParameters);
+     public String getAllPhoneCallEntries(String customer) throws IOException {
+         Response response = get(this.url, "customer", customer);
+         return response.getContent();
+     }
+
+    public void addPhoneCallEntry(String customer, PhoneCall call) throws IOException {
+        Response response = postToMyURL("customer", customer, "callerNumber", call.getCaller(), "calleeNumber", call.getCallee(), "startTime", call.getStartTimeString(), "endTime", call.getEndTimeString());
         throwExceptionIfNotOkayHttpStatus(response);
     }
 
     @VisibleForTesting
-    Response postToMyURL(String... dictionaryEntries) throws IOException {
-      return post(this.url, dictionaryEntries);
+    Response postToMyURL(String... PhoneCallEntries) throws IOException {
+      return post(this.url, PhoneCallEntries);
     }
 
     public void removeAllDictionaryEntries() throws IOException {

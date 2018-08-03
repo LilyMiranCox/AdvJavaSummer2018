@@ -2,10 +2,7 @@ package edu.pdx.cs410J.cox;
 
 import edu.pdx.cs410J.PhoneBillDumper;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 
 /**
  * This class will accept the name of a file, then if it is valid, will print a human readable bill to the file. If a file
@@ -23,7 +20,7 @@ public class PrettyPrinter implements PhoneBillDumper <PhoneBill> {
      */
     public void dump (PhoneBill bill) {
         if(this.fileName.equals("-") == true) { // If the user wants to write the pretty bill to the console
-            this.printOut(bill);
+            this.printOut(bill, "Bill for: "+bill.getCustomer());
             return;
         }
 
@@ -79,10 +76,29 @@ public class PrettyPrinter implements PhoneBillDumper <PhoneBill> {
      * This method prints out the pretty form of the bill to the console.
      * @param bill An instance of PhoneBill that is filled with a bill's information that will be written to the console.
      */
-    public void printOut (PhoneBill bill) {
-        System.out.println("         Search results: " + "\n_________________________________");
+    public Boolean printOut (PhoneBill bill, String title) {
+        Boolean displayed = false;
+        System.out.println("         "+title + "\n_________________________________");
         for(PhoneCall c: bill.getPhoneCalls()) {
             System.out.println("\n\n Start time: " + c.getPrettyStartString() + "\n   End time: " + c.getPrettyEndString() + "\n   Duration: " + (c.getEndTime().getTime() - c.getStartTime().getTime())/60000 + " minutes" + "\n       From: " + c.getCaller() + "\n         To: " + c.getCallee());
+            displayed = true;
         }
+        return displayed;
+    }
+
+    public Boolean printOutToPrintWriter(PrintWriter pw, PhoneBill bill, String title) {
+        Boolean displayed = false;
+        pw.println("         "+ title);
+        pw.println("_________________________________");
+        for(PhoneCall c: bill.getPhoneCalls()) {
+            pw.println();
+            pw.println(" Start time: " + c.getPrettyStartString());
+            pw.println("   End time: " + c.getPrettyEndString());
+            pw.println("   Duration: " + (c.getEndTime().getTime() - c.getStartTime().getTime())/60000 + " minutes");
+            pw.println("       From: " + c.getCaller());
+            pw.println("         To: " + c.getCallee());
+            displayed = true;
+        }
+        return displayed;
     }
 }

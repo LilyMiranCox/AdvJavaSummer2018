@@ -25,7 +25,7 @@ public class Project4 {
         PhoneBill bill = new PhoneBill();
 
         final String README = "\n\n -- README --\n" +
-                "\nProject 3 implemented by Lily Cox \n" +
+                "\nProject 4 implemented by Lily Cox \n" +
                 "\nThis program creates phone bills from phone call information." +
                 "\nAll phone call information is entered in the form: customer callerNumber calleeNumber startTime endTime" +
                 "\nInformation can be brought in from a file included in the command line arguments and from the command line itself" +
@@ -50,158 +50,174 @@ public class Project4 {
         Date searchStart = new Date();
         Date searchEnd = new Date();
 
-        if(args.length == 0) { // Checks that command line arguments have been provided
+        if (args.length == 0) { // Checks that command line arguments have been provided
             System.err.println("Missing command line arguments");
             System.exit(1);
         }
 
-        for(int i = 0; i < numOptionArgs && i < args.length; ++i) {
+        for (int i = 0; i < numOptionArgs && i < args.length; ++i) {
             if (args[i].equals("-README")) {
                 printReadme(README);
-            }
-            else if (args[i].equals("-host")) {
-                hostName = args[i+1];
-                numOptionsUsed+=2;
-            }
-            else if (args[i].equals("-port")) {
-                portString = args[i+1];
-                numOptionsUsed+=2;
-            }
-            else if (args[i].equals("-print")) {
-                if(printCall == true) {
+            } else if (args[i].equals("-host")) {
+                hostName = args[i + 1];
+                numOptionsUsed += 2;
+            } else if (args[i].equals("-port")) {
+                portString = args[i + 1];
+                numOptionsUsed += 2;
+            } else if (args[i].equals("-print")) {
+                if (printCall == true) {
                     System.err.println("-print option used multiple times.");
                     System.exit(1);
                 }
                 printCall = true;
                 ++numOptionsUsed;
-            }
-            else if (args[i].equals("-search")) {
-                searchName = args[i+1];
-                searchStart = stringToDate(args[i+2], args[i+3], args[i+4]);
-                searchEnd = stringToDate(args[i+5], args[i+6], args[i+7]);
-                numOptionsUsed+=8;
+            } else if (args[i].equals("-search")) {
+                searchName = args[i + 1];
+
+                if(args.length < numOptionsUsed + 8) {
+                    System.err.println("'-search' requires a customer name, start time, and end time.");
+                    System.exit(1);
+                }
+
+                searchStart = call.stringToDate(args[i + 2], args[i + 3], args[i + 4]);
+                searchEnd = call.stringToDate(args[i + 5], args[i + 6], args[i + 7]);
+
+                if (searchStart.after(searchEnd)) {
+                    System.err.println("The '-search' start time is after the end time.");
+                    System.exit(1);
+                }
+                numOptionsUsed += 8;
             }
         }
-
-        if(args.length > (numOptionsUsed + 9)) { // If too many phone call arguments were included
-            System.err.println("Too many phone call arguments.");
-            System.exit(1);
-        }
-
-        if(args.length != (numOptionsUsed + 9)) { // Since there are seven total pieces of data expected for the PhoneCall, there must be that many arguments (if no options are used)
-            System.err.println("Does not contain all required phone call arguments.");
-            System.exit(1);
-        }
-
-  //      if(bill.getCustomer().equals(args[numOptionsUsed]) == false && useFile == true && bill.getCustomer().equals("notset") == false ) { // If the name in the file doesn't match the name of the name of the PhoneCall to add from the command line
-    //        System.err.println("Received customer name does not match customer name in the text file.");
-      //      System.exit(1);
-        //}
-
-        // Set the PhoneCall information, and add it to the PhoneBill
-        bill.setCustomer(args[numOptionsUsed]); // Set the name of the customer in the bill
-        Boolean caller = call.setCaller(args[numOptionsUsed + 1]); // Test formatting of the phone # and set it
-        Boolean callee = call.setCallee(args[numOptionsUsed + 2]); // Test formatting of the phone # and set it
-        Boolean start = call.setStartTimeString(args[numOptionsUsed + 3], args[numOptionsUsed + 4], args[numOptionsUsed + 5]); // Test formatting of the date and time and set it
-        Boolean end = call.setEndTimeString(args[numOptionsUsed + 6], args[numOptionsUsed + 7], args[numOptionsUsed + 8]); // Test formatting of the date and time and set it
-        bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill
-
-     /*   for (String arg : args) {
-            if (hostName == null) {
-                hostName = arg;
-
-            } else if ( portString == null) {
-                portString = arg;
-
-            } else if (word == null) {
-                word = arg;
-
-            } else if (definition == null) {
-                definition = arg;
-
-            } else {
-                usage("Extraneous command line argument: " + arg);
-            }
-        }*/
 
         if (hostName == null) {
-            usage( MISSING_ARGS );
+            usage(MISSING_ARGS);
 
-        } else if ( portString == null) {
-            usage( "Missing port" );
+        } else if (portString == null) {
+            usage("Missing port");
         }
 
         int port;
         try {
-            port = Integer.parseInt( portString );
-            
+            port = Integer.parseInt(portString);
+
         } catch (NumberFormatException ex) {
             usage("Port \"" + portString + "\" must be an integer");
             return;
         }
 
+        if (args.length > (numOptionsUsed + 9)) { // If too many phone call arguments were included
+            System.err.println("Too many phone call arguments.");
+            System.exit(1);
+        }
+
+        if (args.length != (numOptionsUsed + 9) && args.length != (numOptionsUsed + 1) && searchName == null) { // Since there are seven total pieces of data expected for the PhoneCall, there must be that many arguments (if no options are used)
+            System.err.println("Does not contain all required phone call arguments.");
+            System.exit(1);
+        }
+
         PhoneBillRestClient client = new PhoneBillRestClient(hostName, port);
 
-        String message = null;
-  //      try {
-            if((caller && callee && start && end)) { // If it passes all formatting tests, and all variables are set
+        if (searchName != null || args.length == numOptionsUsed + 1) {
+            try {
+                String allCalls;
                 if(searchName != null) {
+
+                    allCalls = client.getAllPhoneCallEntries(searchName);
+                }
+                else {
+                    bill.setCustomer(args[numOptionsUsed]);
+                    allCalls = client.getAllPhoneCallEntries(args[numOptionsUsed]);
+                }
+
+                String [] lines = allCalls.split("\n");
+                for(int i = 3; i < lines.length; i+=6) {
+                    PhoneCall newCall = new PhoneCall();
+
+                    String startTime = lines[i].replace(" Start time: ", "");
+                    String[] startPieces = startTime.split("\\s+");
+                    newCall.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);
+
+                    String endTime = lines[i+1].replace("   End time: ","");
+                    String[] endPieces = endTime.split("\\s+");
+                    newCall.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);
+
+                    String callerNum = lines[i+3].replace("       From: ","");
+                    newCall.setCaller(callerNum);
+
+                    String calleeNum = lines[i+4].replace("         To: ","");
+                    newCall.setCallee(calleeNum);
+                    bill.addPhoneCall(newCall);
+                }
+
+                if(searchName == null) {
+                    PrettyPrinter newPrettyPrint = new PrettyPrinter();
+                    Boolean displayed = newPrettyPrint.printOut(bill, "Search results: ");
+                    if (displayed == false) {
+                        System.err.println("That customer does not exist");
+                        System.exit(1);
+                    }
+                }
+                else {
                     PhoneBill searchedCalls = bill.searchCalls(searchName, searchStart, searchEnd);
 
                     PrettyPrinter newPrettyPrint = new PrettyPrinter();
-                    newPrettyPrint.printOut(searchedCalls);
-                }
-                else if (printCall == true) {
-                    System.out.println("Bill for: " + bill.getCustomer());
-                    for (PhoneCall c : bill.getPhoneCalls()) {
-                        printPhonecall(c);
+                    Boolean displayed = newPrettyPrint.printOut(searchedCalls, "Search results: ");
+                    if (displayed == false) {
+                        System.err.println("No calls fall within the included time period.");
                     }
                 }
             }
+            catch (IOException ex)  {
+                error("While contacting server: " + ex);
+                return;
+            }
 
+        }
+        if(args.length != numOptionsUsed+1 && searchName == null) {
+            // Set the PhoneCall information, and add it to the PhoneBill
+            bill.setCustomer(args[numOptionsUsed]); // Set the name of the customer in the bill
+            Boolean caller = call.setCaller(args[numOptionsUsed + 1]); // Test formatting of the phone # and set it
+            Boolean callee = call.setCallee(args[numOptionsUsed + 2]); // Test formatting of the phone # and set it
+            Boolean start = call.setStartTimeString(args[numOptionsUsed + 3], args[numOptionsUsed + 4], args[numOptionsUsed + 5]); // Test formatting of the date and time and set it
+            Boolean end = call.setEndTimeString(args[numOptionsUsed + 6], args[numOptionsUsed + 7], args[numOptionsUsed + 8]); // Test formatting of the date and time and set it
+            bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill
+             if ((caller && callee && start && end)) { // If it passes all formatting tests, and all variables are set
+                 if (printCall == true) {
+                     System.out.println("Bill for: " + bill.getCustomer());
+                     for (PhoneCall c : bill.getPhoneCalls()) {
+                         printPhonecall(c);
+                     }
+                 }
+             }
+         }
 
-          /*  if (word == null) {
-                // Print all word/definition pairs
-                Map<String, String> dictionary = client.getAllDictionaryEntries();
-                StringWriter sw = new StringWriter();
-                Messages.formatDictionaryEntries(new PrintWriter(sw, true), dictionary);
-                message = sw.toString();
-
-            } else if (definition == null) {
-                // Print all dictionary entries
-                message = Messages.formatDictionaryEntry(word, client.getDefinition(word));
-
-            } else {
-                // Post the word/definition pair
-                client.addDictionaryEntry(word, definition);
-                message = Messages.definedWordAs(word, definition);
-            }*/
-
- //       } catch ( IOException ex ) {
-   //         error("While contacting server: " + ex);
-     //       return;
-       // }
-
- //       System.out.println(message);
+        try {
+            if(args.length != numOptionsUsed+1 && searchName == null) {
+                client.addPhoneCallEntry(bill.getCustomer(), call);
+            }
+        } catch (IOException ex) {
+            error("While contacting server: " + ex);
+            return;
+        }
 
         System.exit(0);
     }
 
     /**
      * Makes sure that the give response has the expected HTTP status code
-     * @param code The expected status code
+     *
+     * @param code     The expected status code
      * @param response The response from the server
      */
-    private static void checkResponseCode( int code, HttpRequestHelper.Response response )
-    {
+    private static void checkResponseCode(int code, HttpRequestHelper.Response response) {
         if (response.getCode() != code) {
             error(String.format("Expected HTTP code %d, got code %d.\n\n%s", code,
-                                response.getCode(), response.getContent()));
+                    response.getCode(), response.getContent()));
         }
     }
 
-    private static void error( String message )
-    {
+    private static void error(String message) {
         PrintStream err = System.err;
         err.println("** " + message);
 
@@ -210,10 +226,10 @@ public class Project4 {
 
     /**
      * Prints usage information for this program and exits
+     *
      * @param message An error message to print
      */
-    private static void usage( String message )
-    {
+    private static void usage(String message) {
         PrintStream err = System.err;
         err.println("** " + message);
         err.println();
@@ -235,48 +251,21 @@ public class Project4 {
 
     /**
      * This method accepts a String containing a README statement, prints the statement to the console, then exits.
+     *
      * @param README A String containing a README statement
      */
-    public static void printReadme (String README) {
+    public static void printReadme(String README) {
         System.out.println(README);
         System.exit(0);
     }
 
     /**
      * This method receives a PhoneCall, and prints out its contents to the console
+     *
      * @param call An instance of PhoneCall that will have it's information printed to the console
      */
-    public static void printPhonecall (PhoneCall call) {
+    public static void printPhonecall(PhoneCall call) {
 
         System.out.println(call.toString());
-    }
-
-    /**
-     * This method receives a string containing a date, and a string containing a time. It verifies that both are formatteed
-     * correctly, then sets startTime to be the date followed by a space and the time.
-     * @param date A string containing a date
-     * @param time A string containing a time
-     * @param period A string containing either 'am' or 'pm'
-     * @return A boolean representing whether or not the date and time were formatted correctly, and starTime was set.
-     * */
-    public static Date stringToDate (String date, String time, String period) {
-        PhoneCall tempCall = new PhoneCall();
-        boolean dateCorrect = tempCall.verifyDateFormat(date);
-        boolean timeCorrect = tempCall.verifyTimeFormat(time, period);
-        Date newDate = new Date();
-        if(dateCorrect == true && timeCorrect == true) {
-            DateFormat newFormat = new SimpleDateFormat("M/d/yyyy h:mm aaa");
-            try {
-                newDate = newFormat.parse(date + " " + time + " " + period);
-                DateFormat.getDateInstance(DateFormat.SHORT).format(newDate);
-                DateFormat.getTimeInstance(DateFormat.SHORT).format(newDate);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            return newDate;
-        }
-        System.err.println("The entered -search times are not formatted correctly.");
-        System.exit(1);
-        return newDate;
     }
 }
