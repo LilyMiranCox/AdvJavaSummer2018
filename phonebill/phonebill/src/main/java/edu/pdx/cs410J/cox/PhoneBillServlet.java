@@ -32,9 +32,9 @@ public class PhoneBillServlet extends HttpServlet
     private Map<String, PhoneBill> bills = new HashMap<>();
 
     /**
-     * Handles an HTTP GET request from a client by writing the definition of the
-     * word specified in the "word" HTTP parameter to the HTTP response.  If the
-     * "word" parameter is not specified, all of the entries in the dictionary
+     * Handles an HTTP GET request from a client by writing the call of the
+     * customer specified in the "customer" HTTP parameter to the HTTP response.  If the
+     * "customer" parameter is not specified, all of the entries in the Phonebill
      * are written to the HTTP response.
      */
     @Override
@@ -47,6 +47,14 @@ public class PhoneBillServlet extends HttpServlet
         String endTime = getParameter(END_PARAM, request);
         String caller = getParameter(CALLER_PARAM, request);
         String callee = getParameter(CALLEE_PARAM, request);
+
+        if (customer == null) {
+            PrintWriter pw = response.getWriter();
+            pw.println("Missing customer in the url.");
+            pw.flush();
+            return;
+        }
+
         PhoneBill bill = this.bills.get(customer);
         PrintWriter pw = response.getWriter();
         PrettyPrinter prettyPrint = new PrettyPrinter();
@@ -58,36 +66,65 @@ public class PhoneBillServlet extends HttpServlet
 
                 if(caller != null && callee != null) { // If the user is adding a new phonecall to an existing customer
                     PhoneCall call = new PhoneCall();
-                    call.setCaller(caller);
-                    call.setCallee(callee);
-                    call.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);
-                    call.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);
+                    Boolean callerSet = call.setCaller(caller);
+                    Boolean calleeSet = call.setCallee(callee);
+                    Boolean startSet = call.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);
+                    Boolean endSet = call.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);
 
-                    bill.addPhoneCall(call);
-                    pw.println(customer+"'s call has been added to their bill");
+                    if ((callerSet && calleeSet && startSet && endSet)) {
+                        bill.addPhoneCall(call);
+                        pw.println(customer + "'s call has been added to their bill");
+                    }
+                    else {
+                        pw.println("The entered phone call data is formatted incorrectly.");
+                    }
                 }
                 else { // If the user only included a customer name, start, and end times, search for and display calls within that time period
-                    Date searchStart = PhoneCall.stringToDate(startPieces[0], startPieces[1], startPieces[2]);
-                    Date searchEnd = PhoneCall.stringToDate(endPieces[0], endPieces[1], endPieces[2]);
-
-                    if (searchStart.after(searchEnd)) { // If the startTime falls after the endTime
-                        pw.println();
-                        pw.println("The start time is after the end time.");
+                    if(caller == null && callee != null) {
+                        pw.println("Missing caller in the url.");
                     }
-                    PhoneBill searchedCalls = bill.searchCalls(customer, searchStart, searchEnd);
-                    Boolean displayed = prettyPrint.printOutToPrintWriter(pw, searchedCalls, "Search results for: " + bill.getCustomer());
+                    else if(callee == null && caller != null) {
+                        pw.println("Missing callee in the url.");
+                    }
+                    else {
 
-                    if (displayed == false) { // If no calls fall within the included time period
-                        pw.println();
-                        pw.println("No calls fall within the included time period.");
+                        Date searchStart = PhoneCall.stringToDate(startPieces[0], startPieces[1], startPieces[2]);
+                        Date searchEnd = PhoneCall.stringToDate(endPieces[0], endPieces[1], endPieces[2]);
+
+                        if (searchStart.after(searchEnd)) { // If the startTime falls after the endTime
+                            pw.println();
+                            pw.println("The start time is after the end time.");
+                        }
+                        PhoneBill searchedCalls = bill.searchCalls(customer, searchStart, searchEnd);
+                        Boolean displayed = prettyPrint.printOutToPrintWriter(pw, searchedCalls, "Search results for: " + bill.getCustomer());
+
+                        if (displayed == false) { // If no calls fall within the included time period
+                            pw.println();
+                            pw.println("No calls fall within the included time period.");
+                        }
                     }
                 }
             }
             else { // If the user only provides the customer's name, pretty print the customer's bill
-                prettyPrint.printOutToPrintWriter(pw, bill, "Bill for: " + bill.getCustomer());
+
+                if(customer == null) {
+                    pw.println("Missing customer in the url.");
+                }
+                else {
+                    if(startTime == null && endTime != null) {
+                        pw.println("Missing startTime in the url.");
+                    }
+                    else if(endTime == null && startTime != null) {
+                        pw.println("Missing endTime in the url.");
+                    }
+                    else
+                        prettyPrint.printOutToPrintWriter(pw, bill, "Bill for: " + bill.getCustomer());
+                }
             }
+
             response.setStatus(HttpServletResponse.SC_OK);
-        } else {
+        }
+        else {
             // If the user is creating a phone call for a NEW bill customer
             if(customer != null && startTime != null && endTime != null && caller != null && callee != null) {
                 String[] startPieces = startTime.split("\\s+");
@@ -98,24 +135,30 @@ public class PhoneBillServlet extends HttpServlet
                 this.bills.put(customer, bill);
 
                 PhoneCall call = new PhoneCall();
-                call.setCaller(caller);
-                call.setCallee(callee);
-                call.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);
-                call.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);
+                Boolean callerSet = call.setCaller(caller);
+                Boolean calleeSet = call.setCallee(callee);
+                Boolean startSet = call.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);
+                Boolean endSet = call.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);
 
-                bill.addPhoneCall(call);
-                pw.println(customer + "'s call has been added to their bill");
+                if ((callerSet && calleeSet && startSet && endSet)) {
+                    bill.addPhoneCall(call);
+                    pw.println(customer + "'s call has been added to their bill");
+                }
+                else {
+                    pw.println("The entered phone call data is formatted incorrectly.");
+                }
+
                 response.setStatus(HttpServletResponse.SC_OK);
             }
             else {
-                    response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             }
         }
     }
 
     /**
-     * Handles an HTTP POST request by storing the dictionary entry for the
-     * "word" and "definition" request parameters.  It writes the dictionary
+     * Handles an HTTP POST request by storing the Phonecall for the
+     * "customer", "callerNumber", "calleeNumber", "startTime", and "endTime" request parameters.  It writes the Phonecall
      * entry to the HTTP response.
      */
     @Override
@@ -125,15 +168,11 @@ public class PhoneBillServlet extends HttpServlet
 
         String customer = getParameter(CUSTOMER_PARAM, request );
         if (customer == null) {
-            missingRequiredParameter(response, CUSTOMER_PARAM);
+            PrintWriter pw = response.getWriter();
+            pw.println("Missing customer.");
+            pw.flush();
             return;
         }
-
-      /*  String definition = getParameter(DEFINITION_PARAMETER, request );
-        if ( definition == null) {
-            missingRequiredParameter( response, DEFINITION_PARAMETER );
-            return;
-        }*/
 
       String caller = getParameter(CALLER_PARAM, request);
       String callee = getParameter(CALLEE_PARAM, request);
@@ -171,9 +210,9 @@ public class PhoneBillServlet extends HttpServlet
 
         this.dictionary.clear();
 
-        PrintWriter pw = response.getWriter();
+    /*    PrintWriter pw = response.getWriter();
         pw.println(Messages.allDictionaryEntriesDeleted());
-        pw.flush();
+        pw.flush();*/
 
         response.setStatus(HttpServletResponse.SC_OK);
 
@@ -182,20 +221,20 @@ public class PhoneBillServlet extends HttpServlet
     /**
      * Writes an error message about a missing parameter to the HTTP response.
      *
-     * The text of the error message is created by {@link Messages#missingRequiredParameter(String)}
+     * The text of the error message is created by
      */
     private void missingRequiredParameter( HttpServletResponse response, String parameterName )
         throws IOException
     {
-        String message = Messages.missingRequiredParameter(parameterName);
-        response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, message);
+   /*     String message = Messages.missingRequiredParameter(parameterName);
+        response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, message);*/
     }
 
     /**
      * Writes the definition of the given word to the HTTP response.
      *
      * The text of the message is formatted with
-     * {@link Messages#formatDictionaryEntry(String, String)}
+     * {}
      */
     private void writeDefinition(String word, HttpServletResponse response ) throws IOException
     {
@@ -213,7 +252,7 @@ public class PhoneBillServlet extends HttpServlet
      * Writes all of the dictionary entries to the HTTP response.
      *
      * The text of the message is formatted with
-     * {@link Messages#formatDictionaryEntry(String, String)}
+     * {}
      */
     private void writeAllDictionaryEntries(HttpServletResponse response ) throws IOException
     {
@@ -231,12 +270,6 @@ public class PhoneBillServlet extends HttpServlet
      * @return <code>null</code> if the value of the parameter is
      *         <code>null</code> or is the empty string
      */
-
-    private void writeAllPhoneBills(HttpServletResponse response ) throws IOException {
-      /*  PrintWriter pw = response.getWriter();
-        pw.flush();*/
-        response.setStatus(HttpServletResponse.SC_OK);
-    }
 
     private String getParameter(String name, HttpServletRequest request) {
       String value = request.getParameter(name);

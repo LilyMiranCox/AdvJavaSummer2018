@@ -36,31 +36,43 @@ public class PhoneBillRestClient extends HttpRequestHelper
     /**
      * Returns all dictionary entries from the server
      */
-    public Map<String, String> getAllDictionaryEntries() throws IOException {
+  /*  public Map<String, String> getAllDictionaryEntries() throws IOException {
       Response response = get(this.url);
       return Messages.parseDictionary(response.getContent());
-    }
+    }*/
 
     /**
      * Returns the definition for the given word
      */
-    public String getDefinition(String word) throws IOException {
+   /* public String getDefinition(String word) throws IOException {
       Response response = get(this.url, "word", word);
       throwExceptionIfNotOkayHttpStatus(response);
       String content = response.getContent();
       return Messages.parseDictionaryEntry(content).getValue();
-    }
+    }*/
 
     public void addDictionaryEntry(String word, String definition) throws IOException {
       Response response = postToMyURL("word", word, "definition", definition);
       throwExceptionIfNotOkayHttpStatus(response);
     }
 
+    /**
+     * This method returns a string containing a pretty printed bill.
+     * @param customer A string containing the name of a customer.
+     * @return A string containing a pretty printed bill containing all of the customer's calls.
+     * @throws IOException
+     */
      public String getAllPhoneCallEntries(String customer) throws IOException {
          Response response = get(this.url, "customer", customer);
          return response.getContent();
      }
 
+    /**
+     * This method adds a new call to the customer's bill.
+     * @param customer A string containing a customer's name.
+     * @param call A phonecall to add to the bill.
+     * @throws IOException
+     */
     public void addPhoneCallEntry(String customer, PhoneCall call) throws IOException {
         Response response = postToMyURL("customer", customer, "callerNumber", call.getCaller(), "calleeNumber", call.getCallee(), "startTime", call.getStartTimeString(), "endTime", call.getEndTimeString());
         throwExceptionIfNotOkayHttpStatus(response);

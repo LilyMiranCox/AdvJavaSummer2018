@@ -32,9 +32,9 @@ import java.util.Map;
 <span class="nc" id="L32">    private Map&lt;String, PhoneBill&gt; bills = new HashMap&lt;&gt;();</span>
 
     /**
-     * Handles an HTTP GET request from a client by writing the definition of the
-     * word specified in the &quot;word&quot; HTTP parameter to the HTTP response.  If the
-     * &quot;word&quot; parameter is not specified, all of the entries in the dictionary
+     * Handles an HTTP GET request from a client by writing the call of the
+     * customer specified in the &quot;customer&quot; HTTP parameter to the HTTP response.  If the
+     * &quot;customer&quot; parameter is not specified, all of the entries in the Phonebill
      * are written to the HTTP response.
      */
     @Override
@@ -47,118 +47,157 @@ import java.util.Map;
 <span class="nc" id="L47">        String endTime = getParameter(END_PARAM, request);</span>
 <span class="nc" id="L48">        String caller = getParameter(CALLER_PARAM, request);</span>
 <span class="nc" id="L49">        String callee = getParameter(CALLEE_PARAM, request);</span>
-<span class="nc" id="L50">        PhoneBill bill = this.bills.get(customer);</span>
-<span class="nc" id="L51">        PrintWriter pw = response.getWriter();</span>
-<span class="nc" id="L52">        PrettyPrinter prettyPrint = new PrettyPrinter();</span>
 
-<span class="nc bnc" id="L54" title="All 2 branches missed.">        if (bill != null) {</span>
-<span class="nc bnc" id="L55" title="All 6 branches missed.">            if(startTime != null &amp;&amp; endTime != null &amp;&amp; customer !=null) {</span>
-<span class="nc" id="L56">                String[] startPieces = startTime.split(&quot;\\s+&quot;);</span>
-<span class="nc" id="L57">                String[] endPieces = endTime.split(&quot;\\s+&quot;);</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        if (customer == null) {</span>
+<span class="nc" id="L52">            PrintWriter pw = response.getWriter();</span>
+<span class="nc" id="L53">            pw.println(&quot;Missing customer in the url.&quot;);</span>
+<span class="nc" id="L54">            pw.flush();</span>
+<span class="nc" id="L55">            return;</span>
+        }
 
-<span class="nc bnc" id="L59" title="All 4 branches missed.">                if(caller != null &amp;&amp; callee != null) { // If the user is adding a new phonecall to an existing customer</span>
-<span class="nc" id="L60">                    PhoneCall call = new PhoneCall();</span>
-<span class="nc" id="L61">                    call.setCaller(caller);</span>
-<span class="nc" id="L62">                    call.setCallee(callee);</span>
-<span class="nc" id="L63">                    call.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);</span>
-<span class="nc" id="L64">                    call.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);</span>
+<span class="nc" id="L58">        PhoneBill bill = this.bills.get(customer);</span>
+<span class="nc" id="L59">        PrintWriter pw = response.getWriter();</span>
+<span class="nc" id="L60">        PrettyPrinter prettyPrint = new PrettyPrinter();</span>
 
-<span class="nc" id="L66">                    bill.addPhoneCall(call);</span>
-<span class="nc" id="L67">                    pw.println(customer+&quot;'s call has been added to their bill&quot;);</span>
-<span class="nc" id="L68">                }</span>
-                else { // If the user only included a customer name, start, and end times, search for and display calls within that time period
-<span class="nc" id="L70">                    Date searchStart = PhoneCall.stringToDate(startPieces[0], startPieces[1], startPieces[2]);</span>
-<span class="nc" id="L71">                    Date searchEnd = PhoneCall.stringToDate(endPieces[0], endPieces[1], endPieces[2]);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if (bill != null) {</span>
+<span class="nc bnc" id="L63" title="All 6 branches missed.">            if(startTime != null &amp;&amp; endTime != null &amp;&amp; customer !=null) {</span>
+<span class="nc" id="L64">                String[] startPieces = startTime.split(&quot;\\s+&quot;);</span>
+<span class="nc" id="L65">                String[] endPieces = endTime.split(&quot;\\s+&quot;);</span>
 
-<span class="nc bnc" id="L73" title="All 2 branches missed.">                    if (searchStart.after(searchEnd)) { // If the startTime falls after the endTime</span>
-<span class="nc" id="L74">                        pw.println();</span>
-<span class="nc" id="L75">                        pw.println(&quot;The start time is after the end time.&quot;);</span>
+<span class="nc bnc" id="L67" title="All 4 branches missed.">                if(caller != null &amp;&amp; callee != null) { // If the user is adding a new phonecall to an existing customer</span>
+<span class="nc" id="L68">                    PhoneCall call = new PhoneCall();</span>
+<span class="nc" id="L69">                    Boolean callerSet = call.setCaller(caller);</span>
+<span class="nc" id="L70">                    Boolean calleeSet = call.setCallee(callee);</span>
+<span class="nc" id="L71">                    Boolean startSet = call.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);</span>
+<span class="nc" id="L72">                    Boolean endSet = call.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);</span>
+
+<span class="nc bnc" id="L74" title="All 8 branches missed.">                    if ((callerSet &amp;&amp; calleeSet &amp;&amp; startSet &amp;&amp; endSet)) {</span>
+<span class="nc" id="L75">                        bill.addPhoneCall(call);</span>
+<span class="nc" id="L76">                        pw.println(customer + &quot;'s call has been added to their bill&quot;);</span>
                     }
-<span class="nc" id="L77">                    PhoneBill searchedCalls = bill.searchCalls(customer, searchStart, searchEnd);</span>
-<span class="nc" id="L78">                    Boolean displayed = prettyPrint.printOutToPrintWriter(pw, searchedCalls, &quot;Search results for: &quot; + bill.getCustomer());</span>
+                    else {
+<span class="nc" id="L79">                        pw.println(&quot;The entered phone call data is formatted incorrectly.&quot;);</span>
+                    }
+<span class="nc" id="L81">                }</span>
+                else { // If the user only included a customer name, start, and end times, search for and display calls within that time period
+<span class="nc bnc" id="L83" title="All 4 branches missed.">                    if(caller == null &amp;&amp; callee != null) {</span>
+<span class="nc" id="L84">                        pw.println(&quot;Missing caller in the url.&quot;);</span>
+                    }
+<span class="nc bnc" id="L86" title="All 4 branches missed.">                    else if(callee == null &amp;&amp; caller != null) {</span>
+<span class="nc" id="L87">                        pw.println(&quot;Missing callee in the url.&quot;);</span>
+                    }
+                    else {
 
-<span class="nc bnc" id="L80" title="All 2 branches missed.">                    if (displayed == false) { // If no calls fall within the included time period</span>
-<span class="nc" id="L81">                        pw.println();</span>
-<span class="nc" id="L82">                        pw.println(&quot;No calls fall within the included time period.&quot;);</span>
+<span class="nc" id="L91">                        Date searchStart = PhoneCall.stringToDate(startPieces[0], startPieces[1], startPieces[2]);</span>
+<span class="nc" id="L92">                        Date searchEnd = PhoneCall.stringToDate(endPieces[0], endPieces[1], endPieces[2]);</span>
+
+<span class="nc bnc" id="L94" title="All 2 branches missed.">                        if (searchStart.after(searchEnd)) { // If the startTime falls after the endTime</span>
+<span class="nc" id="L95">                            pw.println();</span>
+<span class="nc" id="L96">                            pw.println(&quot;The start time is after the end time.&quot;);</span>
+                        }
+<span class="nc" id="L98">                        PhoneBill searchedCalls = bill.searchCalls(customer, searchStart, searchEnd);</span>
+<span class="nc" id="L99">                        Boolean displayed = prettyPrint.printOutToPrintWriter(pw, searchedCalls, &quot;Search results for: &quot; + bill.getCustomer());</span>
+
+<span class="nc bnc" id="L101" title="All 2 branches missed.">                        if (displayed == false) { // If no calls fall within the included time period</span>
+<span class="nc" id="L102">                            pw.println();</span>
+<span class="nc" id="L103">                            pw.println(&quot;No calls fall within the included time period.&quot;);</span>
+                        }
                     }
                 }
-<span class="nc" id="L85">            }</span>
+<span class="nc" id="L107">            }</span>
             else { // If the user only provides the customer's name, pretty print the customer's bill
-<span class="nc" id="L87">                prettyPrint.printOutToPrintWriter(pw, bill, &quot;Bill for: &quot; + bill.getCustomer());</span>
+
+<span class="nc bnc" id="L110" title="All 2 branches missed.">                if(customer == null) {</span>
+<span class="nc" id="L111">                    pw.println(&quot;Missing customer in the url.&quot;);</span>
+                }
+                else {
+<span class="nc bnc" id="L114" title="All 4 branches missed.">                    if(startTime == null &amp;&amp; endTime != null) {</span>
+<span class="nc" id="L115">                        pw.println(&quot;Missing startTime in the url.&quot;);</span>
+                    }
+<span class="nc bnc" id="L117" title="All 4 branches missed.">                    else if(endTime == null &amp;&amp; startTime != null) {</span>
+<span class="nc" id="L118">                        pw.println(&quot;Missing endTime in the url.&quot;);</span>
+                    }
+                    else
+<span class="nc" id="L121">                        prettyPrint.printOutToPrintWriter(pw, bill, &quot;Bill for: &quot; + bill.getCustomer());</span>
+                }
             }
-<span class="nc" id="L89">            response.setStatus(HttpServletResponse.SC_OK);</span>
-        } else {
+
+<span class="nc" id="L125">            response.setStatus(HttpServletResponse.SC_OK);</span>
+        }
+        else {
             // If the user is creating a phone call for a NEW bill customer
-<span class="nc bnc" id="L92" title="All 10 branches missed.">            if(customer != null &amp;&amp; startTime != null &amp;&amp; endTime != null &amp;&amp; caller != null &amp;&amp; callee != null) {</span>
-<span class="nc" id="L93">                String[] startPieces = startTime.split(&quot;\\s+&quot;);</span>
-<span class="nc" id="L94">                String[] endPieces = endTime.split(&quot;\\s+&quot;);</span>
+<span class="nc bnc" id="L129" title="All 10 branches missed.">            if(customer != null &amp;&amp; startTime != null &amp;&amp; endTime != null &amp;&amp; caller != null &amp;&amp; callee != null) {</span>
+<span class="nc" id="L130">                String[] startPieces = startTime.split(&quot;\\s+&quot;);</span>
+<span class="nc" id="L131">                String[] endPieces = endTime.split(&quot;\\s+&quot;);</span>
 
-<span class="nc" id="L96">                bill = new PhoneBill();</span>
-<span class="nc" id="L97">                bill.setCustomer(customer);</span>
-<span class="nc" id="L98">                this.bills.put(customer, bill);</span>
+<span class="nc" id="L133">                bill = new PhoneBill();</span>
+<span class="nc" id="L134">                bill.setCustomer(customer);</span>
+<span class="nc" id="L135">                this.bills.put(customer, bill);</span>
 
-<span class="nc" id="L100">                PhoneCall call = new PhoneCall();</span>
-<span class="nc" id="L101">                call.setCaller(caller);</span>
-<span class="nc" id="L102">                call.setCallee(callee);</span>
-<span class="nc" id="L103">                call.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);</span>
-<span class="nc" id="L104">                call.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);</span>
+<span class="nc" id="L137">                PhoneCall call = new PhoneCall();</span>
+<span class="nc" id="L138">                Boolean callerSet = call.setCaller(caller);</span>
+<span class="nc" id="L139">                Boolean calleeSet = call.setCallee(callee);</span>
+<span class="nc" id="L140">                Boolean startSet = call.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);</span>
+<span class="nc" id="L141">                Boolean endSet = call.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);</span>
 
-<span class="nc" id="L106">                bill.addPhoneCall(call);</span>
-<span class="nc" id="L107">                pw.println(customer + &quot;'s call has been added to their bill&quot;);</span>
-<span class="nc" id="L108">                response.setStatus(HttpServletResponse.SC_OK);</span>
-<span class="nc" id="L109">            }</span>
+<span class="nc bnc" id="L143" title="All 8 branches missed.">                if ((callerSet &amp;&amp; calleeSet &amp;&amp; startSet &amp;&amp; endSet)) {</span>
+<span class="nc" id="L144">                    bill.addPhoneCall(call);</span>
+<span class="nc" id="L145">                    pw.println(customer + &quot;'s call has been added to their bill&quot;);</span>
+                }
+                else {
+<span class="nc" id="L148">                    pw.println(&quot;The entered phone call data is formatted incorrectly.&quot;);</span>
+                }
+
+<span class="nc" id="L151">                response.setStatus(HttpServletResponse.SC_OK);</span>
+<span class="nc" id="L152">            }</span>
             else {
-<span class="nc" id="L111">                    response.setStatus(HttpServletResponse.SC_NOT_FOUND);</span>
+<span class="nc" id="L154">                response.setStatus(HttpServletResponse.SC_NOT_FOUND);</span>
             }
         }
-<span class="nc" id="L114">    }</span>
+<span class="nc" id="L157">    }</span>
 
     /**
-     * Handles an HTTP POST request by storing the dictionary entry for the
-     * &quot;word&quot; and &quot;definition&quot; request parameters.  It writes the dictionary
+     * Handles an HTTP POST request by storing the Phonecall for the
+     * &quot;customer&quot;, &quot;callerNumber&quot;, &quot;calleeNumber&quot;, &quot;startTime&quot;, and &quot;endTime&quot; request parameters.  It writes the Phonecall
      * entry to the HTTP response.
      */
     @Override
     protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
     {
-<span class="nc" id="L124">        response.setContentType( &quot;text/plain&quot; );</span>
+<span class="nc" id="L167">        response.setContentType( &quot;text/plain&quot; );</span>
 
-<span class="nc" id="L126">        String customer = getParameter(CUSTOMER_PARAM, request );</span>
-<span class="nc bnc" id="L127" title="All 2 branches missed.">        if (customer == null) {</span>
-<span class="nc" id="L128">            missingRequiredParameter(response, CUSTOMER_PARAM);</span>
-<span class="nc" id="L129">            return;</span>
+<span class="nc" id="L169">        String customer = getParameter(CUSTOMER_PARAM, request );</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">        if (customer == null) {</span>
+<span class="nc" id="L171">            PrintWriter pw = response.getWriter();</span>
+<span class="nc" id="L172">            pw.println(&quot;Missing customer.&quot;);</span>
+<span class="nc" id="L173">            pw.flush();</span>
+<span class="nc" id="L174">            return;</span>
         }
 
-      /*  String definition = getParameter(DEFINITION_PARAMETER, request );
-        if ( definition == null) {
-            missingRequiredParameter( response, DEFINITION_PARAMETER );
-            return;
-        }*/
+<span class="nc" id="L177">      String caller = getParameter(CALLER_PARAM, request);</span>
+<span class="nc" id="L178">      String callee = getParameter(CALLEE_PARAM, request);</span>
+<span class="nc" id="L179">      String startTime = getParameter(START_PARAM, request);</span>
+<span class="nc" id="L180">      String [] startPieces = startTime.split(&quot;\\s+&quot;);</span>
+<span class="nc" id="L181">      String endTime = getParameter(END_PARAM, request);</span>
+<span class="nc" id="L182">      String [] endPieces = endTime.split(&quot;\\s+&quot;);</span>
 
-<span class="nc" id="L138">      String caller = getParameter(CALLER_PARAM, request);</span>
-<span class="nc" id="L139">      String callee = getParameter(CALLEE_PARAM, request);</span>
-<span class="nc" id="L140">      String startTime = getParameter(START_PARAM, request);</span>
-<span class="nc" id="L141">      String [] startPieces = startTime.split(&quot;\\s+&quot;);</span>
-<span class="nc" id="L142">      String endTime = getParameter(END_PARAM, request);</span>
-<span class="nc" id="L143">      String [] endPieces = endTime.split(&quot;\\s+&quot;);</span>
+<span class="nc" id="L184">      PhoneBill bill = this.bills.get(customer);</span>
+<span class="nc bnc" id="L185" title="All 2 branches missed.">      if(bill == null) {</span>
 
-<span class="nc" id="L145">      PhoneBill bill = this.bills.get(customer);</span>
-<span class="nc bnc" id="L146" title="All 2 branches missed.">      if(bill == null) {</span>
-
-<span class="nc" id="L148">          bill = new PhoneBill();</span>
-<span class="nc" id="L149">          bill.setCustomer(customer);</span>
-<span class="nc" id="L150">          this.bills.put(customer, bill);</span>
+<span class="nc" id="L187">          bill = new PhoneBill();</span>
+<span class="nc" id="L188">          bill.setCustomer(customer);</span>
+<span class="nc" id="L189">          this.bills.put(customer, bill);</span>
       }
 
-<span class="nc" id="L153">      PhoneCall call = new PhoneCall();</span>
-<span class="nc" id="L154">      call.setCaller(caller);</span>
-<span class="nc" id="L155">      call.setCallee(callee);</span>
-<span class="nc" id="L156">      call.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);</span>
-<span class="nc" id="L157">      call.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);</span>
+<span class="nc" id="L192">      PhoneCall call = new PhoneCall();</span>
+<span class="nc" id="L193">      call.setCaller(caller);</span>
+<span class="nc" id="L194">      call.setCallee(callee);</span>
+<span class="nc" id="L195">      call.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);</span>
+<span class="nc" id="L196">      call.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);</span>
 
-<span class="nc" id="L159">      bill.addPhoneCall(call);</span>
-<span class="nc" id="L160">      response.setStatus( HttpServletResponse.SC_OK);</span>
-<span class="nc" id="L161">    }</span>
+<span class="nc" id="L198">      bill.addPhoneCall(call);</span>
+<span class="nc" id="L199">      response.setStatus( HttpServletResponse.SC_OK);</span>
+<span class="nc" id="L200">    }</span>
 
     /**
      * Handles an HTTP DELETE request by removing all dictionary entries.  This
@@ -167,35 +206,35 @@ import java.util.Map;
      */
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<span class="nc" id="L170">        response.setContentType(&quot;text/plain&quot;);</span>
+<span class="nc" id="L209">        response.setContentType(&quot;text/plain&quot;);</span>
 
-<span class="nc" id="L172">        this.dictionary.clear();</span>
+<span class="nc" id="L211">        this.dictionary.clear();</span>
 
-<span class="nc" id="L174">        PrintWriter pw = response.getWriter();</span>
-<span class="nc" id="L175">        pw.println(Messages.allDictionaryEntriesDeleted());</span>
-<span class="nc" id="L176">        pw.flush();</span>
+    /*    PrintWriter pw = response.getWriter();
+        pw.println(Messages.allDictionaryEntriesDeleted());
+        pw.flush();*/
 
-<span class="nc" id="L178">        response.setStatus(HttpServletResponse.SC_OK);</span>
+<span class="nc" id="L217">        response.setStatus(HttpServletResponse.SC_OK);</span>
 
-<span class="nc" id="L180">    }</span>
+<span class="nc" id="L219">    }</span>
 
     /**
      * Writes an error message about a missing parameter to the HTTP response.
      *
-     * The text of the error message is created by {@link Messages#missingRequiredParameter(String)}
+     * The text of the error message is created by
      */
     private void missingRequiredParameter( HttpServletResponse response, String parameterName )
         throws IOException
     {
-<span class="nc" id="L190">        String message = Messages.missingRequiredParameter(parameterName);</span>
-<span class="nc" id="L191">        response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, message);</span>
-<span class="nc" id="L192">    }</span>
+   /*     String message = Messages.missingRequiredParameter(parameterName);
+        response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, message);*/
+<span class="nc" id="L231">    }</span>
 
     /**
      * Writes the definition of the given word to the HTTP response.
      *
      * The text of the message is formatted with
-     * {@link Messages#formatDictionaryEntry(String, String)}
+     * {}
      */
     private void writeDefinition(String word, HttpServletResponse response ) throws IOException
     {
@@ -206,14 +245,14 @@ import java.util.Map;
 
         pw.flush();*/
 
-<span class="nc" id="L209">        response.setStatus( HttpServletResponse.SC_OK );</span>
-<span class="nc" id="L210">    }</span>
+<span class="nc" id="L248">        response.setStatus( HttpServletResponse.SC_OK );</span>
+<span class="nc" id="L249">    }</span>
 
     /**
      * Writes all of the dictionary entries to the HTTP response.
      *
      * The text of the message is formatted with
-     * {@link Messages#formatDictionaryEntry(String, String)}
+     * {}
      */
     private void writeAllDictionaryEntries(HttpServletResponse response ) throws IOException
     {
@@ -222,8 +261,8 @@ import java.util.Map;
 
         pw.flush();
 */
-<span class="nc" id="L225">        response.setStatus( HttpServletResponse.SC_OK );</span>
-<span class="nc" id="L226">    }</span>
+<span class="nc" id="L264">        response.setStatus( HttpServletResponse.SC_OK );</span>
+<span class="nc" id="L265">    }</span>
 
     /**
      * Returns the value of the HTTP request parameter with the given name.
@@ -232,25 +271,19 @@ import java.util.Map;
      *         &lt;code&gt;null&lt;/code&gt; or is the empty string
      */
 
-    private void writeAllPhoneBills(HttpServletResponse response ) throws IOException {
-      /*  PrintWriter pw = response.getWriter();
-        pw.flush();*/
-<span class="nc" id="L238">        response.setStatus(HttpServletResponse.SC_OK);</span>
-<span class="nc" id="L239">    }</span>
-
     private String getParameter(String name, HttpServletRequest request) {
-<span class="nc" id="L242">      String value = request.getParameter(name);</span>
-<span class="nc bnc" id="L243" title="All 4 branches missed.">      if (value == null || &quot;&quot;.equals(value)) {</span>
-<span class="nc" id="L244">        return null;</span>
+<span class="nc" id="L275">      String value = request.getParameter(name);</span>
+<span class="nc bnc" id="L276" title="All 4 branches missed.">      if (value == null || &quot;&quot;.equals(value)) {</span>
+<span class="nc" id="L277">        return null;</span>
 
       } else {
-<span class="nc" id="L247">        return value;</span>
+<span class="nc" id="L280">        return value;</span>
       }
     }
 
     @VisibleForTesting
     String getDefinition(String word) {
-<span class="nc" id="L253">        return this.dictionary.get(word);</span>
+<span class="nc" id="L286">        return this.dictionary.get(word);</span>
     }
 
 }

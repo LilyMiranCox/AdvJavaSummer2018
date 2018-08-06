@@ -1,13 +1,9 @@
-edu\pdx\cs410J\cox\PhoneBillRestClient.class
-edu\pdx\cs410J\cox\Messages.class
-edu\pdx\cs410J\cox\PhoneCall.class
-edu\pdx\cs410J\cox\Project3.class
-edu\pdx\cs410J\cox\Project4.class
 edu\pdx\cs410J\cox\TextDumper.class
-edu\pdx\cs410J\cox\Messages$1.class
-edu\pdx\cs410J\cox\Messages$2.class
+edu\pdx\cs410J\cox\PhoneBillRestClient.class
 edu\pdx\cs410J\cox\PrettyPrinter.class
+edu\pdx\cs410J\cox\PhoneCall.class
 edu\pdx\cs410J\cox\PhoneBill.class
 edu\pdx\cs410J\cox\PhoneBillRestClient$PhoneBillRestException.class
 edu\pdx\cs410J\cox\PhoneBillServlet.class
+edu\pdx\cs410J\cox\Project4.class
 edu\pdx\cs410J\cox\TextParser.class

@@ -36,58 +36,70 @@ public class PhoneBillRestClient extends HttpRequestHelper
     /**
      * Returns all dictionary entries from the server
      */
-    public Map&lt;String, String&gt; getAllDictionaryEntries() throws IOException {
-<span class="nc" id="L40">      Response response = get(this.url);</span>
-<span class="nc" id="L41">      return Messages.parseDictionary(response.getContent());</span>
-    }
+  /*  public Map&lt;String, String&gt; getAllDictionaryEntries() throws IOException {
+      Response response = get(this.url);
+      return Messages.parseDictionary(response.getContent());
+    }*/
 
     /**
      * Returns the definition for the given word
      */
-    public String getDefinition(String word) throws IOException {
-<span class="nc" id="L48">      Response response = get(this.url, &quot;word&quot;, word);</span>
-<span class="nc" id="L49">      throwExceptionIfNotOkayHttpStatus(response);</span>
-<span class="nc" id="L50">      String content = response.getContent();</span>
-<span class="nc" id="L51">      return Messages.parseDictionaryEntry(content).getValue();</span>
-    }
+   /* public String getDefinition(String word) throws IOException {
+      Response response = get(this.url, &quot;word&quot;, word);
+      throwExceptionIfNotOkayHttpStatus(response);
+      String content = response.getContent();
+      return Messages.parseDictionaryEntry(content).getValue();
+    }*/
 
     public void addDictionaryEntry(String word, String definition) throws IOException {
 <span class="nc" id="L55">      Response response = postToMyURL(&quot;word&quot;, word, &quot;definition&quot;, definition);</span>
 <span class="nc" id="L56">      throwExceptionIfNotOkayHttpStatus(response);</span>
 <span class="nc" id="L57">    }</span>
 
+    /**
+     * This method returns a string containing a pretty printed bill.
+     * @param customer A string containing the name of a customer.
+     * @return A string containing a pretty printed bill containing all of the customer's calls.
+     * @throws IOException
+     */
      public String getAllPhoneCallEntries(String customer) throws IOException {
-<span class="nc" id="L60">         Response response = get(this.url, &quot;customer&quot;, customer);</span>
-<span class="nc" id="L61">         return response.getContent();</span>
+<span class="nc" id="L66">         Response response = get(this.url, &quot;customer&quot;, customer);</span>
+<span class="nc" id="L67">         return response.getContent();</span>
      }
 
+    /**
+     * This method adds a new call to the customer's bill.
+     * @param customer A string containing a customer's name.
+     * @param call A phonecall to add to the bill.
+     * @throws IOException
+     */
     public void addPhoneCallEntry(String customer, PhoneCall call) throws IOException {
-<span class="nc" id="L65">        Response response = postToMyURL(&quot;customer&quot;, customer, &quot;callerNumber&quot;, call.getCaller(), &quot;calleeNumber&quot;, call.getCallee(), &quot;startTime&quot;, call.getStartTimeString(), &quot;endTime&quot;, call.getEndTimeString());</span>
-<span class="nc" id="L66">        throwExceptionIfNotOkayHttpStatus(response);</span>
-<span class="nc" id="L67">    }</span>
+<span class="nc" id="L77">        Response response = postToMyURL(&quot;customer&quot;, customer, &quot;callerNumber&quot;, call.getCaller(), &quot;calleeNumber&quot;, call.getCallee(), &quot;startTime&quot;, call.getStartTimeString(), &quot;endTime&quot;, call.getEndTimeString());</span>
+<span class="nc" id="L78">        throwExceptionIfNotOkayHttpStatus(response);</span>
+<span class="nc" id="L79">    }</span>
 
     @VisibleForTesting
     Response postToMyURL(String... PhoneCallEntries) throws IOException {
-<span class="fc" id="L71">      return post(this.url, PhoneCallEntries);</span>
+<span class="nc" id="L83">      return post(this.url, PhoneCallEntries);</span>
     }
 
     public void removeAllDictionaryEntries() throws IOException {
-<span class="fc" id="L75">      Response response = delete(this.url);</span>
-<span class="fc" id="L76">      throwExceptionIfNotOkayHttpStatus(response);</span>
-<span class="fc" id="L77">    }</span>
+<span class="fc" id="L87">      Response response = delete(this.url);</span>
+<span class="fc" id="L88">      throwExceptionIfNotOkayHttpStatus(response);</span>
+<span class="fc" id="L89">    }</span>
 
     private Response throwExceptionIfNotOkayHttpStatus(Response response) {
-<span class="fc" id="L80">      int code = response.getCode();</span>
-<span class="pc bpc" id="L81" title="1 of 2 branches missed.">      if (code != HTTP_OK) {</span>
-<span class="nc" id="L82">        throw new PhoneBillRestException(code);</span>
+<span class="fc" id="L92">      int code = response.getCode();</span>
+<span class="pc bpc" id="L93" title="1 of 2 branches missed.">      if (code != HTTP_OK) {</span>
+<span class="nc" id="L94">        throw new PhoneBillRestException(code);</span>
       }
-<span class="fc" id="L84">      return response;</span>
+<span class="fc" id="L96">      return response;</span>
     }
 
     private class PhoneBillRestException extends RuntimeException {
-<span class="nc" id="L88">      public PhoneBillRestException(int httpStatusCode) {</span>
-<span class="nc" id="L89">        super(&quot;Got an HTTP Status Code of &quot; + httpStatusCode);</span>
-<span class="nc" id="L90">      }</span>
+<span class="nc" id="L100">      public PhoneBillRestException(int httpStatusCode) {</span>
+<span class="nc" id="L101">        super(&quot;Got an HTTP Status Code of &quot; + httpStatusCode);</span>
+<span class="nc" id="L102">      }</span>
     }
 
 }

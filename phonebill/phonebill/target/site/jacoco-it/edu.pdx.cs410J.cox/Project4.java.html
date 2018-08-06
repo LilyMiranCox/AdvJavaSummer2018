@@ -28,187 +28,181 @@ import java.util.Map;
                 &quot;\nProject 4 implemented by Lily Cox \n&quot; +
                 &quot;\nThis program creates phone bills from phone call information.&quot; +
                 &quot;\nAll phone call information is entered in the form: customer callerNumber calleeNumber startTime endTime&quot; +
-                &quot;\nInformation can be brought in from a file included in the command line arguments and from the command line itself&quot; +
-                &quot;\nCall information in the command line may be preceded by the options: -print, -README, or -textFile or -pretty followed by the name of the file.&quot; +
+                &quot;\nCall information in the command line may be preceded by the options: -print, -README, or -search followed by just a customer name, start time, and end time.&quot; +
+                &quot;\nThe options -host and -port are required to use the program&quot;+
                 &quot;\nEach piece of data is then checked to make sure it adheres to the expected formatting.&quot; +
                 &quot;\nIf any information is formatted incorrectly, the program will report the error.&quot; +
                 &quot;\nIf it passes, however, and the -README option is not used, the information will be added to the instance of the&quot; +
                 &quot;\nPhoneCall class, and that instance added to the specified customer's bill.&quot; +
-                &quot;\nIf a file is used but the names in the file and command line do not match, an error will be reported.&quot; +
-                &quot;\nIf -pretty is used, and a text file is specified, an easy to read bill will be written to that file.&quot; +
-                &quot;\nIf '-' us used instead of a file, the easy to read bill will be written to the console instead.&quot;;
+                &quot;\nIf only a customer name is provided, all of the biils for that customer will be pretty printed to the command line.&quot; +
+                &quot;\nFrom the url, if you provide just a customer name, that customer's bill will be pretty printed.&quot; +
+                &quot;\nIf a customer name, start time, and end time are provided, all calls from the customer's bill that fall&quot; +
+                &quot;\nwithin that time period will be pretty printed.&quot; +
+                &quot;\nif the customer name, caller number, callee number, start time, and end time are provided, a new call&quot; +
+                &quot;\nwill be created for the customer's bill. If the customer does not already exist, it will be created.&quot;;
 
-<span class="nc" id="L41">        String hostName = null;</span>
-<span class="nc" id="L42">        String portString = null;</span>
-<span class="nc" id="L43">        String word = null;</span>
-<span class="nc" id="L44">        String definition = null;</span>
+<span class="nc" id="L44">        String hostName = null;</span>
+<span class="nc" id="L45">        String portString = null;</span>
 
-<span class="nc" id="L46">        int numOptionArgs = 14;</span>
-<span class="nc" id="L47">        int numOptionsUsed = 0;</span>
-<span class="nc" id="L48">        Boolean printCall = false;</span>
-<span class="nc" id="L49">        String searchName = null;</span>
-<span class="nc" id="L50">        Date searchStart = new Date();</span>
-<span class="nc" id="L51">        Date searchEnd = new Date();</span>
+<span class="nc" id="L47">        int numOptionArgs = 14;</span>
+<span class="nc" id="L48">        int numOptionsUsed = 0;</span>
+<span class="nc" id="L49">        Boolean printCall = false;</span>
+<span class="nc" id="L50">        String searchName = null;</span>
+<span class="nc" id="L51">        Date searchStart = new Date();</span>
+<span class="nc" id="L52">        Date searchEnd = new Date();</span>
 
-<span class="nc bnc" id="L53" title="All 2 branches missed.">        if (args.length == 0) { // Checks that command line arguments have been provided</span>
-<span class="nc" id="L54">            System.err.println(&quot;Missing command line arguments&quot;);</span>
-<span class="nc" id="L55">            System.exit(1);</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        if (args.length == 0) { // Checks that command line arguments have been provided</span>
+<span class="nc" id="L55">            System.err.println(&quot;Missing command line arguments&quot;);</span>
+<span class="nc" id="L56">            System.exit(1);</span>
         }
 
-<span class="nc bnc" id="L58" title="All 4 branches missed.">        for (int i = 0; i &lt; numOptionArgs &amp;&amp; i &lt; args.length; ++i) {</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">            if (args[i].equals(&quot;-README&quot;)) {</span>
-<span class="nc" id="L60">                printReadme(README);</span>
-<span class="nc bnc" id="L61" title="All 2 branches missed.">            } else if (args[i].equals(&quot;-host&quot;)) {</span>
-<span class="nc" id="L62">                hostName = args[i + 1];</span>
-<span class="nc" id="L63">                numOptionsUsed += 2;</span>
-<span class="nc bnc" id="L64" title="All 2 branches missed.">            } else if (args[i].equals(&quot;-port&quot;)) {</span>
-<span class="nc" id="L65">                portString = args[i + 1];</span>
-<span class="nc" id="L66">                numOptionsUsed += 2;</span>
-<span class="nc bnc" id="L67" title="All 2 branches missed.">            } else if (args[i].equals(&quot;-print&quot;)) {</span>
-<span class="nc bnc" id="L68" title="All 2 branches missed.">                if (printCall == true) {</span>
-<span class="nc" id="L69">                    System.err.println(&quot;-print option used multiple times.&quot;);</span>
-<span class="nc" id="L70">                    System.exit(1);</span>
+<span class="nc bnc" id="L59" title="All 4 branches missed.">        for (int i = 0; i &lt; numOptionArgs &amp;&amp; i &lt; args.length; ++i) {</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">            if (args[i].equals(&quot;-README&quot;)) {</span>
+<span class="nc" id="L61">                printReadme(README);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">            } else if (args[i].equals(&quot;-host&quot;)) {</span>
+<span class="nc" id="L63">                hostName = args[i + 1];</span>
+<span class="nc" id="L64">                numOptionsUsed += 2;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">            } else if (args[i].equals(&quot;-port&quot;)) {</span>
+<span class="nc" id="L66">                portString = args[i + 1];</span>
+<span class="nc" id="L67">                numOptionsUsed += 2;</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">            } else if (args[i].equals(&quot;-print&quot;)) {</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">                if (printCall == true) {</span>
+<span class="nc" id="L70">                    System.err.println(&quot;-print option used multiple times.&quot;);</span>
+<span class="nc" id="L71">                    System.exit(1);</span>
                 }
-<span class="nc" id="L72">                printCall = true;</span>
-<span class="nc" id="L73">                ++numOptionsUsed;</span>
-<span class="nc bnc" id="L74" title="All 2 branches missed.">            } else if (args[i].equals(&quot;-search&quot;)) {</span>
-<span class="nc" id="L75">                searchName = args[i + 1];</span>
+<span class="nc" id="L73">                printCall = true;</span>
+<span class="nc" id="L74">                ++numOptionsUsed;</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">            } else if (args[i].equals(&quot;-search&quot;)) {</span>
+<span class="nc" id="L76">                searchName = args[i + 1];</span>
 
-<span class="nc bnc" id="L77" title="All 2 branches missed.">                if(args.length &lt; numOptionsUsed + 8) {</span>
-<span class="nc" id="L78">                    System.err.println(&quot;'-search' requires a customer name, start time, and end time.&quot;);</span>
-<span class="nc" id="L79">                    System.exit(1);</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">                if(args.length &lt; numOptionsUsed + 8) {</span>
+<span class="nc" id="L79">                    System.err.println(&quot;'-search' requires a customer name, start time, and end time.&quot;);</span>
+<span class="nc" id="L80">                    System.exit(1);</span>
                 }
 
-<span class="nc" id="L82">                searchStart = call.stringToDate(args[i + 2], args[i + 3], args[i + 4]);</span>
-<span class="nc" id="L83">                searchEnd = call.stringToDate(args[i + 5], args[i + 6], args[i + 7]);</span>
+<span class="nc" id="L83">                searchStart = call.stringToDate(args[i + 2], args[i + 3], args[i + 4]);</span>
+<span class="nc" id="L84">                searchEnd = call.stringToDate(args[i + 5], args[i + 6], args[i + 7]);</span>
 
-<span class="nc bnc" id="L85" title="All 2 branches missed.">                if (searchStart.after(searchEnd)) {</span>
-<span class="nc" id="L86">                    System.err.println(&quot;The '-search' start time is after the end time.&quot;);</span>
-<span class="nc" id="L87">                    System.exit(1);</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">                if (searchStart.after(searchEnd)) {</span>
+<span class="nc" id="L87">                    System.err.println(&quot;The '-search' start time is after the end time.&quot;);</span>
+<span class="nc" id="L88">                    System.exit(1);</span>
                 }
-<span class="nc" id="L89">                numOptionsUsed += 8;</span>
+<span class="nc" id="L90">                numOptionsUsed += 8;</span>
             }
         }
 
-<span class="nc bnc" id="L93" title="All 2 branches missed.">        if (hostName == null) {</span>
-<span class="nc" id="L94">            usage(MISSING_ARGS);</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">        if (hostName == null) {</span>
+<span class="nc" id="L95">            usage(MISSING_ARGS);</span>
 
-<span class="nc bnc" id="L96" title="All 2 branches missed.">        } else if (portString == null) {</span>
-<span class="nc" id="L97">            usage(&quot;Missing port&quot;);</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        } else if (portString == null) {</span>
+<span class="nc" id="L98">            usage(&quot;Missing port&quot;);</span>
         }
 
         int port;
         try {
-<span class="nc" id="L102">            port = Integer.parseInt(portString);</span>
+<span class="nc" id="L103">            port = Integer.parseInt(portString);</span>
 
-<span class="nc" id="L104">        } catch (NumberFormatException ex) {</span>
-<span class="nc" id="L105">            usage(&quot;Port \&quot;&quot; + portString + &quot;\&quot; must be an integer&quot;);</span>
-<span class="nc" id="L106">            return;</span>
-<span class="nc" id="L107">        }</span>
+<span class="nc" id="L105">        } catch (NumberFormatException ex) {</span>
+<span class="nc" id="L106">            usage(&quot;Port \&quot;&quot; + portString + &quot;\&quot; must be an integer&quot;);</span>
+<span class="nc" id="L107">            return;</span>
+<span class="nc" id="L108">        }</span>
 
-<span class="nc bnc" id="L109" title="All 2 branches missed.">        if (args.length &gt; (numOptionsUsed + 9)) { // If too many phone call arguments were included</span>
-<span class="nc" id="L110">            System.err.println(&quot;Too many phone call arguments.&quot;);</span>
-<span class="nc" id="L111">            System.exit(1);</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        if (args.length &gt; (numOptionsUsed + 9)) { // If too many phone call arguments were included</span>
+<span class="nc" id="L111">            System.err.println(&quot;Too many phone call arguments.&quot;);</span>
+<span class="nc" id="L112">            System.exit(1);</span>
         }
 
-<span class="nc bnc" id="L114" title="All 6 branches missed.">        if (args.length != (numOptionsUsed + 9) &amp;&amp; args.length != (numOptionsUsed + 1) &amp;&amp; searchName == null) { // Since there are seven total pieces of data expected for the PhoneCall, there must be that many arguments (if no options are used)</span>
-<span class="nc" id="L115">            System.err.println(&quot;Does not contain all required phone call arguments.&quot;);</span>
-<span class="nc" id="L116">            System.exit(1);</span>
+<span class="nc bnc" id="L115" title="All 6 branches missed.">        if (args.length != (numOptionsUsed + 9) &amp;&amp; args.length != (numOptionsUsed + 1) &amp;&amp; searchName == null) { // Since there are seven total pieces of data expected for the PhoneCall, there must be that many arguments (if no options are used)</span>
+<span class="nc" id="L116">            System.err.println(&quot;Does not contain all required phone call arguments.&quot;);</span>
+<span class="nc" id="L117">            System.exit(1);</span>
         }
 
-<span class="nc" id="L119">        PhoneBillRestClient client = new PhoneBillRestClient(hostName, port);</span>
+<span class="nc" id="L120">        PhoneBillRestClient client = new PhoneBillRestClient(hostName, port);</span>
 
-<span class="nc bnc" id="L121" title="All 4 branches missed.">        if (searchName != null || args.length == numOptionsUsed + 1) {</span>
+        // If something was searched or only the customer name is included - get the bill from the server
+<span class="nc bnc" id="L123" title="All 4 branches missed.">        if (searchName != null || args.length == numOptionsUsed + 1) {</span>
             try {
                 String allCalls;
-<span class="nc bnc" id="L124" title="All 2 branches missed.">                if(searchName != null) {</span>
-
-<span class="nc" id="L126">                    allCalls = client.getAllPhoneCallEntries(searchName);</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">                if(searchName != null) {</span>
+<span class="nc" id="L127">                    allCalls = client.getAllPhoneCallEntries(searchName);</span>
                 }
                 else {
-<span class="nc" id="L129">                    bill.setCustomer(args[numOptionsUsed]);</span>
-<span class="nc" id="L130">                    allCalls = client.getAllPhoneCallEntries(args[numOptionsUsed]);</span>
+<span class="nc" id="L130">                    bill.setCustomer(args[numOptionsUsed]);</span>
+<span class="nc" id="L131">                    allCalls = client.getAllPhoneCallEntries(args[numOptionsUsed]);</span>
                 }
 
-<span class="nc" id="L133">                String [] lines = allCalls.split(&quot;\n&quot;);</span>
-<span class="nc bnc" id="L134" title="All 2 branches missed.">                for(int i = 3; i &lt; lines.length; i+=6) {</span>
-<span class="nc" id="L135">                    PhoneCall newCall = new PhoneCall();</span>
+<span class="nc" id="L134">                String [] lines = allCalls.split(&quot;\n&quot;); // Get each line of the pretty printed bill</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">                for(int i = 3; i &lt; lines.length; i+=6) { // For each call, parse it and put it into a new phonecall</span>
+<span class="nc" id="L136">                    PhoneCall newCall = new PhoneCall();</span>
 
-<span class="nc" id="L137">                    String startTime = lines[i].replace(&quot; Start time: &quot;, &quot;&quot;);</span>
-<span class="nc" id="L138">                    String[] startPieces = startTime.split(&quot;\\s+&quot;);</span>
-<span class="nc" id="L139">                    newCall.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);</span>
+<span class="nc" id="L138">                    String startTime = lines[i].replace(&quot; Start time: &quot;, &quot;&quot;);</span>
+<span class="nc" id="L139">                    String[] startPieces = startTime.split(&quot;\\s+&quot;);</span>
+<span class="nc" id="L140">                    newCall.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);</span>
 
-<span class="nc" id="L141">                    String endTime = lines[i+1].replace(&quot;   End time: &quot;,&quot;&quot;);</span>
-<span class="nc" id="L142">                    String[] endPieces = endTime.split(&quot;\\s+&quot;);</span>
-<span class="nc" id="L143">                    newCall.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);</span>
+<span class="nc" id="L142">                    String endTime = lines[i+1].replace(&quot;   End time: &quot;,&quot;&quot;);</span>
+<span class="nc" id="L143">                    String[] endPieces = endTime.split(&quot;\\s+&quot;);</span>
+<span class="nc" id="L144">                    newCall.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);</span>
 
-<span class="nc" id="L145">                    String callerNum = lines[i+3].replace(&quot;       From: &quot;,&quot;&quot;);</span>
-<span class="nc" id="L146">                    newCall.setCaller(callerNum);</span>
+<span class="nc" id="L146">                    String callerNum = lines[i+3].replace(&quot;       From: &quot;,&quot;&quot;);</span>
+<span class="nc" id="L147">                    newCall.setCaller(callerNum);</span>
 
-<span class="nc" id="L148">                    String calleeNum = lines[i+4].replace(&quot;         To: &quot;,&quot;&quot;);</span>
-<span class="nc" id="L149">                    newCall.setCallee(calleeNum);</span>
-<span class="nc" id="L150">                    bill.addPhoneCall(newCall);</span>
+<span class="nc" id="L149">                    String calleeNum = lines[i+4].replace(&quot;         To: &quot;,&quot;&quot;);</span>
+<span class="nc" id="L150">                    newCall.setCallee(calleeNum);</span>
+<span class="nc" id="L151">                    bill.addPhoneCall(newCall);</span>
                 }
 
-<span class="nc bnc" id="L153" title="All 2 branches missed.">                if(searchName == null) {</span>
-<span class="nc" id="L154">                    PrettyPrinter newPrettyPrint = new PrettyPrinter();</span>
-<span class="nc" id="L155">                    Boolean displayed = newPrettyPrint.printOut(bill, &quot;Search results: &quot;);</span>
-<span class="nc bnc" id="L156" title="All 2 branches missed.">                    if (displayed == false) {</span>
-<span class="nc" id="L157">                        System.err.println(&quot;That customer does not exist&quot;);</span>
-<span class="nc" id="L158">                        System.exit(1);</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">                if(searchName == null) { // If nothing was searched, then pretty print all of the bills</span>
+<span class="nc" id="L155">                    PrettyPrinter newPrettyPrint = new PrettyPrinter();</span>
+<span class="nc" id="L156">                    Boolean displayed = newPrettyPrint.printOut(bill, &quot;Search results: &quot;);</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">                    if (displayed == false) {</span>
+<span class="nc" id="L158">                        System.err.println(&quot;That customer does not exist&quot;);</span>
+<span class="nc" id="L159">                        System.exit(1);</span>
                     }
-<span class="nc" id="L160">                }</span>
-                else {
-<span class="nc" id="L162">                    PhoneBill searchedCalls = bill.searchCalls(searchName, searchStart, searchEnd);</span>
+<span class="nc" id="L161">                }</span>
+                else { // Get the calls that fall within the start and end times.
+<span class="nc" id="L163">                    PhoneBill searchedCalls = bill.searchCalls(searchName, searchStart, searchEnd);</span>
 
-<span class="nc" id="L164">                    PrettyPrinter newPrettyPrint = new PrettyPrinter();</span>
-<span class="nc" id="L165">                    Boolean displayed = newPrettyPrint.printOut(searchedCalls, &quot;Search results: &quot;);</span>
-<span class="nc bnc" id="L166" title="All 2 branches missed.">                    if (displayed == false) {</span>
-<span class="nc" id="L167">                        System.err.println(&quot;No calls fall within the included time period.&quot;);</span>
+<span class="nc" id="L165">                    PrettyPrinter newPrettyPrint = new PrettyPrinter();</span>
+<span class="nc" id="L166">                    Boolean displayed = newPrettyPrint.printOut(searchedCalls, &quot;Search results: &quot;);</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">                    if (displayed == false) {</span>
+<span class="nc" id="L168">                        System.err.println(&quot;No calls fall within the included time period.&quot;);</span>
                     }
                 }
             }
-<span class="nc" id="L171">            catch (IOException ex)  {</span>
-<span class="nc" id="L172">                error(&quot;While contacting server: &quot; + ex);</span>
-<span class="nc" id="L173">                return;</span>
-<span class="nc" id="L174">            }</span>
+<span class="nc" id="L172">            catch (IOException ex)  {</span>
+<span class="nc" id="L173">                error(&quot;While contacting server: &quot; + ex);</span>
+<span class="nc" id="L174">                return;</span>
+<span class="nc" id="L175">            }</span>
 
         }
-<span class="nc bnc" id="L177" title="All 4 branches missed.">        if(args.length != numOptionsUsed+1 &amp;&amp; searchName == null) {</span>
+
+<span class="nc bnc" id="L179" title="All 4 branches missed.">        if(args.length != numOptionsUsed+1 &amp;&amp; searchName == null) { // If a new call is to be added</span>
             // Set the PhoneCall information, and add it to the PhoneBill
-<span class="nc" id="L179">            bill.setCustomer(args[numOptionsUsed]); // Set the name of the customer in the bill</span>
-<span class="nc" id="L180">            Boolean caller = call.setCaller(args[numOptionsUsed + 1]); // Test formatting of the phone # and set it</span>
-<span class="nc" id="L181">            Boolean callee = call.setCallee(args[numOptionsUsed + 2]); // Test formatting of the phone # and set it</span>
-<span class="nc" id="L182">            Boolean start = call.setStartTimeString(args[numOptionsUsed + 3], args[numOptionsUsed + 4], args[numOptionsUsed + 5]); // Test formatting of the date and time and set it</span>
-<span class="nc" id="L183">            Boolean end = call.setEndTimeString(args[numOptionsUsed + 6], args[numOptionsUsed + 7], args[numOptionsUsed + 8]); // Test formatting of the date and time and set it</span>
-<span class="nc" id="L184">            bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill</span>
-<span class="nc bnc" id="L185" title="All 8 branches missed.">             if ((caller &amp;&amp; callee &amp;&amp; start &amp;&amp; end)) { // If it passes all formatting tests, and all variables are set</span>
-<span class="nc bnc" id="L186" title="All 2 branches missed.">                 if (printCall == true) {</span>
-<span class="nc" id="L187">                     System.out.println(&quot;Bill for: &quot; + bill.getCustomer());</span>
-<span class="nc bnc" id="L188" title="All 2 branches missed.">                     for (PhoneCall c : bill.getPhoneCalls()) {</span>
-<span class="nc" id="L189">                         printPhonecall(c);</span>
-<span class="nc" id="L190">                     }</span>
+<span class="nc" id="L181">            bill.setCustomer(args[numOptionsUsed]); // Set the name of the customer in the bill</span>
+<span class="nc" id="L182">            Boolean caller = call.setCaller(args[numOptionsUsed + 1]); // Test formatting of the phone # and set it</span>
+<span class="nc" id="L183">            Boolean callee = call.setCallee(args[numOptionsUsed + 2]); // Test formatting of the phone # and set it</span>
+<span class="nc" id="L184">            Boolean start = call.setStartTimeString(args[numOptionsUsed + 3], args[numOptionsUsed + 4], args[numOptionsUsed + 5]); // Test formatting of the date and time and set it</span>
+<span class="nc" id="L185">            Boolean end = call.setEndTimeString(args[numOptionsUsed + 6], args[numOptionsUsed + 7], args[numOptionsUsed + 8]); // Test formatting of the date and time and set it</span>
+
+<span class="nc bnc" id="L187" title="All 8 branches missed.">            if ((caller &amp;&amp; callee &amp;&amp; start &amp;&amp; end)) { // If it passes all formatting tests, and all variables are set</span>
+<span class="nc" id="L188">                bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">                 if (printCall == true) {</span>
+<span class="nc" id="L190">                     System.out.println(&quot;Bill for: &quot; + bill.getCustomer());</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">                     for (PhoneCall c : bill.getPhoneCalls()) {</span>
+<span class="nc" id="L192">                         printPhonecall(c);</span>
+<span class="nc" id="L193">                     }</span>
                  }
-             }
-<span class="nc" id="L193">         }</span>
-<span class="nc bnc" id="L194" title="All 4 branches missed.">         else if (printCall == true &amp;&amp; args.length == numOptionsUsed+1) {</span>
-<span class="nc" id="L195">            System.out.println(&quot;Bill for: &quot; + bill.getCustomer());</span>
-<span class="nc bnc" id="L196" title="All 2 branches missed.">            for (PhoneCall c : bill.getPhoneCalls()) {</span>
-<span class="nc" id="L197">                printPhonecall(c);</span>
-<span class="nc" id="L198">            }</span>
-        }
 
-        try {
-<span class="nc bnc" id="L202" title="All 4 branches missed.">            if(args.length != numOptionsUsed+1 &amp;&amp; searchName == null) {</span>
-<span class="nc" id="L203">                client.addPhoneCallEntry(bill.getCustomer(), call);</span>
+                 try {
+<span class="nc" id="L197">                     client.addPhoneCallEntry(bill.getCustomer(), call);</span>
+<span class="nc" id="L198">                 } catch (IOException ex) {</span>
+<span class="nc" id="L199">                     error(&quot;While contacting server: &quot; + ex);</span>
+<span class="nc" id="L200">                     return;</span>
+<span class="nc" id="L201">                 }</span>
             }
-<span class="nc" id="L205">        } catch (IOException ex) {</span>
-<span class="nc" id="L206">            error(&quot;While contacting server: &quot; + ex);</span>
-<span class="nc" id="L207">            return;</span>
-<span class="nc" id="L208">        }</span>
-
-<span class="nc" id="L210">        System.exit(0);</span>
-<span class="nc" id="L211">    }</span>
+         }
+<span class="nc" id="L204">        System.exit(0);</span>
+<span class="nc" id="L205">    }</span>
 
     /**
      * Makes sure that the give response has the expected HTTP status code
@@ -217,18 +211,18 @@ import java.util.Map;
      * @param response The response from the server
      */
     private static void checkResponseCode(int code, HttpRequestHelper.Response response) {
-<span class="nc bnc" id="L220" title="All 2 branches missed.">        if (response.getCode() != code) {</span>
-<span class="nc" id="L221">            error(String.format(&quot;Expected HTTP code %d, got code %d.\n\n%s&quot;, code,</span>
-<span class="nc" id="L222">                    response.getCode(), response.getContent()));</span>
+<span class="nc bnc" id="L214" title="All 2 branches missed.">        if (response.getCode() != code) {</span>
+<span class="nc" id="L215">            error(String.format(&quot;Expected HTTP code %d, got code %d.\n\n%s&quot;, code,</span>
+<span class="nc" id="L216">                    response.getCode(), response.getContent()));</span>
         }
-<span class="nc" id="L224">    }</span>
+<span class="nc" id="L218">    }</span>
 
     private static void error(String message) {
-<span class="nc" id="L227">        PrintStream err = System.err;</span>
-<span class="nc" id="L228">        err.println(&quot;** &quot; + message);</span>
+<span class="nc" id="L221">        PrintStream err = System.err;</span>
+<span class="nc" id="L222">        err.println(&quot;** &quot; + message);</span>
 
-<span class="nc" id="L230">        System.exit(1);</span>
-<span class="nc" id="L231">    }</span>
+<span class="nc" id="L224">        System.exit(1);</span>
+<span class="nc" id="L225">    }</span>
 
     /**
      * Prints usage information for this program and exits
@@ -236,24 +230,24 @@ import java.util.Map;
      * @param message An error message to print
      */
     private static void usage(String message) {
-<span class="nc" id="L239">        PrintStream err = System.err;</span>
-<span class="nc" id="L240">        err.println(&quot;** &quot; + message);</span>
+<span class="nc" id="L233">        PrintStream err = System.err;</span>
+<span class="nc" id="L234">        err.println(&quot;** &quot; + message);</span>
+<span class="nc" id="L235">        err.println();</span>
+<span class="nc" id="L236">        err.println(&quot;usage: java Project4 host port [word] [definition]&quot;);</span>
+<span class="nc" id="L237">        err.println(&quot;  host         Host of web server&quot;);</span>
+<span class="nc" id="L238">        err.println(&quot;  port         Port of web server&quot;);</span>
+<span class="nc" id="L239">        err.println(&quot;  word         Word in dictionary&quot;);</span>
+<span class="nc" id="L240">        err.println(&quot;  definition   Definition of word&quot;);</span>
 <span class="nc" id="L241">        err.println();</span>
-<span class="nc" id="L242">        err.println(&quot;usage: java Project4 host port [word] [definition]&quot;);</span>
-<span class="nc" id="L243">        err.println(&quot;  host         Host of web server&quot;);</span>
-<span class="nc" id="L244">        err.println(&quot;  port         Port of web server&quot;);</span>
-<span class="nc" id="L245">        err.println(&quot;  word         Word in dictionary&quot;);</span>
-<span class="nc" id="L246">        err.println(&quot;  definition   Definition of word&quot;);</span>
+<span class="nc" id="L242">        err.println(&quot;This simple program posts words and their definitions&quot;);</span>
+<span class="nc" id="L243">        err.println(&quot;to the server.&quot;);</span>
+<span class="nc" id="L244">        err.println(&quot;If no definition is specified, then the word's definition&quot;);</span>
+<span class="nc" id="L245">        err.println(&quot;is printed.&quot;);</span>
+<span class="nc" id="L246">        err.println(&quot;If no word is specified, all dictionary entries are printed&quot;);</span>
 <span class="nc" id="L247">        err.println();</span>
-<span class="nc" id="L248">        err.println(&quot;This simple program posts words and their definitions&quot;);</span>
-<span class="nc" id="L249">        err.println(&quot;to the server.&quot;);</span>
-<span class="nc" id="L250">        err.println(&quot;If no definition is specified, then the word's definition&quot;);</span>
-<span class="nc" id="L251">        err.println(&quot;is printed.&quot;);</span>
-<span class="nc" id="L252">        err.println(&quot;If no word is specified, all dictionary entries are printed&quot;);</span>
-<span class="nc" id="L253">        err.println();</span>
 
-<span class="nc" id="L255">        System.exit(1);</span>
-<span class="nc" id="L256">    }</span>
+<span class="nc" id="L249">        System.exit(1);</span>
+<span class="nc" id="L250">    }</span>
 
     /**
      * This method accepts a String containing a README statement, prints the statement to the console, then exits.
@@ -261,9 +255,9 @@ import java.util.Map;
      * @param README A String containing a README statement
      */
     public static void printReadme(String README) {
-<span class="nc" id="L264">        System.out.println(README);</span>
-<span class="nc" id="L265">        System.exit(0);</span>
-<span class="nc" id="L266">    }</span>
+<span class="nc" id="L258">        System.out.println(README);</span>
+<span class="nc" id="L259">        System.exit(0);</span>
+<span class="nc" id="L260">    }</span>
 
     /**
      * This method receives a PhoneCall, and prints out its contents to the console
@@ -272,7 +266,7 @@ import java.util.Map;
      */
     public static void printPhonecall(PhoneCall call) {
 
-<span class="nc" id="L275">        System.out.println(call.toString());</span>
-<span class="nc" id="L276">    }</span>
+<span class="nc" id="L269">        System.out.println(call.toString());</span>
+<span class="nc" id="L270">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

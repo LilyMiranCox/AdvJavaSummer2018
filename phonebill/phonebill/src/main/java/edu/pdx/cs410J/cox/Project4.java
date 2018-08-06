@@ -28,20 +28,21 @@ public class Project4 {
                 "\nProject 4 implemented by Lily Cox \n" +
                 "\nThis program creates phone bills from phone call information." +
                 "\nAll phone call information is entered in the form: customer callerNumber calleeNumber startTime endTime" +
-                "\nInformation can be brought in from a file included in the command line arguments and from the command line itself" +
-                "\nCall information in the command line may be preceded by the options: -print, -README, or -textFile or -pretty followed by the name of the file." +
+                "\nCall information in the command line may be preceded by the options: -print, -README, or -search followed by just a customer name, start time, and end time." +
+                "\nThe options -host and -port are required to use the program"+
                 "\nEach piece of data is then checked to make sure it adheres to the expected formatting." +
                 "\nIf any information is formatted incorrectly, the program will report the error." +
                 "\nIf it passes, however, and the -README option is not used, the information will be added to the instance of the" +
                 "\nPhoneCall class, and that instance added to the specified customer's bill." +
-                "\nIf a file is used but the names in the file and command line do not match, an error will be reported." +
-                "\nIf -pretty is used, and a text file is specified, an easy to read bill will be written to that file." +
-                "\nIf '-' us used instead of a file, the easy to read bill will be written to the console instead.";
+                "\nIf only a customer name is provided, all of the biils for that customer will be pretty printed to the command line." +
+                "\nFrom the url, if you provide just a customer name, that customer's bill will be pretty printed." +
+                "\nIf a customer name, start time, and end time are provided, all calls from the customer's bill that fall" +
+                "\nwithin that time period will be pretty printed." +
+                "\nif the customer name, caller number, callee number, start time, and end time are provided, a new call" +
+                "\nwill be created for the customer's bill. If the customer does not already exist, it will be created.";
 
         String hostName = null;
         String portString = null;
-        String word = null;
-        String definition = null;
 
         int numOptionArgs = 14;
         int numOptionsUsed = 0;
@@ -118,11 +119,11 @@ public class Project4 {
 
         PhoneBillRestClient client = new PhoneBillRestClient(hostName, port);
 
+        // If something was searched or only the customer name is included - get the bill from the server
         if (searchName != null || args.length == numOptionsUsed + 1) {
             try {
                 String allCalls;
                 if(searchName != null) {
-
                     allCalls = client.getAllPhoneCallEntries(searchName);
                 }
                 else {
@@ -130,8 +131,8 @@ public class Project4 {
                     allCalls = client.getAllPhoneCallEntries(args[numOptionsUsed]);
                 }
 
-                String [] lines = allCalls.split("\n");
-                for(int i = 3; i < lines.length; i+=6) {
+                String [] lines = allCalls.split("\n"); // Get each line of the pretty printed bill
+                for(int i = 3; i < lines.length; i+=6) { // For each call, parse it and put it into a new phonecall
                     PhoneCall newCall = new PhoneCall();
 
                     String startTime = lines[i].replace(" Start time: ", "");
@@ -150,7 +151,7 @@ public class Project4 {
                     bill.addPhoneCall(newCall);
                 }
 
-                if(searchName == null) {
+                if(searchName == null) { // If nothing was searched, then pretty print all of the bills
                     PrettyPrinter newPrettyPrint = new PrettyPrinter();
                     Boolean displayed = newPrettyPrint.printOut(bill, "Search results: ");
                     if (displayed == false) {
@@ -158,7 +159,7 @@ public class Project4 {
                         System.exit(1);
                     }
                 }
-                else {
+                else { // Get the calls that fall within the start and end times.
                     PhoneBill searchedCalls = bill.searchCalls(searchName, searchStart, searchEnd);
 
                     PrettyPrinter newPrettyPrint = new PrettyPrinter();
@@ -174,33 +175,32 @@ public class Project4 {
             }
 
         }
-        if(args.length != numOptionsUsed+1 && searchName == null) {
+
+        if(args.length != numOptionsUsed+1 && searchName == null) { // If a new call is to be added
             // Set the PhoneCall information, and add it to the PhoneBill
             bill.setCustomer(args[numOptionsUsed]); // Set the name of the customer in the bill
             Boolean caller = call.setCaller(args[numOptionsUsed + 1]); // Test formatting of the phone # and set it
             Boolean callee = call.setCallee(args[numOptionsUsed + 2]); // Test formatting of the phone # and set it
             Boolean start = call.setStartTimeString(args[numOptionsUsed + 3], args[numOptionsUsed + 4], args[numOptionsUsed + 5]); // Test formatting of the date and time and set it
             Boolean end = call.setEndTimeString(args[numOptionsUsed + 6], args[numOptionsUsed + 7], args[numOptionsUsed + 8]); // Test formatting of the date and time and set it
-            bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill
-             if ((caller && callee && start && end)) { // If it passes all formatting tests, and all variables are set
+
+            if ((caller && callee && start && end)) { // If it passes all formatting tests, and all variables are set
+                bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill
                  if (printCall == true) {
                      System.out.println("Bill for: " + bill.getCustomer());
                      for (PhoneCall c : bill.getPhoneCalls()) {
                          printPhonecall(c);
                      }
                  }
-             }
-         }
 
-        try {
-            if(args.length != numOptionsUsed+1 && searchName == null) {
-                client.addPhoneCallEntry(bill.getCustomer(), call);
+                 try {
+                     client.addPhoneCallEntry(bill.getCustomer(), call);
+                 } catch (IOException ex) {
+                     error("While contacting server: " + ex);
+                     return;
+                 }
             }
-        } catch (IOException ex) {
-            error("While contacting server: " + ex);
-            return;
-        }
-
+         }
         System.exit(0);
     }
 
