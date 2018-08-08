@@ -2,7 +2,7 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 Phone Bill Web/REST Project,edu.pdx.cs410J.cox,TextDumper,66,0,4,0,18,0,5,0,3,0
 Phone Bill Web/REST Project,edu.pdx.cs410J.cox,PhoneCall,601,0,70,0,166,0,54,0,19,0
 Phone Bill Web/REST Project,edu.pdx.cs410J.cox,PhoneBillRestClient,110,46,1,1,10,9,5,3,4,3
-Phone Bill Web/REST Project,edu.pdx.cs410J.cox,Project4,609,0,66,0,142,0,40,0,7,0
+Phone Bill Web/REST Project,edu.pdx.cs410J.cox,Project4,646,0,72,0,153,0,44,0,8,0
 Phone Bill Web/REST Project,edu.pdx.cs410J.cox,PhoneBillServlet,497,0,70,0,114,0,44,0,9,0
 Phone Bill Web/REST Project,edu.pdx.cs410J.cox,TextParser,369,0,48,0,90,0,31,0,7,0
 Phone Bill Web/REST Project,edu.pdx.cs410J.cox,PhoneBill,125,0,16,0,31,0,14,0,6,0

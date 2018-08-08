@@ -44,12 +44,13 @@ public class Project4 {
         String hostName = null;
         String portString = null;
 
-        int numOptionArgs = 14;
+        int numOptionArgs = 7;
         int numOptionsUsed = 0;
         Boolean printCall = false;
-        String searchName = null;
-        Date searchStart = new Date();
-        Date searchEnd = new Date();
+        Boolean searchBill = false;
+    //    String searchName = null;
+    //    Date searchStart = new Date();
+    //    Date searchEnd = new Date();
 
         if (args.length == 0) { // Checks that command line arguments have been provided
             System.err.println("Missing command line arguments");
@@ -70,24 +71,17 @@ public class Project4 {
                     System.err.println("-print option used multiple times.");
                     System.exit(1);
                 }
+
                 printCall = true;
                 ++numOptionsUsed;
             } else if (args[i].equals("-search")) {
-                searchName = args[i + 1];
-
-                if(args.length < numOptionsUsed + 8) {
-                    System.err.println("'-search' requires a customer name, start time, and end time.");
+                if (searchBill == true) {
+                    System.err.println("-search option used multiple times.");
                     System.exit(1);
                 }
 
-                searchStart = call.stringToDate(args[i + 2], args[i + 3], args[i + 4]);
-                searchEnd = call.stringToDate(args[i + 5], args[i + 6], args[i + 7]);
-
-                if (searchStart.after(searchEnd)) {
-                    System.err.println("The '-search' start time is after the end time.");
-                    System.exit(1);
-                }
-                numOptionsUsed += 8;
+                searchBill = true;
+                ++numOptionsUsed;
             }
         }
 
@@ -112,7 +106,7 @@ public class Project4 {
             System.exit(1);
         }
 
-        if (args.length != (numOptionsUsed + 9) && args.length != (numOptionsUsed + 1) && searchName == null) { // Since there are seven total pieces of data expected for the PhoneCall, there must be that many arguments (if no options are used)
+        if (args.length != (numOptionsUsed + 9) && args.length != (numOptionsUsed + 1) && searchBill == false) { // Since there are seven total pieces of data expected for the PhoneCall, there must be that many arguments (if no options are used)
             System.err.println("Does not contain all required phone call arguments.");
             System.exit(1);
         }
@@ -120,52 +114,57 @@ public class Project4 {
         PhoneBillRestClient client = new PhoneBillRestClient(hostName, port);
 
         // If something was searched or only the customer name is included - get the bill from the server
-        if (searchName != null || args.length == numOptionsUsed + 1) {
+        if (searchBill == true || args.length == numOptionsUsed + 1) {
             try {
                 String allCalls;
-                if(searchName != null) {
+                if(searchBill == true) {
+                    if(args.length < numOptionsUsed + 7) {
+                        System.err.println("'-search' requires a customer name, start time, and end time.");
+                        System.exit(1);
+                    }
+
+                    String searchName = args[numOptionsUsed];
+
+                    Date searchStart = call.stringToDate(args[numOptionsUsed + 1], args[numOptionsUsed + 2], args[numOptionsUsed + 3]);
+                    Date searchEnd = call.stringToDate(args[numOptionsUsed + 4], args[numOptionsUsed + 5], args[numOptionsUsed + 6]);
+
+                    if (searchStart.after(searchEnd)) {
+                        System.err.println("The '-search' start time is after the end time.");
+                        System.exit(1);
+                    }
                     allCalls = client.getAllPhoneCallEntries(searchName);
-                }
-                else {
-                    bill.setCustomer(args[numOptionsUsed]);
-                    allCalls = client.getAllPhoneCallEntries(args[numOptionsUsed]);
-                }
 
-                String [] lines = allCalls.split("\n"); // Get each line of the pretty printed bill
-                for(int i = 3; i < lines.length; i+=6) { // For each call, parse it and put it into a new phonecall
-                    PhoneCall newCall = new PhoneCall();
-
-                    String startTime = lines[i].replace(" Start time: ", "");
-                    String[] startPieces = startTime.split("\\s+");
-                    newCall.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);
-
-                    String endTime = lines[i+1].replace("   End time: ","");
-                    String[] endPieces = endTime.split("\\s+");
-                    newCall.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);
-
-                    String callerNum = lines[i+3].replace("       From: ","");
-                    newCall.setCaller(callerNum);
-
-                    String calleeNum = lines[i+4].replace("         To: ","");
-                    newCall.setCallee(calleeNum);
-                    bill.addPhoneCall(newCall);
-                }
-
-                if(searchName == null) { // If nothing was searched, then pretty print all of the bills
-                    PrettyPrinter newPrettyPrint = new PrettyPrinter();
-                    Boolean displayed = newPrettyPrint.printOut(bill, "Search results: ");
-                    if (displayed == false) {
+                    if(allCalls.equals("Not Found")) {
                         System.err.println("That customer does not exist");
                         System.exit(1);
                     }
-                }
-                else { // Get the calls that fall within the start and end times.
+
+                    bill = getBillsFromServer(allCalls, bill);
+
                     PhoneBill searchedCalls = bill.searchCalls(searchName, searchStart, searchEnd);
 
                     PrettyPrinter newPrettyPrint = new PrettyPrinter();
                     Boolean displayed = newPrettyPrint.printOut(searchedCalls, "Search results: ");
                     if (displayed == false) {
                         System.err.println("No calls fall within the included time period.");
+                    }
+                }
+                else {
+                    bill.setCustomer(args[numOptionsUsed]);
+                    allCalls = client.getAllPhoneCallEntries(args[numOptionsUsed]);
+
+                    if(allCalls.equals("Not Found")) {
+                        System.err.println("That customer does not exist");
+                        System.exit(1);
+                    }
+
+                    bill = getBillsFromServer(allCalls, bill);
+
+                    PrettyPrinter newPrettyPrint = new PrettyPrinter();
+                    Boolean displayed = newPrettyPrint.printOut(bill, "Search results: ");
+                    if (displayed == false) {
+                        System.err.println("That customer does not exist");
+                        System.exit(1);
                     }
                 }
             }
@@ -176,29 +175,31 @@ public class Project4 {
 
         }
 
-        if(args.length != numOptionsUsed+1 && searchName == null) { // If a new call is to be added
+        if(args.length != numOptionsUsed+1 && searchBill == false) { // If a new call is to be added
             // Set the PhoneCall information, and add it to the PhoneBill
-            bill.setCustomer(args[numOptionsUsed]); // Set the name of the customer in the bill
-            Boolean caller = call.setCaller(args[numOptionsUsed + 1]); // Test formatting of the phone # and set it
-            Boolean callee = call.setCallee(args[numOptionsUsed + 2]); // Test formatting of the phone # and set it
-            Boolean start = call.setStartTimeString(args[numOptionsUsed + 3], args[numOptionsUsed + 4], args[numOptionsUsed + 5]); // Test formatting of the date and time and set it
-            Boolean end = call.setEndTimeString(args[numOptionsUsed + 6], args[numOptionsUsed + 7], args[numOptionsUsed + 8]); // Test formatting of the date and time and set it
+            if(searchBill == false) {
+                bill.setCustomer(args[numOptionsUsed]); // Set the name of the customer in the bill
+                Boolean caller = call.setCaller(args[numOptionsUsed + 1]); // Test formatting of the phone # and set it
+                Boolean callee = call.setCallee(args[numOptionsUsed + 2]); // Test formatting of the phone # and set it
+                Boolean start = call.setStartTimeString(args[numOptionsUsed + 3], args[numOptionsUsed + 4], args[numOptionsUsed + 5]); // Test formatting of the date and time and set it
+                Boolean end = call.setEndTimeString(args[numOptionsUsed + 6], args[numOptionsUsed + 7], args[numOptionsUsed + 8]); // Test formatting of the date and time and set it
 
-            if ((caller && callee && start && end)) { // If it passes all formatting tests, and all variables are set
-                bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill
-                 if (printCall == true) {
-                     System.out.println("Bill for: " + bill.getCustomer());
-                     for (PhoneCall c : bill.getPhoneCalls()) {
-                         printPhonecall(c);
-                     }
-                 }
+                if ((caller && callee && start && end)) { // If it passes all formatting tests, and all variables are set
+                    bill.addPhoneCall(call); // Add the added completed phonecall to the phone bill
+                    if (printCall == true) {
+                        System.out.println("Bill for: " + bill.getCustomer());
+                        for (PhoneCall c : bill.getPhoneCalls()) {
+                            printPhonecall(c);
+                        }
+                    }
 
-                 try {
-                     client.addPhoneCallEntry(bill.getCustomer(), call);
-                 } catch (IOException ex) {
-                     error("While contacting server: " + ex);
-                     return;
-                 }
+                    try {
+                        client.addPhoneCallEntry(bill.getCustomer(), call);
+                    } catch (IOException ex) {
+                        error("While contacting server: " + ex);
+                        return;
+                    }
+                }
             }
          }
         System.exit(0);
@@ -267,5 +268,36 @@ public class Project4 {
     public static void printPhonecall(PhoneCall call) {
 
         System.out.println(call.toString());
+    }
+
+    /**
+     * This method accepts a string that originated from the server, parses it to get the start and end times, as
+     * well as caller and callee phone numbers, adds the information to a PhoneCall, then adds the PhoneCall to
+     * the PhoneBill.
+     * @param allCalls A string originally from the server that will be parsed for its information.
+     * @param bill A PhoneBill that will have all of the parsed server information added to it.
+     * @return The filled PhoneBill.
+     */
+    public static PhoneBill getBillsFromServer (String allCalls, PhoneBill bill) {
+        String [] lines = allCalls.split("\n"); // Get each line of the pretty printed bill
+        for(int i = 3; i < lines.length; i+=6) { // For each call, parse it and put it into a new phonecall
+            PhoneCall newCall = new PhoneCall();
+
+            String startTime = lines[i].replace(" Start time: ", "");
+            String[] startPieces = startTime.split("\\s+");
+            newCall.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);
+
+            String endTime = lines[i+1].replace("   End time: ","");
+            String[] endPieces = endTime.split("\\s+");
+            newCall.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);
+
+            String callerNum = lines[i+3].replace("       From: ","");
+            newCall.setCaller(callerNum);
+
+            String calleeNum = lines[i+4].replace("         To: ","");
+            newCall.setCallee(calleeNum);
+            bill.addPhoneCall(newCall);
+        }
+        return bill;
     }
 }

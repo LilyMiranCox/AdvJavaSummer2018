@@ -2,202 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cec0306e-39c9-4e55-9b17-6ce1e12c5547" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/cox/PrettyPrinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/cox/Project3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/advanced/AboutMocks.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/advanced/AboutMocks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/java8/AboutBase64.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/java8/AboutBase64.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bin/java8/AboutStreams.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/java8/AboutStreams.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/advanced/AboutMocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/advanced/AboutMocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java8/AboutBase64.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java8/AboutBase64.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java8/AboutStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java8/AboutStreams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../phonebill/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../phonebill/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/emptoNew.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/newNew.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/newNew2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/newNew3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../phonebill/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/src/it/java/edu/pdx/cs410J/cox/Project1IT.java" beforeDir="false" afterPath="$PROJECT_DIR$/../phonebill/src/it/java/edu/pdx/cs410J/cox/Project1IT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/cox/PhoneBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/cox/PhoneBill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/cox/PhoneCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/cox/PhoneCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/cox/Project1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/cox/Project2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/cox/TextParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/cox/TextParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/src/test/java/edu/pdx/cs410J/cox/PhoneCallTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../phonebill/src/test/java/edu/pdx/cs410J/cox/PhoneCallTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/classes/edu/pdx/cs410J/cox/PhoneBill.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/classes/edu/pdx/cs410J/cox/PhoneCall.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/classes/edu/pdx/cs410J/cox/Project1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/classes/edu/pdx/cs410J/cox/Project2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/classes/edu/pdx/cs410J/cox/TextDumper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/classes/edu/pdx/cs410J/cox/TextParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-10T23-37-29_838-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-11T01-05-00_504-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-11T04-00-15_119-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-11T04-07-24_386-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-11T13-10-59_539-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-11T13-19-24_333-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-11T13-24-51_921-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-11T13-31-02_136-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-11T14-18-07_473-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-11T14-21-53_803-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-11T14-34-36_218-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T00-28-22_469-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T00-46-59_870-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T01-51-20_606-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T02-19-39_704-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T02-27-25_039-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T02-34-29_004-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T02-55-55_107-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T03-02-58_564-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T03-07-50_550-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T03-17-27_798-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T03-38-00_604-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T11-49-12_496-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T12-25-19_472-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-17T14-53-23_886-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-18T14-24-52_475-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-18T14-35-55_678-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-20T11-39-50_612-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-20T11-44-43_083-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-20T12-06-51_025-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/2018-07-20T12-45-25_630-jvmRun1.dump" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/TEST-edu.pdx.cs410J.cox.Project1IT.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/edu.pdx.cs410J.cox.Project1IT.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/failsafe-reports/failsafe-summary.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/it-classes/edu/pdx/cs410J/cox/Project1IT.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/jacoco-it.exec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/maven-status/maven-compiler-plugin/testCompile/compile-integration-test/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/maven-status/maven-compiler-plugin/testCompile/compile-integration-test/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/original-phonebill-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/phonebill-1.0-SNAPSHOT-shaded.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/phonebill-1.0-SNAPSHOT-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/phonebill-1.0-SNAPSHOT-test-sources.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/phonebill-1.0-SNAPSHOT-tests.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/phonebill-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/allclasses-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/allclasses-noframe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/constant-values.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/deprecated-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/PhoneBill.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/PhoneCall.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/Project1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/Project2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/TextDumper.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/TextParser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/class-use/PhoneBill.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/class-use/PhoneCall.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/class-use/Project1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/class-use/Project2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/class-use/TextDumper.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/class-use/TextParser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/edu/pdx/cs410J/cox/package-use.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/element-list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/help-doc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/index-all.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/external/jquery/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-bg_flat_0_aaaaaa_40x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-bg_flat_75_ffffff_40x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-bg_glass_65_ffffff_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-icons_222222_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-icons_454545_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-icons_888888_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jquery-1.10.2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jquery-ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jquery-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jquery-ui.structure.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jquery-ui.structure.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jszip-utils/dist/jszip-utils-ie.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jszip-utils/dist/jszip-utils-ie.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jszip-utils/dist/jszip-utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jszip-utils/dist/jszip-utils.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jszip/dist/jszip.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/jquery/jszip/dist/jszip.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/member-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/member-search-index.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/overview-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/package-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/package-search-index.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/resources/glass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/resources/x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/serialized-form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/src-html/edu/pdx/cs410J/cox/PhoneBill.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/src-html/edu/pdx/cs410J/cox/PhoneCall.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/src-html/edu/pdx/cs410J/cox/Project1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/src-html/edu/pdx/cs410J/cox/Project2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/src-html/edu/pdx/cs410J/cox/TextDumper.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/src-html/edu/pdx/cs410J/cox/TextParser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/type-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/apidocs/type-search-index.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneBill.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneBill.java.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneCall.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/PhoneCall.java.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/Project1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/Project1.java.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/Project2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/Project2.java.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/TextDumper.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/TextDumper.java.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/TextParser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/TextParser.java.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/edu.pdx.cs410J.cox/index.source.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/branchfc.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/branchnc.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/branchpc.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/bundle.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/class.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/down.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/greenbar.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/group.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/method.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/package.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/prettify.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/prettify.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/redbar.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/report.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/report.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/session.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/sort.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/sort.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/source.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-resources/up.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco-sessions.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/site/jacoco-it/jacoco.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/surefire-reports/TEST-edu.pdx.cs410J.cox.PhoneBillTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/surefire-reports/TEST-edu.pdx.cs410J.cox.PhoneCallTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/surefire-reports/edu.pdx.cs410J.cox.PhoneBillTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/surefire-reports/edu.pdx.cs410J.cox.PhoneCallTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/test-classes/edu/pdx/cs410J/cox/PhoneBillTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/test-classes/edu/pdx/cs410J/cox/PhoneCallTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/target/test-classes/edu/pdx/cs410J/cox/Project1IT.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/tempBackup.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/tempo.tx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/tempo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../phonebill/tempo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../phonebill/wowCoolFile.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -213,7 +22,7 @@
         <entry file="file://$PROJECT_DIR$/src/java8/AboutStreams.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="729">
-              <caret line="132" column="74" selection-start-line="132" selection-start-column="74" selection-end-line="132" selection-end-column="74" />
+              <caret line="132" column="52" selection-start-line="132" selection-start-column="52" selection-end-line="132" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -221,8 +30,8 @@
       <file leaf-file-name="AboutBase64.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java8/AboutBase64.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+            <state relative-caret-position="561">
+              <caret line="39" column="1" lean-forward="true" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -278,9 +87,9 @@
         <option value="$PROJECT_DIR$/src/java8/AboutLocalTime.java" />
         <option value="$PROJECT_DIR$/src/java8/AboutLambdas.java" />
         <option value="$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java" />
-        <option value="$PROJECT_DIR$/src/java8/AboutBase64.java" />
         <option value="$PROJECT_DIR$/src/advanced/AboutMocks.java" />
         <option value="$PROJECT_DIR$/src/java8/AboutStreams.java" />
+        <option value="$PROJECT_DIR$/src/java8/AboutBase64.java" />
       </list>
     </option>
   </component>
@@ -293,7 +102,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="1910" />
     <option name="width" value="1942" />
     <option name="height" value="2112" />
@@ -340,7 +149,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../phonebill" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -415,15 +224,15 @@
       <workItem from="1532052156992" duration="11150000" />
       <workItem from="1532071896468" duration="8381000" />
       <workItem from="1532110866949" duration="17000" />
-      <workItem from="1532561938503" duration="841000" />
+      <workItem from="1532561938503" duration="2459000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44396000" />
+    <option name="totallyTimeSpent" value="46014000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="955" y="0" width="971" height="1056" extended-state="1" />
+    <frame x="955" y="0" width="971" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -439,7 +248,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28213167" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24346918" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -754,52 +563,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java8/AboutDefaultMethods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="29" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java8/AboutOptional.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java8/AboutLocalTime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java8/AboutLambdas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="668">
-          <caret line="85" column="47" selection-start-line="85" selection-start-column="47" selection-end-line="85" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java7/AboutDiamondOperator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java8/AboutBase64.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -814,10 +581,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutOptional.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutLocalTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutLambdas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="85" column="47" selection-start-line="85" selection-start-column="47" selection-end-line="85" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutDefaultMethods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutBase64.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="39" column="1" lean-forward="true" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/java8/AboutStreams.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="729">
-          <caret line="132" column="74" selection-start-line="132" selection-start-column="74" selection-end-line="132" selection-end-column="74" />
+          <caret line="132" column="52" selection-start-line="132" selection-start-column="52" selection-end-line="132" selection-end-column="52" />
         </state>
       </provider>
     </entry>

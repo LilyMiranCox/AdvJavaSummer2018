@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" name="edu.pdx.cs410J.cox.IndexDotHtmlIT" time="0.159" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" name="edu.pdx.cs410J.cox.IndexDotHtmlIT" time="0.179" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-10.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\LilyMC\AppData\Local\Temp\surefire2938241125512014938\surefirebooter5730106506748059030.jar C:\Users\LilyMC\AppData\Local\Temp\surefire2938241125512014938 2018-08-03T17-33-44_595-jvmRun1 surefire5101054407314599163tmp surefire_07410172939811016813tmp"/>
+    <property name="sun.java.command" value="C:\Users\LilyMC\AppData\Local\Temp\surefire13959509896014224356\surefirebooter2410248130275460693.jar C:\Users\LilyMC\AppData\Local\Temp\surefire13959509896014224356 2018-08-06T15-07-44_089-jvmRun1 surefire18302854240452803917tmp surefire_05990544554091904140tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="http.port" value="8080"/>
     <property name="surefire.test.class.path" value="C:\Users\LilyMC\AdvJavaSummer2018\phonebill\phonebill\target\it-classes;C:\Users\LilyMC\AdvJavaSummer2018\phonebill\phonebill\target\phonebill.jar;C:\Users\LilyMC\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\LilyMC\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\LilyMC\.m2\repository\org\hamcrest\hamcrest-library\1.3\hamcrest-library-1.3.jar;C:\Users\LilyMC\.m2\repository\org\mockito\mockito-core\2.18.3\mockito-core-2.18.3.jar;C:\Users\LilyMC\.m2\repository\net\bytebuddy\byte-buddy\1.8.5\byte-buddy-1.8.5.jar;C:\Users\LilyMC\.m2\repository\net\bytebuddy\byte-buddy-agent\1.8.5\byte-buddy-agent-1.8.5.jar;C:\Users\LilyMC\.m2\repository\org\objenesis\objenesis\2.6\objenesis-2.6.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\projects\Summer2018\projects-Summer2018.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\examples\Summer2018\examples-Summer2018.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\family\Summer2018\family-Summer2018.jar;C:\Users\LilyMC\.m2\repository\javax\mail\javax.mail-api\1.6.1\javax.mail-api-1.6.1.jar;C:\Users\LilyMC\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\LilyMC\.m2\repository\com\google\inject\guice\4.2.0\guice-4.2.0.jar;C:\Users\LilyMC\.m2\repository\javax\inject\javax.inject\1\javax.inject-1.jar;C:\Users\LilyMC\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\LilyMC\.m2\repository\com\google\guava\guava\23.6-android\guava-23.6-android.jar;C:\Users\LilyMC\.m2\repository\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar;C:\Users\LilyMC\.m2\repository\org\checkerframework\checker-compat-qual\2.0.0\checker-compat-qual-2.0.0.jar;C:\Users\LilyMC\.m2\repository\com\google\errorprone\error_prone_annotations\2.1.3\error_prone_annotations-2.1.3.jar;C:\Users\LilyMC\.m2\repository\com\google\j2objc\j2objc-annotations\1.1\j2objc-annotations-1.1.jar;C:\Users\LilyMC\.m2\repository\org\codehaus\mojo\animal-sniffer-annotations\1.14\animal-sniffer-annotations-1.14.jar;C:\Users\LilyMC\.m2\repository\org\codehaus\groovy\groovy-all\2.4.10\groovy-all-2.4.10.jar;C:\Users\LilyMC\.m2\repository\edu\pdx\cs410J\projects\Summer2018\projects-Summer2018-tests.jar;C:\Users\LilyMC\.m2\repository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;C:\Users\LilyMC\AdvJavaSummer2018\phonebill\phonebill\target/test-classes;"/>
@@ -35,7 +35,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\LilyMC\AppData\Local\Temp\surefire2938241125512014938\surefirebooter5730106506748059030.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\LilyMC\AppData\Local\Temp\surefire13959509896014224356\surefirebooter2410248130275460693.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="10.0.1+10"/>
@@ -62,6 +62,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="54.0"/>
   </properties>
-  <testcase name="indexDotHtmlExists" classname="edu.pdx.cs410J.cox.IndexDotHtmlIT" time="0.077"/>
+  <testcase name="indexDotHtmlExists" classname="edu.pdx.cs410J.cox.IndexDotHtmlIT" time="0.084"/>
   <testcase name="indexDotHtmlHasResonableContent" classname="edu.pdx.cs410J.cox.IndexDotHtmlIT" time="0.005"/>
 </testsuite>

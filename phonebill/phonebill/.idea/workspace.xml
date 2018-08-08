@@ -15,10 +15,23 @@
       <file leaf-file-name="Project4.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Project4.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="48" column="34" lean-forward="true" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
+            <state relative-caret-position="345">
+              <caret line="278" column="36" selection-start-line="278" selection-start-column="36" selection-end-line="278" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhoneBill.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneBill.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="559">
+              <caret line="85" column="46" selection-start-line="85" selection-start-column="46" selection-end-line="85" selection-end-column="46" />
+              <folding>
+                <element signature="method#addPhoneCall#0;class#PhoneBill#0" />
+                <element signature="method#setCustomer#0;class#PhoneBill#0" />
               </folding>
             </state>
           </provider>
@@ -79,6 +92,8 @@
       <find>the search</find>
       <find>missingRequiredParameter</find>
       <find>pw</find>
+      <find>-search'</find>
+      <find>searchBill</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -107,7 +122,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="1910" />
     <option name="width" value="1942" />
     <option name="height" value="2112" />
@@ -338,7 +353,7 @@
       <workItem from="1533089875096" duration="1005000" />
       <workItem from="1533262019409" duration="33418000" />
       <workItem from="1533335884259" duration="6931000" />
-      <workItem from="1533588529255" duration="350000" />
+      <workItem from="1533588529255" duration="5857000" />
     </task>
     <servers />
   </component>
@@ -348,11 +363,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51942000" />
+    <option name="totallyTimeSpent" value="57449000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="955" y="0" width="971" height="1056" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -368,7 +382,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13479623" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.047021944" />
       <window_info id="Web" order="6" side_tool="true" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -440,6 +454,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1564">
           <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
+          <folding>
+            <element signature="method#addPhoneCall#0;class#PhoneBill#0" />
+            <element signature="method#setCustomer#0;class#PhoneBill#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -603,13 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneBill.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Messages.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/edu/pdx/cs410J/cox/MessagesTest.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -653,10 +664,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/PhoneBill.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="85" column="46" selection-start-line="85" selection-start-column="46" selection-end-line="85" selection-end-column="46" />
+          <folding>
+            <element signature="method#addPhoneCall#0;class#PhoneBill#0" />
+            <element signature="method#setCustomer#0;class#PhoneBill#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pdx/cs410J/cox/Project4.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="48" column="34" lean-forward="true" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
+        <state relative-caret-position="345">
+          <caret line="278" column="36" selection-start-line="278" selection-start-column="36" selection-end-line="278" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
