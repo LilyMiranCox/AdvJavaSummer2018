@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metrics version="1" >
- <module elapsed="13183" >
-  <sources count="3103">
+ <module elapsed="14189" >
+  <sources count="3104">
    <source name="com/google/gwt/animation/client/Animation.java" />
    <source name="com/google/gwt/animation/client/AnimationScheduler.java" />
    <source name="com/google/gwt/animation/client/AnimationSchedulerImplStandard.java" />
@@ -2761,6 +2761,7 @@
    <source name="edu/pdx/cs410J/cox/client/PhoneBillService.java" />
    <source name="edu/pdx/cs410J/cox/client/PhoneBillServiceAsync.java" />
    <source name="edu/pdx/cs410J/cox/client/PhoneCall.java" />
+   <source name="edu/pdx/cs410J/cox/client/PrettyPrinter.java" />
    <source name="java/beans/Beans.java" />
    <source name="java/io/ByteArrayInputStream.java" />
    <source name="java/io/ByteArrayOutputStream.java" />
@@ -3106,7 +3107,7 @@
    <source name="jsinterop/annotations/JsProperty.java" />
    <source name="jsinterop/annotations/JsType.java" />
   </sources>
-  <types kind="initial" count="3829">
+  <types kind="initial" count="3830">
    <type name="com.google.gwt.animation.client.Animation" />
    <type name="com.google.gwt.animation.client.AnimationScheduler" />
    <type name="com.google.gwt.animation.client.AnimationScheduler.AnimationCallback" />
@@ -6396,6 +6397,7 @@
    <type name="edu.pdx.cs410J.cox.client.PhoneBillService" />
    <type name="edu.pdx.cs410J.cox.client.PhoneBillServiceAsync" />
    <type name="edu.pdx.cs410J.cox.client.PhoneCall" />
+   <type name="edu.pdx.cs410J.cox.client.PrettyPrinter" />
    <type name="java.beans.Beans" />
    <type name="java.io.ByteArrayInputStream" />
    <type name="java.io.ByteArrayOutputStream" />
@@ -6939,8 +6941,8 @@
   </types>
  </module>
  <precompilations>
-  <precompilation base="0" ids="0,1,2,3,4" elapsed="15191" >
-   <types kind="ast" count="766">
+  <precompilation base="0" ids="0,1,2,3,4" elapsed="16426" >
+   <types kind="ast" count="850">
     <type name="com.google.gwt.core.client.CodeDownloadException" />
     <type name="com.google.gwt.core.client.CodeDownloadException$Reason" />
     <type name="com.google.gwt.core.client.CodeDownloadException$Reason$Map" />
@@ -7002,12 +7004,15 @@
     <type name="com.google.gwt.dom.client.DOMImplStandardBase$ClientRect" />
     <type name="com.google.gwt.dom.client.DOMImplTrident" />
     <type name="com.google.gwt.dom.client.DOMImplWebkit" />
+    <type name="com.google.gwt.dom.client.DivElement" />
     <type name="com.google.gwt.dom.client.Document" />
     <type name="com.google.gwt.dom.client.Element" />
     <type name="com.google.gwt.dom.client.EventTarget" />
+    <type name="com.google.gwt.dom.client.InputElement" />
     <type name="com.google.gwt.dom.client.NativeEvent" />
     <type name="com.google.gwt.dom.client.Node" />
     <type name="com.google.gwt.dom.client.ScriptElement" />
+    <type name="com.google.gwt.dom.client.SpanElement" />
     <type name="com.google.gwt.dom.client.Style" />
     <type name="com.google.gwt.dom.client.Style$BorderStyle" />
     <type name="com.google.gwt.dom.client.Style$BorderStyle$1" />
@@ -7185,15 +7190,20 @@
     <type name="com.google.gwt.dom.client.TableElement" />
     <type name="com.google.gwt.dom.client.TableRowElement" />
     <type name="com.google.gwt.dom.client.TableSectionElement" />
+    <type name="com.google.gwt.dom.client.TextAreaElement" />
     <type name="com.google.gwt.event.dom.client.ClickEvent" />
     <type name="com.google.gwt.event.dom.client.DomEvent" />
     <type name="com.google.gwt.event.dom.client.DomEvent$Type" />
     <type name="com.google.gwt.event.dom.client.HumanInputEvent" />
+    <type name="com.google.gwt.event.dom.client.KeyCodeEvent" />
+    <type name="com.google.gwt.event.dom.client.KeyEvent" />
+    <type name="com.google.gwt.event.dom.client.KeyUpEvent" />
     <type name="com.google.gwt.event.dom.client.MouseEvent" />
     <type name="com.google.gwt.event.dom.client.PrivateMap" />
     <type name="com.google.gwt.event.dom.client.PrivateMap$JsMap" />
     <type name="com.google.gwt.event.logical.shared.AttachEvent" />
     <type name="com.google.gwt.event.logical.shared.CloseEvent" />
+    <type name="com.google.gwt.event.logical.shared.ValueChangeEvent" />
     <type name="com.google.gwt.event.shared.GwtEvent" />
     <type name="com.google.gwt.event.shared.GwtEvent$Type" />
     <type name="com.google.gwt.event.shared.HandlerManager" />
@@ -7220,15 +7230,37 @@
     <type name="com.google.gwt.http.client.ResponseImpl$1" />
     <type name="com.google.gwt.http.client.StringValidator" />
     <type name="com.google.gwt.http.client.URL" />
+    <type name="com.google.gwt.i18n.client.AutoDirectionHandler" />
+    <type name="com.google.gwt.i18n.client.BidiPolicy" />
+    <type name="com.google.gwt.i18n.client.BidiPolicy$BidiPolicyImpl" />
+    <type name="com.google.gwt.i18n.client.BidiPolicy$BidiPolicyImplOn" />
     <type name="com.google.gwt.i18n.client.BidiUtils" />
+    <type name="com.google.gwt.i18n.client.DefaultDateTimeFormatInfo" />
     <type name="com.google.gwt.i18n.client.HasDirection$Direction" />
     <type name="com.google.gwt.i18n.client.HasDirection$Direction$Map" />
     <type name="com.google.gwt.i18n.client.LocaleInfo" />
+    <type name="com.google.gwt.i18n.client.TimeZone" />
     <type name="com.google.gwt.i18n.client.impl.CldrImpl" />
     <type name="com.google.gwt.i18n.client.impl.CurrencyDataJso" />
     <type name="com.google.gwt.i18n.client.impl.LocaleInfoImpl" />
     <type name="com.google.gwt.i18n.client.impl.LocaleInfoImpl_" />
     <type name="com.google.gwt.i18n.client.impl.LocaleInfoImpl_shared" />
+    <type name="com.google.gwt.i18n.client.impl.cldr.DateTimeFormatInfoImpl" />
+    <type name="com.google.gwt.i18n.shared.BidiFormatter" />
+    <type name="com.google.gwt.i18n.shared.BidiFormatter$Factory" />
+    <type name="com.google.gwt.i18n.shared.BidiFormatterBase" />
+    <type name="com.google.gwt.i18n.shared.BidiFormatterBase$Factory" />
+    <type name="com.google.gwt.i18n.shared.BidiFormatterBase$Format" />
+    <type name="com.google.gwt.i18n.shared.BidiUtils" />
+    <type name="com.google.gwt.i18n.shared.DateTimeFormat" />
+    <type name="com.google.gwt.i18n.shared.DateTimeFormat$PatternPart" />
+    <type name="com.google.gwt.i18n.shared.DateTimeFormat$PredefinedFormat" />
+    <type name="com.google.gwt.i18n.shared.DateTimeFormat$PredefinedFormat$Map" />
+    <type name="com.google.gwt.i18n.shared.DefaultDateTimeFormatInfo" />
+    <type name="com.google.gwt.i18n.shared.DirectionEstimator" />
+    <type name="com.google.gwt.i18n.shared.WordCountDirectionEstimator" />
+    <type name="com.google.gwt.i18n.shared.impl.DateRecord" />
+    <type name="com.google.gwt.i18n.shared.impl.DateRecord_FieldSerializer" />
     <type name="com.google.gwt.lang.Array" />
     <type name="com.google.gwt.lang.BigLongLib" />
     <type name="com.google.gwt.lang.BigLongLib$Const" />
@@ -7267,6 +7299,13 @@
     <type name="com.google.gwt.logging.impl.FormatterImpl" />
     <type name="com.google.gwt.logging.impl.FormatterImpl$1" />
     <type name="com.google.gwt.logging.impl.StackTracePrintStream" />
+    <type name="com.google.gwt.regexp.shared.RegExp" />
+    <type name="com.google.gwt.regexp.shared.SplitResult" />
+    <type name="com.google.gwt.safehtml.shared.SafeHtmlString" />
+    <type name="com.google.gwt.safehtml.shared.SafeHtmlUtils" />
+    <type name="com.google.gwt.text.shared.AbstractRenderer" />
+    <type name="com.google.gwt.text.shared.testing.PassthroughParser" />
+    <type name="com.google.gwt.text.shared.testing.PassthroughRenderer" />
     <type name="com.google.gwt.typedarrays.client.ArrayBufferNative" />
     <type name="com.google.gwt.typedarrays.client.ArrayBufferViewNative" />
     <type name="com.google.gwt.typedarrays.client.DataViewNative" />
@@ -7306,6 +7345,8 @@
     <type name="com.google.gwt.user.client.impl.DOMImplStandardBase" />
     <type name="com.google.gwt.user.client.impl.DOMImplTrident" />
     <type name="com.google.gwt.user.client.impl.DOMImplWebkit" />
+    <type name="com.google.gwt.user.client.impl.ElementMapperImpl" />
+    <type name="com.google.gwt.user.client.impl.ElementMapperImpl$FreeNode" />
     <type name="com.google.gwt.user.client.impl.EventMap" />
     <type name="com.google.gwt.user.client.impl.WindowImpl" />
     <type name="com.google.gwt.user.client.impl.WindowImplIE" />
@@ -7339,6 +7380,9 @@
     <type name="com.google.gwt.user.client.rpc.core.java.lang.RuntimeException_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.lang.String_CustomFieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.lang.Throwable_FieldSerializer" />
+    <type name="com.google.gwt.user.client.rpc.core.java.sql.Date_CustomFieldSerializer" />
+    <type name="com.google.gwt.user.client.rpc.core.java.sql.Time_CustomFieldSerializer" />
+    <type name="com.google.gwt.user.client.rpc.core.java.sql.Timestamp_CustomFieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.ArrayList_CustomFieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.ArrayList_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.Arrays" />
@@ -7349,6 +7393,7 @@
     <type name="com.google.gwt.user.client.rpc.core.java.util.Collections$EmptyMap_CustomFieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.Collections$EmptySet_CustomFieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.Collections$SingletonList_CustomFieldSerializer" />
+    <type name="com.google.gwt.user.client.rpc.core.java.util.Date_CustomFieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.HashSet_CustomFieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.HashSet_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.LinkedHashSet_CustomFieldSerializer" />
@@ -7396,19 +7441,44 @@
     <type name="com.google.gwt.user.client.ui.CellPanel" />
     <type name="com.google.gwt.user.client.ui.ComplexPanel" />
     <type name="com.google.gwt.user.client.ui.ComplexPanel$1" />
+    <type name="com.google.gwt.user.client.ui.DirectionalTextHelper" />
+    <type name="com.google.gwt.user.client.ui.FlexTable" />
+    <type name="com.google.gwt.user.client.ui.FlexTable$FlexCellFormatter" />
     <type name="com.google.gwt.user.client.ui.FocusWidget" />
+    <type name="com.google.gwt.user.client.ui.HTMLTable" />
+    <type name="com.google.gwt.user.client.ui.HTMLTable$1" />
+    <type name="com.google.gwt.user.client.ui.HTMLTable$Cell" />
+    <type name="com.google.gwt.user.client.ui.HTMLTable$CellFormatter" />
+    <type name="com.google.gwt.user.client.ui.HTMLTable$ColumnFormatter" />
+    <type name="com.google.gwt.user.client.ui.HTMLTable$HTMLTableIEImpl" />
+    <type name="com.google.gwt.user.client.ui.HTMLTable$HTMLTableStandardImpl" />
+    <type name="com.google.gwt.user.client.ui.HTMLTable$RowFormatter" />
     <type name="com.google.gwt.user.client.ui.HasHorizontalAlignment$AutoHorizontalAlignmentConstant" />
     <type name="com.google.gwt.user.client.ui.HasHorizontalAlignment$HorizontalAlignmentConstant" />
     <type name="com.google.gwt.user.client.ui.HasVerticalAlignment$VerticalAlignmentConstant" />
+    <type name="com.google.gwt.user.client.ui.Label" />
+    <type name="com.google.gwt.user.client.ui.LabelBase" />
     <type name="com.google.gwt.user.client.ui.Panel" />
     <type name="com.google.gwt.user.client.ui.PotentialElement" />
     <type name="com.google.gwt.user.client.ui.RootPanel" />
     <type name="com.google.gwt.user.client.ui.RootPanel$1" />
     <type name="com.google.gwt.user.client.ui.RootPanel$2" />
     <type name="com.google.gwt.user.client.ui.RootPanel$DefaultRootPanel" />
+    <type name="com.google.gwt.user.client.ui.TextArea" />
+    <type name="com.google.gwt.user.client.ui.TextBox" />
+    <type name="com.google.gwt.user.client.ui.TextBoxBase" />
+    <type name="com.google.gwt.user.client.ui.TextBoxBase$TextAlignConstant" />
     <type name="com.google.gwt.user.client.ui.UIObject" />
     <type name="com.google.gwt.user.client.ui.UIObject$DebugIdImpl" />
     <type name="com.google.gwt.user.client.ui.UIObject$DebugIdImplEnabled" />
+    <type name="com.google.gwt.user.client.ui.ValueBoxBase" />
+    <type name="com.google.gwt.user.client.ui.ValueBoxBase$1" />
+    <type name="com.google.gwt.user.client.ui.ValueBoxBase$TextAlignment" />
+    <type name="com.google.gwt.user.client.ui.ValueBoxBase$TextAlignment$1" />
+    <type name="com.google.gwt.user.client.ui.ValueBoxBase$TextAlignment$2" />
+    <type name="com.google.gwt.user.client.ui.ValueBoxBase$TextAlignment$3" />
+    <type name="com.google.gwt.user.client.ui.ValueBoxBase$TextAlignment$4" />
+    <type name="com.google.gwt.user.client.ui.ValueBoxBase$TextAlignment$Map" />
     <type name="com.google.gwt.user.client.ui.VerticalPanel" />
     <type name="com.google.gwt.user.client.ui.Widget" />
     <type name="com.google.gwt.user.client.ui.WidgetCollection" />
@@ -7417,6 +7487,8 @@
     <type name="com.google.gwt.user.client.ui.impl.FocusImplIE6" />
     <type name="com.google.gwt.user.client.ui.impl.FocusImplSafari" />
     <type name="com.google.gwt.user.client.ui.impl.FocusImplStandard" />
+    <type name="com.google.gwt.user.client.ui.impl.TextBoxImpl" />
+    <type name="com.google.gwt.user.client.ui.impl.TextBoxImplIE8" />
     <type name="com.google.gwt.useragent.client.UserAgentAsserter" />
     <type name="com.google.gwt.useragent.client.UserAgentAsserter$UserAgentAsserterDisabled" />
     <type name="com.google.gwt.useragent.client.UserAgentAsserter$UserAgentAssertionError" />
@@ -7444,6 +7516,15 @@
     <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt" />
     <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$1" />
     <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$10" />
+    <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$11" />
+    <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$12" />
+    <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$13" />
+    <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$14" />
+    <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$15" />
+    <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$16" />
+    <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$17" />
+    <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$18" />
+    <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$19" />
     <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$2" />
     <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$3" />
     <type name="edu.pdx.cs410J.cox.client.PhoneBillGwt$4" />
@@ -7458,6 +7539,7 @@
     <type name="edu.pdx.cs410J.cox.client.PhoneCall" />
     <type name="edu.pdx.cs410J.cox.client.PhoneCall_Array_Rank_1_FieldSerializer" />
     <type name="edu.pdx.cs410J.cox.client.PhoneCall_FieldSerializer" />
+    <type name="edu.pdx.cs410J.cox.client.PrettyPrinter" />
     <type name="java.io.FilterOutputStream" />
     <type name="java.io.IOException" />
     <type name="java.io.OutputStream" />
@@ -7524,6 +7606,10 @@
     <type name="java.nio.charset.Charset$AvailableCharsets" />
     <type name="java.nio.charset.IllegalCharsetNameException" />
     <type name="java.nio.charset.UnsupportedCharsetException" />
+    <type name="java.sql.Date" />
+    <type name="java.sql.Time" />
+    <type name="java.sql.Timestamp" />
+    <type name="java.text.ParseException" />
     <type name="java.util.AbstractCollection" />
     <type name="java.util.AbstractHashMap" />
     <type name="java.util.AbstractHashMap$EntrySet" />
@@ -7708,10 +7794,11 @@
     <type name="javaemul.internal.ObjectHashing" />
     <type name="javaemul.internal.StringHashCache" />
    </types>
-   <types kind="generated" count="43">
+   <types kind="generated" count="48">
     <type name="com.google.gwt.i18n.client.constants.NumberConstantsImpl_" />
     <type name="com.google.gwt.i18n.client.impl.LocaleInfoImpl_" />
     <type name="com.google.gwt.i18n.client.impl.LocaleInfoImpl_shared" />
+    <type name="com.google.gwt.i18n.shared.impl.DateRecord_FieldSerializer" />
     <type name="com.google.gwt.lang.edu_00046pdx_00046cs410J_00046cox_00046PhoneBillGwt__EntryMethodHolder" />
     <type name="com.google.gwt.user.client.DocumentModeAsserter_DocumentModeProperty" />
     <type name="com.google.gwt.user.client.impl.WindowImplIE_Resources_default_InlineClientBundleGenerator" />
@@ -7727,11 +7814,15 @@
     <type name="com.google.gwt.user.client.rpc.core.java.lang.RuntimeException_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.lang.String_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.lang.Throwable_FieldSerializer" />
+    <type name="com.google.gwt.user.client.rpc.core.java.sql.Date_FieldSerializer" />
+    <type name="com.google.gwt.user.client.rpc.core.java.sql.Time_FieldSerializer" />
+    <type name="com.google.gwt.user.client.rpc.core.java.sql.Timestamp_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.ArrayList_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.Arrays_ArrayList_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.Collections_EmptyList_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.Collections_EmptySet_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.Collections_SingletonList_FieldSerializer" />
+    <type name="com.google.gwt.user.client.rpc.core.java.util.Date_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.HashSet_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.LinkedHashSet_FieldSerializer" />
     <type name="com.google.gwt.user.client.rpc.core.java.util.LinkedList_FieldSerializer" />
@@ -7756,29 +7847,29 @@
  </precompilation>
  </precompilations>
  <compilations>
-  <compilation  id="0" elapsed="12541" totalElapsed="16061"  description="ClientBundle.enableInlining=true,compiler.emulatedStack=false,compiler.predeclare.cross.fragment.references=false,compiler.stackMode=emulated,compiler.useSymbolMaps=false,gwt.cspCompatModeEnabled=false,gwt.enableDebugId=false,gwt.forceBidi=false,gwt.logging.consoleHandler=ENABLED,gwt.logging.developmentModeHandler=ENABLED,gwt.logging.enabled=TRUE,gwt.logging.hasWidgetsHandler=DISABLED,gwt.logging.logLevel=INFO,gwt.logging.simpleConsoleHandler=DISABLED,gwt.logging.simpleRemoteHandler=DISABLED,gwt.logging.systemHandler=DISABLED,gwt.suppressNonStaticFinalFieldWarnings=false,gwt.uncaughtexceptionhandler.windowonerror=REPORT_IF_NO_HANDLER,history.noDoubleEncoding=false,jre.checks.api=AUTO,jre.checks.bounds=AUTO,jre.checks.checkLevel=NORMAL,jre.checks.numeric=AUTO,jre.checks.type=AUTO,jre.logging.simpleConsoleHandler=DISABLED,locale=default,rpc.XserializeFinalFields=false,superdevmode=off,user.agent=ie8,videoElementSupport=no,webApiUsage=modern,audioElementSupport=no,canvasElementSupport=no,compiler.useSourceMaps=false,dragEventSupport=no,jre.debugMode=DISABLED,jre.logging.logLevel=ALL,touchEventSupport=no,jre.checkedMode=DISABLED">
-   <javascript size="1517297" fragments="1">
-    <fragment initial="true" size="1517297" />
+  <compilation  id="0" elapsed="17491" totalElapsed="34090"  description="ClientBundle.enableInlining=true,compiler.emulatedStack=false,compiler.predeclare.cross.fragment.references=false,compiler.stackMode=emulated,compiler.useSymbolMaps=false,gwt.cspCompatModeEnabled=false,gwt.enableDebugId=false,gwt.forceBidi=false,gwt.logging.consoleHandler=ENABLED,gwt.logging.developmentModeHandler=ENABLED,gwt.logging.enabled=TRUE,gwt.logging.hasWidgetsHandler=DISABLED,gwt.logging.logLevel=INFO,gwt.logging.simpleConsoleHandler=DISABLED,gwt.logging.simpleRemoteHandler=DISABLED,gwt.logging.systemHandler=DISABLED,gwt.suppressNonStaticFinalFieldWarnings=false,gwt.uncaughtexceptionhandler.windowonerror=REPORT_IF_NO_HANDLER,history.noDoubleEncoding=false,jre.checks.api=AUTO,jre.checks.bounds=AUTO,jre.checks.checkLevel=NORMAL,jre.checks.numeric=AUTO,jre.checks.type=AUTO,jre.logging.simpleConsoleHandler=DISABLED,locale=default,rpc.XserializeFinalFields=false,superdevmode=off,user.agent=ie8,videoElementSupport=no,webApiUsage=modern,audioElementSupport=no,canvasElementSupport=no,compiler.useSourceMaps=false,dragEventSupport=no,jre.debugMode=DISABLED,jre.logging.logLevel=ALL,touchEventSupport=no,jre.checkedMode=DISABLED">
+   <javascript size="2196750" fragments="1">
+    <fragment initial="true" size="2196750" />
    </javascript>
   </compilation>
-  <compilation  id="1" elapsed="13322" totalElapsed="20651"  description="ClientBundle.enableInlining=true,compiler.emulatedStack=false,compiler.predeclare.cross.fragment.references=false,compiler.stackMode=emulated,compiler.useSymbolMaps=false,gwt.cspCompatModeEnabled=false,gwt.enableDebugId=false,gwt.forceBidi=false,gwt.logging.consoleHandler=ENABLED,gwt.logging.developmentModeHandler=ENABLED,gwt.logging.enabled=TRUE,gwt.logging.hasWidgetsHandler=DISABLED,gwt.logging.logLevel=INFO,gwt.logging.simpleConsoleHandler=DISABLED,gwt.logging.simpleRemoteHandler=DISABLED,gwt.logging.systemHandler=DISABLED,gwt.suppressNonStaticFinalFieldWarnings=false,gwt.uncaughtexceptionhandler.windowonerror=REPORT_IF_NO_HANDLER,history.noDoubleEncoding=false,jre.checks.api=AUTO,jre.checks.bounds=AUTO,jre.checks.checkLevel=NORMAL,jre.checks.numeric=AUTO,jre.checks.type=AUTO,jre.logging.simpleConsoleHandler=DISABLED,locale=default,rpc.XserializeFinalFields=false,superdevmode=off,user.agent=ie9,videoElementSupport=maybe,webApiUsage=modern,audioElementSupport=maybe,canvasElementSupport=maybe,compiler.useSourceMaps=false,dragEventSupport=maybe,jre.debugMode=DISABLED,jre.logging.logLevel=ALL,touchEventSupport=no,jre.checkedMode=DISABLED">
-   <javascript size="1527200" fragments="1">
-    <fragment initial="true" size="1527200" />
+  <compilation  id="1" elapsed="21038" totalElapsed="26664"  description="ClientBundle.enableInlining=true,compiler.emulatedStack=false,compiler.predeclare.cross.fragment.references=false,compiler.stackMode=emulated,compiler.useSymbolMaps=false,gwt.cspCompatModeEnabled=false,gwt.enableDebugId=false,gwt.forceBidi=false,gwt.logging.consoleHandler=ENABLED,gwt.logging.developmentModeHandler=ENABLED,gwt.logging.enabled=TRUE,gwt.logging.hasWidgetsHandler=DISABLED,gwt.logging.logLevel=INFO,gwt.logging.simpleConsoleHandler=DISABLED,gwt.logging.simpleRemoteHandler=DISABLED,gwt.logging.systemHandler=DISABLED,gwt.suppressNonStaticFinalFieldWarnings=false,gwt.uncaughtexceptionhandler.windowonerror=REPORT_IF_NO_HANDLER,history.noDoubleEncoding=false,jre.checks.api=AUTO,jre.checks.bounds=AUTO,jre.checks.checkLevel=NORMAL,jre.checks.numeric=AUTO,jre.checks.type=AUTO,jre.logging.simpleConsoleHandler=DISABLED,locale=default,rpc.XserializeFinalFields=false,superdevmode=off,user.agent=ie9,videoElementSupport=maybe,webApiUsage=modern,audioElementSupport=maybe,canvasElementSupport=maybe,compiler.useSourceMaps=false,dragEventSupport=maybe,jre.debugMode=DISABLED,jre.logging.logLevel=ALL,touchEventSupport=no,jre.checkedMode=DISABLED">
+   <javascript size="2210703" fragments="1">
+    <fragment initial="true" size="2210703" />
    </javascript>
   </compilation>
-  <compilation  id="2" elapsed="15720" totalElapsed="31084"  description="ClientBundle.enableInlining=true,compiler.emulatedStack=false,compiler.predeclare.cross.fragment.references=false,compiler.stackMode=emulated,compiler.useSymbolMaps=false,gwt.cspCompatModeEnabled=false,gwt.enableDebugId=false,gwt.forceBidi=false,gwt.logging.consoleHandler=ENABLED,gwt.logging.developmentModeHandler=ENABLED,gwt.logging.enabled=TRUE,gwt.logging.hasWidgetsHandler=DISABLED,gwt.logging.logLevel=INFO,gwt.logging.simpleConsoleHandler=DISABLED,gwt.logging.simpleRemoteHandler=DISABLED,gwt.logging.systemHandler=DISABLED,gwt.suppressNonStaticFinalFieldWarnings=false,gwt.uncaughtexceptionhandler.windowonerror=REPORT_IF_NO_HANDLER,history.noDoubleEncoding=false,jre.checks.api=AUTO,jre.checks.bounds=AUTO,jre.checks.checkLevel=NORMAL,jre.checks.numeric=AUTO,jre.checks.type=AUTO,jre.logging.simpleConsoleHandler=DISABLED,locale=default,rpc.XserializeFinalFields=false,superdevmode=off,user.agent=ie10,videoElementSupport=maybe,webApiUsage=modern,audioElementSupport=maybe,canvasElementSupport=maybe,compiler.useSourceMaps=false,dragEventSupport=maybe,jre.debugMode=DISABLED,jre.logging.logLevel=ALL,touchEventSupport=no,jre.checkedMode=DISABLED">
-   <javascript size="1526033" fragments="1">
-    <fragment initial="true" size="1526033" />
+  <compilation  id="2" elapsed="20990" totalElapsed="26567"  description="ClientBundle.enableInlining=true,compiler.emulatedStack=false,compiler.predeclare.cross.fragment.references=false,compiler.stackMode=emulated,compiler.useSymbolMaps=false,gwt.cspCompatModeEnabled=false,gwt.enableDebugId=false,gwt.forceBidi=false,gwt.logging.consoleHandler=ENABLED,gwt.logging.developmentModeHandler=ENABLED,gwt.logging.enabled=TRUE,gwt.logging.hasWidgetsHandler=DISABLED,gwt.logging.logLevel=INFO,gwt.logging.simpleConsoleHandler=DISABLED,gwt.logging.simpleRemoteHandler=DISABLED,gwt.logging.systemHandler=DISABLED,gwt.suppressNonStaticFinalFieldWarnings=false,gwt.uncaughtexceptionhandler.windowonerror=REPORT_IF_NO_HANDLER,history.noDoubleEncoding=false,jre.checks.api=AUTO,jre.checks.bounds=AUTO,jre.checks.checkLevel=NORMAL,jre.checks.numeric=AUTO,jre.checks.type=AUTO,jre.logging.simpleConsoleHandler=DISABLED,locale=default,rpc.XserializeFinalFields=false,superdevmode=off,user.agent=ie10,videoElementSupport=maybe,webApiUsage=modern,audioElementSupport=maybe,canvasElementSupport=maybe,compiler.useSourceMaps=false,dragEventSupport=maybe,jre.debugMode=DISABLED,jre.logging.logLevel=ALL,touchEventSupport=no,jre.checkedMode=DISABLED">
+   <javascript size="2208561" fragments="1">
+    <fragment initial="true" size="2208561" />
    </javascript>
   </compilation>
-  <compilation  id="3" elapsed="11405" totalElapsed="15259"  description="ClientBundle.enableInlining=true,compiler.emulatedStack=false,compiler.predeclare.cross.fragment.references=false,compiler.stackMode=emulated,compiler.useSymbolMaps=false,gwt.cspCompatModeEnabled=false,gwt.enableDebugId=false,gwt.forceBidi=false,gwt.logging.consoleHandler=ENABLED,gwt.logging.developmentModeHandler=ENABLED,gwt.logging.enabled=TRUE,gwt.logging.hasWidgetsHandler=DISABLED,gwt.logging.logLevel=INFO,gwt.logging.simpleConsoleHandler=DISABLED,gwt.logging.simpleRemoteHandler=DISABLED,gwt.logging.systemHandler=DISABLED,gwt.suppressNonStaticFinalFieldWarnings=false,gwt.uncaughtexceptionhandler.windowonerror=REPORT_IF_NO_HANDLER,history.noDoubleEncoding=false,jre.checks.api=AUTO,jre.checks.bounds=AUTO,jre.checks.checkLevel=NORMAL,jre.checks.numeric=AUTO,jre.checks.type=AUTO,jre.logging.simpleConsoleHandler=DISABLED,locale=default,rpc.XserializeFinalFields=false,superdevmode=off,user.agent=gecko1_8,videoElementSupport=maybe,webApiUsage=modern,audioElementSupport=maybe,canvasElementSupport=maybe,compiler.useSourceMaps=false,dragEventSupport=maybe,jre.debugMode=DISABLED,jre.logging.logLevel=ALL,touchEventSupport=maybe,jre.checkedMode=DISABLED">
-   <javascript size="1530489" fragments="1">
-    <fragment initial="true" size="1530489" />
+  <compilation  id="3" elapsed="18331" totalElapsed="22594"  description="ClientBundle.enableInlining=true,compiler.emulatedStack=false,compiler.predeclare.cross.fragment.references=false,compiler.stackMode=emulated,compiler.useSymbolMaps=false,gwt.cspCompatModeEnabled=false,gwt.enableDebugId=false,gwt.forceBidi=false,gwt.logging.consoleHandler=ENABLED,gwt.logging.developmentModeHandler=ENABLED,gwt.logging.enabled=TRUE,gwt.logging.hasWidgetsHandler=DISABLED,gwt.logging.logLevel=INFO,gwt.logging.simpleConsoleHandler=DISABLED,gwt.logging.simpleRemoteHandler=DISABLED,gwt.logging.systemHandler=DISABLED,gwt.suppressNonStaticFinalFieldWarnings=false,gwt.uncaughtexceptionhandler.windowonerror=REPORT_IF_NO_HANDLER,history.noDoubleEncoding=false,jre.checks.api=AUTO,jre.checks.bounds=AUTO,jre.checks.checkLevel=NORMAL,jre.checks.numeric=AUTO,jre.checks.type=AUTO,jre.logging.simpleConsoleHandler=DISABLED,locale=default,rpc.XserializeFinalFields=false,superdevmode=off,user.agent=gecko1_8,videoElementSupport=maybe,webApiUsage=modern,audioElementSupport=maybe,canvasElementSupport=maybe,compiler.useSourceMaps=false,dragEventSupport=maybe,jre.debugMode=DISABLED,jre.logging.logLevel=ALL,touchEventSupport=maybe,jre.checkedMode=DISABLED">
+   <javascript size="2213208" fragments="1">
+    <fragment initial="true" size="2213208" />
    </javascript>
   </compilation>
-  <compilation  id="4" elapsed="13163" totalElapsed="20133"  description="ClientBundle.enableInlining=true,compiler.emulatedStack=false,compiler.predeclare.cross.fragment.references=false,compiler.stackMode=emulated,compiler.useSymbolMaps=false,gwt.cspCompatModeEnabled=false,gwt.enableDebugId=false,gwt.forceBidi=false,gwt.logging.consoleHandler=ENABLED,gwt.logging.developmentModeHandler=ENABLED,gwt.logging.enabled=TRUE,gwt.logging.hasWidgetsHandler=DISABLED,gwt.logging.logLevel=INFO,gwt.logging.simpleConsoleHandler=DISABLED,gwt.logging.simpleRemoteHandler=DISABLED,gwt.logging.systemHandler=DISABLED,gwt.suppressNonStaticFinalFieldWarnings=false,gwt.uncaughtexceptionhandler.windowonerror=REPORT_IF_NO_HANDLER,history.noDoubleEncoding=false,jre.checks.api=AUTO,jre.checks.bounds=AUTO,jre.checks.checkLevel=NORMAL,jre.checks.numeric=AUTO,jre.checks.type=AUTO,jre.logging.simpleConsoleHandler=DISABLED,locale=default,rpc.XserializeFinalFields=false,superdevmode=off,user.agent=safari,videoElementSupport=maybe,webApiUsage=modern,audioElementSupport=maybe,canvasElementSupport=maybe,compiler.useSourceMaps=false,dragEventSupport=maybe,jre.debugMode=DISABLED,jre.logging.logLevel=ALL,touchEventSupport=maybe,jre.checkedMode=DISABLED">
-   <javascript size="1524960" fragments="1">
-    <fragment initial="true" size="1524960" />
+  <compilation  id="4" elapsed="18623" totalElapsed="23617"  description="ClientBundle.enableInlining=true,compiler.emulatedStack=false,compiler.predeclare.cross.fragment.references=false,compiler.stackMode=emulated,compiler.useSymbolMaps=false,gwt.cspCompatModeEnabled=false,gwt.enableDebugId=false,gwt.forceBidi=false,gwt.logging.consoleHandler=ENABLED,gwt.logging.developmentModeHandler=ENABLED,gwt.logging.enabled=TRUE,gwt.logging.hasWidgetsHandler=DISABLED,gwt.logging.logLevel=INFO,gwt.logging.simpleConsoleHandler=DISABLED,gwt.logging.simpleRemoteHandler=DISABLED,gwt.logging.systemHandler=DISABLED,gwt.suppressNonStaticFinalFieldWarnings=false,gwt.uncaughtexceptionhandler.windowonerror=REPORT_IF_NO_HANDLER,history.noDoubleEncoding=false,jre.checks.api=AUTO,jre.checks.bounds=AUTO,jre.checks.checkLevel=NORMAL,jre.checks.numeric=AUTO,jre.checks.type=AUTO,jre.logging.simpleConsoleHandler=DISABLED,locale=default,rpc.XserializeFinalFields=false,superdevmode=off,user.agent=safari,videoElementSupport=maybe,webApiUsage=modern,audioElementSupport=maybe,canvasElementSupport=maybe,compiler.useSourceMaps=false,dragEventSupport=maybe,jre.debugMode=DISABLED,jre.logging.logLevel=ALL,touchEventSupport=maybe,jre.checkedMode=DISABLED">
+   <javascript size="2207676" fragments="1">
+    <fragment initial="true" size="2207676" />
    </javascript>
   </compilation>
  </compilations>

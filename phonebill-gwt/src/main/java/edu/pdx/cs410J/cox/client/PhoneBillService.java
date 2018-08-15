@@ -14,6 +14,7 @@ public interface PhoneBillService extends RemoteService {
    */
   public PhoneBill getPhoneBill();
 
+
   /**
    * Always throws an undeclared exception so that we can see GWT handles it.
    */
@@ -24,4 +25,7 @@ public interface PhoneBillService extends RemoteService {
    */
   void throwDeclaredException() throws IllegalStateException;
 
+  Boolean setPhoneBill(String customer, PhoneCall call);
+
+  public PhoneBill getBill (String customer);
 }

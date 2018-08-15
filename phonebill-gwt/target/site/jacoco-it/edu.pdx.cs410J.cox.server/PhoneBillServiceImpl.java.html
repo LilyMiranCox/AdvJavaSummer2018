@@ -5,26 +5,31 @@ import edu.pdx.cs410J.cox.client.PhoneBill;
 import edu.pdx.cs410J.cox.client.PhoneCall;
 import edu.pdx.cs410J.cox.client.PhoneBillService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * The server-side implementation of the Phone Bill service
  */
-<span class="nc" id="L11">public class PhoneBillServiceImpl extends RemoteServiceServlet implements PhoneBillService</span>
+<span class="nc" id="L14">public class PhoneBillServiceImpl extends RemoteServiceServlet implements PhoneBillService</span>
 {
+<span class="nc" id="L16">  private Map&lt;String, PhoneBill&gt; bills = new HashMap&lt;&gt;();</span>
+
   @Override
   public PhoneBill getPhoneBill() {
-<span class="nc" id="L15">    PhoneBill phonebill = new PhoneBill();</span>
-<span class="nc" id="L16">    phonebill.addPhoneCall(new PhoneCall());</span>
-<span class="nc" id="L17">    return phonebill;</span>
+<span class="nc" id="L20">    PhoneBill phonebill = new PhoneBill();</span>
+<span class="nc" id="L21">    phonebill.addPhoneCall(new PhoneCall());</span>
+<span class="nc" id="L22">    return phonebill;</span>
   }
 
   @Override
   public void throwUndeclaredException() {
-<span class="nc" id="L22">    throw new IllegalStateException(&quot;Expected undeclared exception&quot;);</span>
+<span class="nc" id="L27">    throw new IllegalStateException(&quot;Expected undeclared exception&quot;);</span>
   }
 
   @Override
   public void throwDeclaredException() throws IllegalStateException {
-<span class="nc" id="L27">    throw new IllegalStateException(&quot;Expected declared exception&quot;);</span>
+<span class="nc" id="L32">    throw new IllegalStateException(&quot;Expected declared exception&quot;);</span>
   }
 
   /**
@@ -35,9 +40,30 @@ import edu.pdx.cs410J.cox.client.PhoneBillService;
    */
   @Override
   protected void doUnexpectedFailure(Throwable unhandled) {
-<span class="nc" id="L38">    unhandled.printStackTrace(System.err);</span>
-<span class="nc" id="L39">    super.doUnexpectedFailure(unhandled);</span>
-<span class="nc" id="L40">  }</span>
+<span class="nc" id="L43">    unhandled.printStackTrace(System.err);</span>
+<span class="nc" id="L44">    super.doUnexpectedFailure(unhandled);</span>
+<span class="nc" id="L45">  }</span>
 
+  @Override
+  public Boolean setPhoneBill(String customer, PhoneCall call) {
+<span class="nc" id="L49">    PhoneBill bill = this.bills.get(customer);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">    if(bill == null) {</span>
+<span class="nc" id="L51">      bill = new PhoneBill();</span>
+<span class="nc" id="L52">      bill.setCustomer(customer);</span>
+<span class="nc" id="L53">      this.bills.put(customer, bill);</span>
+    }
+
+<span class="nc bnc" id="L56" title="All 2 branches missed.">    if(bill.callExistsInBill(call) == true) {</span>
+<span class="nc" id="L57">      return false;</span>
+    }
+
+<span class="nc" id="L60">    bill.addPhoneCall(call);</span>
+<span class="nc" id="L61">    return true;</span>
+  }
+
+  @Override
+  public PhoneBill getBill (String customer) {
+<span class="nc" id="L66">    return this.bills.get(customer);</span>
+  }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -28,7 +28,7 @@ public class PhoneBillServiceSyncProxyIT extends HttpRequestHelper {
 
     PhoneBillService service = SyncProxy.createSync(PhoneBillService.class);
     PhoneBill bill = service.getPhoneBill();
-    assertEquals("CS410J", bill.getCustomer());
+    assertEquals("notset", bill.getCustomer());
     assertEquals(1, bill.getPhoneCalls().size());
   }
 

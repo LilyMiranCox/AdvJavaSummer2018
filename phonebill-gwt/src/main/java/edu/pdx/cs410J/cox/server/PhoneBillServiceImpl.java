@@ -5,11 +5,16 @@ import edu.pdx.cs410J.cox.client.PhoneBill;
 import edu.pdx.cs410J.cox.client.PhoneCall;
 import edu.pdx.cs410J.cox.client.PhoneBillService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * The server-side implementation of the Phone Bill service
  */
 public class PhoneBillServiceImpl extends RemoteServiceServlet implements PhoneBillService
 {
+  private Map<String, PhoneBill> bills = new HashMap<>();
+
   @Override
   public PhoneBill getPhoneBill() {
     PhoneBill phonebill = new PhoneBill();
@@ -39,4 +44,25 @@ public class PhoneBillServiceImpl extends RemoteServiceServlet implements PhoneB
     super.doUnexpectedFailure(unhandled);
   }
 
+  @Override
+  public Boolean setPhoneBill(String customer, PhoneCall call) {
+    PhoneBill bill = this.bills.get(customer);
+    if(bill == null) {
+      bill = new PhoneBill();
+      bill.setCustomer(customer);
+      this.bills.put(customer, bill);
+    }
+
+    if(bill.callExistsInBill(call) == true) {
+      return false;
+    }
+
+    bill.addPhoneCall(call);
+    return true;
+  }
+
+  @Override
+  public PhoneBill getBill (String customer) {
+    return this.bills.get(customer);
+  }
 }

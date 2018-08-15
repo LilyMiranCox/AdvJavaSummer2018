@@ -13,7 +13,7 @@ import com.google.gwt.user.client.rpc.impl.RpcStatsContext;
 
 public class PhoneBillService_Proxy extends RemoteServiceProxy implements edu.pdx.cs410J.cox.client.PhoneBillServiceAsync {
   private static final String REMOTE_SERVICE_INTERFACE_NAME = "edu.pdx.cs410J.cox.client.PhoneBillService";
-  private static final String SERIALIZATION_POLICY ="AE7A53580AD51490043791EABCC1BCB7";
+  private static final String SERIALIZATION_POLICY ="A526D0BAC7C7B9C6B93EA2D162D0157E";
   private static final edu.pdx.cs410J.cox.client.PhoneBillService_TypeSerializer SERIALIZER = new edu.pdx.cs410J.cox.client.PhoneBillService_TypeSerializer();
   
   public PhoneBillService_Proxy() {
@@ -23,10 +23,36 @@ public class PhoneBillService_Proxy extends RemoteServiceProxy implements edu.pd
       SERIALIZER);
   }
   
+  public void getBill(java.lang.String customer, com.google.gwt.user.client.rpc.AsyncCallback async) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("PhoneBillService_Proxy", "getBill");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 1);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString(customer);
+      helper.finish(async, ResponseReader.OBJECT);
+    } catch (SerializationException ex) {
+      async.onFailure(ex);
+    }
+  }
+  
   public void getPhoneBill(com.google.gwt.user.client.rpc.AsyncCallback async) {
     com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("PhoneBillService_Proxy", "getPhoneBill");
     try {
       SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 0);
+      helper.finish(async, ResponseReader.OBJECT);
+    } catch (SerializationException ex) {
+      async.onFailure(ex);
+    }
+  }
+  
+  public void setPhoneBill(java.lang.String customer, edu.pdx.cs410J.cox.client.PhoneCall call, com.google.gwt.user.client.rpc.AsyncCallback async) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("PhoneBillService_Proxy", "setPhoneBill");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 2);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString("edu.pdx.cs410J.cox.client.PhoneCall/3224204619");
+      streamWriter.writeString(customer);
+      streamWriter.writeObject(call);
       helper.finish(async, ResponseReader.OBJECT);
     } catch (SerializationException ex) {
       async.onFailure(ex);

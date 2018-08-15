@@ -23,4 +23,8 @@ public interface PhoneBillServiceAsync {
    */
   void throwDeclaredException(AsyncCallback<Void> async);
 
+  void setPhoneBill(String customer, PhoneCall call, AsyncCallback<Boolean> async);
+
+  void getBill (String customer, AsyncCallback<PhoneBill> async);
+
 }

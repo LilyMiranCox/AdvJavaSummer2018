@@ -1,2 +1,0 @@
-serviceClass: edu.pdx.cs410J.cox.client.PhoneBillService
-path: AE7A53580AD51490043791EABCC1BCB7.gwt.rpc

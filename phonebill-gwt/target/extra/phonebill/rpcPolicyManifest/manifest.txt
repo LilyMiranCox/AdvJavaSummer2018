@@ -1,3 +1,3 @@
 # Module phonebill
 # RPC service class, partial path of RPC policy file
-edu.pdx.cs410J.cox.client.PhoneBillService, AE7A53580AD51490043791EABCC1BCB7.gwt.rpc
+edu.pdx.cs410J.cox.client.PhoneBillService, A526D0BAC7C7B9C6B93EA2D162D0157E.gwt.rpc

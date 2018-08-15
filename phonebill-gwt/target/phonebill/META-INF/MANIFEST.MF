@@ -10,6 +10,6 @@ Implementation-Vendor: Portland State University
 Implementation-URL: http://www.cs.pdx.edu/~whitlock/gwt-parent/phonebi
  ll-gwt
 Built-From-Branch: master
-Built-From-Revision: 6c3ac5e2c6bd9043fb2cb2fdaebcbad194f7ae3d
-Built-On: 2018-08-07T18:10:54.652-0700
+Built-From-Revision: 6be6eff951e522e6004c83e65a2dde000aea32e7
+Built-On: 2018-08-15T04:33:27.518-0700
 

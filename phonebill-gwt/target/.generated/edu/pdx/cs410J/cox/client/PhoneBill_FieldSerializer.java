@@ -16,8 +16,18 @@ public class PhoneBill_FieldSerializer implements com.google.gwt.user.client.rpc
     instance.@edu.pdx.cs410J.cox.client.PhoneBill::calls = value;
   }-*/;
   
+  private static native java.lang.String getCustomer(edu.pdx.cs410J.cox.client.PhoneBill instance) /*-{
+    return instance.@edu.pdx.cs410J.cox.client.PhoneBill::customer;
+  }-*/;
+  
+  private static native void setCustomer(edu.pdx.cs410J.cox.client.PhoneBill instance, java.lang.String value) 
+  /*-{
+    instance.@edu.pdx.cs410J.cox.client.PhoneBill::customer = value;
+  }-*/;
+  
   public static void deserialize(SerializationStreamReader streamReader, edu.pdx.cs410J.cox.client.PhoneBill instance) throws SerializationException {
     setCalls(instance, (java.util.Collection) streamReader.readObject());
+    setCustomer(instance, streamReader.readString());
     
     edu.pdx.cs410J.AbstractPhoneBill_FieldSerializer.deserialize(streamReader, instance);
   }
@@ -28,6 +38,7 @@ public class PhoneBill_FieldSerializer implements com.google.gwt.user.client.rpc
   
   public static void serialize(SerializationStreamWriter streamWriter, edu.pdx.cs410J.cox.client.PhoneBill instance) throws SerializationException {
     streamWriter.writeObject(getCalls(instance));
+    streamWriter.writeString(getCustomer(instance));
     
     edu.pdx.cs410J.AbstractPhoneBill_FieldSerializer.serialize(streamWriter, instance);
   }

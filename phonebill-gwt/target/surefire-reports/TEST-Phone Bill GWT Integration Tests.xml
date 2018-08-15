@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="Phone Bill GWT Integration Tests" time="10.916" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="Phone Bill GWT Integration Tests" time="8.156" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="10.0.1+10"/>
@@ -62,8 +62,8 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="edu.pdx.cs410J.cox.client.PhoneBillGwtIT" name="testClickingShowPhoneBillButtonAlertsWithPhoneBillInformation" time="8.318"/>
-  <testcase classname="edu.pdx.cs410J.cox.client.PhoneBillGwtIT" name="testClickingShowDeclaredExceptionButtonAlertsWithExpectedMessage" time="1.027"/>
-  <testcase classname="edu.pdx.cs410J.cox.client.PhoneBillGwtIT" name="testClickingShowClientSideExceptionButtonAlertsWithExpectedMessage" time="0.541"/>
-  <testcase classname="edu.pdx.cs410J.cox.client.PhoneBillGwtIT" name="testClickingShowUndeclaredExceptionButtonAlertsWithExpectedMessage" time="1.026"/>
+  <testcase classname="edu.pdx.cs410J.cox.client.PhoneBillGwtIT" name="testClickingShowPhoneBillButtonAlertsWithPhoneBillInformation" time="8.082"/>
+  <testcase classname="edu.pdx.cs410J.cox.client.PhoneBillGwtIT" name="testClickingShowDeclaredExceptionButtonAlertsWithExpectedMessage" time="0.024"/>
+  <testcase classname="edu.pdx.cs410J.cox.client.PhoneBillGwtIT" name="testClickingShowClientSideExceptionButtonAlertsWithExpectedMessage" time="0.022"/>
+  <testcase classname="edu.pdx.cs410J.cox.client.PhoneBillGwtIT" name="testClickingShowUndeclaredExceptionButtonAlertsWithExpectedMessage" time="0.022"/>
 </testsuite>
