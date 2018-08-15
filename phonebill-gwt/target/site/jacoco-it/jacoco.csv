@@ -1,0 +1,25 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new ClickHandler() {...},32,0,0,0,7,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new GWT.UncaughtExceptionHandler() {...},11,0,0,0,3,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new ClickHandler() {...},10,0,0,0,3,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new Scheduler.ScheduledCommand() {...},10,0,0,0,3,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new ClickHandler() {...},10,0,0,0,3,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new PhoneBillGwt.Alerter() {...},6,0,0,0,3,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new AsyncCallback() {...},90,0,4,0,15,0,5,0,3,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new AsyncCallback() {...},32,0,2,0,7,0,4,0,3,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new AsyncCallback() {...},17,0,0,0,5,0,3,0,3,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new ClickHandler() {...},15,0,0,0,2,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new Command() {...},12,0,0,0,3,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new ClickHandler() {...},15,0,0,0,2,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new AsyncCallback() {...},46,0,2,0,11,0,4,0,3,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new ClickHandler() {...},10,0,0,0,3,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new AsyncCallback() {...},17,0,0,0,5,0,3,0,3,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new ClickHandler() {...},10,0,0,0,3,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new ClickHandler() {...},28,0,4,0,8,0,5,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt,1137,0,48,0,254,0,46,0,22,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new ClickHandler() {...},15,0,0,0,2,0,2,0,2,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBillGwt.new AsyncCallback() {...},37,0,2,0,10,0,4,0,3,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneBill,122,17,18,0,30,5,14,3,5,3
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PrettyPrinter,92,0,4,0,17,0,7,0,5,0
+Phone Bill GWT Application,edu.pdx.cs410J.cox.client,PhoneCall,492,19,78,0,135,6,57,1,18,1
+Phone Bill GWT Application,edu.pdx.cs410J.cox.server,PhoneBillServiceImpl,78,0,4,0,20,0,9,0,7,0

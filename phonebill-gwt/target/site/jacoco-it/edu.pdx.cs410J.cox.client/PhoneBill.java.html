@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PhoneBill.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Phone Bill GWT Application</a> &gt; <a href="index.source.html" class="el_package">edu.pdx.cs410J.cox.client</a> &gt; <span class="el_source">PhoneBill.java</span></div><h1>PhoneBill.java</h1><pre class="source lang-java linenums">package edu.pdx.cs410J.cox.client;
+
+import edu.pdx.cs410J.AbstractPhoneBill;
+
+import java.util.*;
+
+/**
+ * This class represents a phone bill. It is descended from the AbstractPhoneBill class.
+ * It implements AbstractPhoneBill's abstract classes :
+ *      addPhoneCall, getCustomer, and getPhoneCalls.
+ * The following classes are specific to PhoneBill (not inherited):
+ *      setCustomer.
+ * Variables:
+ *      calls: Contains all of the calls made from this account.
+ *      customer: Contains the name of the customer.
+ */
+
+<span class="fc" id="L18">public class PhoneBill extends AbstractPhoneBill&lt;PhoneCall&gt;{</span>
+<span class="fc" id="L19">    private Collection&lt;PhoneCall&gt; calls = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L20">    private String customer = &quot;notset&quot;;</span>
+
+    /**
+     * This Method accepts a PhoneCall object, which it adds to the existing collection of PhoneCalls.
+     * @param call A PhoneCall object which will be added to the collection variable, calls.
+     */
+    @Override
+    public void addPhoneCall(PhoneCall call) {
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if(this.calls.isEmpty() == true) { // If there are no calls in the PhoneBill yet</span>
+<span class="nc" id="L29">            this.calls.add(call);</span>
+<span class="nc" id="L30">            List callList = (List) this.calls;</span>
+<span class="nc" id="L31">            Collections.sort(callList);</span>
+<span class="nc" id="L32">            this.calls = callList;</span>
+<span class="nc" id="L33">        }</span>
+        else { // If there are already calls in the PhoneBill
+<span class="nc bnc" id="L35" title="All 2 branches missed.">            if(callExistsInBill(call) == true) {</span>
+<span class="nc" id="L36">                return;</span>
+            }
+            // New call doesn't already exist in the bill, so add it
+<span class="nc" id="L39">            this.calls.add(call);</span>
+<span class="nc" id="L40">            List callList = (List) this.calls;</span>
+<span class="nc" id="L41">            Collections.sort(callList);</span>
+<span class="nc" id="L42">            this.calls = callList;</span>
+<span class="nc" id="L43">            return;</span>
+        }
+<span class="nc" id="L45">    }</span>
+
+    /**
+     * This method returns string containing the name of the customer whose PhoneBill it is.
+     * @return A string which contains the name of the customer who pays the bill.
+     */
+    @Override
+    public String getCustomer() {
+<span class="fc" id="L53">        return this.customer;</span>
+    }
+
+    /**
+     * This method returns all of the calls that have taken place for this customer.
+     * @return A collection of PhoneCall instances which hold the information regarding the calls that have taken place.
+     */
+    @Override
+    public Collection&lt;PhoneCall&gt; getPhoneCalls() {
+<span class="fc" id="L62">        return this.calls;</span>
+    }
+
+    /**
+     * This method accepts a string containing the name of the customer whose PhoneBill it is.
+     * @param name A string containing the name of the customer who pays the bill.
+     */
+    public void setCustomer(String name) {
+
+<span class="nc" id="L71">        this.customer = name;</span>
+<span class="nc" id="L72">    }</span>
+
+    /**
+     * This method will search through all of the PhoneCalls and create a subset bill containing all calls that
+     * fall between the included start and end times.
+     * @param customer A string containing the name of the expected bill's customer.
+     * @param start A date containing the start time limit.
+     * @param end A date containing the end time limit.
+     * @return A bill containing the subset of calls within the start and end times.
+     */
+    public PhoneBill searchCalls (String customer, Date start, Date end) {
+<span class="nc" id="L83">        PhoneBill searchSubset = new PhoneBill();</span>
+
+<span class="nc" id="L85">        searchSubset.setCustomer(customer);</span>
+
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        for (PhoneCall c : this.calls) { // Compare the potential new call to see if it already exists in the collection</span>
+<span class="nc bnc" id="L88" title="All 8 branches missed.">            if((c.getStartTime().equals(start) || c.getStartTime().after(start)) &amp;&amp; (c.getEndTime().equals(end) || c.getEndTime().before(end))){</span>
+<span class="nc" id="L89">                searchSubset.addPhoneCall(c);</span>
+            }
+<span class="nc" id="L91">        }</span>
+
+<span class="nc" id="L93">        return searchSubset;</span>
+    }
+
+    /**
+     * This method creates a pretty print string of a received PhoneBill.
+     * @param bill A PhoneBill to pretty print.
+     * @param title A string that will be the title in the pretty print.
+     * @return A pretty printed string.
+     */
+    public String prettyPrintCalls (PhoneBill bill, String title) {
+<span class="nc" id="L103">        PrettyPrinter print = new PrettyPrinter();</span>
+<span class="nc" id="L104">        return print.printOutString(bill, title);</span>
+    }
+
+    /**
+     * This method receives a call and checks to see whether the call exists in the current PhoneBill.
+     * @param call A call to see whether it exists in the PhoneBill.
+     * @return Returns true if the call exists in the PhoneBill, and false if it does not.
+     */
+    public Boolean callExistsInBill (PhoneCall call) {
+<span class="nc bnc" id="L113" title="All 2 branches missed.">        for (PhoneCall c : this.calls) { // Compare the potential new call to see if it already exists in the collection</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">            if (c.compareTo(call) == 0) { // If it already exists, don't add it</span>
+                //       System.err.println(&quot;Call at  &quot;+ c.getStartTimeString() + &quot;  by  &quot;+ c.getCaller()+&quot;  is a duplicate and will not be added.&quot;);
+<span class="nc" id="L116">                return true;</span>
+            }
+<span class="nc" id="L118">        }</span>
+<span class="nc" id="L119">        return false;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

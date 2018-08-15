@@ -7,6 +7,8 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.UmbrellaException;
+import com.google.gwt.safehtml.shared.SafeHtml;
+import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -17,6 +19,7 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.MenuBar;
 
 import java.util.Collection;
 import java.util.logging.Level;
@@ -45,16 +48,10 @@ public class PhoneBillGwt implements EntryPoint {
   Button showClientSideExceptionButton;
 
   @VisibleForTesting
-  FlexTable wholeTable, helpMenuTable, applicationTable, optionButtonsTable;
+  MenuBar helpMenu;
 
   @VisibleForTesting
-  Label topLineLabel;
-
-  @VisibleForTesting
-  VerticalPanel linePanel; Label lineLabel1, lineLabel2, lineLabel3, lineLabel4, lineLabel5, lineLabel6, lineLabel7, lineLabel8, lineLabel9, lineLabel10, lineLabel11, lineLabel12, lineLabel13, lineLabel14, lineLabel15;
-
-  @VisibleForTesting
-  Label helpMenuLabel, applicationLabel; Button readmeButton;
+   FlexTable applicationTable, optionButtonsTable;
 
   @VisibleForTesting
   Button addCallButton, searchBillButton, prettyPrintBillButton;
@@ -221,68 +218,16 @@ public class PhoneBillGwt implements EntryPoint {
       }
     });
 
-    // Help menu table widgets - 'Help Menu' label and Readme button
-    helpMenuTable = new FlexTable();
-    helpMenuLabel = new Label("Help Menu");
-    helpMenuLabel.getElement().getStyle().setProperty("fontSize","17px");
-    helpMenuLabel.getElement().getStyle().setProperty("fontWeight","bold");
-
-    readmeButton = new Button("Readme");
-    readmeButton.addClickHandler(new ClickHandler () {
-      @Override
-      public void onClick(ClickEvent clickEvent) {
+    helpMenu = new MenuBar();
+    Command cmd = new Command () {
+      public void execute () {
         alerter.alert(readme);
       }
-    });
-
-    helpMenuTable.setWidget(0,0,helpMenuLabel);
-    helpMenuTable.setText(1, 0, " ");
-    helpMenuTable.setWidget(2, 0, readmeButton);
-    helpMenuTable.getElement().getStyle().setProperty("position", "absolute");
-    helpMenuTable.getElement().getStyle().setProperty("left", "10px");
-    helpMenuTable.getElement().getStyle().setProperty("top", "20px");
-
-    // Top line label - a line that separates the top labels from the lower buttons
-    topLineLabel = new Label("---------------------------------------------------------------------------------------------");
-    topLineLabel.getElement().getStyle().setProperty("position","absolute");
-    topLineLabel.getElement().getStyle().setProperty("top","35px");
-
-    // LinePanel - a vertical line that separates the help menu from the application
-    linePanel = new VerticalPanel();
-    lineLabel1 = new Label("|");
-    lineLabel2 = new Label("|");
-    lineLabel3 = new Label("|");
-    lineLabel4 = new Label("|");
-    lineLabel5 = new Label("|");
-    lineLabel6 = new Label("|");
-    lineLabel7 = new Label("|");
-    lineLabel8 = new Label("|");
-    lineLabel9 = new Label("|");
-    lineLabel10 = new Label("|");
-    lineLabel11 = new Label("|");
-    lineLabel12 = new Label("|");
-    lineLabel13 = new Label("|");
-    lineLabel14 = new Label("|");
-    lineLabel15 = new Label("|");
-
-    linePanel.add(lineLabel1);
-    linePanel.add(lineLabel2);
-    linePanel.add(lineLabel3);
-    linePanel.add(lineLabel4);
-    linePanel.add(lineLabel5);
-    linePanel.add(lineLabel6);
-    linePanel.add(lineLabel7);
-    linePanel.add(lineLabel8);
-    linePanel.add(lineLabel9);
-    linePanel.add(lineLabel10);
-    linePanel.add(lineLabel11);
-    linePanel.add(lineLabel12);
-    linePanel.add(lineLabel13);
-    linePanel.add(lineLabel14);
-    linePanel.add(lineLabel15);
-    linePanel.getElement().getStyle().setProperty("position", "absolute");
-    linePanel.getElement().getStyle().setProperty("left", "110px");
-    linePanel.getElement().getStyle().setProperty("top", "23px");
+    };
+    helpMenu.addItem("Readme", cmd);
+    helpMenu.getElement().getStyle().setProperty("position", "absolute");
+    helpMenu.getElement().getStyle().setProperty("left", "10px");
+    helpMenu.getElement().getStyle().setProperty("top", "10px");
 
     // applicationTable - holds all buttons and labels for the phonebill application
     applicationTable = new FlexTable();
@@ -323,18 +268,12 @@ public class PhoneBillGwt implements EntryPoint {
     submitOrClearButtonsTable.setWidget(0, 0, submitRequestButton);
     submitOrClearButtonsTable.setWidget(0,1,clearAllInputsButton);
 
-    applicationLabel = new Label("Application");
-    applicationLabel.getElement().getStyle().setProperty("fontSize","17px");
-    applicationLabel.getElement().getStyle().setProperty("fontWeight", "bold");
-
-    applicationTable.setWidget(0,0, applicationLabel);
-    applicationTable.setText(1,0," ");
     applicationTable.setWidget(2, 0, optionButtonsTable);
     applicationTable.setWidget(4, 0, inputsTable);
     applicationTable.setWidget(6, 0, submitOrClearButtonsTable);
     applicationTable.getElement().getStyle().setProperty("position", "absolute");
-    applicationTable.getElement().getStyle().setProperty("left", "130px");
-    applicationTable.getElement().getStyle().setProperty("top", "20px");
+    applicationTable.getElement().getStyle().setProperty("left", "10px");
+    applicationTable.getElement().getStyle().setProperty("top", "40px");
 
     // billResultsTextarea - textbox to put print and search results - in applicationTable
     billResultsTextarea = new TextArea();
@@ -345,15 +284,8 @@ public class PhoneBillGwt implements EntryPoint {
 
     applicationTable.setWidget(8,0,billResultsTextarea);
 
-    // wholeTable - Contains all elements and tables
-    wholeTable = new FlexTable();
-
-    wholeTable.setWidget(1, 1, helpMenuTable);
-    wholeTable.setWidget(1, 3, linePanel);
-    wholeTable.setWidget(1, 5, applicationTable);
-
-    panel.add(wholeTable);
-    panel.add(topLineLabel);
+    panel.add(helpMenu);
+    panel.add(applicationTable);
   }
 
   private void throwClientSideException() {

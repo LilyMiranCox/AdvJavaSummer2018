@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PhoneBillGwt.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Phone Bill GWT Application</a> &gt; <a href="index.source.html" class="el_package">edu.pdx.cs410J.cox.client</a> &gt; <span class="el_source">PhoneBillGwt.java</span></div><h1>PhoneBillGwt.java</h1><pre class="source lang-java linenums">package edu.pdx.cs410J.cox.client;
+
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.shared.UmbrellaException;
+import com.google.gwt.safehtml.shared.SafeHtml;
+import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.MenuBar;
+
+import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ * A basic GWT class that makes sure that we can send an Phone Bill back from the server
+ */
+public class PhoneBillGwt implements EntryPoint {
+  private final Alerter alerter;
+  private final PhoneBillServiceAsync phoneBillService;
+  private final Logger logger;
+<span class="nc" id="L35">  private String selectedOption = &quot;add&quot;;</span>
+  
+
+  @VisibleForTesting
+  Button showPhoneBillButton;
+
+  @VisibleForTesting
+  Button showUndeclaredExceptionButton;
+
+  @VisibleForTesting
+  Button showDeclaredExceptionButton;
+
+  @VisibleForTesting
+  Button showClientSideExceptionButton;
+
+  @VisibleForTesting
+  MenuBar helpMenu;
+
+  @VisibleForTesting
+   FlexTable applicationTable, optionButtonsTable;
+
+  @VisibleForTesting
+  Button addCallButton, searchBillButton, prettyPrintBillButton;
+
+  @VisibleForTesting
+  FlexTable inputsTable;
+
+  @VisibleForTesting
+  Label customerLabel, callerLabel, calleeLabel, startLabel, endLabel;
+
+  @VisibleForTesting
+  TextBox customerNameInput, callerNumberInput, calleeNumberInput, addStartTimeInput, addEndTimeInput;
+
+  @VisibleForTesting
+  FlexTable submitOrClearButtonsTable;
+
+  @VisibleForTesting
+  Button submitRequestButton, clearAllInputsButton;
+
+  @VisibleForTesting
+  TextArea billResultsTextarea;
+
+
+  public PhoneBillGwt() {
+<span class="nc" id="L79">    this(new Alerter() {</span>
+      @Override
+      public void alert(String message) {
+<span class="nc" id="L82">        Window.alert(message);</span>
+<span class="nc" id="L83">      }</span>
+    });
+<span class="nc" id="L85">  }</span>
+
+  @VisibleForTesting
+<span class="nc" id="L88">  PhoneBillGwt(Alerter alerter) {</span>
+<span class="nc" id="L89">    this.alerter = alerter;</span>
+<span class="nc" id="L90">    this.phoneBillService = GWT.create(PhoneBillService.class);</span>
+<span class="nc" id="L91">    this.logger = Logger.getLogger(&quot;phoneBill&quot;);</span>
+<span class="nc" id="L92">    Logger.getLogger(&quot;&quot;).setLevel(Level.INFO);  // Quiet down the default logging</span>
+<span class="nc" id="L93">  }</span>
+
+  private void alertOnException(Throwable throwable) {
+<span class="nc" id="L96">    Throwable unwrapped = unwrapUmbrellaException(throwable);</span>
+<span class="nc" id="L97">    StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L98">    sb.append(unwrapped.toString());</span>
+<span class="nc" id="L99">    sb.append('\n');</span>
+
+<span class="nc bnc" id="L101" title="All 2 branches missed.">    for (StackTraceElement element : unwrapped.getStackTrace()) {</span>
+<span class="nc" id="L102">      sb.append(&quot;  at &quot;);</span>
+<span class="nc" id="L103">      sb.append(element.toString());</span>
+<span class="nc" id="L104">      sb.append('\n');</span>
+    }
+
+<span class="nc" id="L107">    this.alerter.alert(sb.toString());</span>
+<span class="nc" id="L108">  }</span>
+
+  private Throwable unwrapUmbrellaException(Throwable throwable) {
+<span class="nc bnc" id="L111" title="All 2 branches missed.">    if (throwable instanceof UmbrellaException) {</span>
+<span class="nc" id="L112">      UmbrellaException umbrella = (UmbrellaException) throwable;</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">      if (umbrella.getCauses().size() == 1) {</span>
+<span class="nc" id="L114">        return unwrapUmbrellaException(umbrella.getCauses().iterator().next());</span>
+      }
+
+    }
+
+<span class="nc" id="L119">    return throwable;</span>
+  }
+
+  private void addWidgets(VerticalPanel panel) {
+<span class="nc" id="L123">    final String readme = &quot;-- README --\n&quot; +</span>
+            &quot;Project 5 implemented by Lily Cox \n&quot; +
+            &quot;This program creates phone bills from phone call information. &quot; +
+            &quot;There are three main options for interacting with the phonebill application: 'Add a Call', 'Search Bill', and 'Print Bill'. &quot; +
+            &quot;When one of these options is selected, the relevant textboxes will be made visible. The selected option's button will become disabled (grayed out and&quot;+
+            &quot;non clickable) to indicate that that is the option that is currently selected. 'Add a Call' is selected by default. &quot;+
+            &quot;Each piece of data entered into the text boxes is checked to make sure it adheres to the expected formatting. &quot; +
+            &quot;If any information is formatted incorrectly, an alert will pop up stating which textboxes are formatted incorrectly. &quot; +
+            &quot;No calls will be added, or searches will be conducted if any of the information is formatted incorrectly. &quot;+
+            &quot;If all of the entered data was formatted correctly, the information will be added to an instance of the&quot; +
+            &quot;PhoneCall class, and that instance added to the specified customer's bill. &quot; +
+            &quot;If a new call is being added, and the included customer does not exist, a bill will be created for them. &quot; +
+            &quot;If the customer provided to 'Search Bill' or 'Print Bill' does not exist on the server, an alert message will be displayed to the user. &quot; +
+            &quot;Search and Print results will be pretty printed to the textarea beneath the 'SUBMIT' button. &quot;+
+            &quot;To send the 'Add a Call', 'Search Bill', or 'Print Bill' requests to the server, fill out all provided text boxes, and click the 'SUBMIT' button below the text boxes. &quot; +
+            &quot;Clicking 'Empty Textboxes' will delete all information you have put in the textboxes. &quot;;
+
+<span class="nc" id="L140">    showPhoneBillButton = new Button(&quot;Show Phone Bill&quot;);</span>
+<span class="nc" id="L141">    showPhoneBillButton.addClickHandler(new ClickHandler() {</span>
+      @Override
+      public void onClick(ClickEvent clickEvent) {
+<span class="nc" id="L144">        showPhoneBill();</span>
+<span class="nc" id="L145">      }</span>
+    });
+
+<span class="nc" id="L148">    showUndeclaredExceptionButton = new Button(&quot;Show undeclared exception&quot;);</span>
+<span class="nc" id="L149">    showUndeclaredExceptionButton.addClickHandler(new ClickHandler() {</span>
+      @Override
+      public void onClick(ClickEvent clickEvent) {
+<span class="nc" id="L152">        showUndeclaredException();</span>
+<span class="nc" id="L153">      }</span>
+    });
+
+<span class="nc" id="L156">    showDeclaredExceptionButton = new Button(&quot;Show declared exception&quot;);</span>
+<span class="nc" id="L157">    showDeclaredExceptionButton.addClickHandler(new ClickHandler() {</span>
+      @Override
+      public void onClick(ClickEvent clickEvent) {
+<span class="nc" id="L160">        showDeclaredException();</span>
+<span class="nc" id="L161">      }</span>
+    });
+
+<span class="nc" id="L164">    showClientSideExceptionButton= new Button(&quot;Show client-side exception&quot;);</span>
+<span class="nc" id="L165">    showClientSideExceptionButton.addClickHandler(new ClickHandler() {</span>
+      @Override
+      public void onClick(ClickEvent clickEvent) {
+<span class="nc" id="L168">        throwClientSideException();</span>
+<span class="nc" id="L169">      }</span>
+    });
+
+<span class="nc" id="L172">    addCallButton= new Button(&quot;Add a Call&quot;);</span>
+<span class="nc" id="L173">    addCallButton.addClickHandler( new ClickHandler () {</span>
+      @Override
+<span class="nc" id="L175">      public void onClick(ClickEvent clickEvent) {selectedOption=&quot;add&quot;;setForAdd();}</span>
+    });
+<span class="nc" id="L177">    addCallButton.setEnabled(false);</span>
+
+<span class="nc" id="L179">    searchBillButton= new Button(&quot;Search Bill&quot;);</span>
+<span class="nc" id="L180">    searchBillButton.addClickHandler( new ClickHandler () {</span>
+      @Override
+<span class="nc" id="L182">      public void onClick(ClickEvent clickEvent) {selectedOption=&quot;search&quot;;setForSearch();}</span>
+    });
+
+<span class="nc" id="L185">    prettyPrintBillButton= new Button(&quot;Print Bill&quot;);</span>
+<span class="nc" id="L186">    prettyPrintBillButton.addClickHandler(new ClickHandler() {</span>
+      @Override
+<span class="nc" id="L188">      public void onClick(ClickEvent clickEvent) {selectedOption=&quot;print&quot;;setForPrint();}</span>
+    });
+
+<span class="nc" id="L191">    submitRequestButton = new Button (&quot;SUBMIT&quot;);</span>
+<span class="nc" id="L192">    submitRequestButton.addClickHandler(new ClickHandler () {</span>
+        @Override
+        public void onClick(ClickEvent clickEvent) {
+<span class="nc bnc" id="L195" title="All 4 branches missed.">            switch (selectedOption) {</span>
+                case &quot;add&quot;:
+<span class="nc" id="L197">                    addCall();</span>
+<span class="nc" id="L198">                    break;</span>
+                case &quot;search&quot;:
+<span class="nc" id="L200">                    searchBill();</span>
+<span class="nc" id="L201">                    break;</span>
+                case &quot;print&quot;:
+<span class="nc" id="L203">                    printBill();</span>
+                    break;
+            }
+<span class="nc" id="L206">        }</span>
+    });
+
+<span class="nc" id="L209">    clearAllInputsButton = new Button (&quot;Empty Textboxes&quot;);</span>
+<span class="nc" id="L210">    clearAllInputsButton.addClickHandler(new ClickHandler () {</span>
+      @Override
+      public void onClick(ClickEvent clickEvent) {
+<span class="nc" id="L213">       customerNameInput.setValue(&quot;&quot;);</span>
+<span class="nc" id="L214">       callerNumberInput.setValue(&quot;&quot;);</span>
+<span class="nc" id="L215">       calleeNumberInput.setValue(&quot;&quot;);</span>
+<span class="nc" id="L216">       addStartTimeInput.setValue(&quot;&quot;);</span>
+<span class="nc" id="L217">       addEndTimeInput.setValue(&quot;&quot;);</span>
+<span class="nc" id="L218">      }</span>
+    });
+
+<span class="nc" id="L221">    helpMenu = new MenuBar();</span>
+<span class="nc" id="L222">    Command cmd = new Command () {</span>
+      public void execute () {
+<span class="nc" id="L224">        alerter.alert(readme);</span>
+<span class="nc" id="L225">      }</span>
+    };
+<span class="nc" id="L227">    helpMenu.addItem(&quot;Readme&quot;, cmd);</span>
+<span class="nc" id="L228">    helpMenu.getElement().getStyle().setProperty(&quot;position&quot;, &quot;absolute&quot;);</span>
+<span class="nc" id="L229">    helpMenu.getElement().getStyle().setProperty(&quot;left&quot;, &quot;10px&quot;);</span>
+<span class="nc" id="L230">    helpMenu.getElement().getStyle().setProperty(&quot;top&quot;, &quot;10px&quot;);</span>
+
+    // applicationTable - holds all buttons and labels for the phonebill application
+<span class="nc" id="L233">    applicationTable = new FlexTable();</span>
+<span class="nc" id="L234">    optionButtonsTable = new FlexTable();</span>
+
+    // optionButtonsTable - holds all options buttons - within applicationTable
+<span class="nc" id="L237">    optionButtonsTable.setWidget(0,0, addCallButton);</span>
+<span class="nc" id="L238">    optionButtonsTable.setWidget(0, 1, searchBillButton);</span>
+<span class="nc" id="L239">    optionButtonsTable.setWidget(0, 2, prettyPrintBillButton);</span>
+
+    // inputsTable - holds all inputs and inputs label - within applicationTable
+<span class="nc" id="L242">    customerLabel = new Label(&quot;Customer Name: &quot;);</span>
+<span class="nc" id="L243">    callerLabel = new Label(&quot;Caller Number: &quot;);</span>
+<span class="nc" id="L244">    calleeLabel = new Label(&quot;Callee Number: &quot;);</span>
+<span class="nc" id="L245">    startLabel = new Label(&quot;Start Time: &quot;);</span>
+<span class="nc" id="L246">    endLabel = new Label(&quot;End Time: &quot;);</span>
+
+<span class="nc" id="L248">    customerNameInput = new TextBox();</span>
+<span class="nc" id="L249">    callerNumberInput = new TextBox();</span>
+<span class="nc" id="L250">    calleeNumberInput = new TextBox();</span>
+<span class="nc" id="L251">    addStartTimeInput = new TextBox();</span>
+<span class="nc" id="L252">    addEndTimeInput = new TextBox();</span>
+
+<span class="nc" id="L254">    inputsTable = new FlexTable();</span>
+<span class="nc" id="L255">    inputsTable.setWidget(0, 0, customerLabel);</span>
+<span class="nc" id="L256">    inputsTable.setWidget(0, 1, customerNameInput);</span>
+<span class="nc" id="L257">    inputsTable.setWidget(1,0, callerLabel);</span>
+<span class="nc" id="L258">    inputsTable.setWidget(1,1, callerNumberInput);</span>
+<span class="nc" id="L259">    inputsTable.setWidget(2,0,calleeLabel);</span>
+<span class="nc" id="L260">    inputsTable.setWidget(2,1,calleeNumberInput);</span>
+<span class="nc" id="L261">    inputsTable.setWidget(3,0,startLabel);</span>
+<span class="nc" id="L262">    inputsTable.setWidget(3,1,addStartTimeInput);</span>
+<span class="nc" id="L263">    inputsTable.setWidget(4,0,endLabel);</span>
+<span class="nc" id="L264">    inputsTable.setWidget(4,1,addEndTimeInput);</span>
+
+    // submitOrClearButtonsTable - holds the 'SUBMIT' and clear buttons - within applicationTable
+<span class="nc" id="L267">    submitOrClearButtonsTable = new FlexTable();</span>
+<span class="nc" id="L268">    submitOrClearButtonsTable.setWidget(0, 0, submitRequestButton);</span>
+<span class="nc" id="L269">    submitOrClearButtonsTable.setWidget(0,1,clearAllInputsButton);</span>
+
+<span class="nc" id="L271">    applicationTable.setWidget(2, 0, optionButtonsTable);</span>
+<span class="nc" id="L272">    applicationTable.setWidget(4, 0, inputsTable);</span>
+<span class="nc" id="L273">    applicationTable.setWidget(6, 0, submitOrClearButtonsTable);</span>
+<span class="nc" id="L274">    applicationTable.getElement().getStyle().setProperty(&quot;position&quot;, &quot;absolute&quot;);</span>
+<span class="nc" id="L275">    applicationTable.getElement().getStyle().setProperty(&quot;left&quot;, &quot;10px&quot;);</span>
+<span class="nc" id="L276">    applicationTable.getElement().getStyle().setProperty(&quot;top&quot;, &quot;40px&quot;);</span>
+
+    // billResultsTextarea - textbox to put print and search results - in applicationTable
+<span class="nc" id="L279">    billResultsTextarea = new TextArea();</span>
+<span class="nc" id="L280">    billResultsTextarea.setWidth(&quot;270px&quot;);</span>
+<span class="nc" id="L281">    billResultsTextarea.setHeight(&quot;250px&quot;);</span>
+<span class="nc" id="L282">    billResultsTextarea.setVisible(false);</span>
+<span class="nc" id="L283">    billResultsTextarea.setReadOnly(true);</span>
+
+<span class="nc" id="L285">    applicationTable.setWidget(8,0,billResultsTextarea);</span>
+
+<span class="nc" id="L287">    panel.add(helpMenu);</span>
+<span class="nc" id="L288">    panel.add(applicationTable);</span>
+<span class="nc" id="L289">  }</span>
+
+  private void throwClientSideException() {
+<span class="nc" id="L292">    logger.info(&quot;About to throw a client-side exception&quot;);</span>
+<span class="nc" id="L293">    throw new IllegalStateException(&quot;Expected exception on the client side&quot;);</span>
+  }
+
+  private void showUndeclaredException() {
+<span class="nc" id="L297">    logger.info(&quot;Calling throwUndeclaredException&quot;);</span>
+<span class="nc" id="L298">    phoneBillService.throwUndeclaredException(new AsyncCallback&lt;Void&gt;() {</span>
+      @Override
+      public void onFailure(Throwable ex) {
+<span class="nc" id="L301">        alertOnException(ex);</span>
+<span class="nc" id="L302">      }</span>
+
+      @Override
+      public void onSuccess(Void aVoid) {
+<span class="nc" id="L306">        alerter.alert(&quot;This shouldn't happen&quot;);</span>
+<span class="nc" id="L307">      }</span>
+    });
+<span class="nc" id="L309">  }</span>
+
+  private void showDeclaredException() {
+<span class="nc" id="L312">    logger.info(&quot;Calling throwDeclaredException&quot;);</span>
+<span class="nc" id="L313">    phoneBillService.throwDeclaredException(new AsyncCallback&lt;Void&gt;() {</span>
+      @Override
+      public void onFailure(Throwable ex) {
+<span class="nc" id="L316">        alertOnException(ex);</span>
+<span class="nc" id="L317">      }</span>
+
+      @Override
+      public void onSuccess(Void aVoid) {
+<span class="nc" id="L321">        alerter.alert(&quot;This shouldn't happen&quot;);</span>
+<span class="nc" id="L322">      }</span>
+    });
+<span class="nc" id="L324">  }</span>
+
+  private void showPhoneBill() {
+<span class="nc" id="L327">    logger.info(&quot;Calling getPhoneBill&quot;);</span>
+<span class="nc" id="L328">    phoneBillService.getPhoneBill(new AsyncCallback&lt;PhoneBill&gt;() {</span>
+
+      @Override
+      public void onFailure(Throwable ex) {
+<span class="nc" id="L332">        alertOnException(ex);</span>
+<span class="nc" id="L333">      }</span>
+
+      @Override
+      public void onSuccess(PhoneBill phoneBill) {
+<span class="nc" id="L337">        StringBuilder sb = new StringBuilder(phoneBill.toString());</span>
+<span class="nc" id="L338">        Collection&lt;PhoneCall&gt; calls = phoneBill.getPhoneCalls();</span>
+<span class="nc bnc" id="L339" title="All 2 branches missed.">        for (PhoneCall call : calls) {</span>
+<span class="nc" id="L340">          sb.append(call);</span>
+<span class="nc" id="L341">          sb.append(&quot;\n&quot;);</span>
+<span class="nc" id="L342">        }</span>
+<span class="nc" id="L343">        alerter.alert(sb.toString());</span>
+<span class="nc" id="L344">      }</span>
+    });
+<span class="nc" id="L346">  }</span>
+  
+  @Override
+  public void onModuleLoad() {
+<span class="nc" id="L350">    setUpUncaughtExceptionHandler();</span>
+
+    // The UncaughtExceptionHandler won't catch exceptions during module load
+    // So, you have to set up the UI after module load...
+<span class="nc" id="L354">    Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {</span>
+      @Override
+      public void execute() {
+<span class="nc" id="L357">        setupUI();</span>
+<span class="nc" id="L358">      }</span>
+    });
+<span class="nc" id="L360">  }</span>
+
+
+  private void setupUI() {
+<span class="nc" id="L364">    RootPanel rootPanel = RootPanel.get();</span>
+<span class="nc" id="L365">    VerticalPanel panel = new VerticalPanel();</span>
+<span class="nc" id="L366">    rootPanel.add(panel);</span>
+
+<span class="nc" id="L368">    addWidgets(panel);</span>
+<span class="nc" id="L369">  }</span>
+
+  private void setUpUncaughtExceptionHandler() {
+<span class="nc" id="L372">    GWT.setUncaughtExceptionHandler(new GWT.UncaughtExceptionHandler() {</span>
+      @Override
+      public void onUncaughtException(Throwable throwable) {
+<span class="nc" id="L375">        alertOnException(throwable);</span>
+<span class="nc" id="L376">      }</span>
+    });
+<span class="nc" id="L378">  }</span>
+
+  @VisibleForTesting
+  interface Alerter {
+    void alert(String message);
+  }
+
+  /**
+   * This method shows all inputs and  input lables, disables the add button, enables the other buttons,
+   * and hides the textarea.
+   */
+  public void setForAdd () {
+<span class="nc" id="L390">    addCallButton.setEnabled(false);</span>
+<span class="nc" id="L391">    searchBillButton.setEnabled(true);</span>
+<span class="nc" id="L392">    prettyPrintBillButton.setEnabled(true);</span>
+
+<span class="nc" id="L394">    customerNameInput.setVisible(true);</span>
+<span class="nc" id="L395">    customerLabel.setVisible(true);</span>
+
+<span class="nc" id="L397">    callerNumberInput.setVisible(true);</span>
+<span class="nc" id="L398">    callerLabel.setVisible(true);</span>
+
+<span class="nc" id="L400">    calleeNumberInput.setVisible(true);</span>
+<span class="nc" id="L401">    calleeLabel.setVisible(true);</span>
+
+<span class="nc" id="L403">    addStartTimeInput.setVisible(true);</span>
+<span class="nc" id="L404">    startLabel.setVisible(true);</span>
+
+<span class="nc" id="L406">    addEndTimeInput.setVisible(true);</span>
+<span class="nc" id="L407">    endLabel.setVisible(true);</span>
+
+<span class="nc" id="L409">    billResultsTextarea.setVisible(false);</span>
+<span class="nc" id="L410">    billResultsTextarea.setValue(&quot;&quot;);</span>
+<span class="nc" id="L411">  }</span>
+
+  /**
+   * This method hides the caller and callee inputs and input labels, disables the search button, enables the
+   * other buttons, and hides the textarea.
+   */
+  public void setForSearch () {
+<span class="nc" id="L418">    addCallButton.setEnabled(true);</span>
+<span class="nc" id="L419">    searchBillButton.setEnabled(false);</span>
+<span class="nc" id="L420">    prettyPrintBillButton.setEnabled(true);</span>
+
+<span class="nc" id="L422">    customerNameInput.setVisible(true);</span>
+<span class="nc" id="L423">    customerLabel.setVisible(true);</span>
+
+<span class="nc" id="L425">    callerNumberInput.setVisible(false);</span>
+<span class="nc" id="L426">    callerLabel.setVisible(false);</span>
+
+<span class="nc" id="L428">    calleeNumberInput.setVisible(false);</span>
+<span class="nc" id="L429">    calleeLabel.setVisible(false);</span>
+
+<span class="nc" id="L431">    addStartTimeInput.setVisible(true);</span>
+<span class="nc" id="L432">    startLabel.setVisible(true);</span>
+
+<span class="nc" id="L434">    addEndTimeInput.setVisible(true);</span>
+<span class="nc" id="L435">    endLabel.setVisible(true);</span>
+
+<span class="nc" id="L437">    billResultsTextarea.setVisible(false);</span>
+<span class="nc" id="L438">    billResultsTextarea.setValue(&quot;&quot;);</span>
+<span class="nc" id="L439">  }</span>
+
+  /**
+   * This method hides all inputs and input labels except for customer, disables the print button, enables the other
+   * buttons, and hides the textarea.
+   */
+  public void setForPrint () {
+<span class="nc" id="L446">    addCallButton.setEnabled(true);</span>
+<span class="nc" id="L447">    searchBillButton.setEnabled(true);</span>
+<span class="nc" id="L448">    prettyPrintBillButton.setEnabled(false);</span>
+
+<span class="nc" id="L450">    customerNameInput.setVisible(true);</span>
+<span class="nc" id="L451">    customerLabel.setVisible(true);</span>
+
+<span class="nc" id="L453">    callerNumberInput.setVisible(false);</span>
+<span class="nc" id="L454">    callerLabel.setVisible(false);</span>
+
+<span class="nc" id="L456">    calleeNumberInput.setVisible(false);</span>
+<span class="nc" id="L457">    calleeLabel.setVisible(false);</span>
+
+<span class="nc" id="L459">    addStartTimeInput.setVisible(false);</span>
+<span class="nc" id="L460">    startLabel.setVisible(false);</span>
+
+<span class="nc" id="L462">    addEndTimeInput.setVisible(false);</span>
+<span class="nc" id="L463">    endLabel.setVisible(false);</span>
+
+<span class="nc" id="L465">    billResultsTextarea.setVisible(false);</span>
+<span class="nc" id="L466">    billResultsTextarea.setValue(&quot;&quot;);</span>
+<span class="nc" id="L467">  }</span>
+
+  /**
+   * Get all of the inputed information into a new PhoneCall (if it is formatted correctly), then send it to
+   * the server to save. Alerts the user if it is added correctly, or if the call already exists.
+   */
+  public void addCall () {
+<span class="nc" id="L474">      logger.info(&quot;Calling setPhoneBill&quot;);</span>
+
+<span class="nc" id="L476">      PhoneCall newCall = textBoxesToPhoneCall();</span>
+<span class="nc bnc" id="L477" title="All 2 branches missed.">      if(newCall == null) {</span>
+<span class="nc" id="L478">        return;</span>
+      }
+<span class="nc" id="L480">      String customer = customerNameInput.getValue().trim();</span>
+
+<span class="nc bnc" id="L482" title="All 2 branches missed.">      if(newCall.getEndTime().before(newCall.getStartTime())) {</span>
+<span class="nc" id="L483">        alerter.alert(&quot;The end time falls before the start time. Call will not be added.&quot;);</span>
+<span class="nc" id="L484">        return;</span>
+      }
+
+<span class="nc" id="L487">      phoneBillService.setPhoneBill(customer, newCall, new AsyncCallback&lt;Boolean&gt;() {</span>
+          @Override
+          public void onFailure(Throwable ex) {
+<span class="nc" id="L490">            alertOnException(ex);</span>
+<span class="nc" id="L491">          }</span>
+
+          @Override
+          public void onSuccess(Boolean callAddSuccess) {
+<span class="nc bnc" id="L495" title="All 2 branches missed.">            if(callAddSuccess == true) {</span>
+<span class="nc" id="L496">              alerter.alert(&quot;Added the call to &quot; + customer + &quot;'s bill.&quot;);</span>
+            }
+            else {
+<span class="nc" id="L499">              alerter.alert(&quot;This call already exists in the bill, and has not been added.&quot;);</span>
+            }
+<span class="nc" id="L501">          }</span>
+        }
+      );
+<span class="nc" id="L504">  }</span>
+
+  /**
+   * This method will get the bill if an existing customer is requested, search the bill for all calls
+   * within the included time period, and pretty print it's contents to a textarea.
+   */
+  public void searchBill () {
+<span class="nc" id="L511">    Boolean validSearch = validateSearchCall();</span>
+<span class="nc bnc" id="L512" title="All 2 branches missed.">    if(validSearch == false) {</span>
+<span class="nc" id="L513">      return;</span>
+    }
+
+<span class="nc" id="L516">    String customer = customerNameInput.getValue().trim();</span>
+<span class="nc" id="L517">    String start = addStartTimeInput.getValue().trim();</span>
+<span class="nc" id="L518">    String[] startPieces = start.split(&quot;\\s+&quot;);</span>
+
+<span class="nc" id="L520">    String end = addEndTimeInput.getValue().trim();</span>
+<span class="nc" id="L521">    String[] endPieces = end.split(&quot;\\s+&quot;);</span>
+
+<span class="nc" id="L523">    logger.info(&quot;Calling getPhoneBill&quot;);</span>
+<span class="nc" id="L524">    phoneBillService.getBill(customer, new AsyncCallback&lt;PhoneBill&gt;() {</span>
+
+      @Override
+      public void onFailure(Throwable ex) {
+<span class="nc" id="L528">        alertOnException(ex);</span>
+<span class="nc" id="L529">      }</span>
+
+      @Override
+      public void onSuccess(PhoneBill phoneBill) {
+<span class="nc bnc" id="L533" title="All 2 branches missed.">        if(phoneBill != null) {</span>
+<span class="nc" id="L534">          PhoneBill subBill = phoneBill.searchCalls(customer,PhoneCall.stringToDate(startPieces[0], startPieces[1], startPieces[2]), PhoneCall.stringToDate(endPieces[0], endPieces[1], endPieces[2]));</span>
+
+<span class="nc bnc" id="L536" title="All 2 branches missed.">          if(subBill.getPhoneCalls().size() == 0) {</span>
+<span class="nc" id="L537">            billResultsTextarea.setVisible(true);</span>
+<span class="nc" id="L538">            billResultsTextarea.setValue(&quot;No calls fall within those times.&quot;);</span>
+<span class="nc" id="L539">            return;</span>
+          }
+
+<span class="nc" id="L542">          String prettyPrint = subBill.prettyPrintCalls(subBill, &quot;Search Results: &quot;);</span>
+<span class="nc" id="L543">          billResultsTextarea.setVisible(true);</span>
+<span class="nc" id="L544">          billResultsTextarea.setValue(prettyPrint);</span>
+<span class="nc" id="L545">        }</span>
+        else {
+<span class="nc" id="L547">          alerter.alert(&quot;That customer doesn't exist.&quot;);</span>
+        }
+<span class="nc" id="L549">      }</span>
+    });
+<span class="nc" id="L551">  }</span>
+
+  /**
+   * This method will get the bill if an existing customer is requested, and pretty print it's contents
+   * to a textarea.
+   */
+  public void printBill () {
+<span class="nc" id="L558">    logger.info(&quot;Calling getPhoneBill to print&quot;);</span>
+<span class="nc" id="L559">    Boolean customerValid = validatePrintCall();</span>
+<span class="nc bnc" id="L560" title="All 2 branches missed.">    if(customerValid == false) {</span>
+<span class="nc" id="L561">      return;</span>
+    }
+
+<span class="nc" id="L564">    String customer = customerNameInput.getValue().trim();</span>
+
+<span class="nc" id="L566">    phoneBillService.getBill(customer, new AsyncCallback&lt;PhoneBill&gt;() {</span>
+
+      @Override
+      public void onFailure(Throwable ex) {
+<span class="nc" id="L570">        alertOnException(ex);</span>
+<span class="nc" id="L571">      }</span>
+
+      @Override
+      public void onSuccess(PhoneBill bill) {
+<span class="nc bnc" id="L575" title="All 2 branches missed.">        if(bill == null) {</span>
+<span class="nc" id="L576">          alerter.alert(&quot;That customer doesn't exist&quot;);</span>
+<span class="nc" id="L577">          return;</span>
+        }
+
+<span class="nc" id="L580">        String prettyBill = bill.prettyPrintCalls(bill, &quot;Bill for: &quot;+bill.getCustomer());</span>
+<span class="nc" id="L581">        billResultsTextarea.setVisible(true);</span>
+<span class="nc" id="L582">        billResultsTextarea.setValue(prettyBill);</span>
+<span class="nc" id="L583">      }</span>
+    });
+
+<span class="nc" id="L586">  }</span>
+
+  /**
+   * This method takes the values out of the user inputs, checks that they are all formatted correctly, and adds
+   * them to a new instance of PhoneCall. It will send an alert message containing which inputs are malformed.
+   * @return A filled PhoneCall if all inputs are formatted correctly, or null if any of them are malformed.
+   */
+  public PhoneCall textBoxesToPhoneCall () {
+<span class="nc" id="L594">    Boolean validCall = validateNewCall();</span>
+<span class="nc bnc" id="L595" title="All 2 branches missed.">    if(validCall == false) {</span>
+<span class="nc" id="L596">      return null;</span>
+    }
+<span class="nc" id="L598">    PhoneCall call = new PhoneCall();</span>
+
+<span class="nc" id="L600">    String caller = callerNumberInput.getValue().trim();</span>
+<span class="nc" id="L601">    Boolean callerCorrect = call.setCaller(caller);</span>
+
+<span class="nc" id="L603">    String callee = calleeNumberInput.getValue().trim();</span>
+<span class="nc" id="L604">    Boolean calleeCorrect = call.setCallee(callee);</span>
+
+<span class="nc" id="L606">    String start = addStartTimeInput.getValue().trim();</span>
+<span class="nc" id="L607">    String[] startPieces = start.split(&quot;\\s+&quot;);</span>
+<span class="nc" id="L608">    Boolean startCorrect = call.setStartTimeString(startPieces[0], startPieces[1], startPieces[2]);</span>
+
+<span class="nc" id="L610">    String end = addEndTimeInput.getValue().trim();</span>
+<span class="nc" id="L611">    String[] endPieces = end.split(&quot;\\s+&quot;);</span>
+<span class="nc" id="L612">    Boolean endCorrect = call.setEndTimeString(endPieces[0], endPieces[1], endPieces[2]);</span>
+
+<span class="nc" id="L614">    String errorMessage = &quot;&quot;;</span>
+
+<span class="nc bnc" id="L616" title="All 2 branches missed.">    if(callerCorrect == false) {</span>
+<span class="nc" id="L617">      errorMessage += &quot;Caller Number is not formatted correctly.\n&quot;;</span>
+    }
+<span class="nc bnc" id="L619" title="All 2 branches missed.">    if(calleeCorrect == false) {</span>
+<span class="nc" id="L620">      errorMessage += &quot;Callee Number is not formatted correctly.\n&quot;;</span>
+    }
+<span class="nc bnc" id="L622" title="All 2 branches missed.">    if(startCorrect == false) {</span>
+<span class="nc" id="L623">      errorMessage += &quot;Start Time is not formatted correctly.\n&quot;;</span>
+    }
+<span class="nc bnc" id="L625" title="All 2 branches missed.">    if(endCorrect == false) {</span>
+<span class="nc" id="L626">      errorMessage += &quot;End Time is not formatted correctly.\n&quot;;</span>
+    }
+
+<span class="nc bnc" id="L629" title="All 2 branches missed.">    if(errorMessage.equals(&quot;&quot;) == false) {</span>
+<span class="nc" id="L630">      alerter.alert(errorMessage);</span>
+<span class="nc" id="L631">      return null;</span>
+    }
+
+<span class="nc" id="L634">    return call;</span>
+  }
+
+  /**
+   * This method will check whether the customer, caller, callee, start time, and end time text boxes are filled.
+   * @return Returns true if all five inputs are occupied, false if any of them are empty.
+   */
+  public Boolean validateNewCall () {
+<span class="nc" id="L642">    String invalidMessage = &quot;&quot;;</span>
+
+<span class="nc bnc" id="L644" title="All 2 branches missed.">    if(customerNameInput.getValue().equals(&quot;&quot;)) {</span>
+<span class="nc" id="L645">      invalidMessage += &quot;Customer is empty.\n&quot;;</span>
+    }
+
+<span class="nc bnc" id="L648" title="All 2 branches missed.">    if(callerNumberInput.getValue().equals(&quot;&quot;)) {</span>
+<span class="nc" id="L649">      invalidMessage += &quot;Caller number is empty.\n&quot;;</span>
+    }
+
+<span class="nc bnc" id="L652" title="All 2 branches missed.">    if(calleeNumberInput.getValue().equals(&quot;&quot;)) {</span>
+<span class="nc" id="L653">      invalidMessage += &quot;Callee number is empty.\n&quot;;</span>
+    }
+
+<span class="nc bnc" id="L656" title="All 2 branches missed.">    if(addStartTimeInput.getValue().equals(&quot;&quot;)) {</span>
+<span class="nc" id="L657">      invalidMessage += &quot;Start time is empty.\n&quot;;</span>
+    }
+
+<span class="nc bnc" id="L660" title="All 2 branches missed.">    if(addEndTimeInput.getValue().equals(&quot;&quot;)) {</span>
+<span class="nc" id="L661">      invalidMessage += &quot;End time is empty.\n&quot;;</span>
+    }
+
+<span class="nc bnc" id="L664" title="All 2 branches missed.">    if(invalidMessage.equals(&quot;&quot;) == false) {</span>
+<span class="nc" id="L665">      alerter.alert(invalidMessage);</span>
+<span class="nc" id="L666">      return false;</span>
+    }
+
+<span class="nc" id="L669">    return true;</span>
+  }
+
+  /**
+   * This method will check whether the customer, start time, and end time textboxes are filled.
+   * @return Returns true if all three inputs are occupied, false if any of them are empty.
+   */
+  public Boolean validateSearchCall () {
+<span class="nc" id="L677">    String invalidMessage = &quot;&quot;;</span>
+
+<span class="nc" id="L679">    String customer = customerNameInput.getValue();</span>
+<span class="nc bnc" id="L680" title="All 2 branches missed.">    if(customer.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L681">      invalidMessage += &quot;Customer is empty.\n&quot;;</span>
+    }
+
+<span class="nc" id="L684">    String start = addStartTimeInput.getValue();</span>
+<span class="nc bnc" id="L685" title="All 2 branches missed.">    if(start.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L686">      invalidMessage += &quot;Start time is empty.\n&quot;;</span>
+    }
+
+<span class="nc" id="L689">    String end = addEndTimeInput.getValue();</span>
+<span class="nc bnc" id="L690" title="All 2 branches missed.">    if(end.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L691">      invalidMessage += &quot;End time is empty.\n&quot;;</span>
+    }
+
+<span class="nc bnc" id="L694" title="All 2 branches missed.">    if(invalidMessage.equals(&quot;&quot;) == false) {</span>
+<span class="nc" id="L695">      alerter.alert(invalidMessage);</span>
+<span class="nc" id="L696">      return false;</span>
+    }
+
+<span class="nc" id="L699">    return true;</span>
+  }
+
+  /**
+   * This method will check whether the customer textbox is filled.
+   * @return Returns true if a customer input is occupied, false if it is empty.
+   */
+  public Boolean validatePrintCall () {
+<span class="nc" id="L707">    String invalidMessage = &quot;&quot;;</span>
+
+<span class="nc" id="L709">    String customer = customerNameInput.getValue();</span>
+<span class="nc bnc" id="L710" title="All 2 branches missed.">    if(customer.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L711">      invalidMessage += &quot;Customer is empty.\n&quot;;</span>
+<span class="nc" id="L712">      alerter.alert(invalidMessage);</span>
+<span class="nc" id="L713">      return false;</span>
+    }
+
+<span class="nc" id="L716">    return true;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

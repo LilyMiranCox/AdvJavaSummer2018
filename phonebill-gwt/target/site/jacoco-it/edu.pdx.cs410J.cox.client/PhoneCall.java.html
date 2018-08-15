@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PhoneCall.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Phone Bill GWT Application</a> &gt; <a href="index.source.html" class="el_package">edu.pdx.cs410J.cox.client</a> &gt; <span class="el_source">PhoneCall.java</span></div><h1>PhoneCall.java</h1><pre class="source lang-java linenums">package edu.pdx.cs410J.cox.client;
+
+import edu.pdx.cs410J.AbstractPhoneCall;
+
+//import java.text.DateFormat;
+//import java.text.ParseException;
+//import java.text.SimpleDateFormat;
+import java.util.Date;
+import com.google.gwt.i18n.shared.DateTimeFormat;
+
+/**
+ * This class represents a phone call. It is descended from the AbstractPhoneCall class.
+ * It implements AbstractPhoneCall's abstract base classes:
+ *    getCaller, getCallee, getStartTimeString, and getEndTimeString.
+ * The following methods are specific to PhoneCall:
+ *    setCaller, setCallee, setStartTimeString, setEndTimeString, verifyDateFormat, verifyTimeFormat, verifyPhoneNumberFormat,
+ *    verifyAllDigits.
+ * Variables:
+ *      caller: A string containing the phone number of the person who initiated the call.
+ *      callee: A string containing the phone number of the person who received the call.
+ *      startTime: A string containing the date and time the call was received, separated by a space.
+ *      endTime: A string containing the date and time the call was terminated, separated by a space.
+ */
+
+public class PhoneCall extends AbstractPhoneCall implements Comparable &lt;PhoneCall&gt;{
+<span class="fc" id="L26">  private String caller = &quot;&quot;;</span>
+<span class="fc" id="L27">  private String callee = &quot;not implemented&quot;;</span>
+<span class="fc" id="L28">  private Date callStart = new Date();</span>
+<span class="fc" id="L29">  private Date callEnd = new Date();</span>
+
+<span class="fc" id="L31">  public PhoneCall () {</span>
+
+<span class="fc" id="L33">  }</span>
+
+  /**
+   * This method overrrides Comparable's method, compare to. It compares the times and caller numbers, and returns 0
+   * if they are the same, or 1 or -1 to indicate inequal.
+   * @param secondCall A call that is compared to this instances of PhoneCall.
+   * @return 0 if they are equal, 1 if the first is greater, or -1 if the second is greater.
+   */
+  @Override
+  public int compareTo(PhoneCall secondCall) {
+<span class="nc bnc" id="L43" title="All 2 branches missed.">    if(this.getStartTime().after(secondCall.getStartTime())) {</span>
+<span class="nc" id="L44">      return 1;</span>
+    }
+<span class="nc bnc" id="L46" title="All 2 branches missed.">    else if(this.getStartTime().before(secondCall.getStartTime())) {</span>
+<span class="nc" id="L47">      return -1;</span>
+    }
+    else  {
+<span class="nc" id="L50">      int compared = this.caller.compareTo(secondCall.getCaller());</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">      if(compared &gt; 0) {</span>
+<span class="nc" id="L52">        return 1;</span>
+      }
+<span class="nc bnc" id="L54" title="All 2 branches missed.">      else if(compared &lt; 0) {</span>
+<span class="nc" id="L55">        return -1;</span>
+      }
+<span class="nc" id="L57">      return 0;</span>
+    }
+  }
+
+  /**
+   * This method returns the start time of the call.
+   * @return A Date containing the start time of the call.
+   */
+  @Override
+  public Date getStartTime () {
+<span class="nc" id="L67">    return callStart;</span>
+  }
+
+  /**
+   * This method returns the end time of the call
+   * @return A Date containing the end time fo the call.
+   */
+  @Override
+  public Date getEndTime () {
+<span class="nc" id="L76">    return callEnd;</span>
+  }
+
+  /**
+   * This method returns the phone number of the person who initiated the call.
+   * @return A string containing a phone number
+   * */
+  @Override
+  public String getCaller() {
+<span class="nc" id="L85">    return caller;</span>
+  }
+
+  /**
+   * This method returns the phone number of the person who received the call.
+   * @return A string containing a phone number
+   */
+  @Override
+  public String getCallee() {
+<span class="nc" id="L94">    return callee;</span>
+  }
+
+  /**
+   * This method returns the start date/time of the call.
+   * @return A string containing a date and time separated by a space
+   * */
+  @Override
+  public String getStartTimeString() {
+<span class="nc" id="L103">    DateTimeFormat newFormat = DateTimeFormat.getFormat(&quot;M/d/yyyy h:mm aaa&quot;);</span>
+<span class="nc" id="L104">    return newFormat.format(this.callStart);</span>
+  }
+
+  /**
+   * This method returns a string containing a more human readable version of the start time.
+   * @return A string containing a more human readable version of the start time.
+   */
+  public String getPrettyStartString() {
+<span class="nc" id="L112">    DateTimeFormat newFormat = DateTimeFormat.getFormat(&quot;MM/dd/yyyy hh:mm aaa&quot;);</span>
+<span class="nc" id="L113">    return newFormat.format(this.callStart);</span>
+  }
+
+  /**
+   * This method returns the end date/time of the call.
+   * @return A string containing a date and time separated by a space.
+   */
+  @Override
+  public String getEndTimeString() {
+<span class="nc" id="L122">    DateTimeFormat newFormat = DateTimeFormat.getFormat(&quot;M/d/yyyy h:mm aaa&quot;);</span>
+<span class="nc" id="L123">    return newFormat.format(this.callEnd);</span>
+  }
+
+  /**
+   * This method returns a more human readable version of the end time.
+   * @return A string containing a more human readable version of the end time.
+   */
+  public String getPrettyEndString() {
+<span class="nc" id="L131">    DateTimeFormat newFormat = DateTimeFormat.getFormat(&quot;MM/dd/yyyy hh:mm aaa&quot;);</span>
+<span class="nc" id="L132">    return newFormat.format(this.callEnd);</span>
+  }
+
+  /**
+   * This method receives a String containing a phone number, calls verifyPhoneNumberFormat to check
+   * that it is formatted correctly, then returns true if it is formatted correctly, or false otherwise.
+   * @param phoneNum A string containing a phone number
+   * @return A boolean value representing whether or not the phone number was formatted correctly, and whether caller was set.
+   */
+  public Boolean setCaller(String phoneNum) {
+<span class="nc" id="L142">    boolean phoneNumberCorrect = verifyPhoneNumberFormat(phoneNum);</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">    if(phoneNumberCorrect == true) {</span>
+<span class="nc" id="L144">      this.caller = phoneNum;</span>
+    }
+<span class="nc" id="L146">    return phoneNumberCorrect;</span>
+  }
+
+  /**
+   * This method receives a String containing a phone number, calls verifyPhoneNumberFormat to check
+   * that it is formatted correctly, then returns true if it is formatted correctly, or false otherwise.
+   * @param phoneNum A string containing a phone number
+   * @return A boolean value representing whether or not the phone number was formatted correctly, and whether caller was set.
+   */
+  public Boolean setCallee(String phoneNum) {
+<span class="nc" id="L156">    boolean phoneNumberCorrect = verifyPhoneNumberFormat(phoneNum);</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">    if(phoneNumberCorrect == true) {</span>
+<span class="nc" id="L158">      this.callee = phoneNum;</span>
+    }
+<span class="nc" id="L160">    return phoneNumberCorrect;</span>
+  }
+
+  /**
+   * This method receives a string containing a date, and a string containing a time. It verifies that both are formatteed
+   * correctly, then sets startTime to be the date followed by a space and the time.
+   * @param date A string containing a date
+   * @param time A string containing a time
+   * @param period A string containing either 'am' or 'pm'
+   * @return A boolean representing whether or not the date and time were formatted correctly, and starTime was set.
+   * */
+  public Boolean setStartTimeString(String date, String time, String period) {
+<span class="nc" id="L172">    boolean dateCorrect = verifyDateFormat(date);</span>
+<span class="nc" id="L173">    boolean timeCorrect = verifyTimeFormat(time, period);</span>
+<span class="nc bnc" id="L174" title="All 4 branches missed.">    if(dateCorrect == true &amp;&amp; timeCorrect == true) {</span>
+<span class="nc" id="L175">      DateTimeFormat newFormat = DateTimeFormat.getFormat(&quot;M/d/yyyy h:mm aaa&quot;);</span>
+<span class="nc" id="L176">      callStart = newFormat.parse(date + &quot; &quot; + time + &quot; &quot; + period);</span>
+<span class="nc" id="L177">      callStart = newFormat.parse(date + &quot; &quot; + time + &quot; &quot; + period);</span>
+<span class="nc" id="L178">      newFormat.format(this.callStart);</span>
+<span class="nc" id="L179">      return true;</span>
+    }
+<span class="nc" id="L181">    return false;</span>
+  }
+
+  /**
+   * This method receives a string containing a date, and a string containing a time. It verifies that both are formatteed
+   * correctly, then sets endTime to be the date followed by a space and the time.
+   * @param date A string containing a date
+   * @param time A string containing a time
+   * @param period A string containing either 'am' or 'pm'
+   * @return A boolean representing whether or not the date and time were formatted correctly, and endTime was set.
+   * */
+  public Boolean setEndTimeString(String date, String time, String period) {
+<span class="nc" id="L193">    boolean dateCorrect = verifyDateFormat(date);</span>
+<span class="nc" id="L194">    boolean timeCorrect = verifyTimeFormat(time, period);</span>
+<span class="nc bnc" id="L195" title="All 4 branches missed.">    if(dateCorrect == true &amp;&amp; timeCorrect == true) {</span>
+<span class="nc" id="L196">      DateTimeFormat newFormat = DateTimeFormat.getFormat(&quot;M/d/yyyy h:mm aaa&quot;); // Set the correct pattern</span>
+<span class="nc" id="L197">      this.callEnd = newFormat.parse(date + &quot; &quot; + time + &quot; &quot; + period);</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">      if(this.callEnd.before(this.callStart) == true) {</span>
+ //       System.err.println(&quot;Call end time is before call start time.&quot;);
+//        System.exit(1);
+      }
+<span class="nc" id="L202">      newFormat.format(this.callEnd);</span>
+
+<span class="nc" id="L204">      return true;</span>
+    }
+<span class="nc" id="L206">    return false;</span>
+  }
+
+  /**
+   * This method verifies that the received date adheres to the formatting rules. If it doesn't have one or two digits
+   * in the month, separated by '/', one or two digits in the day, separated by '/', and 4 digits in the year, it does
+   * not pass the formatting, and will return false. Otherwise, it is formatted correctly and will return true.
+   * @param date A string containing a date
+   * @return True if the date is formatted correctly, false if it is not.
+   * */
+  public boolean verifyDateFormat(String date) {
+<span class="nc" id="L217">    String trimmedDate = date;</span>
+<span class="nc" id="L218">    int startIndex = 0;</span>
+<span class="nc" id="L219">    int endIndex = 0;</span>
+
+<span class="nc bnc" id="L221" title="All 2 branches missed.">  if(date == null) {</span>
+<span class="nc" id="L222">      return false;</span>
+  }
+
+<span class="nc" id="L225">    endIndex = date.indexOf(&quot;/&quot;);</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+     // System.err.println(&quot;Missing at least one '/'.&quot;);
+<span class="nc" id="L228">      return false;</span>
+    }
+<span class="nc" id="L230">    trimmedDate = date.substring(startIndex, endIndex);</span>
+
+    // One or two characters (0-9) allowed for month
+<span class="nc bnc" id="L233" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
+    //  System.err.println(&quot;Month must contain 1 or 2 digits.&quot;);
+<span class="nc" id="L235">      return false;</span>
+    }
+
+<span class="nc" id="L238">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L239">    endIndex = date.indexOf(&quot;/&quot;, startIndex);</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+    //  System.err.println(&quot;Missing at least one '/'.&quot;);
+<span class="nc" id="L242">      return false;</span>
+    }
+<span class="nc" id="L244">    trimmedDate = date.substring(startIndex, endIndex);</span>
+
+    // One or two characters (0-9) allowed for day
+<span class="nc bnc" id="L247" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
+    //  System.err.println(&quot;Day must contain 1 or 2 digits.&quot;);
+<span class="nc" id="L249">      return false;</span>
+    }
+
+<span class="nc" id="L252">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L253">    endIndex = date.length();</span>
+<span class="nc bnc" id="L254" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+    //  System.err.println(&quot;Missing a space between the date and time.&quot;);
+<span class="nc" id="L256">      return false;</span>
+    }
+<span class="nc" id="L258">    trimmedDate = date.substring(startIndex, endIndex);</span>
+
+    // Four characters (0-9) required for year
+<span class="nc bnc" id="L261" title="All 2 branches missed.">    if(verifyAllDigits(trimmedDate) != 4) {</span>
+    //  System.err.println(&quot;Year must contain only 4 digits.&quot;);
+<span class="nc" id="L263">      return false;</span>
+    }
+<span class="nc" id="L265">    return true;</span>
+  }
+
+  /**
+   * This method verifies that the received time adheres to the correct formatting.It must have one or two digits, followed
+   * by ':&quot;, followed by two digits. If it not pass the formatting, and will return false. Otherwise, it is formatted correctly and will return true.
+   * @param time A string containing a time
+   * @return True if the time is formatted correctly, false if it is not.
+   * */
+  public boolean verifyTimeFormat(String time, String period) {
+<span class="nc" id="L275">    String trimmedDate = time;</span>
+<span class="nc" id="L276">    int startIndex = 0;</span>
+<span class="nc" id="L277">    int endIndex = 0;</span>
+
+<span class="nc bnc" id="L279" title="All 4 branches missed.">    if(time == null || period == null) {</span>
+<span class="nc" id="L280">        return false;</span>
+    }
+
+<span class="nc" id="L283">    endIndex = time.indexOf(&quot;:&quot;);</span>
+<span class="nc bnc" id="L284" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+    //  System.err.println(&quot;Missing ':' between hours and minutes.&quot;);
+<span class="nc" id="L286">      return false;</span>
+    }
+<span class="nc" id="L288">    trimmedDate = time.substring(startIndex, endIndex);</span>
+
+    // One or two characters (0-9) allowed for hour
+<span class="nc bnc" id="L291" title="All 4 branches missed.">    if(verifyAllDigits(trimmedDate) != 1 &amp;&amp; verifyAllDigits(trimmedDate) != 2) {</span>
+    //  System.err.println(&quot;Hour must contain only 1 or 2 digits.&quot;);
+<span class="nc" id="L293">      return false;</span>
+    }
+    // One semicolon
+<span class="nc" id="L296">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L297">    endIndex = time.length();</span>
+<span class="nc" id="L298">    trimmedDate = time.substring(startIndex, endIndex);</span>
+
+    // Two characters (0-9) required for minutes
+<span class="nc bnc" id="L301" title="All 2 branches missed.">    if(verifyAllDigits(trimmedDate) != 2) {</span>
+    //  System.err.println(&quot;Minutes must contain only 1 or 2 digits.&quot;);
+<span class="nc" id="L303">      return false;</span>
+    }
+
+    // am or pm included
+<span class="nc bnc" id="L307" title="All 4 branches missed.">    if(period.toLowerCase().equals(&quot;am&quot;) == false &amp;&amp; period.toLowerCase().equals(&quot;pm&quot;) == false) {</span>
+    //  System.err.println(&quot;Must include either 'am' or 'pm'.&quot;);
+<span class="nc" id="L309">      return false;</span>
+    }
+
+<span class="nc" id="L312">    return true;</span>
+  }
+
+  /**
+   * This method verifies that the received phone number adheres to the correct formatting.It must have three digits, followed
+   * by '-&quot;, followed by three digits, followed by '-', followed by 4 digits. If it not pass the formatting, and will return false. Otherwise, it is formatted correctly and will return true.
+   * @param phone A string containing a phone number
+   * @return True if the phone number is formatted correctly, false if it is not.
+   * */
+
+  public boolean verifyPhoneNumberFormat (String phone) {
+<span class="nc" id="L323">    String trimmedPhone = phone;</span>
+<span class="nc" id="L324">    int startIndex = 0;</span>
+<span class="nc" id="L325">    int endIndex = 0;</span>
+
+<span class="nc bnc" id="L327" title="All 2 branches missed.">      if(phone == null) {</span>
+<span class="nc" id="L328">          return false;</span>
+      }
+
+<span class="nc" id="L331">    endIndex = phone.indexOf(&quot;-&quot;);</span>
+<span class="nc bnc" id="L332" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+    //  System.err.println(&quot;Missing at least one '-'.&quot;);
+<span class="nc" id="L334">      return false;</span>
+    }
+<span class="nc" id="L336">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
+
+    // Three characters (0-9)
+<span class="nc bnc" id="L339" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 3) {</span>
+    //  System.err.println(&quot;Phone number is not formatted like ###-###-####.&quot;);
+<span class="nc" id="L341">      return false;</span>
+    }
+
+<span class="nc" id="L344">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L345">    endIndex = phone.indexOf(&quot;-&quot;, startIndex);</span>
+<span class="nc bnc" id="L346" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+    //  System.err.println(&quot;Missing at least one '-'.&quot;);
+<span class="nc" id="L348">      return false;</span>
+    }
+<span class="nc" id="L350">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
+
+    // Three characters (0-9)
+<span class="nc bnc" id="L353" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 3) {</span>
+    //  System.err.println(&quot;Phone number is not formatted like ###-###-####.&quot;);
+<span class="nc" id="L355">      return false;</span>
+    }
+
+<span class="nc" id="L358">    startIndex = endIndex + 1;</span>
+<span class="nc" id="L359">    endIndex = phone.length();</span>
+<span class="nc bnc" id="L360" title="All 2 branches missed.">    if(endIndex &lt; 0) {</span>
+    //  System.err.println(&quot;Missing at least one '-'.&quot;);
+<span class="nc" id="L362">      return false;</span>
+    }
+<span class="nc" id="L364">    trimmedPhone = phone.substring(startIndex, endIndex);</span>
+
+    // Four characters (0-9)
+<span class="nc bnc" id="L367" title="All 2 branches missed.">    if(verifyAllDigits(trimmedPhone) != 4) {</span>
+    //  System.err.println(&quot;Phone number is not formatted like ###-###-####.&quot;);
+<span class="nc" id="L369">      return false;</span>
+    }
+<span class="nc" id="L371">    return true;</span>
+  }
+
+  /**
+   * This method tests to make sure that all the characters in a string are digits (0-9)
+   * @param test A string that will be tested
+   * @return The number of characters, or 0 if a non digit character is found.
+   */
+  public int verifyAllDigits (String test) {
+<span class="nc" id="L380">    int numDigits = 0;</span>
+<span class="nc bnc" id="L381" title="All 2 branches missed.">    for(int i = 0; i &lt; test.length(); ++i) {</span>
+<span class="nc bnc" id="L382" title="All 2 branches missed.">      if(!Character.isDigit(test.charAt(i))) {</span>
+<span class="nc" id="L383">        return 0;</span>
+      }
+<span class="nc" id="L385">      ++numDigits;</span>
+    }
+<span class="nc" id="L387">    return numDigits;</span>
+  }
+
+  /**
+   * This method receives a string containing a date, and a string containing a time. It verifies that both are formatteed
+   * correctly, then sets startTime to be the date followed by a space and the time.
+   * @param date A string containing a date
+   * @param time A string containing a time
+   * @param period A string containing either 'am' or 'pm'
+   * @return A boolean representing whether or not the date and time were formatted correctly, and starTime was set.
+   * */
+  public static Date stringToDate (String date, String time, String period) {
+<span class="nc" id="L399">    PhoneCall tempCall = new PhoneCall();</span>
+<span class="nc" id="L400">    boolean dateCorrect = tempCall.verifyDateFormat(date);</span>
+<span class="nc" id="L401">    boolean timeCorrect = tempCall.verifyTimeFormat(time, period);</span>
+<span class="nc" id="L402">    Date newDate = new Date();</span>
+<span class="nc bnc" id="L403" title="All 4 branches missed.">    if(dateCorrect == true &amp;&amp; timeCorrect == true) {</span>
+<span class="nc" id="L404">      DateTimeFormat newFormat = DateTimeFormat.getFormat(&quot;M/d/yyyy h:mm aaa&quot;);</span>
+<span class="nc" id="L405">      newDate = newFormat.parse(date + &quot; &quot; + time + &quot; &quot; + period);</span>
+<span class="nc" id="L406">      newFormat.format(newDate);</span>
+<span class="nc" id="L407">      return newDate;</span>
+    }
+   // System.err.println(&quot;The entered -search times are not formatted correctly.&quot;);
+  //  System.exit(1);
+<span class="nc" id="L411">    return null;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>
