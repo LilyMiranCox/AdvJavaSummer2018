@@ -29,7 +29,6 @@ public class PhoneBillGwt implements EntryPoint {
   private final Alerter alerter;
   private final PhoneBillServiceAsync phoneBillService;
   private final Logger logger;
-  private PhoneBill bill = new PhoneBill();
   private String selectedOption = "add";
   
 
@@ -124,26 +123,22 @@ public class PhoneBillGwt implements EntryPoint {
   }
 
   private void addWidgets(VerticalPanel panel) {
-    final String readme = "\n\n -- README --\n" +
-            "\nProject 5 implemented by Lily Cox \n" +
-            "This program creates phone bills from phone call information." +
-            "There are three main options for interacting with the phonebill application: 'Add a Call', 'Search Bill', and 'Print Bill'." +
+    final String readme = "-- README --\n" +
+            "Project 5 implemented by Lily Cox \n" +
+            "This program creates phone bills from phone call information. " +
+            "There are three main options for interacting with the phonebill application: 'Add a Call', 'Search Bill', and 'Print Bill'. " +
             "When one of these options is selected, the relevant textboxes will be made visible. The selected option's button will become disabled (grayed out and"+
-            "non clickable) to indicate that that is the option that is currently selected. 'Add a Call' is selected by default."+
-            "Each piece of data entered into the text boxes is checked to make sure it adheres to the expected formatting." +
-            "If any information is formatted incorrectly, an alert will pop up stating which textboxes are formatted incorrectly." +
-            "No calls will be added, or searches will be conducted if any of the information is formatted incorrectly."+
+            "non clickable) to indicate that that is the option that is currently selected. 'Add a Call' is selected by default. "+
+            "Each piece of data entered into the text boxes is checked to make sure it adheres to the expected formatting. " +
+            "If any information is formatted incorrectly, an alert will pop up stating which textboxes are formatted incorrectly. " +
+            "No calls will be added, or searches will be conducted if any of the information is formatted incorrectly. "+
             "If all of the entered data was formatted correctly, the information will be added to an instance of the" +
-            "PhoneCall class, and that instance added to the specified customer's bill." +
-            "If a new call is being added, and the included customer does not exist, a bill will be created for them." +
-            "If the customer provided to 'Search Bill' or 'Print Bill' does not exist on the server, an alert message will be displayed to the user." +
-            "For 'Add a Call', the customer name, caller number, callee number, start time, and end time are accepted. A new call" +
-            "will be created for the customer's bill from this information. If the customer does not already exist, it will be created."+
-            "For 'Search Bill', a customer name, start time, and end time are accepted, and all calls from that customer's bill that fall" +
-            "within that time period will be pretty printed in an alert popup." +
-            "For 'Print Bill', it accepts just a customer name. It will pretty print that customer's bill to an alert popup for the user."+
-            "To send the 'Add a Call', 'Search Bill', or 'Print Bill' requests to the server, fill out all provided text boxes, and click the 'SUBMIT' button below the text bozes." +
-            "Clicking 'Empty Textboxes' will delete all information you have put in the textboxes.";
+            "PhoneCall class, and that instance added to the specified customer's bill. " +
+            "If a new call is being added, and the included customer does not exist, a bill will be created for them. " +
+            "If the customer provided to 'Search Bill' or 'Print Bill' does not exist on the server, an alert message will be displayed to the user. " +
+            "Search and Print results will be pretty printed to the textarea beneath the 'SUBMIT' button. "+
+            "To send the 'Add a Call', 'Search Bill', or 'Print Bill' requests to the server, fill out all provided text boxes, and click the 'SUBMIT' button below the text boxes. " +
+            "Clicking 'Empty Textboxes' will delete all information you have put in the textboxes. ";
 
     showPhoneBillButton = new Button("Show Phone Bill");
     showPhoneBillButton.addClickHandler(new ClickHandler() {
@@ -190,24 +185,6 @@ public class PhoneBillGwt implements EntryPoint {
       public void onClick(ClickEvent clickEvent) {selectedOption="search";setForSearch();}
     });
 
- /*   readme
-    validating information
-    feedback reasonable and coherant
-      can add multiple calls and multiple bills
-
-
-
-      Final Exam: on comp: 7:57
-      Essentially two quizes put together
-      Covers what was in the programs
-      Timed: 40 minutes to do 6 questions
-      Open book and sources, but no electronics
-      What apis look like and how to use them
-
-      First part is individual
-      Second part is group
-      */
-
     prettyPrintBillButton= new Button("Print Bill");
     prettyPrintBillButton.addClickHandler(new ClickHandler() {
       @Override
@@ -220,13 +197,13 @@ public class PhoneBillGwt implements EntryPoint {
         public void onClick(ClickEvent clickEvent) {
             switch (selectedOption) {
                 case "add":
-                    addCall(clickEvent);
+                    addCall();
                     break;
                 case "search":
-                    searchBill(clickEvent);
+                    searchBill();
                     break;
                 case "print":
-                    printBill(clickEvent);
+                    printBill();
                     break;
             }
         }
@@ -244,8 +221,8 @@ public class PhoneBillGwt implements EntryPoint {
       }
     });
 
+    // Help menu table widgets - 'Help Menu' label and Readme button
     helpMenuTable = new FlexTable();
-
     helpMenuLabel = new Label("Help Menu");
     helpMenuLabel.getElement().getStyle().setProperty("fontSize","17px");
     helpMenuLabel.getElement().getStyle().setProperty("fontWeight","bold");
@@ -265,11 +242,12 @@ public class PhoneBillGwt implements EntryPoint {
     helpMenuTable.getElement().getStyle().setProperty("left", "10px");
     helpMenuTable.getElement().getStyle().setProperty("top", "20px");
 
+    // Top line label - a line that separates the top labels from the lower buttons
     topLineLabel = new Label("---------------------------------------------------------------------------------------------");
     topLineLabel.getElement().getStyle().setProperty("position","absolute");
     topLineLabel.getElement().getStyle().setProperty("top","35px");
 
-
+    // LinePanel - a vertical line that separates the help menu from the application
     linePanel = new VerticalPanel();
     lineLabel1 = new Label("|");
     lineLabel2 = new Label("|");
@@ -306,12 +284,16 @@ public class PhoneBillGwt implements EntryPoint {
     linePanel.getElement().getStyle().setProperty("left", "110px");
     linePanel.getElement().getStyle().setProperty("top", "23px");
 
+    // applicationTable - holds all buttons and labels for the phonebill application
     applicationTable = new FlexTable();
     optionButtonsTable = new FlexTable();
+
+    // optionButtonsTable - holds all options buttons - within applicationTable
     optionButtonsTable.setWidget(0,0, addCallButton);
     optionButtonsTable.setWidget(0, 1, searchBillButton);
     optionButtonsTable.setWidget(0, 2, prettyPrintBillButton);
 
+    // inputsTable - holds all inputs and inputs label - within applicationTable
     customerLabel = new Label("Customer Name: ");
     callerLabel = new Label("Caller Number: ");
     calleeLabel = new Label("Callee Number: ");
@@ -336,6 +318,7 @@ public class PhoneBillGwt implements EntryPoint {
     inputsTable.setWidget(4,0,endLabel);
     inputsTable.setWidget(4,1,addEndTimeInput);
 
+    // submitOrClearButtonsTable - holds the 'SUBMIT' and clear buttons - within applicationTable
     submitOrClearButtonsTable = new FlexTable();
     submitOrClearButtonsTable.setWidget(0, 0, submitRequestButton);
     submitOrClearButtonsTable.setWidget(0,1,clearAllInputsButton);
@@ -353,6 +336,7 @@ public class PhoneBillGwt implements EntryPoint {
     applicationTable.getElement().getStyle().setProperty("left", "130px");
     applicationTable.getElement().getStyle().setProperty("top", "20px");
 
+    // billResultsTextarea - textbox to put print and search results - in applicationTable
     billResultsTextarea = new TextArea();
     billResultsTextarea.setWidth("270px");
     billResultsTextarea.setHeight("250px");
@@ -361,36 +345,8 @@ public class PhoneBillGwt implements EntryPoint {
 
     applicationTable.setWidget(8,0,billResultsTextarea);
 
+    // wholeTable - Contains all elements and tables
     wholeTable = new FlexTable();
-  /*  wholeTable.setWidget(0, 0, helpMenuLabel);
-    wholeTable.setWidget(0, 1, optionButtonsTable);
-    wholeTable.setWidget(1, 0, readmeButton);
-    wholeTable.setWidget(1, 1, inputsTable);
-    wholeTable.setWidget(2, 1, submitOrClearButtonsTable);*/
-
-   /* wholeTable.setWidget(1, 1, helpMenuLabel);
-    wholeTable.setText(1,3,"|");
-    wholeTable.setText(1,5,"Application");
-
-
-
-    wholeTable.setText(2,1,"-------------------");
-    wholeTable.setText(2,3,"|");
-    wholeTable.setText(2,5,"------------------------------------------------------------------------");
-
-    wholeTable.setWidget(3, 1, readmeButton);
-    wholeTable.setText(3,3,"|");
-    wholeTable.setWidget(3, 5, optionButtonsTable);
-
-    wholeTable.setText(4,3,"|");
-
-    wholeTable.setWidget(5,3,linePanel);
-    wholeTable.setWidget(5, 5, inputsTable);
-
-    wholeTable.setText(6,3,"|");
-
-    wholeTable.setText(7,3,"|");
-    wholeTable.setWidget(7, 5, submitOrClearButtonsTable);*/
 
     wholeTable.setWidget(1, 1, helpMenuTable);
     wholeTable.setWidget(1, 3, linePanel);
@@ -494,6 +450,10 @@ public class PhoneBillGwt implements EntryPoint {
     void alert(String message);
   }
 
+  /**
+   * This method shows all inputs and  input lables, disables the add button, enables the other buttons,
+   * and hides the textarea.
+   */
   public void setForAdd () {
     addCallButton.setEnabled(false);
     searchBillButton.setEnabled(true);
@@ -518,6 +478,10 @@ public class PhoneBillGwt implements EntryPoint {
     billResultsTextarea.setValue("");
   }
 
+  /**
+   * This method hides the caller and callee inputs and input labels, disables the search button, enables the
+   * other buttons, and hides the textarea.
+   */
   public void setForSearch () {
     addCallButton.setEnabled(true);
     searchBillButton.setEnabled(false);
@@ -542,6 +506,10 @@ public class PhoneBillGwt implements EntryPoint {
     billResultsTextarea.setValue("");
   }
 
+  /**
+   * This method hides all inputs and input labels except for customer, disables the print button, enables the other
+   * buttons, and hides the textarea.
+   */
   public void setForPrint () {
     addCallButton.setEnabled(true);
     searchBillButton.setEnabled(true);
@@ -566,8 +534,11 @@ public class PhoneBillGwt implements EntryPoint {
     billResultsTextarea.setValue("");
   }
 
-
-  public void addCall (ClickEvent clickEvent) {
+  /**
+   * Get all of the inputed information into a new PhoneCall (if it is formatted correctly), then send it to
+   * the server to save. Alerts the user if it is added correctly, or if the call already exists.
+   */
+  public void addCall () {
       logger.info("Calling setPhoneBill");
 
       PhoneCall newCall = textBoxesToPhoneCall();
@@ -600,8 +571,11 @@ public class PhoneBillGwt implements EntryPoint {
       );
   }
 
-
-  public void searchBill (ClickEvent clickEvent) {
+  /**
+   * This method will get the bill if an existing customer is requested, search the bill for all calls
+   * within the included time period, and pretty print it's contents to a textarea.
+   */
+  public void searchBill () {
     Boolean validSearch = validateSearchCall();
     if(validSearch == false) {
       return;
@@ -625,8 +599,6 @@ public class PhoneBillGwt implements EntryPoint {
       @Override
       public void onSuccess(PhoneBill phoneBill) {
         if(phoneBill != null) {
-
-
           PhoneBill subBill = phoneBill.searchCalls(customer,PhoneCall.stringToDate(startPieces[0], startPieces[1], startPieces[2]), PhoneCall.stringToDate(endPieces[0], endPieces[1], endPieces[2]));
 
           if(subBill.getPhoneCalls().size() == 0) {
@@ -638,7 +610,6 @@ public class PhoneBillGwt implements EntryPoint {
           String prettyPrint = subBill.prettyPrintCalls(subBill, "Search Results: ");
           billResultsTextarea.setVisible(true);
           billResultsTextarea.setValue(prettyPrint);
-          //alerter.alert(prettyPrint);
         }
         else {
           alerter.alert("That customer doesn't exist.");
@@ -647,7 +618,11 @@ public class PhoneBillGwt implements EntryPoint {
     });
   }
 
-  public void printBill (ClickEvent clickEvent) {
+  /**
+   * This method will get the bill if an existing customer is requested, and pretty print it's contents
+   * to a textarea.
+   */
+  public void printBill () {
     logger.info("Calling getPhoneBill to print");
     Boolean customerValid = validatePrintCall();
     if(customerValid == false) {
@@ -669,15 +644,20 @@ public class PhoneBillGwt implements EntryPoint {
           alerter.alert("That customer doesn't exist");
           return;
         }
+
         String prettyBill = bill.prettyPrintCalls(bill, "Bill for: "+bill.getCustomer());
         billResultsTextarea.setVisible(true);
         billResultsTextarea.setValue(prettyBill);
-      //  alerter.alert(prettyBill);
       }
     });
 
   }
 
+  /**
+   * This method takes the values out of the user inputs, checks that they are all formatted correctly, and adds
+   * them to a new instance of PhoneCall. It will send an alert message containing which inputs are malformed.
+   * @return A filled PhoneCall if all inputs are formatted correctly, or null if any of them are malformed.
+   */
   public PhoneCall textBoxesToPhoneCall () {
     Boolean validCall = validateNewCall();
     if(validCall == false) {
@@ -722,6 +702,10 @@ public class PhoneBillGwt implements EntryPoint {
     return call;
   }
 
+  /**
+   * This method will check whether the customer, caller, callee, start time, and end time text boxes are filled.
+   * @return Returns true if all five inputs are occupied, false if any of them are empty.
+   */
   public Boolean validateNewCall () {
     String invalidMessage = "";
 
@@ -753,6 +737,10 @@ public class PhoneBillGwt implements EntryPoint {
     return true;
   }
 
+  /**
+   * This method will check whether the customer, start time, and end time textboxes are filled.
+   * @return Returns true if all three inputs are occupied, false if any of them are empty.
+   */
   public Boolean validateSearchCall () {
     String invalidMessage = "";
 
@@ -779,15 +767,16 @@ public class PhoneBillGwt implements EntryPoint {
     return true;
   }
 
+  /**
+   * This method will check whether the customer textbox is filled.
+   * @return Returns true if a customer input is occupied, false if it is empty.
+   */
   public Boolean validatePrintCall () {
     String invalidMessage = "";
 
     String customer = customerNameInput.getValue();
     if(customer.equals("")) {
       invalidMessage += "Customer is empty.\n";
-    }
-
-    if(invalidMessage.equals("") == false) {
       alerter.alert(invalidMessage);
       return false;
     }

@@ -23,8 +23,19 @@ public interface PhoneBillServiceAsync {
    */
   void throwDeclaredException(AsyncCallback<Void> async);
 
+  /**
+   * This method will add a call to the customer's bill.
+   * @param customer A string containing the name of a customer.
+   * @param call A PhoneCall to be added to the customer's bill.
+   * @param async To be used in the callback in PhoneBillGwt
+   */
   void setPhoneBill(String customer, PhoneCall call, AsyncCallback<Boolean> async);
 
+  /**
+   * This method retrieves the phonebill of a customer.
+   * @param customer A string containing the name of a customer.
+   * @param async To be useed in the callback in PhoneBillGwt
+   */
   void getBill (String customer, AsyncCallback<PhoneBill> async);
 
 }

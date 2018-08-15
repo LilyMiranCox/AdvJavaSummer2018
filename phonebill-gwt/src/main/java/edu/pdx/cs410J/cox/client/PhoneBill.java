@@ -18,7 +18,6 @@ import java.util.*;
 public class PhoneBill extends AbstractPhoneBill<PhoneCall>{
     private Collection<PhoneCall> calls = new ArrayList<>();
     private String customer = "notset";
-  //  private String customer = "CS410J";
 
     /**
      * This Method accepts a PhoneCall object, which it adds to the existing collection of PhoneCalls.
@@ -94,11 +93,22 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall>{
         return searchSubset;
     }
 
+    /**
+     * This method creates a pretty print string of a received PhoneBill.
+     * @param bill A PhoneBill to pretty print.
+     * @param title A string that will be the title in the pretty print.
+     * @return A pretty printed string.
+     */
     public String prettyPrintCalls (PhoneBill bill, String title) {
         PrettyPrinter print = new PrettyPrinter();
         return print.printOutString(bill, title);
     }
 
+    /**
+     * This method receives a call and checks to see whether the call exists in the current PhoneBill.
+     * @param call A call to see whether it exists in the PhoneBill.
+     * @return Returns true if the call exists in the PhoneBill, and false if it does not.
+     */
     public Boolean callExistsInBill (PhoneCall call) {
         for (PhoneCall c : this.calls) { // Compare the potential new call to see if it already exists in the collection
             if (c.compareTo(call) == 0) { // If it already exists, don't add it

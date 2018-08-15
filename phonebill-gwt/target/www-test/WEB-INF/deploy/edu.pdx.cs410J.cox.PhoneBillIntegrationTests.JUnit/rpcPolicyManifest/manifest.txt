@@ -1,2 +1,0 @@
-# Module edu.pdx.cs410J.cox.PhoneBillIntegrationTests.JUnit
-# RPC service class, partial path of RPC policy file

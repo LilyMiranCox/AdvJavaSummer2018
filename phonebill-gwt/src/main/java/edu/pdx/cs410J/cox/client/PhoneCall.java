@@ -24,14 +24,9 @@ import com.google.gwt.i18n.shared.DateTimeFormat;
 
 public class PhoneCall extends AbstractPhoneCall implements Comparable <PhoneCall>{
   private String caller = "";
- // private String caller = "503-688-0563";
   private String callee = "not implemented";
- // private String callee = "503-684-9232";
- // private Date callStart = new Date(1533759530000L);
- // private Date callEnd = new Date(1533763130000L);
   private Date callStart = new Date();
   private Date callEnd = new Date();
- // private Boolean set = setInitial();
 
   public PhoneCall () {
 
@@ -105,7 +100,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable <PhoneCal
    * */
   @Override
   public String getStartTimeString() {
-   // this.setStartTimeString("8/8/2018", "8:00", "pm");
     DateTimeFormat newFormat = DateTimeFormat.getFormat("M/d/yyyy h:mm aaa");
     return newFormat.format(this.callStart);
   }
@@ -115,7 +109,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable <PhoneCal
    * @return A string containing a more human readable version of the start time.
    */
   public String getPrettyStartString() {
-  //  this.setStartTimeString("8/8/2018", "8:00", "pm");
     DateTimeFormat newFormat = DateTimeFormat.getFormat("MM/dd/yyyy hh:mm aaa");
     return newFormat.format(this.callStart);
   }
@@ -126,7 +119,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable <PhoneCal
    */
   @Override
   public String getEndTimeString() {
- //   this.setEndTimeString("8/8/2018", "8:02", "pm");
     DateTimeFormat newFormat = DateTimeFormat.getFormat("M/d/yyyy h:mm aaa");
     return newFormat.format(this.callEnd);
   }
@@ -136,7 +128,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable <PhoneCal
    * @return A string containing a more human readable version of the end time.
    */
   public String getPrettyEndString() {
- //   this.setEndTimeString("8/8/2018", "8:02", "pm");
     DateTimeFormat newFormat = DateTimeFormat.getFormat("MM/dd/yyyy hh:mm aaa");
     return newFormat.format(this.callEnd);
   }
@@ -184,8 +175,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable <PhoneCal
       DateTimeFormat newFormat = DateTimeFormat.getFormat("M/d/yyyy h:mm aaa");
       callStart = newFormat.parse(date + " " + time + " " + period);
       callStart = newFormat.parse(date + " " + time + " " + period);
-      //       DateFormat.getDateInstance(DateFormat.SHORT).format(this.callStart);
-      //     DateFormat.getTimeInstance(DateFormat.SHORT).format(this.callStart);
       newFormat.format(this.callStart);
       return true;
     }
@@ -210,9 +199,7 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable <PhoneCal
  //       System.err.println("Call end time is before call start time.");
 //        System.exit(1);
       }
-      //      DateTimeFormat.getDateInstance(DateFormat.SHORT).format(this.callEnd);
       newFormat.format(this.callEnd);
-      //      DateFormat.getTimeInstance(DateFormat.SHORT).format(this.callEnd);
 
       return true;
     }
@@ -416,8 +403,6 @@ public class PhoneCall extends AbstractPhoneCall implements Comparable <PhoneCal
     if(dateCorrect == true && timeCorrect == true) {
       DateTimeFormat newFormat = DateTimeFormat.getFormat("M/d/yyyy h:mm aaa");
       newDate = newFormat.parse(date + " " + time + " " + period);
-      //    DateFormat.getDateInstance(DateFormat.SHORT).format(newDate);
-      //  DateFormat.getTimeInstance(DateFormat.SHORT).format(newDate);
       newFormat.format(newDate);
       return newDate;
     }

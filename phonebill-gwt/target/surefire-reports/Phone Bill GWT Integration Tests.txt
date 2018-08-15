@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: Phone Bill GWT Integration Tests
--------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.162 sec
-testClickingShowPhoneBillButtonAlertsWithPhoneBillInformation(edu.pdx.cs410J.cox.client.PhoneBillGwtIT)  Time elapsed: 8.085 sec
-testClickingShowDeclaredExceptionButtonAlertsWithExpectedMessage(edu.pdx.cs410J.cox.client.PhoneBillGwtIT)  Time elapsed: 0.024 sec
-testClickingShowClientSideExceptionButtonAlertsWithExpectedMessage(edu.pdx.cs410J.cox.client.PhoneBillGwtIT)  Time elapsed: 0.022 sec
-testClickingShowUndeclaredExceptionButtonAlertsWithExpectedMessage(edu.pdx.cs410J.cox.client.PhoneBillGwtIT)  Time elapsed: 0.022 sec

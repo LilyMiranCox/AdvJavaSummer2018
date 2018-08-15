@@ -44,6 +44,13 @@ public class PhoneBillServiceImpl extends RemoteServiceServlet implements PhoneB
     super.doUnexpectedFailure(unhandled);
   }
 
+  /**
+   * This method will save a new PhoneCall to a PhoneBill.
+   * @param customer A string containing the name of the customer.
+   * @param call A new PhoneCall to add to an existing/newly created PhoneBill.
+   * @return Returns true if the call was added successfully, and false if the call
+   * already exists in the bill.
+   */
   @Override
   public Boolean setPhoneBill(String customer, PhoneCall call) {
     PhoneBill bill = this.bills.get(customer);
@@ -61,6 +68,11 @@ public class PhoneBillServiceImpl extends RemoteServiceServlet implements PhoneB
     return true;
   }
 
+  /**
+   * This method will retrieve the bill of a given customer
+   * @param customer A string containing the name of a customer.
+   * @return Returns the bill of the customer if they exist, and null if they do not.
+   */
   @Override
   public PhoneBill getBill (String customer) {
     return this.bills.get(customer);
